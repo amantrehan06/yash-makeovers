@@ -46,6 +46,10 @@ export function buildCloudinaryUrl(publicId: string, options: BuildUrlOptions = 
     'placeholder'
 
   const parts: string[] = [`f_${format}`, `q_${quality}`, `c_${crop}`]
+  // Smart cropping: when forcing a target aspect ratio (fill/thumb), let
+  // Cloudinary auto-detect the subject (face, important content) and crop
+  // around it. Works for any source aspect ratio.
+  if (crop === 'fill' || crop === 'thumb') parts.push('g_auto')
   if (width)  parts.push(`w_${width}`)
   if (height) parts.push(`h_${height}`)
 

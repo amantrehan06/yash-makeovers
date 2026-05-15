@@ -43,6 +43,11 @@ function validateImages(resources: CloudinaryResource[], folder: string): Cloudi
   const spec = FOLDER_SPECS[folder]
   if (!spec) return resources
 
+  // Note: we no longer reject photos based on aspect ratio. Cloudinary's
+  // g_auto (smart-gravity) cropping handles any source ratio gracefully —
+  // it auto-detects the subject (face) and crops around it. We still warn
+  // on extreme mismatches so Yashpreet can spot a bad upload, but the
+  // photo still displays.
   const valid: CloudinaryResource[] = []
   for (const img of resources) {
     if (!img.width || !img.height) {
@@ -54,11 +59,10 @@ function validateImages(resources: CloudinaryResource[], folder: string): Cloudi
     const deviation = Math.abs(actual - expected) / expected
     if (deviation > spec.tolerance) {
       console.warn(
-        `⚠️ [Cloudinary] ${spec.label}: ${img.public_id} — wrong ratio ` +
-        `(got ${actual.toFixed(2)}, expected ~${expected.toFixed(2)}). ` +
-        `Crop to ${spec.aspectRatio.w}:${spec.aspectRatio.h} or delete.`
+        `ℹ️ [Cloudinary] ${spec.label}: ${img.public_id} — source ratio differs from ideal ` +
+        `(got ${actual.toFixed(2)}, ideal ~${expected.toFixed(2)}). ` +
+        `Auto-cropped on display. For best results, upload ${spec.aspectRatio.w}:${spec.aspectRatio.h}.`
       )
-      continue
     }
     valid.push(img)
   }
