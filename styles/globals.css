@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brand palette */
+  --color-ivory:        #FAF8F4;
+  --color-ivory-2:      #F3EFE8;
+  --color-ivory-3:      #EDE7DC;
+  --color-ivory-4:      #E4DDD1;
+  --color-dark:         #1C1410;
+  --color-dark-2:       #2E2118;
+  --color-dark-3:       #3D2E22;
+  --color-gold:         #A8834A;
+  --color-gold-light:   #C4A06A;
+  --color-gold-pale:    #EAD9BC;
+  --color-gold-dim:     #8B6B3A;
+  --color-muted:        #7A6A58;
+  --color-muted-2:      #9E8E7A;
+
+  /* Typography */
+  --font-serif:         'Cormorant Garamond', Georgia, serif;
+  --font-sans:          'DM Sans', system-ui, sans-serif;
+
+  /* Spacing rhythm */
+  --section-padding:    96px 48px;
+  --section-padding-sm: 64px 24px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-dark);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Sitewide focus ring — gold, only on keyboard navigation.
+   Mouse clicks don't show the ring (focus-visible only). */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respect user preference for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
