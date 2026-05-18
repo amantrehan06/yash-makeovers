@@ -10,7 +10,7 @@
 const defaults = {
   whatsapp:          true,   // Floating WhatsApp button (bottom-right)
   featuredGrid:      true,   // Homepage "A curated selection" grid
-  beforeAfter:       true,   // Transformation slider (homepage + portfolio)
+  beforeAfter:       false,   // Transformation slider (homepage + portfolio)
   acceptingBookings: true,   // Inquiry form — false shows "not accepting" message
   blogEngine:        true,   // Weekly autonomous blog post cron
   blogNotify:        true,   // Email notification when a blog post publishes
