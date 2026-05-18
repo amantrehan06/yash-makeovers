@@ -212,32 +212,23 @@ the site won't break.
 
 ## How long until the website updates?
 
-The website caches photos for **8 hours** to keep it fast. So after an
-upload, photos appear within 8 hours automatically.
+The website caches photos for **8 hours** to keep it fast and to stay
+within Cloudinary's free-tier limits. So after an upload, photos appear
+within 8 hours automatically.
 
-### Want it faster? Use your "refresh photos" bookmark
+### Want it faster? Ask the developer to redeploy
 
-Save this URL as a bookmark on your phone:
+A redeploy on Vercel takes about 60 seconds and forces a fresh fetch of
+all photos. Steps the developer takes:
 
-```
-https://yashmakeovers.com/api/revalidate?secret=YOUR_SECRET_HERE
-```
+1. Go to **vercel.com** → your project → **Deployments**
+2. Click the **⋯ menu** on the latest deployment → **Redeploy**
+3. Wait ~60 seconds → your new photos are live
 
-(The developer will set up the secret and send you the full URL — bookmark it.)
+If you've just uploaded a batch of photos and want them live ASAP,
+message the developer to trigger a redeploy.
 
-**To refresh after uploading new photos:**
-1. Tap the bookmark in your browser
-2. Wait 2 seconds — you'll see a "success" message
-3. Visit the website — your new photos appear immediately
-
-This is safe to tap as many times as you want. Keep the URL private —
-don't share it on social media.
-
-### Or just wait
-
-If you don't want to bother with the bookmark, just wait — the site will
-catch up within 8 hours automatically. The cache also resets every time
-the website is redeployed (e.g. when the developer pushes an update).
+Otherwise, just wait — the site catches up within 8 hours automatically.
 
 ---
 

@@ -86,7 +86,8 @@ function validateImages(resources: CloudinaryResource[], folder: string): Cloudi
 // allows 500 admin API calls/hour — without caching, every page render burns
 // through them quickly during dev. With caching, one call per 8 hours per folder.
 // Cache invalidates automatically on every new deploy (cache keyed to build ID).
-// Yashpreet can also force-refresh via /api/revalidate?secret=... after uploads.
+// For an instant refresh after uploads, just redeploy on Vercel — no
+// public endpoint is exposed so there's no abuse risk.
 const CACHE_SECONDS = 60 * 60 * 8
 async function _fetchFromCloudinary(folder: string): Promise<CloudinaryResource[]> {
   try {
@@ -107,15 +108,11 @@ async function _fetchFromCloudinary(folder: string): Promise<CloudinaryResource[
   }
 }
 
-// All Cloudinary fetches share this tag so /api/revalidate can refresh them
-// all at once with revalidateTag(CLOUDINARY_CACHE_TAG).
-export const CLOUDINARY_CACHE_TAG = 'cloudinary'
-
 export async function getImagesFromFolder(folder: CloudinaryFolder): Promise<CloudinaryResource[]> {
   const cached = unstable_cache(
     () => _fetchFromCloudinary(folder),
     [`cloudinary-${folder}`],
-    { revalidate: CACHE_SECONDS, tags: [CLOUDINARY_CACHE_TAG, `cloudinary-${folder}`] }
+    { revalidate: CACHE_SECONDS }
   )
   // Filename-based ordering: rename files in Cloudinary to control order.
   // Tip: prefix names with 01-, 02-, 03- to force a specific sequence.
