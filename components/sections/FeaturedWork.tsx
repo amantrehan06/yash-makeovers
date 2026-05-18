@@ -3,6 +3,7 @@ import { features } from '@/config/features'
 import { getImagesFromFolder, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
 import { buildCloudinaryUrl } from '@/lib/cloudinaryUrl'
 import { site } from '@/config/site'
+import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
 // Server component — homepage highlight reel.
@@ -20,9 +21,9 @@ export async function FeaturedWork() {
     <section className="py-24 px-6 bg-ivory">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
-          eyebrow="Our work"
-          title="A curated selection"
-          subtitle="A handful of recent looks. For the latest, follow along on Instagram."
+          eyebrow={content.featuredWork.eyebrow}
+          title={content.featuredWork.title}
+          subtitle={content.featuredWork.subtitle}
           centered
         />
 
@@ -69,7 +70,7 @@ export async function FeaturedWork() {
                 key={i}
                 className="aspect-square rounded-2xl bg-ivory-3 flex items-center justify-center"
               >
-                <span className="text-muted text-sm">Coming soon</span>
+                <span className="text-muted text-sm">{content.featuredWork.placeholder}</span>
               </div>
             ))}
           </div>
@@ -82,7 +83,7 @@ export async function FeaturedWork() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-gold hover:text-gold-dim transition-colors font-medium"
           >
-            Follow @{site.instagram} on Instagram
+            {content.featuredWork.instagramCTA.replace('{instagram}', site.instagram)}
           </a>
         </div>
       </div>

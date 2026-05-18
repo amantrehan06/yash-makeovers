@@ -1,4 +1,6 @@
 import { packages } from '@/config/packages'
+import { site } from '@/config/site'
+import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 
@@ -7,9 +9,9 @@ export function Services() {
     <section className="py-24 px-6 bg-ivory">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
-          eyebrow="Services & Pricing"
-          title="Packages crafted for every occasion"
-          subtitle="From the bridal ceremony to intimate celebrations — every look is designed to last all day."
+          eyebrow={content.servicesSection.eyebrow}
+          title={content.servicesSection.title}
+          subtitle={content.servicesSection.subtitle}
           centered
         />
 
@@ -25,7 +27,7 @@ export function Services() {
             >
               {pkg.highlight && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-ivory text-xs px-4 py-1 rounded-full font-medium">
-                  Most popular
+                  {content.servicesSection.popularBadge}
                 </span>
               )}
 
@@ -75,14 +77,14 @@ export function Services() {
                 variant={pkg.highlight ? 'primary' : 'outline'}
                 className="mt-8 w-full justify-center"
               >
-                Book this package
+                {content.servicesSection.bookCTA}
               </Button>
             </div>
           ))}
         </div>
 
         <p className="text-center text-muted text-sm mt-8">
-          All packages include travel within the GTA. Early morning fee of $100/person applies for 4:30–6:00 AM start times.
+          All packages include travel within the GTA. Early morning fee of ${site.policies.earlyMorningFee}/person applies for {site.policies.earlyMorningThreshold} start times.
         </p>
       </div>
     </section>

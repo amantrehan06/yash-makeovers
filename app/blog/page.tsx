@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { site } from '@/config/site'
+import { content } from '@/config/content'
 import { getAllPosts } from '@/lib/blog'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { BlogListing } from './BlogListing'
@@ -17,8 +18,8 @@ export default function BlogPage() {
     <section className="pt-32 pb-24 px-6 bg-ivory">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
-          eyebrow="Bridal beauty journal"
-          title="Tips, trends & advice"
+          eyebrow={content.blogPage.eyebrow}
+          title={content.blogPage.title}
           subtitle={`Insights from ${site.artistName} to help every bride look and feel her absolute best.`}
         />
         <BlogListing posts={posts} />

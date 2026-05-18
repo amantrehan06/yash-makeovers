@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { site } from '@/config/site'
+import { content } from '@/config/content'
 import { getImagesFromFolder, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
@@ -55,15 +56,15 @@ export default async function AboutPage() {
 
           <div>
             <SectionHeader
-              eyebrow="The artist"
-              title={`Meet ${site.artistName}`}
+              eyebrow={content.aboutPage.eyebrow}
+              title={`${content.aboutPage.titlePrefix} ${site.artistName}`}
             />
             <p className="text-muted leading-relaxed whitespace-pre-line text-base mb-10">
               {site.about}
             </p>
 
             <div className="border-t border-ivory-4 pt-10 mb-10">
-              <SectionHeader eyebrow="Why brides choose Yash" title="What sets us apart" />
+              <SectionHeader eyebrow={content.aboutPage.whyChooseEyebrow} title={content.aboutPage.whyChooseTitle} />
               <div className="grid grid-cols-1 gap-6">
                 {site.whyChoose.map((item) => (
                   <div key={item.title} className="flex gap-4">
@@ -78,9 +79,9 @@ export default async function AboutPage() {
             </div>
 
             <div className="border-t border-ivory-4 pt-10">
-              <SectionHeader eyebrow="Luxury brands" title="Products used" />
+              <SectionHeader eyebrow={content.aboutPage.brandsEyebrow} title={content.aboutPage.brandsTitle} />
               <div className="flex flex-wrap gap-3">
-                {['DIOR', 'Charlotte Tilbury', 'Chanel', 'YSL Beauty', 'Gucci Beauty'].map((brand) => (
+                {content.aboutPage.brands.map((brand) => (
                   <span
                     key={brand}
                     className="px-4 py-2 rounded-full border border-gold-pale text-gold-dim text-sm"
@@ -92,7 +93,7 @@ export default async function AboutPage() {
             </div>
 
             <Button href="/contact" size="lg" className="mt-10">
-              Book your date with {site.artistName}
+              {content.aboutPage.cta} {site.artistName}
             </Button>
           </div>
         </div>

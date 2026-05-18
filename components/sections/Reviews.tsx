@@ -1,5 +1,6 @@
 import { reviews } from '@/config/reviews'
 import { site } from '@/config/site'
+import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
 export function Reviews() {
@@ -8,8 +9,8 @@ export function Reviews() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <SectionHeader
-            eyebrow="Client love"
-            title="What brides are saying"
+            eyebrow={content.reviewsSection.eyebrow}
+            title={content.reviewsSection.title}
             light
           />
           <a

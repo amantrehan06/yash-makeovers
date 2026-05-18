@@ -4,6 +4,7 @@ import { cities } from '@/config/cities'
 import { site } from '@/config/site'
 import { packages } from '@/config/packages'
 import { reviews } from '@/config/reviews'
+import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 
@@ -135,9 +136,9 @@ export default function CityPage({ params }: Props) {
       <section className="py-16 px-6 bg-ivory-2">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
-            eyebrow="Services"
+            eyebrow={content.cityPage.servicesEyebrow}
             title={`Bridal packages for ${city.name} brides`}
-            subtitle="Transparent pricing. No hidden fees."
+            subtitle={content.cityPage.servicesSubtitle}
             centered
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
@@ -171,8 +172,8 @@ export default function CityPage({ params }: Props) {
       <section className="py-16 px-6 bg-ivory">
         <div className="max-w-5xl mx-auto">
           <SectionHeader
-            eyebrow={`Why ${city.name} brides choose Yash`}
-            title="What sets us apart"
+            eyebrow={`Why ${city.name} brides choose ${site.artistName}`}
+            title={content.cityPage.whyChooseTitle}
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
             {site.whyChoose.map((item) => (
@@ -192,7 +193,7 @@ export default function CityPage({ params }: Props) {
       <section className="py-16 px-6 bg-dark">
         <div className="max-w-5xl mx-auto">
           <SectionHeader
-            eyebrow="Client love"
+            eyebrow={content.cityPage.reviewsEyebrow}
             title={`What brides in the GTA are saying`}
             light
             centered
@@ -219,8 +220,8 @@ export default function CityPage({ params }: Props) {
       <section className="py-16 px-6 bg-ivory">
         <div className="max-w-3xl mx-auto">
           <SectionHeader
-            eyebrow="FAQ"
-            title={`Frequently asked questions — ${city.name}`}
+            eyebrow={content.cityPage.faqEyebrow}
+            title={`${content.cityPage.faqTitle} — ${city.name}`}
           />
           <div className="divide-y divide-ivory-4">
             {faqs.map((faq, i) => (

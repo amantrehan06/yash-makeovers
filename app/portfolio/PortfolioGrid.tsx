@@ -7,8 +7,9 @@ import type { CloudinaryResource } from '@/lib/cloudinaryUrl'
 import { buildCloudinaryUrl } from '@/lib/cloudinaryUrl'
 import { trackEvent } from '@/lib/analytics'
 import { site } from '@/config/site'
+import { content } from '@/config/content'
 
-const CATEGORIES = ['All', 'Bridal', 'Pre-Bridal', 'Full Glam', 'Party', 'South Asian'] as const
+const CATEGORIES = content.portfolioPage.filters
 type Category = (typeof CATEGORIES)[number]
 
 // Tag → category label. Add lowercase variants of expected Cloudinary tags.
@@ -164,7 +165,7 @@ export function PortfolioGrid({ images }: Props) {
             onClick={() => setVisible((v) => v + PAGE_SIZE)}
             className="px-8 py-3 rounded-full border border-gold text-gold hover:bg-gold hover:text-ivory text-sm font-medium tracking-wide transition-colors"
           >
-            Load more ({list.length - visible} remaining)
+            {content.portfolioPage.loadMore} ({list.length - visible} remaining)
           </button>
         </div>
       )}

@@ -1,4 +1,5 @@
 import { site } from '@/config/site'
+import { content } from '@/config/content'
 import { getImagesFromFolder, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
@@ -27,25 +28,25 @@ export async function Hero() {
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Button href="/contact" size="lg">
-              Book your date
+              {content.hero.ctaPrimary}
             </Button>
             <Button href="/portfolio" variant="outline" size="lg">
-              View portfolio
+              {content.hero.ctaSecondary}
             </Button>
           </div>
 
           <div className="mt-12 grid grid-cols-3 gap-6 border-t border-ivory-4 pt-8">
             <div>
               <p className="font-serif text-4xl text-gold">{site.experience}</p>
-              <p className="text-muted text-sm mt-1">Years of expertise</p>
+              <p className="text-muted text-sm mt-1">{content.hero.statExperience}</p>
             </div>
             <div>
               <p className="font-serif text-4xl text-gold">{site.brideCount}</p>
-              <p className="text-muted text-sm mt-1">Brides served</p>
+              <p className="text-muted text-sm mt-1">{content.hero.statBrides}</p>
             </div>
             <div>
               <p className="font-serif text-4xl text-gold">⭐ {site.googleRating}</p>
-              <p className="text-muted text-sm mt-1">{site.googleReviewCount} Google reviews</p>
+              <p className="text-muted text-sm mt-1">{site.googleReviewCount} {content.hero.statReviews}</p>
             </div>
           </div>
         </div>

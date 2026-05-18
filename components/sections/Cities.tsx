@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { cities } from '@/config/cities'
 import { site } from '@/config/site'
+import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
 export function Cities() {
@@ -8,8 +9,8 @@ export function Cities() {
     <section className="py-24 px-6 bg-ivory-2">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
-          eyebrow="Service area"
-          title="Serving all of the GTA"
+          eyebrow={content.citiesSection.eyebrow}
+          title={content.citiesSection.title}
           subtitle={`${site.artistName} travels to your venue — wherever your celebration takes you.`}
           centered
         />
@@ -28,7 +29,7 @@ export function Cities() {
               <p className="text-muted-2 text-xs mt-1">{city.province}</p>
               {city.isHome && (
                 <span className="absolute top-2 right-2 text-xs bg-gold-pale text-gold-dim px-2 py-0.5 rounded-full">
-                  Home base
+                  {content.citiesSection.homeBaseLabel}
                 </span>
               )}
             </Link>

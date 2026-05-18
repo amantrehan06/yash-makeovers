@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 import { features } from '@/config/features'
 import { packages } from '@/config/packages'
 import { site } from '@/config/site'
+import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 import { trackEvent } from '@/lib/analytics'
@@ -60,9 +61,9 @@ export function PriceEstimator() {
     <section className="py-24 px-6 bg-ivory-2">
       <div className="max-w-3xl mx-auto">
         <SectionHeader
-          eyebrow="Price Estimator"
-          title="Estimate your investment"
-          subtitle="Get an instant range before booking. No surprises — just transparency."
+          eyebrow={content.priceEstimator.eyebrow}
+          title={content.priceEstimator.title}
+          subtitle={content.priceEstimator.subtitle}
           centered
         />
 

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { site } from '@/config/site'
 import { packages } from '@/config/packages'
+import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 import { FAQAccordion } from './FAQAccordion'
@@ -61,9 +62,9 @@ export default function ServicesPage() {
       <section className="pt-32 pb-24 px-6 bg-ivory">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
-            eyebrow="Services & Pricing"
-            title="Every look, perfectly crafted"
-            subtitle="Transparent pricing. No hidden fees. Just flawless results."
+            eyebrow={content.servicesPage.eyebrow}
+            title={content.servicesPage.title}
+            subtitle={content.servicesPage.subtitle}
             centered
           />
 
@@ -79,7 +80,7 @@ export default function ServicesPage() {
               >
                 {pkg.highlight && (
                   <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-ivory text-xs px-4 py-1 rounded-full font-medium">
-                    Most popular
+                    {content.servicesSection.popularBadge}
                   </span>
                 )}
                 <p className={`text-xs uppercase tracking-widest mb-2 ${pkg.highlight ? 'text-gold-light' : 'text-gold'}`}>
@@ -107,7 +108,7 @@ export default function ServicesPage() {
                   variant={pkg.highlight ? 'primary' : 'outline'}
                   className="mt-8 w-full justify-center"
                 >
-                  Book this package
+                  {content.servicesSection.bookCTA}
                 </Button>
               </div>
             ))}
@@ -128,7 +129,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="mt-20">
-            <SectionHeader eyebrow="FAQ" title="Frequently asked questions" />
+            <SectionHeader eyebrow={content.servicesPage.faqEyebrow} title={content.servicesPage.faqTitle} />
             <FAQAccordion />
           </div>
         </div>

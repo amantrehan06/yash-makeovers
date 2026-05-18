@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { features } from '@/config/features'
 import { site } from '@/config/site'
+import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
 
@@ -20,9 +21,9 @@ export function BeforeAfter({ beforePublicId, afterPublicId }: Props) {
     <section className="py-24 px-6 bg-dark">
       <div className="max-w-5xl mx-auto">
         <SectionHeader
-          eyebrow="Transformation"
-          title="See the difference"
-          subtitle="Drag the slider — or use the arrow keys — to reveal the before and after."
+          eyebrow={content.beforeAfter.eyebrow}
+          title={content.beforeAfter.title}
+          subtitle={content.beforeAfter.subtitle}
           centered
           light
         />

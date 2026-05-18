@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { site } from '@/config/site'
 import { features } from '@/config/features'
+import { content } from '@/config/content'
 import { getImagesFromFolder, getBeforeAfterPairs, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { PortfolioGrid } from './PortfolioGrid'
@@ -43,9 +44,9 @@ export default async function PortfolioPage() {
       <section className="pt-32 pb-16 px-6 bg-ivory">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
-            eyebrow="Portfolio"
-            title="The work speaks for itself"
-            subtitle="Browse looks from bridal ceremonies to full glam events."
+            eyebrow={content.portfolioPage.eyebrow}
+            title={content.portfolioPage.title}
+            subtitle={content.portfolioPage.subtitle}
             centered
           />
           <PortfolioGrid images={images} />

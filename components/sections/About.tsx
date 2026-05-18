@@ -1,4 +1,5 @@
 import { site } from '@/config/site'
+import { content } from '@/config/content'
 import { getImagesFromFolder, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
@@ -37,7 +38,7 @@ export async function About() {
         <div className="order-1 md:order-2">
           <SectionHeader
             eyebrow={`About ${site.artistName}`}
-            title="The artist behind the magic"
+            title={content.aboutSection.title}
             subtitle=""
           />
           <p className="text-muted leading-relaxed whitespace-pre-line text-base">
@@ -54,7 +55,7 @@ export async function About() {
           </div>
 
           <Button href="/about" variant="outline" className="mt-8">
-            Read the full story
+            {content.aboutSection.readMoreCTA}
           </Button>
         </div>
       </div>

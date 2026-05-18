@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 import { features } from '@/config/features'
 import { site } from '@/config/site'
 import { packages } from '@/config/packages'
+import { content } from '@/config/content'
 import { Button } from '@/components/ui/Button'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { trackEvent } from '@/lib/analytics'
@@ -32,7 +33,7 @@ const EMPTY: FormData = {
   vision: '',
 }
 
-const steps = ['Contact', 'Event details', 'Location & time', 'Your vision']
+const steps = content.inquiryForm.steps
 
 export function InquiryForm() {
   const [step, setStep] = useState(0)
@@ -65,7 +66,7 @@ export function InquiryForm() {
       trackEvent('inquiry_form_completed', { service: data.serviceType, city: data.city })
       setSubmitted(true)
     } catch {
-      setError(`Something went wrong. Please WhatsApp us directly at ${site.phone}.`)
+      setError(`${content.inquiryForm.errorBody} ${site.phone}.`)
     } finally {
       setLoading(false)
     }
@@ -76,9 +77,9 @@ export function InquiryForm() {
       <section className="py-24 px-6 bg-ivory" id="inquiry">
         <div className="max-w-lg mx-auto text-center">
           <p className="font-serif text-6xl text-gold mb-6">✦</p>
-          <h2 className="font-serif text-4xl text-dark mb-4">Not accepting new bookings</h2>
+          <h2 className="font-serif text-4xl text-dark mb-4">{content.inquiryForm.notAcceptingTitle}</h2>
           <p className="text-muted leading-relaxed mb-8">
-            We are currently not accepting new bookings. Please follow
+            {content.inquiryForm.notAcceptingBody}
             <a
               href={`https://instagram.com/${site.instagram}`}
               target="_blank"
@@ -99,10 +100,9 @@ export function InquiryForm() {
       <section className="py-24 px-6 bg-ivory">
         <div className="max-w-lg mx-auto text-center">
           <p className="font-serif text-6xl text-gold mb-6">✦</p>
-          <h2 className="font-serif text-4xl text-dark mb-4">Inquiry received!</h2>
+          <h2 className="font-serif text-4xl text-dark mb-4">{content.inquiryForm.successTitle}</h2>
           <p className="text-muted leading-relaxed">
-            {site.artistName} will WhatsApp you within 24 hours to discuss your vision.
-            Keep an eye on your WhatsApp — we can&apos;t wait to make your day unforgettable.
+            {site.artistName} {content.inquiryForm.successBody}
           </p>
         </div>
       </section>
@@ -113,8 +113,8 @@ export function InquiryForm() {
     <section className="py-24 px-6 bg-ivory" id="inquiry">
       <div className="max-w-2xl mx-auto">
         <SectionHeader
-          eyebrow="Get in touch"
-          title="Start your booking"
+          eyebrow={content.inquiryForm.eyebrow}
+          title={content.inquiryForm.title}
           subtitle={`Fill in a few details and ${site.artistName} will personally WhatsApp you within 24 hours.`}
           centered
         />
@@ -141,23 +141,23 @@ export function InquiryForm() {
           <div className="p-8">
             {step === 0 && (
               <div className="flex flex-col gap-5">
-                <Field label="Full name" value={data.name} onChange={(v) => update('name', v)} placeholder="Your full name" />
-                <Field label="WhatsApp number" value={data.whatsapp} onChange={(v) => update('whatsapp', v)} placeholder="+1 (647) 000-0000" type="tel" />
-                <Field label="Email address" value={data.email} onChange={(v) => update('email', v)} placeholder="your@email.com" type="email" />
+                <Field label={content.inquiryForm.fields.name.label}     value={data.name}     onChange={(v) => update('name', v)}     placeholder={content.inquiryForm.fields.name.placeholder} />
+                <Field label={content.inquiryForm.fields.whatsapp.label} value={data.whatsapp} onChange={(v) => update('whatsapp', v)} placeholder={content.inquiryForm.fields.whatsapp.placeholder} type="tel" />
+                <Field label={content.inquiryForm.fields.email.label}    value={data.email}    onChange={(v) => update('email', v)}    placeholder={content.inquiryForm.fields.email.placeholder} type="email" />
               </div>
             )}
 
             {step === 1 && (
               <div className="flex flex-col gap-5">
-                <Field label="Event date" value={data.eventDate} onChange={(v) => update('eventDate', v)} type="date" />
+                <Field label={content.inquiryForm.fields.eventDate.label} value={data.eventDate} onChange={(v) => update('eventDate', v)} type="date" />
                 <div>
-                  <label className="block text-xs uppercase tracking-widest text-muted mb-2">Service type</label>
+                  <label className="block text-xs uppercase tracking-widest text-muted mb-2">{content.inquiryForm.fields.serviceType.label}</label>
                   <select
                     value={data.serviceType}
                     onChange={(e) => update('serviceType', e.target.value)}
                     className="w-full border border-ivory-4 rounded-lg px-4 py-3 text-dark bg-ivory text-sm focus:outline-none focus:ring-2 focus:ring-gold"
                   >
-                    <option value="">Select a service</option>
+                    <option value="">{content.inquiryForm.fields.serviceType.placeholder}</option>
                     {packages.map((pkg) => (
                       <option key={pkg.id} value={pkg.name}>
                         {pkg.name} ({pkg.price}/person)
@@ -166,17 +166,16 @@ export function InquiryForm() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs uppercase tracking-widest text-muted mb-2">Number of people</label>
+                  <label className="block text-xs uppercase tracking-widest text-muted mb-2">{content.inquiryForm.fields.numPeople.label}</label>
                   <select
                     value={data.numPeople}
                     onChange={(e) => update('numPeople', e.target.value)}
                     className="w-full border border-ivory-4 rounded-lg px-4 py-3 text-dark bg-ivory text-sm focus:outline-none focus:ring-2 focus:ring-gold"
                   >
-                    <option value="">Select</option>
-                    <option value="1">1 person</option>
-                    <option value="2-3">2–3 people</option>
-                    <option value="4-6">4–6 people</option>
-                    <option value="7+">7+ people</option>
+                    <option value="">{content.inquiryForm.fields.numPeople.placeholder}</option>
+                    {content.inquiryForm.peopleOptions.map((opt) => (
+                      <option key={opt.value} value={opt.value}>{opt.label}</option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -184,11 +183,11 @@ export function InquiryForm() {
 
             {step === 2 && (
               <div className="flex flex-col gap-5">
-                <Field label="City / Venue location" value={data.city} onChange={(v) => update('city', v)} placeholder="e.g. Brampton, ON or venue name" />
-                <Field label="Preferred start time" value={data.startTime} onChange={(v) => update('startTime', v)} type="time" />
+                <Field label={content.inquiryForm.fields.city.label}      value={data.city}      onChange={(v) => update('city', v)}      placeholder={content.inquiryForm.fields.city.placeholder} />
+                <Field label={content.inquiryForm.fields.startTime.label} value={data.startTime} onChange={(v) => update('startTime', v)} type="time" />
                 {isEarlyMorning && (
                   <div className="bg-gold-pale border border-gold-pale rounded-xl p-4 text-sm text-gold-dim">
-                    ⏰ <strong>Early morning fee applies.</strong> Start times between {site.policies.earlyMorningThreshold} incur an additional ${site.policies.earlyMorningFee} per person.
+                    ⏰ <strong>{content.inquiryForm.earlyMorningWarning}</strong> Start times between {site.policies.earlyMorningThreshold} incur an additional ${site.policies.earlyMorningFee} per person.
                   </div>
                 )}
               </div>
@@ -197,12 +196,12 @@ export function InquiryForm() {
             {step === 3 && (
               <div className="flex flex-col gap-5">
                 <div>
-                  <label className="block text-xs uppercase tracking-widest text-muted mb-2">Your vision & inspiration</label>
+                  <label className="block text-xs uppercase tracking-widest text-muted mb-2">{content.inquiryForm.fields.vision.label}</label>
                   <textarea
                     value={data.vision}
                     onChange={(e) => update('vision', e.target.value)}
                     rows={5}
-                    placeholder="Describe your dream look, color palette, any inspiration images or references, and any specific requirements..."
+                    placeholder={content.inquiryForm.fields.vision.placeholder}
                     className="w-full border border-ivory-4 rounded-lg px-4 py-3 text-dark bg-ivory text-sm focus:outline-none focus:ring-2 focus:ring-gold resize-none"
                   />
                 </div>
@@ -216,7 +215,7 @@ export function InquiryForm() {
                   onClick={() => setStep((s) => s - 1)}
                   className="text-sm text-muted hover:text-dark transition-colors"
                 >
-                  ← Back
+                  {content.inquiryForm.backButton}
                 </button>
               ) : (
                 <span />
@@ -224,11 +223,11 @@ export function InquiryForm() {
 
               {step < 3 ? (
                 <Button onClick={() => setStep((s) => s + 1)} size="md">
-                  Continue →
+                  {content.inquiryForm.continueButton}
                 </Button>
               ) : (
                 <Button onClick={handleSubmit} size="md" disabled={loading}>
-                  {loading ? 'Sending…' : 'Send inquiry'}
+                  {loading ? content.inquiryForm.submittingButton : content.inquiryForm.submitButton}
                 </Button>
               )}
             </div>
