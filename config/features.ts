@@ -1,26 +1,39 @@
-// Feature toggles — server-only env vars (no NEXT_PUBLIC_ prefix).
+// Feature toggles — edit values below to show/hide sections of the site.
 //
-// Most features default to ON (opt-out): set the env var to 'false' to disable.
-// Some features default to OFF (opt-in): set the env var to 'true' to enable.
-// All require a redeploy to take effect.
+// To flip a feature: change true → false (or vice versa), commit, push.
+// Vercel auto-deploys in ~60 seconds.
 //
-// IMPORTANT: these are SERVER-ONLY env vars. In client components the
-// values will always read as ON regardless of the flag — the in-component
-// `if (!features.x) return null` check is defensive only. The primary
-// disabling mechanism is the parent server component choosing not to
-// render the optional section. See app/page.tsx and app/layout.tsx.
+// For urgent overrides without a code change, you can also set
+//   FEATURE_<NAME>=true|false
+// in Vercel env vars — env var wins over the default below.
+
+const defaults = {
+  whatsapp:          true,   // Floating WhatsApp button (bottom-right)
+  featuredGrid:      true,   // Homepage "A curated selection" grid
+  beforeAfter:       true,   // Transformation slider (homepage + portfolio)
+  acceptingBookings: true,   // Inquiry form — false shows "not accepting" message
+  blogEngine:        true,   // Weekly autonomous blog post cron
+  blogNotify:        true,   // Email notification when a blog post publishes
+  priceEstimator:    false,  // Homepage price calculator widget
+}
+
+// Env-var override: 'true'/'false' wins over the default. Anything else
+// (empty, undefined, garbage) falls through to the default.
+function flag(name: keyof typeof defaults): boolean {
+  const env = process.env[`FEATURE_${name.replace(/[A-Z]/g, (c) => `_${c}`).toUpperCase()}`]
+  if (env === 'true')  return true
+  if (env === 'false') return false
+  return defaults[name]
+}
 
 export const features = {
-  // Opt-out (default ON):
-  whatsapp:          process.env.FEATURE_WHATSAPP          !== 'false',
-  featuredGrid:      process.env.FEATURE_FEATURED_GRID      !== 'false',
-  beforeAfter:       process.env.FEATURE_BEFORE_AFTER       !== 'false',
-  acceptingBookings: process.env.FEATURE_ACCEPTING_BOOKINGS !== 'false',
-  blogEngine:        process.env.FEATURE_BLOG_ENGINE        !== 'false',
-  blogNotify:        process.env.FEATURE_BLOG_NOTIFY        !== 'false',
-
-  // Opt-in (default OFF — set env var to 'true' to enable):
-  priceEstimator:    process.env.FEATURE_PRICE_ESTIMATOR    === 'true',
+  whatsapp:          flag('whatsapp'),
+  featuredGrid:      flag('featuredGrid'),
+  beforeAfter:       flag('beforeAfter'),
+  acceptingBookings: flag('acceptingBookings'),
+  blogEngine:        flag('blogEngine'),
+  blogNotify:        flag('blogNotify'),
+  priceEstimator:    flag('priceEstimator'),
 } as const
 
 export type FeatureFlag = keyof typeof features
