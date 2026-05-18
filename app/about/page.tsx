@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import { site } from '@/config/site'
+import { getImagesFromFolder, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
+import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
 
 export const metadata: Metadata = {
   title: `About ${site.artistName} | ${site.name}`,
@@ -9,7 +11,9 @@ export const metadata: Metadata = {
   alternates: { canonical: `https://${site.domain}/about` },
 }
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const aboutImages = await getImagesFromFolder(CLOUDINARY_FOLDERS.about)
+  const portraitPublicId = aboutImages[0]?.public_id
   return (
     <>
       <script
@@ -29,12 +33,24 @@ export default function AboutPage() {
       <section className="pt-32 pb-16 px-6 bg-ivory">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
           <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-ivory-3 sticky top-24">
-            <div className="absolute inset-0 flex items-center justify-center text-muted text-sm">
-              <p className="text-center px-8">
-                <span className="font-serif text-5xl block mb-3 text-gold-pale">✦</span>
-                Artist portrait
-              </p>
-            </div>
+            {portraitPublicId ? (
+              <CloudinaryImage
+                publicId={portraitPublicId}
+                alt={`${site.artistName}, bridal makeup artist at ${site.name}`}
+                width={720}
+                height={960}
+                crop="fill"
+                className="object-cover w-full h-full"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center text-muted text-sm">
+                <p className="text-center px-8">
+                  <span className="font-serif text-5xl block mb-3 text-gold-pale">✦</span>
+                  Upload a portrait to<br />Cloudinary → yash-makeovers/about/
+                </p>
+              </div>
+            )}
           </div>
 
           <div>

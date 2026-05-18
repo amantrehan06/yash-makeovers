@@ -7,7 +7,6 @@ import { Marquee } from '@/components/sections/Marquee'
 import { TrustBar } from '@/components/sections/TrustBar'
 import { About } from '@/components/sections/About'
 import { Services } from '@/components/sections/Services'
-import { Portfolio } from '@/components/sections/Portfolio'
 import { BeforeAfter } from '@/components/sections/BeforeAfter'
 import { PriceEstimator } from '@/components/sections/PriceEstimator'
 import { Reviews } from '@/components/sections/Reviews'
@@ -63,7 +62,7 @@ export default async function HomePage() {
       <TrustBar />
       <About />
       <Services />
-      <Portfolio />
+      {features.featuredGrid && <FeaturedWork />}
       {features.beforeAfter && (
         <BeforeAfter
           beforePublicId={firstPair?.before.public_id}
@@ -74,7 +73,6 @@ export default async function HomePage() {
       <Reviews />
       <Cities />
       <InquiryForm />
-      {features.featuredGrid && <FeaturedWork />}
     </>
   )
 }

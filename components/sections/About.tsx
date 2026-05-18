@@ -1,23 +1,37 @@
 import { site } from '@/config/site'
-import { images } from '@/config/images'
+import { getImagesFromFolder, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
 
-export function About() {
+// Async server component — picks up whatever photo Yashpreet uploads to
+// yash-makeovers/about/, regardless of filename. First photo wins.
+export async function About() {
+  const aboutImages = await getImagesFromFolder(CLOUDINARY_FOLDERS.about)
+  const portraitPublicId = aboutImages[0]?.public_id
+
   return (
     <section className="py-24 px-6 bg-ivory-2">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-ivory-3 order-2 md:order-1">
-          <CloudinaryImage
-            publicId={images.about.portrait}
-            alt={`${site.artistName}, bridal makeup artist at ${site.name} in ${site.baseCity}`}
-            width={720}
-            height={900}
-            crop="fill"
-            className="object-cover w-full h-full"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
+          {portraitPublicId ? (
+            <CloudinaryImage
+              publicId={portraitPublicId}
+              alt={`${site.artistName}, bridal makeup artist at ${site.name} in ${site.baseCity}`}
+              width={720}
+              height={900}
+              crop="fill"
+              className="object-cover w-full h-full"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center text-muted text-sm">
+              <p className="text-center px-8">
+                <span className="font-serif text-5xl block mb-3 text-gold-pale">✦</span>
+                Upload a portrait to<br />Cloudinary → yash-makeovers/about/
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="order-1 md:order-2">

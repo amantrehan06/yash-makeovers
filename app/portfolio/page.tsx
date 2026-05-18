@@ -15,8 +15,9 @@ export const metadata: Metadata = {
 }
 
 export default async function PortfolioPage() {
-  // Validated images only — wrong-shape uploads are skipped server-side with
-  // a console warning that tells Yashpreet exactly what to fix.
+  // All photos live in yash-makeovers/portfolio/. Category filters (Bridal,
+  // Pre-Bridal, etc.) work via Cloudinary tags. The `featured` tag controls
+  // which photos appear on the homepage spotlight — doesn't affect this page.
   const [images, pairs] = await Promise.all([
     getImagesFromFolder(CLOUDINARY_FOLDERS.portfolio),
     features.beforeAfter ? getBeforeAfterPairs() : Promise.resolve([]),

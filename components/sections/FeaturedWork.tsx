@@ -5,14 +5,16 @@ import { buildCloudinaryUrl } from '@/lib/cloudinaryUrl'
 import { site } from '@/config/site'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
-// Server component — curated photos that Yashpreet uploads manually to
-// yash-makeovers/featured/. No external Instagram API. The section ends
-// with a plain link out to her Instagram (no embedded feed).
+// Server component — homepage highlight reel.
+// All photos live in yash-makeovers/portfolio/. To spotlight a photo here,
+// add the `featured` tag in Cloudinary. Shows up to 9 featured photos.
+const MAX_FEATURED = 6
 
 export async function FeaturedWork() {
   if (!features.featuredGrid) return null
 
-  const images = await getImagesFromFolder(CLOUDINARY_FOLDERS.featured)
+  const all = await getImagesFromFolder(CLOUDINARY_FOLDERS.portfolio)
+  const images = all.filter((img) => img.tags.includes('featured')).slice(0, MAX_FEATURED)
 
   return (
     <section className="py-24 px-6 bg-ivory">

@@ -1,7 +1,7 @@
 # How to upload photos to your website
 
 This is your one-stop guide for managing every photo on **yashmakeovers.com**.
-No code knowledge needed — just follow the folder names and shape rules below.
+No code knowledge needed — just follow the folders and tags below.
 
 ---
 
@@ -14,15 +14,14 @@ for your website.
 
 1. Go to **[cloudinary.com](https://cloudinary.com)** and log in
 2. Click **Media Library** in the left sidebar
-3. You'll see a list of folders that look like this:
+3. You'll see this folder structure:
    ```
    yash-makeovers/
-     about/
-     before-after/
-     blog/
-     featured/
-     hero/
-     portfolio/
+     about/         (your portrait on the About page)
+     before-after/  (transformation slider — split into before/ and after/)
+     blog/          (cover photos for blog posts)
+     hero/          (the big photo at the top of the homepage)
+     portfolio/     (ALL gallery photos — homepage + portfolio page)
    ```
 4. Click into a folder, then drag photos onto the page to upload
 
@@ -30,165 +29,202 @@ for your website.
 
 1. Install the **"Cloudinary Console"** app from the App Store / Google Play
 2. Log in once — it remembers you
-3. Tap the folder you want, then tap **+** and pick photos from your gallery
+3. Tap a folder, then tap **+** and pick photos from your gallery
 
 The phone app is the fastest way — you can upload right after a shoot
 without moving photos to a computer.
 
 ---
 
-## The six folders and what they're for
+## The big idea — one folder for ALL gallery photos
 
-Every folder has a **maximum number of photos** and a **required shape**. If
-you upload too many, the website only shows the most recent ones. If you upload
-the wrong shape, the website will skip it (more on that at the bottom).
+You used to need separate folders for "featured" vs "portfolio" photos.
+**Not anymore.** Now all gallery photos go in **one folder**:
+`yash-makeovers/portfolio/`
+
+To control where each photo appears, you add **tags** in Cloudinary:
+
+- Tag a photo with **`featured`** → it shows on the homepage spotlight
+- Tag a photo with a category (`bridal`, `pre-bridal`, etc.) → it groups
+  under that filter button on the `/portfolio` page
+
+A photo can have **multiple tags**. Example: a wedding ceremony photo with
+`featured` + `bridal` + `south-asian` shows in 4 places:
+
+1. ✨ Homepage spotlight (because of `featured`)
+2. 📂 Portfolio page → "All" tab
+3. 📂 Portfolio page → "Bridal" filter
+4. 📂 Portfolio page → "South Asian" filter
+
+---
+
+## The folders explained
 
 ### 1. `yash-makeovers/hero/` — the big photo at the top of the homepage
 
-- **Max:** 1 photo
-- **Shape:** **landscape** (wider than tall, like a movie screen)
-- **Best size:** 1920 × 1080 pixels (16:9)
-- **What it shows:** the hero image visitors see first when they land on the site
+- **How many:** 1 photo
+- **Shape:** landscape (wider than tall, like a movie screen)
+- **Best size:** 1920 × 1080 pixels
+- **What it shows:** the very first photo visitors see
 
 ### 2. `yash-makeovers/about/` — your portrait on the About page
 
-- **Max:** 1 photo
-- **Shape:** **portrait** (taller than wide)
-- **Best size:** 1200 × 1600 pixels (3:4)
-- **What it shows:** your photo next to the bio on the "About" page
+- **How many:** 1 photo
+- **Shape:** portrait (taller than wide, like a phone screen)
+- **Best size:** 1200 × 1600 pixels
+- **What it shows:** your photo next to your bio on `/about`
 
-### 3. `yash-makeovers/featured/` — the curated grid on the homepage
+### 3. `yash-makeovers/portfolio/` — ALL gallery photos ⭐
 
-- **Max:** 9 photos
-- **Shape:** **square**
-- **Best size:** 1080 × 1080 pixels (1:1 — same shape as Instagram posts)
-- **What it shows:** your best 6–9 looks in a tidy grid below the testimonials
-- **Tip:** these are *handpicked* — they replace the old auto-pulled Instagram
-  feed. Treat them like an Instagram "highlights" reel.
+- **How many:** up to 50 photos
+- **Shape:** portrait (taller than wide)
+- **Best size:** 1200 × 1600 pixels
+- **What it shows:**
+  - The full grid on `/portfolio` (all 50 photos)
+  - The homepage spotlight section (the photos you tag with `featured`)
 
-### 4. `yash-makeovers/portfolio/` — the big grid on the Portfolio page
+#### Tags to use
 
-- **Max:** 50 photos
-- **Shape:** **portrait** (taller than wide)
-- **Best size:** 1200 × 1600 pixels (3:4)
-- **What it shows:** the masonry grid visitors browse on `/portfolio`
-- **Tip:** add a **tag** to each photo in Cloudinary so it shows in the right
-  filter category:
+After uploading a photo, click on it in Cloudinary → scroll down to **"Tags"**
+→ type one or more of these:
 
-  | Tag | Filter category |
-  |---|---|
-  | `bridal` | Bridal |
-  | `pre-bridal` | Pre-Bridal |
-  | `full-glam` | Full Glam |
-  | `party` | Party |
-  | `south-asian` | South Asian |
+| Tag | What it does |
+|---|---|
+| `featured` | Photo appears on the homepage spotlight (up to 6 shown) |
+| `bridal` | Shows under "Bridal" filter on the portfolio page |
+| `pre-bridal` | Shows under "Pre-Bridal" filter (Rokah, Mehndi, Sangeet, etc.) |
+| `full-glam` | Shows under "Full Glam" filter (shoots, baby showers, sister weddings) |
+| `party` | Shows under "Party" filter (everyday events) |
+| `south-asian` | Shows under "South Asian" filter |
 
-  Untagged photos appear under **Bridal** by default.
+You can add multiple tags to one photo. If you don't add a category tag,
+the photo shows under **Bridal** by default.
 
-### 5. `yash-makeovers/before-after/` — the transformation slider
+### 4. `yash-makeovers/before-after/` — the transformation slider
 
-This is split into **two folders side-by-side**:
+Split into two folders:
+- `yash-makeovers/before-after/before/` (up to 10 photos)
+- `yash-makeovers/before-after/after/` (up to 10 photos)
 
-- `yash-makeovers/before-after/before/` (max 10 photos)
-- `yash-makeovers/before-after/after/`  (max 10 photos)
-
-- **Shape:** **square**
-- **Best size:** 1080 × 1080 pixels (1:1)
-- **What it shows:** the drag-to-reveal slider in the homepage and `/portfolio`
+- **Shape:** square (1:1)
+- **Best size:** 1080 × 1080 pixels
 
 #### Naming rule for pairs
 
-**The filename has to match.** If your "before" photo is named `priya-2026`,
-the "after" photo must also be named `priya-2026`. The website pairs them up
-by name.
+The filename of the "before" and "after" photo **must match** to be paired.
 
-Example — correct:
+✅ Correct:
 ```
 before/priya-2026.jpg
-after/priya-2026.jpg     ← same name → paired ✅
+after/priya-2026.jpg     ← same name → paired
 ```
 
-Example — broken:
+❌ Broken:
 ```
 before/priya-2026.jpg
-after/priya-after.jpg    ← different name → website ignores both ❌
+after/priya-after.jpg    ← different name → website skips both
 ```
 
-If a pair is broken, nothing crashes — the photo just won't appear, and the
-developer can see a note in the logs telling them what's missing.
+### 5. `yash-makeovers/blog/` — cover photos for blog articles
 
-### 6. `yash-makeovers/blog/` — cover photos for blog articles
-
-- **Shape:** **landscape**
-- **Best size:** 1920 × 1080 pixels (16:9)
-- **Naming:** the filename must match the blog post URL slug.
-  e.g. for the post at `/blog/bridal-makeup-artist-brampton`, the file is
+- **Shape:** landscape (1920 × 1080 pixels)
+- **Naming:** filename must match the blog post URL.
+  e.g. for `/blog/bridal-makeup-artist-brampton`, the file is named
   `bridal-makeup-artist-brampton`.
+
+---
+
+## How to make a photo "featured" on the homepage
+
+The homepage has a section that spotlights your **best 6 photos**. Here's
+how to add or remove a photo from that spotlight:
+
+### To make a photo featured
+
+1. Open the photo in Cloudinary
+2. Click the **Tags** section
+3. Type **`featured`** → press Enter
+4. Done! Within an hour, the photo appears on the homepage spotlight.
+
+### To remove a photo from featured
+
+1. Open the photo in Cloudinary
+2. Click the **`featured`** tag → click the **X** to remove it
+3. Done! The photo disappears from the homepage spotlight, but stays in
+   the portfolio gallery.
+
+**No need to move or re-upload anything.** Just toggle the tag.
+
+---
+
+## How to control the order of photos
+
+Photos are shown **alphabetically by filename**.
+
+To force a specific order, rename photos with **two-digit prefixes**:
+
+| Filename | Position |
+|---|---|
+| `01-jasmine-bride.jpg` | 1st |
+| `02-priya-wedding.jpg` | 2nd |
+| `03-mehndi-look.jpg` | 3rd |
+| `10-sangeet-glow.jpg` | 10th |
+
+⚠️ Use 2 digits (`01`, not `1`) — otherwise `10` sorts before `2`.
+
+### To rename a photo in Cloudinary
+
+1. Click the photo → side panel opens
+2. Click the **three dots (⋮)** next to the filename
+3. Click **"Rename"**
+4. Type the new name → save
+
+You can rename anytime — the photo stays at its current Cloudinary location,
+just with a different name. The order on the website updates within an hour.
 
 ---
 
 ## Shapes explained simply
 
-A "shape" is whether the photo is square, taller than wide, or wider than tall.
-
 | Shape | Looks like | Used for |
 |---|---|---|
-| **Square** (1:1) | ⬜ Same width and height | featured, before-after |
-| **Portrait** (3:4) | 📱 Taller than wide, like a phone screen | about, portfolio |
+| **Square** (1:1) | ⬜ Same width and height | before-after |
+| **Portrait** (3:4) | 📱 Taller than wide, like a phone | about, portfolio |
 | **Landscape** (16:9) | 🖥️ Wider than tall, like a TV | hero, blog covers |
 
-Most phones can crop a photo into any shape:
+Most phones can crop into any shape:
 
 - **iPhone:** open photo → Edit → Crop → swap the ratio at the bottom
 - **Android:** open photo → Edit → Crop → choose ratio
 
 ---
 
-## What happens if you upload the wrong shape
+## What if I upload the wrong shape?
 
-**Nothing breaks.** The website is built to handle this gracefully.
+**Nothing breaks.** The website uses Cloudinary's smart-crop AI — it
+auto-detects the subject (face) and crops around it. So even if you upload
+a portrait photo to the hero folder, it'll still display, just less ideal.
 
-When the site rebuilds (within an hour), it checks the shape of every photo.
-If a photo is the wrong shape for its folder, it's **silently skipped** — it
-stays in Cloudinary but doesn't appear on the site.
-
-The developer gets a clear log message that says exactly:
-
-- Which photo was skipped
-- Which folder it was in
-- What shape it should have been
-- What shape it actually is
-- How to fix it (re-upload at the right ratio)
-
-So if you accidentally upload a landscape photo to the portfolio folder
-(which needs portrait), nothing visible breaks — just ask the developer or
-log into Cloudinary, crop the photo, and re-upload.
+For best quality, try to match the recommended shape. But don't stress —
+the site won't break.
 
 ---
 
 ## How long until the website updates?
 
-About **1 hour** after you upload.
-
-The website rebuilds itself on a schedule to pick up new Cloudinary photos —
-this avoids needing the developer to "push a deploy" every time you swap a
-photo. If you need a faster update, just message the developer and they can
-trigger a rebuild manually.
-
-The **only** photos that update instantly are blog cover images — those go
-live the moment a blog post is published.
+About **1 hour** after you upload. The site rebuilds itself on a schedule
+to pick up new Cloudinary photos. If you need a faster update, message the
+developer and they'll trigger a manual rebuild.
 
 ---
 
 ## Quick checklist before uploading
 
 - [ ] Right folder?
-- [ ] Right shape (square / portrait / landscape)?
-- [ ] For portfolio: did you add a category tag (`bridal`, `pre-bridal`, etc.)?
+- [ ] For portfolio photos: did you add a category tag (`bridal`, `pre-bridal`, etc.)?
+- [ ] Want this on the homepage spotlight? Add the `featured` tag.
 - [ ] For before-after pairs: do both files have the **same filename**?
 - [ ] For blog covers: does the filename match the blog post slug?
-
-If all five are yes, your photo will appear on the site within an hour.
 
 ---
 
@@ -198,5 +234,3 @@ Just text the developer with:
 - A screenshot of the photo you're trying to upload
 - The folder you're trying to upload to
 - The error message (if any)
-
-The skipped-photo log will say what's wrong — usually it's just a quick crop fix.

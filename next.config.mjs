@@ -34,7 +34,9 @@ const nextConfig = {
 
       // Old WordPress page slugs → new pages
       { source: '/packages',          destination: '/services',  permanent: true },
-      { source: '/portfolio/:path*',  destination: '/portfolio', permanent: true },
+      // Use :path+ (one OR MORE segments) — :path* matches zero segments
+      // too, which would make /portfolio redirect to itself in a loop.
+      { source: '/portfolio/:path+',  destination: '/portfolio', permanent: true },
 
       // Residual WordPress traffic — kill admin paths (302, not 301).
       { source: '/wp-admin',            destination: '/', permanent: false },

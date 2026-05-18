@@ -85,10 +85,13 @@ export async function getImagesFromFolder(folder: CloudinaryFolder): Promise<Clo
   try {
     const result = await cloudinary.search
       .expression(`folder:${folder}`)
-      .sort_by('created_at', 'desc')
+      .sort_by('public_id', 'asc')
       .with_field('tags')
       .max_results(100)
       .execute()
+    // Filename-based ordering: rename files in Cloudinary to control order.
+    // Tip: prefix names with 01-, 02-, 03- to force a specific sequence.
+    // Files without prefixes are sorted alphabetically.
     return validateImages(result.resources as CloudinaryResource[], folder)
   } catch {
     return []
