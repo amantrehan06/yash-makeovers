@@ -1,5 +1,6 @@
 import 'server-only'
 import { v2 as cloudinary } from 'cloudinary'
+import { unstable_cache } from 'next/cache'
 
 export {
   CLOUDINARY_FOLDERS,
@@ -81,7 +82,10 @@ function validateImages(resources: CloudinaryResource[], folder: string): Cloudi
 // Read-only fetchers
 // ─────────────────────────────────────────────────────────────────────────────
 
-export async function getImagesFromFolder(folder: CloudinaryFolder): Promise<CloudinaryResource[]> {
+// Caches the Cloudinary Search API call for 1 hour. Cloudinary's free tier
+// allows 500 admin API calls/hour — without caching, every page render burns
+// through them quickly during dev. With caching, one call per hour per folder.
+async function _fetchFromCloudinary(folder: string): Promise<CloudinaryResource[]> {
   try {
     const result = await cloudinary.search
       .expression(`folder:${folder}`)
@@ -89,13 +93,26 @@ export async function getImagesFromFolder(folder: CloudinaryFolder): Promise<Clo
       .with_field('tags')
       .max_results(100)
       .execute()
-    // Filename-based ordering: rename files in Cloudinary to control order.
-    // Tip: prefix names with 01-, 02-, 03- to force a specific sequence.
-    // Files without prefixes are sorted alphabetically.
-    return validateImages(result.resources as CloudinaryResource[], folder)
-  } catch {
+    return result.resources as CloudinaryResource[]
+  } catch (err) {
+    // Surface the actual error so we know when we're hitting rate limits etc.
+    const message = (err as { error?: { message?: string }; message?: string })?.error?.message
+                 ?? (err as { message?: string })?.message
+                 ?? 'unknown error'
+    console.error(`❌ [Cloudinary] ${folder}: ${message}`)
     return []
   }
+}
+
+export async function getImagesFromFolder(folder: CloudinaryFolder): Promise<CloudinaryResource[]> {
+  const cached = unstable_cache(
+    () => _fetchFromCloudinary(folder),
+    [`cloudinary-${folder}`],
+    { revalidate: 3600, tags: [`cloudinary-${folder}`] }
+  )
+  // Filename-based ordering: rename files in Cloudinary to control order.
+  // Tip: prefix names with 01-, 02-, 03- to force a specific sequence.
+  return validateImages(await cached(), folder)
 }
 
 export async function getBeforeAfterPairs(): Promise<
