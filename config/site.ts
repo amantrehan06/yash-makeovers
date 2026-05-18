@@ -63,6 +63,18 @@ but for making every bride feel comfortable, confident, and truly seen.`,
     earlyMorningFee: 100,
     earlyMorningThreshold: '4:30–6:00 AM',
     earlyMorningText: '$100 early morning fee for start times between 4:30–6:00 AM',
+    // Standard process included with Bridal package — phone call to discuss vision.
+    consultation: {
+      description: 'I typically conduct a consultation phone call 3-4 weeks prior to your event date, during which we discuss your desired looks and you can share inspiration pictures.',
+      timing:      '3-4 weeks prior to event date',
+    },
+    // Optional makeup-only trial — separate from the consultation phone call.
+    trial: {
+      fee:         250,
+      feeText:     '$250',
+      scheduling:  'Within 2-3 business days of booking confirmation, subject to availability.',
+      refundCondition: 'If you decide not to proceed after the trial, the deposit for the main event dates is fully refundable, provided the trial is booked immediately following the booking. If the trial is scheduled at a later date, the deposit becomes non-refundable.',
+    },
   },
 
   seo: {

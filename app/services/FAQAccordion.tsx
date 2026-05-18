@@ -10,11 +10,11 @@ const faqs = [
   },
   {
     q: 'What deposit is required to secure my date?',
-    a: `A ${site.policies.depositPercent}% non-refundable deposit via e-transfer secures your date. No payment is required until we've spoken and you're ready to move forward.`,
+    a: `A ${site.policies.depositPercent}% non-refundable deposit via e-transfer secures your date. No payment is required until we've spoken and you're ready to move forward. ${site.policies.trial.refundCondition}`,
   },
   {
-    q: 'Do you offer a trial session?',
-    a: "Yes — a trial is strongly recommended for brides. It helps us nail your look before the big day and ensures you feel confident and excited.",
+    q: 'Do you offer a consultation or trial?',
+    a: `${site.policies.consultation.description} If you wish to proceed with a makeup-only trial, the fee is ${site.policies.trial.feeText}, and once your booking is confirmed, we can schedule the trial ${site.policies.trial.scheduling.toLowerCase()} ${site.policies.trial.refundCondition}`,
   },
   {
     q: `Can ${site.artistName} travel to my venue?`,

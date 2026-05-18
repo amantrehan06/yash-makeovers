@@ -152,7 +152,19 @@ export default function CityPage({ params }: Props) {
                 <p className={`text-xs uppercase tracking-widest mb-2 ${pkg.highlight ? 'text-gold-light' : 'text-gold'}`}>
                   {pkg.name}
                 </p>
-                <p className={`font-serif text-3xl ${pkg.highlight ? 'text-ivory' : 'text-dark'}`}>{pkg.price}</p>
+                {pkg.originalPrice && (
+                  <p className={`text-sm line-through ${pkg.highlight ? 'text-ivory-4' : 'text-muted-2'}`}>
+                    {pkg.originalPrice}
+                  </p>
+                )}
+                <div className="flex items-baseline gap-2">
+                  <p className={`font-serif text-3xl ${pkg.highlight ? 'text-ivory' : 'text-dark'}`}>{pkg.price}</p>
+                  {pkg.discountLabel && (
+                    <span className="text-xs uppercase tracking-widest text-gold font-medium">
+                      {pkg.discountLabel}
+                    </span>
+                  )}
+                </div>
                 <p className={`text-xs mt-1 mb-4 ${pkg.highlight ? 'text-ivory-4' : 'text-muted'}`}>{pkg.priceNote}</p>
                 <p className={`text-sm leading-relaxed mb-6 ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}>{pkg.tagline}</p>
                 <Button

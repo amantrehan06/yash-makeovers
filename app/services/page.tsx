@@ -86,9 +86,21 @@ export default function ServicesPage() {
                 <p className={`text-xs uppercase tracking-widest mb-2 ${pkg.highlight ? 'text-gold-light' : 'text-gold'}`}>
                   {pkg.name}
                 </p>
-                <p className={`font-serif text-4xl mb-1 ${pkg.highlight ? 'text-ivory' : 'text-dark'}`}>
-                  {pkg.price}
-                </p>
+                {pkg.originalPrice && (
+                  <p className={`text-sm line-through ${pkg.highlight ? 'text-ivory-4' : 'text-muted-2'}`}>
+                    {pkg.originalPrice}
+                  </p>
+                )}
+                <div className="flex items-baseline gap-2 mb-1">
+                  <p className={`font-serif text-4xl ${pkg.highlight ? 'text-ivory' : 'text-dark'}`}>
+                    {pkg.price}
+                  </p>
+                  {pkg.discountLabel && (
+                    <span className="text-xs uppercase tracking-widest text-gold font-medium">
+                      {pkg.discountLabel}
+                    </span>
+                  )}
+                </div>
                 <p className={`text-xs mb-4 ${pkg.highlight ? 'text-ivory-4' : 'text-muted'}`}>
                   {pkg.priceNote}
                 </p>

@@ -1,4 +1,30 @@
-export const packages = [
+// All service packages and their pricing.
+//
+// Discounts: each package supports an optional `originalPrice` for promotional
+// pricing. When `originalPrice` is set, the website shows it struck through
+// next to the current `price`. To run a sale:
+//   1. Set `originalPrice` to the old price (e.g. '$700')
+//   2. Set `originalPriceValue` to the number (e.g. 700)
+//   3. Optionally set `discountLabel` for a small badge (e.g. 'Spring sale')
+//   4. Update `price`/`priceValue` to the new sale price
+// To end the sale, remove the `originalPrice*` fields and restore `price`.
+
+export interface Package {
+  id:                  string
+  name:                string
+  tagline:             string
+  price:               string   // What client pays now (e.g. '$600')
+  priceValue:          number   // Numeric version for calculations
+  priceNote:           string
+  highlight:           boolean
+  includes:            readonly string[]
+  // ── Optional discount support ──
+  originalPrice?:      string   // Shown struck-through above price (e.g. '$700')
+  originalPriceValue?: number   // For calculating savings amount
+  discountLabel?:      string   // Small accent text (e.g. 'Limited time')
+}
+
+export const packages: readonly Package[] = [
   {
     id: 'bridal',
     name: 'Bridal',
@@ -64,6 +90,4 @@ export const packages = [
       'Simple hairdo, updos, curls, basic volume',
     ],
   },
-] as const
-
-export type Package = (typeof packages)[number]
+]
