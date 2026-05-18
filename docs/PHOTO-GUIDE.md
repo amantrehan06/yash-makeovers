@@ -212,9 +212,32 @@ the site won't break.
 
 ## How long until the website updates?
 
-About **1 hour** after you upload. The site rebuilds itself on a schedule
-to pick up new Cloudinary photos. If you need a faster update, message the
-developer and they'll trigger a manual rebuild.
+The website caches photos for **8 hours** to keep it fast. So after an
+upload, photos appear within 8 hours automatically.
+
+### Want it faster? Use your "refresh photos" bookmark
+
+Save this URL as a bookmark on your phone:
+
+```
+https://yashmakeovers.com/api/revalidate?secret=YOUR_SECRET_HERE
+```
+
+(The developer will set up the secret and send you the full URL — bookmark it.)
+
+**To refresh after uploading new photos:**
+1. Tap the bookmark in your browser
+2. Wait 2 seconds — you'll see a "success" message
+3. Visit the website — your new photos appear immediately
+
+This is safe to tap as many times as you want. Keep the URL private —
+don't share it on social media.
+
+### Or just wait
+
+If you don't want to bother with the bookmark, just wait — the site will
+catch up within 8 hours automatically. The cache also resets every time
+the website is redeployed (e.g. when the developer pushes an update).
 
 ---
 
