@@ -145,8 +145,6 @@ export const content = {
     reviewsEyebrow:     'Client love',
     faqEyebrow:         'FAQ',
     faqTitle:           'Frequently asked',
-    ctaTitle:           'Ready to book?',
-    ctaButton:          'Start your booking',
   },
 
   notFound: {

@@ -4,12 +4,10 @@
 export const CLOUDINARY_FOLDERS = {
   hero:               'yash-makeovers/hero',
   about:              'yash-makeovers/about',
-  featured:           'yash-makeovers/featured',
   portfolio:          'yash-makeovers/portfolio',
   beforeAfterBefore:  'yash-makeovers/before-after/before',
   beforeAfterAfter:   'yash-makeovers/before-after/after',
   blog:               'yash-makeovers/blog',
-  reviews:            'yash-makeovers/reviews',
 } as const
 
 export type CloudinaryFolder = typeof CLOUDINARY_FOLDERS[keyof typeof CLOUDINARY_FOLDERS]

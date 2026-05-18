@@ -33,7 +33,6 @@ type FolderSpec = {
 const FOLDER_SPECS: Record<string, FolderSpec> = {
   'yash-makeovers/hero':                 { maxCount: 1,   aspectRatio: { w: 16, h: 9 }, tolerance: 0.2,  label: 'Hero photo' },
   'yash-makeovers/about':                { maxCount: 1,   aspectRatio: { w: 3,  h: 4 }, tolerance: 0.2,  label: 'About portrait' },
-  'yash-makeovers/featured':             { maxCount: 9,   aspectRatio: { w: 1,  h: 1 }, tolerance: 0.25, label: 'Featured grid' },
   'yash-makeovers/portfolio':            { maxCount: 50,  aspectRatio: { w: 3,  h: 4 }, tolerance: 0.25, label: 'Portfolio' },
   'yash-makeovers/before-after/before':  { maxCount: 10,  aspectRatio: { w: 1,  h: 1 }, tolerance: 0.2,  label: 'Before photos' },
   'yash-makeovers/before-after/after':   { maxCount: 10,  aspectRatio: { w: 1,  h: 1 }, tolerance: 0.2,  label: 'After photos' },
