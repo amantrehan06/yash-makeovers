@@ -1,12 +1,15 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { cities } from '@/config/cities'
+import { cities, type City } from '@/config/cities'
 import { site } from '@/config/site'
 import { packages, formatPrice } from '@/config/packages'
 import { reviews } from '@/config/reviews'
 import { content, fillTemplate } from '@/config/content'
+import { getImagesFromFolder, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
+import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
 
 interface Props {
   params: { city: string }
@@ -57,13 +60,24 @@ function cityFaqs(cityName: string) {
   ]
 }
 
-export default function CityPage({ params }: Props) {
+export default async function CityPage({ params }: Props) {
   const city = cities.find((c) => c.slug === params.city)
   if (!city) notFound()
 
   const faqs = cityFaqs(city.name)
   // Pick 2 most relevant reviews — for now, the 2 most recent (all are bridal).
   const featuredReviews = reviews.slice(0, 2)
+
+  // Pick a hero image for this city: first portfolio photo tagged with the
+  // city slug (e.g., 'brampton'). Yashpreet adds the tag in Cloudinary on
+  // any portfolio photo she wants associated with that city. If no photo is
+  // tagged, falls back to the first 'featured' photo, then any portfolio
+  // photo — so the layout never breaks.
+  const portfolioImages = await getImagesFromFolder(CLOUDINARY_FOLDERS.portfolio)
+  const cityHeroImage =
+    portfolioImages.find((img) => img.tags.includes(city.slug)) ??
+    portfolioImages.find((img) => img.tags.includes('featured')) ??
+    portfolioImages[0]
 
   return (
     <>
@@ -99,22 +113,42 @@ export default function CityPage({ params }: Props) {
       {/* HERO */}
       <section className="pt-32 pb-16 px-6 bg-ivory">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-widest text-gold mb-4">
-              {city.name}, {city.province}
-            </p>
-            <h1 className="font-serif text-4xl md:text-[56px] text-dark leading-[1.05] tracking-tight mb-6">
-              {city.h1}
-            </h1>
-            <p className="text-muted text-lg leading-relaxed mb-8">{fillTemplate(city.intro)}</p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button href="/contact" size="lg">
-                Book in {city.name}
-              </Button>
-              <Button href="/portfolio" variant="outline" size="lg">
-                View portfolio
-              </Button>
+          <div className="grid md:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
+            {/* Left: city intro + CTAs */}
+            <div>
+              <p className="text-xs uppercase tracking-widest text-gold mb-4">
+                {city.name}, {city.province}
+              </p>
+              <h1 className="font-serif text-4xl md:text-[56px] text-dark leading-[1.05] tracking-tight mb-6">
+                {city.h1}
+              </h1>
+              <p className="text-muted text-lg leading-relaxed mb-8">{fillTemplate(city.intro)}</p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button href="/contact" size="lg">
+                  Book in {city.name}
+                </Button>
+                <Button href="/portfolio" variant="outline" size="lg">
+                  View portfolio
+                </Button>
+              </div>
             </div>
+
+            {/* Right: bride photo tagged with this city (or fallback). Hidden
+                if there's nothing in the portfolio folder yet. */}
+            {cityHeroImage && (
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-ivory-3">
+                <CloudinaryImage
+                  publicId={cityHeroImage.public_id}
+                  alt={`Bridal makeup by ${site.artistName} for a ${city.name} bride`}
+                  width={720}
+                  height={960}
+                  priority
+                  crop="fill"
+                  className="object-cover w-full h-full"
+                  sizes="(max-width: 768px) 100vw, 42vw"
+                />
+              </div>
+            )}
           </div>
 
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -202,6 +236,53 @@ export default function CityPage({ params }: Props) {
         </div>
       </section>
 
+      {/* POPULAR VENUES (only renders if data is filled in) */}
+      {city.venues.length > 0 && (
+        <section className="py-16 px-6 bg-ivory-2">
+          <div className="max-w-5xl mx-auto">
+            <SectionHeader
+              eyebrow="Venues"
+              title={`Popular wedding venues in ${city.name}`}
+              subtitle={`${site.artistName} has worked at the venues ${city.name} brides love most.`}
+            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mt-10">
+              {city.venues.map((venue) => (
+                <div
+                  key={venue}
+                  className="bg-ivory rounded-xl border border-ivory-4 p-4 flex items-center gap-3"
+                >
+                  <span className="text-gold flex-shrink-0">✦</span>
+                  <p className="text-dark text-sm">{venue}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* NEIGHBOURHOODS (only renders if data is filled in) */}
+      {city.neighborhoods.length > 0 && (
+        <section className="py-16 px-6 bg-ivory">
+          <div className="max-w-5xl mx-auto">
+            <SectionHeader
+              eyebrow="Areas served"
+              title={`Neighbourhoods within ${city.name}`}
+              subtitle={`Mobile to your venue, your home, or your getting-ready suite.`}
+            />
+            <div className="flex flex-wrap gap-3 mt-10">
+              {city.neighborhoods.map((hood) => (
+                <span
+                  key={hood}
+                  className="px-4 py-2 rounded-full border border-gold-pale text-gold-dim text-sm"
+                >
+                  {hood}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* REVIEWS */}
       <section className="py-16 px-6 bg-dark">
         <div className="max-w-5xl mx-auto">
@@ -246,6 +327,34 @@ export default function CityPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* NEARBY CITIES — internal link block for SEO */}
+      {city.nearbyCities.length > 0 && (
+        <section className="py-16 px-6 bg-ivory">
+          <div className="max-w-5xl mx-auto">
+            <SectionHeader
+              eyebrow="Also serving"
+              title={`Bridal makeup near ${city.name}`}
+              subtitle={`${site.artistName} services brides across the entire GTA. Explore other cities we serve.`}
+            />
+            <div className="flex flex-wrap gap-3 mt-10">
+              {city.nearbyCities
+                .map((slug) => cities.find((c) => c.slug === slug))
+                .filter((c): c is City => Boolean(c))
+                .map((nearby) => (
+                  <Link
+                    key={nearby.slug}
+                    href={`/${nearby.slug}`}
+                    className="px-5 py-3 rounded-full border border-ivory-4 bg-ivory-2 text-dark text-sm hover:border-gold hover:text-gold transition-colors inline-flex items-center gap-2"
+                  >
+                    {nearby.name}
+                    <span className="text-gold">→</span>
+                  </Link>
+                ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="py-20 px-6 bg-gold">
