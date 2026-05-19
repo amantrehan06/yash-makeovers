@@ -1,27 +1,28 @@
 // All service packages and their pricing.
 //
-// To change a price: edit `price` (numeric). Use `formatPrice(n)` anywhere
-// you want it rendered with the dollar sign.
+// To change a price: edit the `price` number. Use `formatPrice(n)` anywhere
+// you want it rendered with the dollar sign ('$600', '$1,200', etc.).
 //
-// To run a discount:
-//   1. Set `originalPrice` to the old price (the "before" amount)
-//   2. Update `price` to the new (lower) sale price
+// To run a discount on a package:
+//   1. Lower `price` to the new sale amount
+//   2. Keep `originalPrice` at the higher (pre-discount) amount
 //   3. Optionally set `discountLabel` for a small badge (e.g. 'Spring sale')
 //
-// To end the discount: delete `originalPrice` (or set it equal to `price`)
-// and delete `discountLabel`.
+// To end the discount: set `originalPrice` back equal to `price` and clear
+// `discountLabel` to ''. The site auto-hides both when there's no discount.
+//   - Strike-through hides when originalPrice <= price
+//   - Badge hides when discountLabel === ''
 
 export interface Package {
-  id:             string
-  name:           string
-  tagline:        string
-  price:          number              // What client pays now (e.g. 600)
-  priceNote:      string
-  highlight:      boolean
-  includes:       readonly string[]
-  // ── Optional discount support ──
-  originalPrice?: number              // Shown struck-through if greater than `price`
-  discountLabel?: string              // Small accent badge (empty string = no badge)
+  id:            string
+  name:          string
+  tagline:       string
+  price:         number          // What the client pays now
+  originalPrice: number          // Pre-discount price (set equal to `price` when no discount)
+  discountLabel: string          // Badge text — use '' when no discount
+  priceNote:     string
+  highlight:     boolean
+  includes:      readonly string[]
 }
 
 // Formats a number as a CAD price string with grouping. 600 → "$600", 1200 → "$1,200".
@@ -35,6 +36,8 @@ export const packages: readonly Package[] = [
     name: 'Bridal',
     tagline: 'Ceremony, Reception, Nikkah, Walima, Baraat',
     price: 600,
+    originalPrice: 750,
+    discountLabel: 'Limited Time',
     priceNote: 'per person per event',
     highlight: true,
     includes: [
@@ -53,6 +56,8 @@ export const packages: readonly Package[] = [
     name: 'Pre-Bridal',
     tagline: 'Rokah, Jagoo, Engagement, Mehndi, Sangeet',
     price: 450,
+    originalPrice: 450,
+    discountLabel: '',
     priceNote: 'per person per event',
     highlight: false,
     includes: [
@@ -68,6 +73,8 @@ export const packages: readonly Package[] = [
     name: 'Full Glam',
     tagline: 'eShoot, Baby Shower, Sister/Brother Weddings',
     price: 350,
+    originalPrice: 350,
+    discountLabel: '',
     priceNote: 'per person per event',
     highlight: false,
     includes: [
@@ -82,6 +89,8 @@ export const packages: readonly Package[] = [
     name: 'Regular Party',
     tagline: 'Everyday events and celebrations',
     price: 250,
+    originalPrice: 250,
+    discountLabel: '',
     priceNote: 'per person per event',
     highlight: false,
     includes: [

@@ -12,8 +12,8 @@ const defaults = {
   featuredGrid:      true,   // Homepage "A curated selection" grid
   beforeAfter:       false,   // Transformation slider (homepage + portfolio)
   acceptingBookings: true,   // Inquiry form — false shows "not accepting" message
-  blogEngine:        true,   // Weekly autonomous blog post cron
-  blogNotify:        true,   // Email notification when a blog post publishes
+  blogEngine:        false,   // Weekly autonomous blog post cron
+  blogNotify:        false,   // Email notification when a blog post publishes
   priceEstimator:    false,  // Homepage price calculator widget
 }
 

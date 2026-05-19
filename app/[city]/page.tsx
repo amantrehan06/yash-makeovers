@@ -153,7 +153,7 @@ export default function CityPage({ params }: Props) {
                   {pkg.name}
                 </p>
                 {pkg.originalPrice && pkg.originalPrice > pkg.price && (
-                  <p className={`text-sm line-through ${pkg.highlight ? 'text-ivory-4' : 'text-muted-2'}`}>
+                  <p className={`text-base line-through ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}>
                     {formatPrice(pkg.originalPrice)}
                   </p>
                 )}
