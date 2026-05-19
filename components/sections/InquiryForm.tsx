@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react'
 import { features } from '@/config/features'
 import { site } from '@/config/site'
-import { packages } from '@/config/packages'
+import { packages, formatPrice } from '@/config/packages'
 import { content } from '@/config/content'
 import { Button } from '@/components/ui/Button'
 import { SectionHeader } from '@/components/ui/SectionHeader'
@@ -160,7 +160,7 @@ export function InquiryForm() {
                     <option value="">{content.inquiryForm.fields.serviceType.placeholder}</option>
                     {packages.map((pkg) => (
                       <option key={pkg.id} value={pkg.name}>
-                        {pkg.name} ({pkg.price}/person)
+                        {pkg.name} ({formatPrice(pkg.price)}/person)
                       </option>
                     ))}
                   </select>

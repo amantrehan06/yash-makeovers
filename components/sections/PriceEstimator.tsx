@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { features } from '@/config/features'
-import { packages } from '@/config/packages'
+import { packages, formatPrice } from '@/config/packages'
 import { site } from '@/config/site'
 import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
@@ -12,11 +12,11 @@ import { trackEvent } from '@/lib/analytics'
 // Single source of truth — both maps derive from config/packages.ts.
 // Adding a new package or changing a price requires zero edits here.
 const servicePrices: Record<string, number> = Object.fromEntries(
-  packages.map((pkg) => [pkg.id, pkg.priceValue])
+  packages.map((pkg) => [pkg.id, pkg.price])
 )
 
 const serviceLabels: Record<string, string> = Object.fromEntries(
-  packages.map((pkg) => [pkg.id, `${pkg.name} (${pkg.price}/person)`])
+  packages.map((pkg) => [pkg.id, `${pkg.name} (${formatPrice(pkg.price)}/person)`])
 )
 
 const peopleCounts: Record<string, [number, number]> = {

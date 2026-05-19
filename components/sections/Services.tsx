@@ -1,4 +1,4 @@
-import { packages } from '@/config/packages'
+import { packages, formatPrice } from '@/config/packages'
 import { site } from '@/config/site'
 import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
@@ -38,9 +38,9 @@ export function Services() {
               >
                 {pkg.name}
               </p>
-              {pkg.originalPrice && (
+              {pkg.originalPrice && pkg.originalPrice > pkg.price && (
                 <p className={`text-sm line-through ${pkg.highlight ? 'text-ivory-4' : 'text-muted-2'}`}>
-                  {pkg.originalPrice}
+                  {formatPrice(pkg.originalPrice)}
                 </p>
               )}
               <div className="flex items-baseline gap-2 mb-1">
@@ -49,7 +49,7 @@ export function Services() {
                     pkg.highlight ? 'text-ivory' : 'text-dark'
                   }`}
                 >
-                  {pkg.price}
+                  {formatPrice(pkg.price)}
                 </p>
                 {pkg.discountLabel && (
                   <span className="text-xs uppercase tracking-widest text-gold font-medium">

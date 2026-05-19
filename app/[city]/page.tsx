@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { cities } from '@/config/cities'
 import { site } from '@/config/site'
-import { packages } from '@/config/packages'
+import { packages, formatPrice } from '@/config/packages'
 import { reviews } from '@/config/reviews'
 import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
@@ -152,13 +152,13 @@ export default function CityPage({ params }: Props) {
                 <p className={`text-xs uppercase tracking-widest mb-2 ${pkg.highlight ? 'text-gold-light' : 'text-gold'}`}>
                   {pkg.name}
                 </p>
-                {pkg.originalPrice && (
+                {pkg.originalPrice && pkg.originalPrice > pkg.price && (
                   <p className={`text-sm line-through ${pkg.highlight ? 'text-ivory-4' : 'text-muted-2'}`}>
-                    {pkg.originalPrice}
+                    {formatPrice(pkg.originalPrice)}
                   </p>
                 )}
                 <div className="flex items-baseline gap-2">
-                  <p className={`font-serif text-3xl ${pkg.highlight ? 'text-ivory' : 'text-dark'}`}>{pkg.price}</p>
+                  <p className={`font-serif text-3xl ${pkg.highlight ? 'text-ivory' : 'text-dark'}`}>{formatPrice(pkg.price)}</p>
                   {pkg.discountLabel && (
                     <span className="text-xs uppercase tracking-widest text-gold font-medium">
                       {pkg.discountLabel}

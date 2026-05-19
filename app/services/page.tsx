@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import { site } from '@/config/site'
-import { packages } from '@/config/packages'
+import { packages, formatPrice } from '@/config/packages'
 import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 import { FAQAccordion } from './FAQAccordion'
 
 // Compose the meta description from the same packages config the page renders.
-const packagesSummary = packages.map((p) => `${p.name} (${p.price})`).join(', ')
+const packagesSummary = packages.map((p) => `${p.name} (${formatPrice(p.price)})`).join(', ')
 
 export const metadata: Metadata = {
   title: `Services & Pricing | ${site.name}`,
@@ -45,11 +45,11 @@ export default function ServicesPage() {
               areaServed:   'Greater Toronto Area',
               offers: {
                 '@type':         'Offer',
-                price:           String(pkg.priceValue),
+                price:           String(pkg.price),
                 priceCurrency:   'CAD',
                 priceSpecification: {
                   '@type':         'UnitPriceSpecification',
-                  price:           String(pkg.priceValue),
+                  price:           String(pkg.price),
                   priceCurrency:   'CAD',
                   unitText:        'per person per event',
                 },
@@ -86,14 +86,14 @@ export default function ServicesPage() {
                 <p className={`text-xs uppercase tracking-widest mb-2 ${pkg.highlight ? 'text-gold-light' : 'text-gold'}`}>
                   {pkg.name}
                 </p>
-                {pkg.originalPrice && (
+                {pkg.originalPrice && pkg.originalPrice > pkg.price && (
                   <p className={`text-sm line-through ${pkg.highlight ? 'text-ivory-4' : 'text-muted-2'}`}>
-                    {pkg.originalPrice}
+                    {formatPrice(pkg.originalPrice)}
                   </p>
                 )}
                 <div className="flex items-baseline gap-2 mb-1">
                   <p className={`font-serif text-4xl ${pkg.highlight ? 'text-ivory' : 'text-dark'}`}>
-                    {pkg.price}
+                    {formatPrice(pkg.price)}
                   </p>
                   {pkg.discountLabel && (
                     <span className="text-xs uppercase tracking-widest text-gold font-medium">
