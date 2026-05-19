@@ -65,34 +65,22 @@ export const content = {
   inquiryForm: {
     eyebrow:           'Get in touch',
     title:             'Start your booking',
-    steps:             ['Contact', 'Event details', 'Location & time', 'Your vision'],
     submitButton:      'Send inquiry',
     submittingButton:  'Sending…',
-    backButton:        '← Back',
-    continueButton:    'Continue →',
     notAcceptingTitle: 'Not accepting new bookings',
     notAcceptingBody:  'We are currently not accepting new bookings. Please follow',
     successTitle:      'Inquiry received!',
     successBody:       'will WhatsApp you within 24 hours to discuss your vision. Keep an eye on your WhatsApp — we can\'t wait to make your day unforgettable.',
     errorBody:         'Something went wrong. Please WhatsApp us directly at',
-    earlyMorningWarning: 'Early morning fee applies.',
     fields: {
-      name:        { label: 'Full name',                placeholder: 'Your full name' },
-      whatsapp:    { label: 'WhatsApp number',          placeholder: '+1 (647) 000-0000' },
-      email:       { label: 'Email address',            placeholder: 'your@email.com' },
-      eventDate:   { label: 'Event date' },
-      serviceType: { label: 'Service type',             placeholder: 'Select a service' },
-      numPeople:   { label: 'Number of people',         placeholder: 'Select' },
-      city:        { label: 'City / Venue location',    placeholder: 'e.g. Brampton, ON or venue name' },
-      startTime:   { label: 'Preferred start time' },
-      vision:      { label: 'Your vision & inspiration', placeholder: 'Describe your dream look, color palette, any inspiration images or references, and any specific requirements...' },
+      name:        { label: 'Full name',                       placeholder: 'Your full name' },
+      whatsapp:    { label: 'WhatsApp number',                 placeholder: '+1 (647) 000-0000' },
+      email:       { label: 'Email address',                   placeholder: 'your@email.com' },
+      eventDate:   { label: 'Event date (optional)' },
+      readyTime:   { label: 'Ready by time (optional)' },
+      serviceType: { label: 'Service type' },
+      message:     { label: 'Message',                         placeholder: 'Anything else we should know? Number of people, venue or city, inspiration, questions about the package...' },
     },
-    peopleOptions: [
-      { value: '1',   label: '1 person' },
-      { value: '2-3', label: '2–3 people' },
-      { value: '4-6', label: '4–6 people' },
-      { value: '7+',  label: '7+ people' },
-    ],
   },
 
   // ─── PAGES ──────────────────────────────────────────────────────────
@@ -103,7 +91,7 @@ export const content = {
     whyChooseTitle:    'What sets us apart',
     brandsEyebrow:     'Luxury brands',
     brandsTitle:       'Products used',
-    brands:            ['DIOR', 'Charlotte Tilbury', 'Chanel', 'YSL Beauty', 'Gucci Beauty'],
+    brands:            ['DIOR', 'Charlotte Tilbury', 'Chanel', 'YSL Beauty', 'Gucci', 'Too Faced'],
     cta:               'Book your date with',  // followed by artist name
   },
 
@@ -147,6 +135,28 @@ export const content = {
     faqTitle:           'Frequently asked',
   },
 
+  termsPage: {
+    eyebrow:  'Legal',
+    title:    'Terms & Conditions',
+    subtitle: 'Our booking terms — please read before confirming your appointment.',
+    sections: {
+      punctuality:         { number: '1',  title: 'Punctuality & waiting charges' },
+      studioVisitors:      { number: '2',  title: 'Studio visitors' },
+      facePrep:            { number: '3',  title: 'Face preparation' },
+      hairPrep:            { number: '4',  title: 'Hair preparation' },
+      extras:              { number: '5',  title: 'Items & services with additional charges' },
+      gettingReadyShots:   { number: '6',  title: 'Getting-ready shots' },
+      deposit:             { number: '7',  title: 'Deposit policy' },
+      partialCancellation: { number: '8',  title: 'Partial cancellation' },
+      partyExclusions:     { number: '9',  title: 'Party package exclusions' },
+      timeChange:          { number: '10', title: 'Time changes' },
+      consultation:        { number: '11', title: 'Consultation calls' },
+    },
+    questionsHelp: 'Questions about any of these? Please reach out before booking — we\'re happy to clarify.',
+    inquiryAgreement: 'By submitting this inquiry, you acknowledge our',
+    inquiryAgreementLink: 'Terms & Conditions',
+  },
+
   notFound: {
     title:        'This page slipped out of the kit.',
     description:  "The page you're looking for may have moved or never existed. Let's get you back to something useful.",
@@ -157,3 +167,21 @@ export const content = {
     blogLink:         'Bridal beauty blog',
   },
 } as const
+
+// ─── Helpers ────────────────────────────────────────────────────────────
+// Formats a brand list as natural English with Oxford comma.
+// Example: ['A', 'B', 'C']  →  "A, B, and C"
+// Example: ['A', 'B']       →  "A and B"
+// Example: ['A']            →  "A"
+export function formatBrandList(brands: readonly string[] = content.aboutPage.brands): string {
+  if (brands.length === 0) return ''
+  if (brands.length === 1) return brands[0]
+  if (brands.length === 2) return `${brands[0]} and ${brands[1]}`
+  return `${brands.slice(0, -1).join(', ')}, and ${brands[brands.length - 1]}`
+}
+
+// Replaces template tokens like {brands} in a string with their dynamic value.
+// Used so config strings can reference centralized data without duplication.
+export function fillTemplate(text: string): string {
+  return text.replace(/\{brands\}/g, formatBrandList())
+}

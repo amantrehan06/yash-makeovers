@@ -34,7 +34,7 @@ BUSINESS CONTEXT:
 - Artist: Yashpreet | 12+ years experience | 1,500+ brides | 4.9 stars on Google
 - Services and prices (per person per event): ${PRICE_LIST}
 - Cities served: Brampton, Mississauga, Toronto, Etobicoke, Oakville, Vaughan, Scarborough, Markham, North York, Richmond Hill
-- Products used: DIOR, Charlotte Tilbury, Chanel, YSL Beauty, Gucci Beauty
+- Products used: DIOR, Charlotte Tilbury, Chanel, YSL Beauty, Gucci
 - Website: yashmakeovers.com
 - Studio: 27 Divinity Circle, Brampton ON L7A 3Y4
 

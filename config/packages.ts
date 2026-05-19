@@ -56,8 +56,8 @@ export const packages: readonly Package[] = [
     name: 'Pre-Bridal',
     tagline: 'Rokah, Jagoo, Engagement, Mehndi, Sangeet',
     price: 450,
-    originalPrice: 450,
-    discountLabel: '',
+    originalPrice: 600,
+    discountLabel: 'Limited Time',
     priceNote: 'per person per event',
     highlight: false,
     includes: [

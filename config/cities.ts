@@ -68,7 +68,7 @@ export const cities = [
       "Luxury bridal makeup for Oakville weddings at Glen Abbey, Le Dôme, and Oakville's grand estate venues. HD-rated luxury formulas. Book Yashpreet for 2026 & 2027.",
     h1: 'Bridal Makeup Artist in Oakville, ON',
     intro:
-      "Oakville's grand wedding venues — from Glen Abbey to Le Dôme — host some of the most photographed weddings in the province. Yashpreet brings the products and the technique these venues call for: HD-rated formulas from DIOR, Charlotte Tilbury, and Chanel that look as crisp in the bridal portrait as they do in the candid 11 PM dance shot.",
+      "Oakville's grand wedding venues — from Glen Abbey to Le Dôme — host some of the most photographed weddings in the province. Yashpreet brings the products and the technique these venues call for: HD-rated formulas from {brands} that look as crisp in the bridal portrait as they do in the candid 11 PM dance shot.",
   },
   {
     slug: 'vaughan',

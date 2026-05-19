@@ -31,6 +31,7 @@ export function Footer() {
                 ['Services', '/services'],
                 ['Blog', '/blog'],
                 ['Contact', '/contact'],
+                ['Terms & Conditions', '/terms-and-conditions'],
               ].map(([label, href]) => (
                 <Link
                   key={href}

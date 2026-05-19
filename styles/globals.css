@@ -51,6 +51,29 @@ body {
   border-radius: 4px;
 }
 
+/* "Was $X" strikethrough — slight diagonal so the line doesn't bisect
+   the digits horizontally (much more readable than CSS line-through,
+   especially with serif fonts like Cormorant). */
+.price-strike {
+  position: relative;
+  display: inline-block;
+  padding: 0 2px;
+}
+.price-strike::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    -10deg,
+    transparent calc(50% - 0.7px),
+    currentColor calc(50% - 0.7px),
+    currentColor calc(50% + 0.7px),
+    transparent calc(50% + 0.7px)
+  );
+  opacity: 0.9;
+  pointer-events: none;
+}
+
 /* Respect user preference for reduced motion. */
 @media (prefers-reduced-motion: reduce) {
   html {

@@ -87,9 +87,8 @@ export default function ServicesPage() {
                   {pkg.name}
                 </p>
                 {pkg.originalPrice > pkg.price && (
-                  <p className={`text-sm flex items-center gap-1.5 mb-1 ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}>
-                    <span>Was</span>
-                    <span className="line-through decoration-1">{formatPrice(pkg.originalPrice)}</span>
+                  <p className={`text-sm mb-1 ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}>
+                    <span className="price-strike">{formatPrice(pkg.originalPrice)}</span>
                   </p>
                 )}
                 <div className="flex items-baseline gap-2 mb-1">
@@ -127,23 +126,20 @@ export default function ServicesPage() {
             ))}
           </div>
 
-          <div className="mt-20 bg-ivory-2 rounded-2xl border border-ivory-4 p-10">
-            <SectionHeader eyebrow="Policies" title="Booking & travel policies" />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {Object.entries(site.policies)
-                .filter(([, value]) => typeof value === 'string')
-                .map(([key, value]) => (
-                  <div key={key} className="flex gap-3">
-                    <span className="text-gold mt-1 flex-shrink-0">✦</span>
-                    <p className="text-muted text-sm leading-relaxed">{value as string}</p>
-                  </div>
-                ))}
-            </div>
-          </div>
-
           <div className="mt-20">
             <SectionHeader eyebrow={content.servicesPage.faqEyebrow} title={content.servicesPage.faqTitle} />
             <FAQAccordion />
+            <p className="text-center text-muted text-sm mt-10">
+              For our full booking policy, waiting charges, preparation guide,
+              and additional service fees, please read our{' '}
+              <a
+                href="/terms-and-conditions"
+                className="text-gold hover:text-gold-dim underline underline-offset-2"
+              >
+                Terms &amp; Conditions
+              </a>
+              .
+            </p>
           </div>
         </div>
       </section>

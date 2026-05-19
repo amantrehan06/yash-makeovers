@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { site } from '@/config/site'
-import { content } from '@/config/content'
+import { content, fillTemplate } from '@/config/content'
 import { getImagesFromFolder, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
@@ -71,7 +71,7 @@ export default async function AboutPage() {
                     <span className="text-gold mt-1 flex-shrink-0">✦</span>
                     <div>
                       <p className="font-semibold text-dark mb-1">{item.title}</p>
-                      <p className="text-muted text-sm leading-relaxed">{item.body}</p>
+                      <p className="text-muted text-sm leading-relaxed">{fillTemplate(item.body)}</p>
                     </div>
                   </div>
                 ))}

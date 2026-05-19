@@ -39,9 +39,8 @@ export function Services() {
                 {pkg.name}
               </p>
               {pkg.originalPrice > pkg.price && (
-                <p className={`text-sm flex items-center gap-1.5 mb-1 ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}>
-                  <span>Was</span>
-                  <span className="line-through decoration-1">{formatPrice(pkg.originalPrice)}</span>
+                <p className={`text-sm mb-1 ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}>
+                  <span className="price-strike">{formatPrice(pkg.originalPrice)}</span>
                 </p>
               )}
               <div className="flex items-baseline gap-2 mb-1">

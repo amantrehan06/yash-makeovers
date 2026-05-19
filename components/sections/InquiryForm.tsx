@@ -1,47 +1,56 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { features } from '@/config/features'
 import { site } from '@/config/site'
-import { packages, formatPrice } from '@/config/packages'
+import { packages } from '@/config/packages'
 import { content } from '@/config/content'
 import { Button } from '@/components/ui/Button'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { trackEvent } from '@/lib/analytics'
 
 interface FormData {
-  name: string
-  whatsapp: string
-  email: string
-  eventDate: string
+  name:        string
+  whatsapp:    string
+  email:       string
+  eventDate:   string
+  readyTime:   string
   serviceType: string
-  numPeople: string
-  city: string
-  startTime: string
-  vision: string
+  message:     string
+  // Honeypot field — invisible to humans, often filled by bots.
+  // See lib/spam.ts for the checking logic.
+  website:     string
 }
 
 const EMPTY: FormData = {
-  name: '',
-  whatsapp: '',
-  email: '',
-  eventDate: '',
+  name:        '',
+  whatsapp:    '',
+  email:       '',
+  eventDate:   '',
+  readyTime:   '',
   serviceType: '',
-  numPeople: '',
-  city: '',
-  startTime: '',
-  vision: '',
+  message:     '',
+  website:     '',
 }
 
-const steps = content.inquiryForm.steps
+// Service options shown as pills. 'Not sure' is appended for clients who
+// haven't decided yet — same approach as the portfolio filter chips.
+const SERVICE_OPTIONS = [
+  ...packages.map((pkg) => pkg.name),
+  'Not sure',
+] as const
 
 export function InquiryForm() {
-  const [step, setStep] = useState(0)
   const [data, setData] = useState<FormData>(EMPTY)
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const startedRef = useRef(false)
+
+  // Form-mount timestamp — combined with submit time on the server to detect
+  // bots that auto-fill in milliseconds. See lib/spam.ts (MIN_FILL_MS).
+  const mountedAtRef = useRef<number>(0)
+  useEffect(() => { mountedAtRef.current = Date.now() }, [])
 
   const update = (field: keyof FormData, value: string) => {
     if (!startedRef.current) {
@@ -51,19 +60,28 @@ export function InquiryForm() {
     setData((d) => ({ ...d, [field]: value }))
   }
 
-  const isEarlyMorning = data.startTime !== '' && parseInt(data.startTime.split(':')[0]) < 6
+  // Required: name, whatsapp, email, serviceType. Event date and ready
+  // time are optional — many clients inquire before they've locked dates.
+  const isValid =
+    data.name.trim()        !== '' &&
+    data.whatsapp.trim()    !== '' &&
+    data.email.trim()       !== '' &&
+    data.serviceType.trim() !== ''
 
-  async function handleSubmit() {
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!isValid || loading) return
     setLoading(true)
     setError('')
     try {
+      const formAgeMs = mountedAtRef.current ? Date.now() - mountedAtRef.current : 0
       const res = await fetch('/api/inquiry', {
-        method: 'POST',
+        method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body:    JSON.stringify({ ...data, formAgeMs }),
       })
       if (!res.ok) throw new Error('Failed to send')
-      trackEvent('inquiry_form_completed', { service: data.serviceType, city: data.city })
+      trackEvent('inquiry_form_completed', { service: data.serviceType })
       setSubmitted(true)
     } catch {
       setError(`${content.inquiryForm.errorBody} ${site.phone}.`)
@@ -119,120 +137,132 @@ export function InquiryForm() {
           centered
         />
 
-        <div className="mt-10 bg-ivory-2 rounded-2xl border border-ivory-4 overflow-hidden">
-          <div className="flex">
-            {steps.map((s, i) => (
-              <div
-                key={s}
-                className={`flex-1 py-3 text-center text-xs font-medium border-b-2 transition-colors ${
-                  i === step
-                    ? 'border-gold text-gold'
-                    : i < step
-                    ? 'border-gold-pale text-muted'
-                    : 'border-ivory-4 text-muted-2'
-                }`}
-              >
-                <span className="hidden sm:inline">{s}</span>
-                <span className="sm:hidden">{i + 1}</span>
-              </div>
-            ))}
+        <form
+          onSubmit={handleSubmit}
+          className="relative mt-10 bg-ivory-2 rounded-2xl border border-ivory-4 p-6 sm:p-8 flex flex-col gap-6"
+        >
+          <Field
+            label={content.inquiryForm.fields.name.label}
+            value={data.name}
+            onChange={(v) => update('name', v)}
+            placeholder={content.inquiryForm.fields.name.placeholder}
+            required
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <Field
+              label={content.inquiryForm.fields.whatsapp.label}
+              value={data.whatsapp}
+              onChange={(v) => update('whatsapp', v)}
+              placeholder={content.inquiryForm.fields.whatsapp.placeholder}
+              type="tel"
+              required
+            />
+            <Field
+              label={content.inquiryForm.fields.email.label}
+              value={data.email}
+              onChange={(v) => update('email', v)}
+              placeholder={content.inquiryForm.fields.email.placeholder}
+              type="email"
+              required
+            />
           </div>
 
-          <div className="p-8">
-            {step === 0 && (
-              <div className="flex flex-col gap-5">
-                <Field label={content.inquiryForm.fields.name.label}     value={data.name}     onChange={(v) => update('name', v)}     placeholder={content.inquiryForm.fields.name.placeholder} />
-                <Field label={content.inquiryForm.fields.whatsapp.label} value={data.whatsapp} onChange={(v) => update('whatsapp', v)} placeholder={content.inquiryForm.fields.whatsapp.placeholder} type="tel" />
-                <Field label={content.inquiryForm.fields.email.label}    value={data.email}    onChange={(v) => update('email', v)}    placeholder={content.inquiryForm.fields.email.placeholder} type="email" />
-              </div>
-            )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <Field
+              label={content.inquiryForm.fields.eventDate.label}
+              value={data.eventDate}
+              onChange={(v) => update('eventDate', v)}
+              type="date"
+            />
+            <Field
+              label={content.inquiryForm.fields.readyTime.label}
+              value={data.readyTime}
+              onChange={(v) => update('readyTime', v)}
+              type="time"
+            />
+          </div>
 
-            {step === 1 && (
-              <div className="flex flex-col gap-5">
-                <Field label={content.inquiryForm.fields.eventDate.label} value={data.eventDate} onChange={(v) => update('eventDate', v)} type="date" />
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-muted mb-2">{content.inquiryForm.fields.serviceType.label}</label>
-                  <select
-                    value={data.serviceType}
-                    onChange={(e) => update('serviceType', e.target.value)}
-                    className="w-full border border-ivory-4 rounded-lg px-4 py-3 text-dark bg-ivory text-sm focus:outline-none focus:ring-2 focus:ring-gold"
+          {/* Service type as branded pills — matches the portfolio filter design. */}
+          <div>
+            <label className="block text-xs uppercase tracking-widest text-muted mb-3">
+              {content.inquiryForm.fields.serviceType.label} <span className="text-gold">*</span>
+            </label>
+            <div className="flex flex-wrap gap-2">
+              {SERVICE_OPTIONS.map((option) => {
+                const active = data.serviceType === option
+                return (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => update('serviceType', option)}
+                    className={`px-5 py-2 rounded-full text-sm font-medium border transition-colors ${
+                      active
+                        ? 'bg-gold text-ivory border-gold'
+                        : 'bg-ivory border-ivory-4 text-muted hover:border-gold hover:text-gold'
+                    }`}
+                    aria-pressed={active}
                   >
-                    <option value="">{content.inquiryForm.fields.serviceType.placeholder}</option>
-                    {packages.map((pkg) => (
-                      <option key={pkg.id} value={pkg.name}>
-                        {pkg.name} ({formatPrice(pkg.price)}/person)
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-muted mb-2">{content.inquiryForm.fields.numPeople.label}</label>
-                  <select
-                    value={data.numPeople}
-                    onChange={(e) => update('numPeople', e.target.value)}
-                    className="w-full border border-ivory-4 rounded-lg px-4 py-3 text-dark bg-ivory text-sm focus:outline-none focus:ring-2 focus:ring-gold"
-                  >
-                    <option value="">{content.inquiryForm.fields.numPeople.placeholder}</option>
-                    {content.inquiryForm.peopleOptions.map((opt) => (
-                      <option key={opt.value} value={opt.value}>{opt.label}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-            )}
-
-            {step === 2 && (
-              <div className="flex flex-col gap-5">
-                <Field label={content.inquiryForm.fields.city.label}      value={data.city}      onChange={(v) => update('city', v)}      placeholder={content.inquiryForm.fields.city.placeholder} />
-                <Field label={content.inquiryForm.fields.startTime.label} value={data.startTime} onChange={(v) => update('startTime', v)} type="time" />
-                {isEarlyMorning && (
-                  <div className="bg-gold-pale border border-gold-pale rounded-xl p-4 text-sm text-gold-dim">
-                    ⏰ <strong>{content.inquiryForm.earlyMorningWarning}</strong> Start times between {site.policies.earlyMorningThreshold} incur an additional ${site.policies.earlyMorningFee} per person.
-                  </div>
-                )}
-              </div>
-            )}
-
-            {step === 3 && (
-              <div className="flex flex-col gap-5">
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-muted mb-2">{content.inquiryForm.fields.vision.label}</label>
-                  <textarea
-                    value={data.vision}
-                    onChange={(e) => update('vision', e.target.value)}
-                    rows={5}
-                    placeholder={content.inquiryForm.fields.vision.placeholder}
-                    className="w-full border border-ivory-4 rounded-lg px-4 py-3 text-dark bg-ivory text-sm focus:outline-none focus:ring-2 focus:ring-gold resize-none"
-                  />
-                </div>
-                {error && <p className="text-red-600 text-sm">{error}</p>}
-              </div>
-            )}
-
-            <div className="flex justify-between mt-8 pt-6 border-t border-ivory-4">
-              {step > 0 ? (
-                <button
-                  onClick={() => setStep((s) => s - 1)}
-                  className="text-sm text-muted hover:text-dark transition-colors"
-                >
-                  {content.inquiryForm.backButton}
-                </button>
-              ) : (
-                <span />
-              )}
-
-              {step < 3 ? (
-                <Button onClick={() => setStep((s) => s + 1)} size="md">
-                  {content.inquiryForm.continueButton}
-                </Button>
-              ) : (
-                <Button onClick={handleSubmit} size="md" disabled={loading}>
-                  {loading ? content.inquiryForm.submittingButton : content.inquiryForm.submitButton}
-                </Button>
-              )}
+                    {option}
+                  </button>
+                )
+              })}
             </div>
           </div>
-        </div>
+
+          <div>
+            <label className="block text-xs uppercase tracking-widest text-muted mb-2">
+              {content.inquiryForm.fields.message.label}
+            </label>
+            <textarea
+              value={data.message}
+              onChange={(e) => update('message', e.target.value)}
+              rows={5}
+              placeholder={content.inquiryForm.fields.message.placeholder}
+              className="w-full border border-ivory-4 rounded-lg px-4 py-3 text-dark bg-ivory text-sm focus:outline-none focus:ring-2 focus:ring-gold resize-none"
+            />
+          </div>
+
+          {/* Honeypot — visually hidden, off-screen, and aria-hidden. Real
+              users never see or focus this field. Bots that crawl the DOM
+              fill every input → server checks this and silently rejects. */}
+          <div aria-hidden="true" className="absolute -left-[9999px] -top-[9999px] h-0 w-0 overflow-hidden">
+            <label htmlFor="company-website">Website (leave blank)</label>
+            <input
+              id="company-website"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={data.website}
+              onChange={(e) => update('website', e.target.value)}
+            />
+          </div>
+
+          <p className="text-xs text-muted leading-relaxed">
+            {content.termsPage.inquiryAgreement}{' '}
+            <a
+              href="/terms-and-conditions"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gold hover:text-gold-dim underline underline-offset-2"
+            >
+              {content.termsPage.inquiryAgreementLink}
+            </a>
+            .
+          </p>
+
+          {error && <p className="text-red-600 text-sm">{error}</p>}
+
+          <Button
+            type="submit"
+            size="lg"
+            disabled={!isValid || loading}
+            className="w-full justify-center mt-2"
+          >
+            {loading ? content.inquiryForm.submittingButton : content.inquiryForm.submitButton}
+          </Button>
+        </form>
       </div>
     </section>
   )
@@ -243,22 +273,28 @@ function Field({
   value,
   onChange,
   placeholder,
-  type = 'text',
+  type     = 'text',
+  required = false,
 }: {
-  label: string
-  value: string
-  onChange: (v: string) => void
+  label:       string
+  value:       string
+  onChange:    (v: string) => void
   placeholder?: string
-  type?: string
+  type?:       string
+  required?:   boolean
 }) {
   return (
     <div>
-      <label className="block text-xs uppercase tracking-widest text-muted mb-2">{label}</label>
+      <label className="block text-xs uppercase tracking-widest text-muted mb-2">
+        {label}
+        {required && <span className="text-gold ml-1">*</span>}
+      </label>
       <input
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
+        required={required}
         className="w-full border border-ivory-4 rounded-lg px-4 py-3 text-dark bg-ivory text-sm focus:outline-none focus:ring-2 focus:ring-gold placeholder:text-muted-2"
       />
     </div>

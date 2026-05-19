@@ -4,7 +4,7 @@ import { cities } from '@/config/cities'
 import { site } from '@/config/site'
 import { packages, formatPrice } from '@/config/packages'
 import { reviews } from '@/config/reviews'
-import { content } from '@/config/content'
+import { content, fillTemplate } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 
@@ -105,7 +105,7 @@ export default function CityPage({ params }: Props) {
             <h1 className="font-serif text-4xl md:text-[56px] text-dark leading-[1.05] tracking-tight mb-6">
               {city.h1}
             </h1>
-            <p className="text-muted text-lg leading-relaxed mb-8">{city.intro}</p>
+            <p className="text-muted text-lg leading-relaxed mb-8">{fillTemplate(city.intro)}</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button href="/contact" size="lg">
                 Book in {city.name}
@@ -153,9 +153,8 @@ export default function CityPage({ params }: Props) {
                   {pkg.name}
                 </p>
                 {pkg.originalPrice > pkg.price && (
-                  <p className={`text-sm flex items-center gap-1.5 mb-1 ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}>
-                    <span>Was</span>
-                    <span className="line-through decoration-1">{formatPrice(pkg.originalPrice)}</span>
+                  <p className={`text-sm mb-1 ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}>
+                    <span className="price-strike">{formatPrice(pkg.originalPrice)}</span>
                   </p>
                 )}
                 <div className="flex items-baseline gap-2">
@@ -194,7 +193,7 @@ export default function CityPage({ params }: Props) {
                 <span className="text-gold mt-1 flex-shrink-0 text-lg">✦</span>
                 <div>
                   <p className="font-semibold text-dark mb-2">{item.title}</p>
-                  <p className="text-muted text-sm leading-relaxed">{item.body}</p>
+                  <p className="text-muted text-sm leading-relaxed">{fillTemplate(item.body)}</p>
                 </div>
               </div>
             ))}

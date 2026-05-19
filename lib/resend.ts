@@ -14,16 +14,19 @@ export function getResend(): Resend {
 }
 
 export function buildOwnerEmailHtml(data: {
-  name: string
-  email: string
-  whatsapp: string
-  eventDate: string
+  name:        string
+  email:       string
+  whatsapp:    string
+  eventDate?:  string
+  readyTime?:  string
   serviceType: string
-  numPeople: string
-  city: string
-  startTime: string
-  vision: string
+  message?:    string
 }): string {
+  const optionalRow = (label: string, value?: string) =>
+    value
+      ? `<tr><td style="padding: 8px 0; color: #7A6A58;">${label}</td><td style="padding: 8px 0; font-weight: 600;">${value}</td></tr>`
+      : ''
+
   return `
     <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; color: #1C1410; background: #FAF8F4; padding: 40px; border-radius: 8px;">
       <h2 style="color: #A8834A; font-size: 24px; margin-bottom: 24px;">New Inquiry — ${site.name}</h2>
@@ -31,16 +34,16 @@ export function buildOwnerEmailHtml(data: {
         <tr><td style="padding: 8px 0; color: #7A6A58; width: 40%;">Name</td><td style="padding: 8px 0; font-weight: 600;">${data.name}</td></tr>
         <tr><td style="padding: 8px 0; color: #7A6A58;">WhatsApp</td><td style="padding: 8px 0; font-weight: 600;">${data.whatsapp}</td></tr>
         <tr><td style="padding: 8px 0; color: #7A6A58;">Email</td><td style="padding: 8px 0; font-weight: 600;">${data.email}</td></tr>
-        <tr><td style="padding: 8px 0; color: #7A6A58;">Event Date</td><td style="padding: 8px 0; font-weight: 600;">${data.eventDate}</td></tr>
         <tr><td style="padding: 8px 0; color: #7A6A58;">Service</td><td style="padding: 8px 0; font-weight: 600;">${data.serviceType}</td></tr>
-        <tr><td style="padding: 8px 0; color: #7A6A58;">No. of People</td><td style="padding: 8px 0; font-weight: 600;">${data.numPeople}</td></tr>
-        <tr><td style="padding: 8px 0; color: #7A6A58;">City/Location</td><td style="padding: 8px 0; font-weight: 600;">${data.city}</td></tr>
-        <tr><td style="padding: 8px 0; color: #7A6A58;">Start Time</td><td style="padding: 8px 0; font-weight: 600;">${data.startTime}</td></tr>
+        ${optionalRow('Event Date',   data.eventDate)}
+        ${optionalRow('Ready by',     data.readyTime)}
       </table>
+      ${data.message ? `
       <div style="margin-top: 24px; padding: 16px; background: #F3EFE8; border-radius: 6px;">
-        <p style="color: #7A6A58; margin: 0 0 8px;">Vision / Inspiration</p>
-        <p style="margin: 0; white-space: pre-wrap;">${data.vision}</p>
+        <p style="color: #7A6A58; margin: 0 0 8px;">Message</p>
+        <p style="margin: 0; white-space: pre-wrap;">${data.message}</p>
       </div>
+      ` : ''}
     </div>
   `
 }
