@@ -173,13 +173,13 @@ export function InquiryForm() {
               label={content.inquiryForm.fields.eventDate.label}
               value={data.eventDate}
               onChange={(v) => update('eventDate', v)}
-              type="date"
+              placeholder={content.inquiryForm.fields.eventDate.placeholder}
             />
             <Field
               label={content.inquiryForm.fields.readyTime.label}
               value={data.readyTime}
               onChange={(v) => update('readyTime', v)}
-              type="time"
+              placeholder={content.inquiryForm.fields.readyTime.placeholder}
             />
           </div>
 

@@ -24,7 +24,7 @@ export const site = {
   // Single source of truth for stats that change over time. Update these
   // values and the entire site (meta descriptions, city intros, body copy)
   // refreshes via fillTemplate() — no string hunting required.
-  experience:        '12+',         // {experience} token
+  experience:        '10+',         // {experience} token
   brideCount:        '1,500+',      // {brides} token
   googleRating:      '4.9',         // {rating} token
   googleReviewCount: '158',         // {reviewCount} token
