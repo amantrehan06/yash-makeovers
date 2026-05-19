@@ -40,8 +40,11 @@ const SERVICE_OPTIONS = [
   'Not sure',
 ] as const
 
+type FieldErrors = Partial<Record<keyof FormData, string>>
+
 export function InquiryForm() {
   const [data, setData] = useState<FormData>(EMPTY)
+  const [errors, setErrors] = useState<FieldErrors>({})
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -58,19 +61,35 @@ export function InquiryForm() {
       trackEvent('inquiry_form_started')
     }
     setData((d) => ({ ...d, [field]: value }))
+    // Clear that field's error as soon as the user starts fixing it.
+    if (errors[field]) setErrors((e) => ({ ...e, [field]: undefined }))
   }
 
-  // Required: name, whatsapp, email, serviceType. Event date and ready
-  // time are optional — many clients inquire before they've locked dates.
-  const isValid =
-    data.name.trim()        !== '' &&
-    data.whatsapp.trim()    !== '' &&
-    data.email.trim()       !== '' &&
-    data.serviceType.trim() !== ''
+  function validate(): FieldErrors {
+    const next: FieldErrors = {}
+    if (!data.name.trim())     next.name        = 'Please enter your name.'
+    if (!data.whatsapp.trim()) next.whatsapp    = 'A real WhatsApp number is required so we can reach you.'
+    if (!data.email.trim())    next.email       = 'Please enter your email address.'
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
+      next.email = 'That email doesn\'t look right — please double-check.'
+    }
+    if (!data.serviceType.trim()) next.serviceType = 'Pick the service you\'re interested in.'
+    return next
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!isValid || loading) return
+    if (loading) return
+    const fieldErrors = validate()
+    if (Object.keys(fieldErrors).length > 0) {
+      setErrors(fieldErrors)
+      // Focus the first invalid field so the user lands at the error.
+      const first = Object.keys(fieldErrors)[0]
+      const el = document.querySelector<HTMLElement>(`[data-field="${first}"]`)
+      el?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      el?.focus()
+      return
+    }
     setLoading(true)
     setError('')
     try {
@@ -142,40 +161,48 @@ export function InquiryForm() {
           className="relative mt-10 bg-ivory-2 rounded-2xl border border-ivory-4 p-6 sm:p-8 flex flex-col gap-6"
         >
           <Field
+            name="name"
             label={content.inquiryForm.fields.name.label}
             value={data.name}
             onChange={(v) => update('name', v)}
             placeholder={content.inquiryForm.fields.name.placeholder}
+            error={errors.name}
             required
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <Field
+              name="whatsapp"
               label={content.inquiryForm.fields.whatsapp.label}
               value={data.whatsapp}
               onChange={(v) => update('whatsapp', v)}
               placeholder={content.inquiryForm.fields.whatsapp.placeholder}
               type="tel"
+              error={errors.whatsapp}
               required
             />
             <Field
+              name="email"
               label={content.inquiryForm.fields.email.label}
               value={data.email}
               onChange={(v) => update('email', v)}
               placeholder={content.inquiryForm.fields.email.placeholder}
               type="email"
+              error={errors.email}
               required
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <Field
+              name="eventDate"
               label={content.inquiryForm.fields.eventDate.label}
               value={data.eventDate}
               onChange={(v) => update('eventDate', v)}
               placeholder={content.inquiryForm.fields.eventDate.placeholder}
             />
             <Field
+              name="readyTime"
               label={content.inquiryForm.fields.readyTime.label}
               value={data.readyTime}
               onChange={(v) => update('readyTime', v)}
@@ -184,11 +211,11 @@ export function InquiryForm() {
           </div>
 
           {/* Service type as branded pills — matches the portfolio filter design. */}
-          <div>
+          <div data-field="serviceType" tabIndex={-1}>
             <label className="block text-xs uppercase tracking-widest text-muted mb-3">
               {content.inquiryForm.fields.serviceType.label} <span className="text-gold">*</span>
             </label>
-            <div className="flex flex-wrap gap-2">
+            <div className={`flex flex-wrap gap-2 ${errors.serviceType ? 'rounded-lg ring-2 ring-red-300 ring-offset-4 ring-offset-ivory-2' : ''}`}>
               {SERVICE_OPTIONS.map((option) => {
                 const active = data.serviceType === option
                 return (
@@ -208,6 +235,7 @@ export function InquiryForm() {
                 )
               })}
             </div>
+            {errors.serviceType && <p className="text-red-600 text-xs mt-2">{errors.serviceType}</p>}
           </div>
 
           <div>
@@ -257,7 +285,7 @@ export function InquiryForm() {
           <Button
             type="submit"
             size="lg"
-            disabled={!isValid || loading}
+            disabled={loading}
             className="w-full justify-center mt-2"
           >
             {loading ? content.inquiryForm.submittingButton : content.inquiryForm.submitButton}
@@ -275,6 +303,8 @@ function Field({
   placeholder,
   type     = 'text',
   required = false,
+  error,
+  name,
 }: {
   label:       string
   value:       string
@@ -282,7 +312,12 @@ function Field({
   placeholder?: string
   type?:       string
   required?:   boolean
+  error?:      string
+  name?:       string
 }) {
+  const borderClass = error
+    ? 'border-red-400 focus:ring-red-300'
+    : 'border-ivory-4 focus:ring-gold'
   return (
     <div>
       <label className="block text-xs uppercase tracking-widest text-muted mb-2">
@@ -290,13 +325,15 @@ function Field({
         {required && <span className="text-gold ml-1">*</span>}
       </label>
       <input
+        data-field={name}
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        required={required}
-        className="w-full border border-ivory-4 rounded-lg px-4 py-3 text-dark bg-ivory text-sm focus:outline-none focus:ring-2 focus:ring-gold placeholder:text-muted-2"
+        aria-invalid={!!error}
+        className={`w-full border rounded-lg px-4 py-3 text-dark bg-ivory text-sm focus:outline-none focus:ring-2 placeholder:text-muted-2 ${borderClass}`}
       />
+      {error && <p className="text-red-600 text-xs mt-1.5">{error}</p>}
     </div>
   )
 }
