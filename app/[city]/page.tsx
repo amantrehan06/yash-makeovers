@@ -19,13 +19,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const city = cities.find((c) => c.slug === params.city)
   if (!city) return {}
+  const description = fillTemplate(city.metaDescription)
   return {
     title:       city.metaTitle,
-    description: city.metaDescription,
+    description,
     alternates:  { canonical: `https://${site.domain}/${city.slug}` },
     openGraph: {
       title:       city.metaTitle,
-      description: city.metaDescription,
+      description,
       type:        'website',
       locale:      'en_CA',
     },
@@ -192,7 +193,7 @@ export default function CityPage({ params }: Props) {
               <div key={item.title} className="flex gap-4 bg-ivory-2 rounded-2xl p-6 border border-ivory-4">
                 <span className="text-gold mt-1 flex-shrink-0 text-lg">✦</span>
                 <div>
-                  <p className="font-semibold text-dark mb-2">{item.title}</p>
+                  <p className="font-semibold text-dark mb-2">{fillTemplate(item.title)}</p>
                   <p className="text-muted text-sm leading-relaxed">{fillTemplate(item.body)}</p>
                 </div>
               </div>

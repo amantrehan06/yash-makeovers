@@ -1,5 +1,5 @@
 import { site } from '@/config/site'
-import { content } from '@/config/content'
+import { content, fillTemplate } from '@/config/content'
 import { getImagesFromFolder, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
@@ -42,14 +42,14 @@ export async function About() {
             subtitle=""
           />
           <p className="text-muted leading-relaxed whitespace-pre-line text-base">
-            {site.about}
+            {fillTemplate(site.about)}
           </p>
 
           <div className="mt-8 grid grid-cols-2 gap-4">
             {site.whyChoose.map((item) => (
               <div key={item.title} className="bg-ivory rounded-xl p-4 border border-ivory-4">
                 <p className="text-gold text-xs font-medium mb-1">✦</p>
-                <p className="font-medium text-dark text-sm">{item.title}</p>
+                <p className="font-medium text-dark text-sm">{fillTemplate(item.title)}</p>
               </div>
             ))}
           </div>

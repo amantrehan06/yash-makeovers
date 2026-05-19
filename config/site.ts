@@ -21,13 +21,17 @@ export const site = {
   // Read from env so it can be updated in Vercel without code changes.
   // (NEXT_PUBLIC_ vars are inlined at build — Vercel auto-rebuilds on env change.)
   availability: process.env.NEXT_PUBLIC_AVAILABILITY_MSG ?? 'Now booking 2026 & 2027 weddings',
-  experience: '12+',
-  brideCount: '1,500+',
-  googleRating: '4.9',
-  googleReviewCount: '158',
+  // Single source of truth for stats that change over time. Update these
+  // values and the entire site (meta descriptions, city intros, body copy)
+  // refreshes via fillTemplate() — no string hunting required.
+  experience:        '12+',         // {experience} token
+  brideCount:        '1,500+',      // {brides} token
+  googleRating:      '4.9',         // {rating} token
+  googleReviewCount: '158',         // {reviewCount} token
+  seasonYears:       '2026 & 2027', // {seasonYears} token — bump yearly
 
-  about: `With over 12 years of experience and 1,500+ brides transformed across the GTA,
-Yashpreet brings an unmatched blend of artistry and calm to every appointment.
+  about: `With {experience} years of experience and {brides} brides transformed across the GTA,
+{artistName} brings an unmatched blend of artistry and calm to every appointment.
 Her journey began with a deep love for makeup and a belief that every woman deserves
 to feel like the most radiant version of herself on her wedding day. Specialising in
 South Asian and multicultural bridal looks, she has become the most trusted name for
@@ -36,20 +40,20 @@ but for making every bride feel comfortable, confident, and truly seen.`,
 
   whyChoose: [
     {
-      title: '12+ Years of Expertise',
-      body: 'Over a decade perfecting bridal artistry — you are in the most experienced hands in the GTA.',
+      title: '{experience} Years of Expertise',
+      body:  'Over a decade perfecting bridal artistry — you are in the most experienced hands in the GTA.',
     },
     {
-      title: '1,500+ Brides Served',
-      body: 'Trusted by over 1,500 brides with unique beauty needs, skin tones, and wedding visions.',
+      title: '{brides} Brides Served',
+      body:  'Trusted by {brides} brides with unique beauty needs, skin tones, and wedding visions.',
     },
     {
       title: 'Luxury Products Only',
-      body: '{brands} — professional-grade products for a flawless, lasting finish.',
+      body:  '{brands} — professional-grade products for a flawless, lasting finish.',
     },
     {
       title: 'Exceptional Reviews',
-      body: '4.9 stars across 158 Google reviews — built entirely on word-of-mouth from happy brides.',
+      body:  '{rating} stars across {reviewCount} Google reviews — built entirely on word-of-mouth from happy brides.',
     },
   ],
 

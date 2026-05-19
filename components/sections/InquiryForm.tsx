@@ -133,7 +133,7 @@ export function InquiryForm() {
         <SectionHeader
           eyebrow={content.inquiryForm.eyebrow}
           title={content.inquiryForm.title}
-          subtitle={`Fill in a few details and ${site.artistName} will personally WhatsApp you within 24 hours.`}
+          subtitle={`Fill in a few details and ${site.artistName} will personally reach out to you soon.`}
           centered
         />
 

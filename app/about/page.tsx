@@ -60,7 +60,7 @@ export default async function AboutPage() {
               title={`${content.aboutPage.titlePrefix} ${site.artistName}`}
             />
             <p className="text-muted leading-relaxed whitespace-pre-line text-base mb-10">
-              {site.about}
+              {fillTemplate(site.about)}
             </p>
 
             <div className="border-t border-ivory-4 pt-10 mb-10">
@@ -70,7 +70,7 @@ export default async function AboutPage() {
                   <div key={item.title} className="flex gap-4">
                     <span className="text-gold mt-1 flex-shrink-0">✦</span>
                     <div>
-                      <p className="font-semibold text-dark mb-1">{item.title}</p>
+                      <p className="font-semibold text-dark mb-1">{fillTemplate(item.title)}</p>
                       <p className="text-muted text-sm leading-relaxed">{fillTemplate(item.body)}</p>
                     </div>
                   </div>

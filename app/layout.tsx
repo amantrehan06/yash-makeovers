@@ -27,10 +27,10 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${site.domain}`),
   title: {
-    default: `${site.name} — Bridal Makeup Artist in Brampton, ON`,
+    default: `${site.name} — Bridal Makeup Artist in ${site.baseCity}`,
     template: `%s | ${site.name}`,
   },
-  description: `${site.name} is Brampton's most trusted bridal makeup artist. 12+ years of experience, 1,500+ brides served across the GTA. Book your 2026 or 2027 wedding date.`,
+  description: `${site.name} is ${site.addressStructured.addressLocality}'s most trusted bridal makeup artist. ${site.experience} years of experience, ${site.brideCount} brides served across the GTA. Book your ${site.seasonYears} wedding date.`,
   keywords: [...site.seo.keywords],
   openGraph: {
     type: 'website',

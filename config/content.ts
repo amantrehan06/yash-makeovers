@@ -70,7 +70,7 @@ export const content = {
     notAcceptingTitle: 'Not accepting new bookings',
     notAcceptingBody:  'We are currently not accepting new bookings. Please follow',
     successTitle:      'Inquiry received!',
-    successBody:       'will WhatsApp you within 24 hours to discuss your vision. Keep an eye on your WhatsApp — we can\'t wait to make your day unforgettable.',
+    successBody:       'will reach out to you soon to discuss your vision. Keep an eye on your WhatsApp or email — we can\'t wait to make your day unforgettable.',
     errorBody:         'Something went wrong. Please WhatsApp us directly at',
     fields: {
       name:        { label: 'Full name',                       placeholder: 'Your full name' },
@@ -169,6 +169,8 @@ export const content = {
 } as const
 
 // ─── Helpers ────────────────────────────────────────────────────────────
+import { site } from './site'
+
 // Formats a brand list as natural English with Oxford comma.
 // Example: ['A', 'B', 'C']  →  "A, B, and C"
 // Example: ['A', 'B']       →  "A and B"
@@ -180,8 +182,27 @@ export function formatBrandList(brands: readonly string[] = content.aboutPage.br
   return `${brands.slice(0, -1).join(', ')}, and ${brands[brands.length - 1]}`
 }
 
-// Replaces template tokens like {brands} in a string with their dynamic value.
-// Used so config strings can reference centralized data without duplication.
+// Replaces template tokens in a string with their centralized values.
+// Bump the source of truth (site.ts) and every page that uses these tokens
+// updates automatically — no copy-paste hunting across config files.
+//
+// Supported tokens:
+//   {experience}   → '12+'        (site.experience)
+//   {brides}       → '1,500+'     (site.brideCount)
+//   {rating}       → '4.9'        (site.googleRating)
+//   {reviewCount}  → '158'        (site.googleReviewCount)
+//   {seasonYears}  → '2026 & 2027' (site.seasonYears)
+//   {brands}       → 'DIOR, Charlotte Tilbury, ...' (Oxford-comma list)
+//   {artistName}   → 'Yashpreet'  (site.artistName)
+//   {baseCity}     → 'Brampton, ON' (site.baseCity)
 export function fillTemplate(text: string): string {
-  return text.replace(/\{brands\}/g, formatBrandList())
+  return text
+    .replace(/\{experience\}/g,  site.experience)
+    .replace(/\{brides\}/g,      site.brideCount)
+    .replace(/\{rating\}/g,      site.googleRating)
+    .replace(/\{reviewCount\}/g, site.googleReviewCount)
+    .replace(/\{seasonYears\}/g, site.seasonYears)
+    .replace(/\{brands\}/g,      formatBrandList())
+    .replace(/\{artistName\}/g,  site.artistName)
+    .replace(/\{baseCity\}/g,    site.baseCity)
 }

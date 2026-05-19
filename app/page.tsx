@@ -4,7 +4,6 @@ import { features } from '@/config/features'
 import { getBeforeAfterPairs } from '@/lib/cloudinary'
 import { Hero } from '@/components/sections/Hero'
 import { Marquee } from '@/components/sections/Marquee'
-import { TrustBar } from '@/components/sections/TrustBar'
 import { About } from '@/components/sections/About'
 import { Services } from '@/components/sections/Services'
 import { BeforeAfter } from '@/components/sections/BeforeAfter'
@@ -19,8 +18,8 @@ import { FeaturedWork } from '@/components/sections/FeaturedWork'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: `${site.name} — Bridal Makeup Artist in Brampton, ON`,
-  description: `${site.name} is Brampton's most trusted bridal makeup artist. 12+ years of experience, 1,500+ brides served across the GTA. Book your 2026 or 2027 wedding date.`,
+  title: `${site.name} — Bridal Makeup Artist in ${site.baseCity}`,
+  description: `${site.name} is ${site.addressStructured.addressLocality}'s most trusted bridal makeup artist. ${site.experience} years of experience, ${site.brideCount} brides served across the GTA. Book your ${site.seasonYears} wedding date.`,
   alternates: {
     canonical: `https://${site.domain}`,
   },
@@ -59,7 +58,6 @@ export default async function HomePage() {
       />
       <Hero />
       <Marquee />
-      <TrustBar />
       <About />
       <Services />
       {features.featuredGrid && <FeaturedWork />}

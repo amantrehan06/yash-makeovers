@@ -15,28 +15,55 @@ function readPackagePriceList() {
   try {
     const raw = readFileSync('config/packages.ts', 'utf-8')
     const nameMatches  = [...raw.matchAll(/name:\s*'([^']+)'/g)]
-    const priceMatches = [...raw.matchAll(/price:\s*'(\$\d+)'/g)]
+    const priceMatches = [...raw.matchAll(/price:\s*(\d+),/g)]
     if (nameMatches.length === 0) return 'Bridal $600, Pre-Bridal $450, Full Glam $350, Regular Party $250'
     return nameMatches
-      .map((m, i) => `${m[1]} ${priceMatches[i]?.[1] ?? 'TBD'}`)
+      .map((m, i) => `${m[1]} $${priceMatches[i]?.[1] ?? 'TBD'}`)
       .join(', ')
   } catch {
-    // Fallback if running from a directory where config/packages.ts isn't reachable.
     return 'Bridal $600, Pre-Bridal $450, Full Glam $350, Regular Party $250'
   }
 }
 
+// Pull stats from config/site.ts so the prompt always reflects current values.
+function readSiteStats() {
+  try {
+    const raw = readFileSync('config/site.ts', 'utf-8')
+    const grab = (key) => raw.match(new RegExp(`${key}:\\s*'([^']+)'`))?.[1]
+    return {
+      artistName:        grab('artistName')          ?? 'Yashpreet',
+      experience:        grab('experience')          ?? '12+',
+      brideCount:        grab('brideCount')          ?? '1,500+',
+      googleRating:      grab('googleRating')        ?? '4.9',
+      googleReviewCount: grab('googleReviewCount')   ?? '158',
+      address:           grab('address')             ?? '',
+      domain:            grab('domain')              ?? 'yashmakeovers.com',
+    }
+  } catch {
+    return {
+      artistName:        'Yashpreet',
+      experience:        '12+',
+      brideCount:        '1,500+',
+      googleRating:      '4.9',
+      googleReviewCount: '158',
+      address:           '',
+      domain:            'yashmakeovers.com',
+    }
+  }
+}
+
 const PRICE_LIST = readPackagePriceList()
+const STATS      = readSiteStats()
 
 const SYSTEM_PROMPT = `You are an expert SEO content strategist and blog writer for Yash Makeovers, a luxury bridal makeup artist in Brampton, Ontario, Canada.
 
 BUSINESS CONTEXT:
-- Artist: Yashpreet | 12+ years experience | 1,500+ brides | 4.9 stars on Google
+- Artist: ${STATS.artistName} | ${STATS.experience} years experience | ${STATS.brideCount} brides | ${STATS.googleRating} stars on Google (${STATS.googleReviewCount} reviews)
 - Services and prices (per person per event): ${PRICE_LIST}
 - Cities served: Brampton, Mississauga, Toronto, Etobicoke, Oakville, Vaughan, Scarborough, Markham, North York, Richmond Hill
-- Products used: DIOR, Charlotte Tilbury, Chanel, YSL Beauty, Gucci
-- Website: yashmakeovers.com
-- Studio: 27 Divinity Circle, Brampton ON L7A 3Y4
+- Products used: DIOR, Charlotte Tilbury, Chanel, YSL Beauty, Gucci, Too Faced
+- Website: ${STATS.domain}
+- Studio: ${STATS.address}
 
 WRITING RULES:
 - Canadian English spellings (colour, favour, centre, licence, grey, organisation)

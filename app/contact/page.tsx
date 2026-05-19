@@ -59,7 +59,14 @@ export default function ContactPage() {
           <div className="bg-ivory-2 rounded-2xl p-6 border border-ivory-4">
             <p className="text-gold mb-2">📍</p>
             <p className="text-xs uppercase tracking-widest text-muted mb-1">{content.contactPage.cards.studio}</p>
-            <p className="text-dark font-medium text-sm">{site.address}</p>
+            <a
+              href={site.googleBusiness}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-dark font-medium text-sm hover:text-gold transition-colors"
+            >
+              {site.address}
+            </a>
           </div>
         </div>
       </section>
