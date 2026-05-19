@@ -152,9 +152,10 @@ export default function CityPage({ params }: Props) {
                 <p className={`text-xs uppercase tracking-widest mb-2 ${pkg.highlight ? 'text-gold-light' : 'text-gold'}`}>
                   {pkg.name}
                 </p>
-                {pkg.originalPrice && pkg.originalPrice > pkg.price && (
-                  <p className={`text-base line-through ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}>
-                    {formatPrice(pkg.originalPrice)}
+                {pkg.originalPrice > pkg.price && (
+                  <p className={`text-sm flex items-center gap-1.5 mb-1 ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}>
+                    <span>Was</span>
+                    <span className="line-through decoration-1">{formatPrice(pkg.originalPrice)}</span>
                   </p>
                 )}
                 <div className="flex items-baseline gap-2">
