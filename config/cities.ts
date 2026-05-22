@@ -104,7 +104,6 @@ export const cities: readonly City[] = [
       title: `A Glowing Bride's Magical Transformation in Brampton`,
       body: `On May 21, 2026, a beautiful bride from Brampton entrusted Yash Makeovers to create her dream look for her Nikkah ceremony. Known for understanding the intricacies of South Asian bridal aesthetics, Yash and the talented team at Sandy B Beauty Lounge collaborated to craft a stunning appearance that radiated elegance and cultural authenticity. The bride's look featured an enchanting blend of traditional and modern elements, perfectly complementing her intricately designed outfit. With a focus on longevity, the makeup was tailored to withstand the joy-filled hours of celebration, ensuring she looked flawless in every photograph taken at the iconic Brampton Banquet Hall. The result was a breathtaking transformation that captured the essence of her special day, leaving her glowing with confidence and ready to celebrate this significant milestone surrounded by family and friends.`,
       imageUrl: ``,
-      tags: ["brampton", "bridal"],
     }
   ],
   },
