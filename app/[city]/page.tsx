@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { cities, type City } from '@/config/cities'
+import { cities, type City, type ContentBlock } from '@/config/cities'
 import { site } from '@/config/site'
 import { packages, formatPrice } from '@/config/packages'
 import { reviews } from '@/config/reviews'
@@ -78,6 +78,10 @@ export default async function CityPage({ params }: Props) {
     portfolioImages.find((img) => img.tags.includes(city.slug)) ??
     portfolioImages.find((img) => img.tags.includes('featured')) ??
     portfolioImages[0]
+
+  // Recent-work feed: newest blocks first. Each block is a unique ~150-word
+  // case study sourced from a real Instagram post (see /transform-post skill).
+  const recentWork = [...city.contentBlocks].sort((a, b) => b.date.localeCompare(a.date))
 
   return (
     <>
@@ -166,6 +170,25 @@ export default async function CityPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* RECENT WORK — hub-and-spoke content feed. Only renders once at least
+          one contentBlock has been added for this city. */}
+      {recentWork.length > 0 && (
+        <section className="py-16 px-6 bg-ivory">
+          <div className="max-w-5xl mx-auto">
+            <SectionHeader
+              eyebrow="Recent work"
+              title={`Recent work in ${city.name}`}
+              subtitle={`A look at real ${city.name} brides and events ${site.artistName} has worked with.`}
+            />
+            <div className="flex flex-col gap-8 mt-10">
+              {recentWork.map((block) => (
+                <RecentWorkCard key={block.id} block={block} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* SERVICES */}
       <section className="py-16 px-6 bg-ivory-2">
@@ -374,5 +397,44 @@ export default async function CityPage({ params }: Props) {
         </div>
       </section>
     </>
+  )
+}
+
+// ── Recent-work card ────────────────────────────────────────────────────
+// Renders one contentBlock — a real job written up as a unique mini case
+// study. Image is optional; layout adapts when it's absent.
+function RecentWorkCard({ block }: { block: ContentBlock }) {
+  const pkg = packages.find((p) => p.id === block.service)
+  const serviceLabel = pkg?.name ?? block.service
+  const dateLabel = new Date(`${block.date}T00:00:00`).toLocaleDateString('en-CA', {
+    month: 'long',
+    year:  'numeric',
+  })
+
+  return (
+    <article className="bg-ivory-2 rounded-2xl border border-ivory-4 overflow-hidden flex flex-col md:flex-row">
+      {block.imageUrl && (
+        <div className="relative md:w-2/5 aspect-[4/3] md:aspect-auto bg-ivory-3 flex-shrink-0">
+          <CloudinaryImage
+            publicId={block.imageUrl}
+            alt={block.title}
+            width={640}
+            height={480}
+            crop="fill"
+            className="object-cover w-full h-full"
+            sizes="(max-width: 768px) 100vw, 40vw"
+          />
+        </div>
+      )}
+      <div className="p-6 sm:p-8 flex flex-col">
+        <div className="flex items-center gap-3 mb-3 text-xs uppercase tracking-widest">
+          <span className="text-gold font-medium">{serviceLabel}</span>
+          <span className="text-muted-2" aria-hidden>·</span>
+          <span className="text-muted-2">{dateLabel}</span>
+        </div>
+        <h3 className="font-serif text-2xl text-dark leading-tight mb-3">{block.title}</h3>
+        <p className="text-muted text-sm leading-relaxed">{block.body}</p>
+      </div>
+    </article>
   )
 }

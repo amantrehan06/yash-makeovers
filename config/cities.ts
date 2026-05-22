@@ -22,6 +22,28 @@
 //                service area and spreads internal link authority.
 //
 // All three are arrays — leave empty (default) to hide the section.
+//
+// ── CONTENT BLOCKS (hub-and-spoke SEO engine) ────────────────────────
+// contentBlocks: short, unique "recent work" case studies appended over
+//                time. Each block is a real job written up as ~150 words
+//                of original copy — sourced from an Instagram caption and
+//                transformed by the /transform-post Claude skill.
+//                Renders a "Recent work in [City]" feed below the hero.
+//                Growing this array over time keeps each city page fresh
+//                and unique WITHOUT mass-generated text (which would trip
+//                Google's Scaled Content Abuse filter). Add blocks slowly
+//                and deliberately — quality over volume.
+
+export interface ContentBlock {
+  id:        string   // unique, e.g. 'brampton-2026-05-jasmine-bridal'
+  date:      string   // ISO date 'YYYY-MM-DD' — used for sort + display
+  service:   string   // package id: 'bridal' | 'pre-bridal' | 'full-glam' | 'party'
+  title:     string   // short headline, ~6-10 words
+  body:      string   // ~150 words of unique case-study copy
+  imageUrl?: string   // optional Cloudinary public_id
+  city:      string   // city slug — redundant when nested, but the
+                      // transform skill emits it for routing
+}
 
 export interface City {
   slug:            string
@@ -36,6 +58,7 @@ export interface City {
   venues:          readonly string[]
   neighborhoods:   readonly string[]
   nearbyCities:    readonly string[]
+  contentBlocks:   readonly ContentBlock[]
 }
 
 export const cities: readonly City[] = [
@@ -72,6 +95,18 @@ export const cities: readonly City[] = [
       'Bram West'
     ],
     nearbyCities: ['mississauga', 'toronto', 'vaughan', 'etobicoke'],
+    contentBlocks: [
+    {
+      id: `brampton-202605-glowing-bride-magic`,
+      date: `2026-05-21`,
+      city: `brampton`,
+      service: `bridal`,
+      title: `A Glowing Bride's Magical Transformation in Brampton`,
+      body: `On May 21, 2026, a beautiful bride from Brampton entrusted Yash Makeovers to create her dream look for her Nikkah ceremony. Known for understanding the intricacies of South Asian bridal aesthetics, Yash and the talented team at Sandy B Beauty Lounge collaborated to craft a stunning appearance that radiated elegance and cultural authenticity. The bride's look featured an enchanting blend of traditional and modern elements, perfectly complementing her intricately designed outfit. With a focus on longevity, the makeup was tailored to withstand the joy-filled hours of celebration, ensuring she looked flawless in every photograph taken at the iconic Brampton Banquet Hall. The result was a breathtaking transformation that captured the essence of her special day, leaving her glowing with confidence and ready to celebrate this significant milestone surrounded by family and friends.`,
+      imageUrl: ``,
+      tags: ["brampton", "bridal"],
+    }
+  ],
   },
   {
     slug: 'mississauga',
@@ -107,6 +142,7 @@ export const cities: readonly City[] = [
       'Cooksville'
     ],
     nearbyCities: ['brampton', 'toronto', 'etobicoke', 'oakville'],
+    contentBlocks: [],
   },
   {
     slug: 'toronto',
@@ -137,6 +173,7 @@ export const cities: readonly City[] = [
                       'Downtown Core',
                       'Liberty Village'],
     nearbyCities:  ['mississauga', 'etobicoke', 'vaughan', 'scarborough'],
+    contentBlocks: [],
   },
   {
     slug: 'etobicoke',
@@ -170,6 +207,7 @@ export const cities: readonly City[] = [
       'Markland Wood'
     ],
     nearbyCities: ['mississauga', 'toronto', 'brampton', 'vaughan'],
+    contentBlocks: [],
   },
   {
     slug: 'oakville',
@@ -202,6 +240,7 @@ export const cities: readonly City[] = [
       'Morrison'
     ],
     nearbyCities: ['mississauga', 'brampton', 'etobicoke'],
+    contentBlocks: [],
   },
   {
     slug: 'vaughan',
@@ -236,6 +275,7 @@ export const cities: readonly City[] = [
       'Sonoma Heights'
     ],
     nearbyCities: ['brampton', 'toronto', 'richmond-hill', 'north-york'],
+    contentBlocks: [],
   },
   {
     slug: 'scarborough',
@@ -268,6 +308,7 @@ export const cities: readonly City[] = [
       'West Hill'
     ],
     nearbyCities: ['toronto', 'markham', 'north-york', 'vaughan'],
+    contentBlocks: [],
   },
   {
     slug: 'markham',
@@ -302,6 +343,7 @@ export const cities: readonly City[] = [
      'Cathedraltown'
    ],
     nearbyCities: ['toronto', 'richmond-hill', 'scarborough', 'vaughan'],
+    contentBlocks: [],
   },
   {
     slug: 'north-york',
@@ -335,6 +377,7 @@ export const cities: readonly City[] = [
       'Lawrence Park North'
     ],
    nearbyCities: ['vaughan', 'toronto', 'richmond-hill', 'markham'],
+   contentBlocks: [],
   },
   {
     slug: 'richmond-hill',
@@ -367,5 +410,6 @@ export const cities: readonly City[] = [
       'Doncrest'
     ],
    nearbyCities: ['vaughan', 'markham', 'north-york', 'toronto'],
+   contentBlocks: [],
   },
 ]
