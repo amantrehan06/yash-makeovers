@@ -81,7 +81,10 @@ export default async function CityPage({ params }: Props) {
 
   // Recent-work feed: newest blocks first. Each block is a unique ~150-word
   // case study sourced from a real Instagram post (see /transform-post skill).
-  const recentWork = [...city.contentBlocks].sort((a, b) => b.date.localeCompare(a.date))
+  const BLOCKS_ON_CITY_PAGE = 6
+  const allWork = [...city.contentBlocks].sort((a, b) => b.date.localeCompare(a.date))
+  const recentWork = allWork.slice(0, BLOCKS_ON_CITY_PAGE)
+  const hasMoreWork = allWork.length > BLOCKS_ON_CITY_PAGE
 
   return (
     <>
@@ -186,6 +189,17 @@ export default async function CityPage({ params }: Props) {
                 <RecentWorkCard key={block.id} block={block} />
               ))}
             </div>
+            {hasMoreWork && (
+              <div className="mt-10 text-center">
+                <Link
+                  href={`/${city.slug}/work`}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-gold border border-gold/40 rounded-full px-6 py-2.5 hover:bg-gold/5 transition-colors"
+                >
+                  See all {city.name} work
+                  <span aria-hidden>→</span>
+                </Link>
+              </div>
+            )}
           </div>
         </section>
       )}
