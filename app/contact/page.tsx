@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { site } from '@/config/site'
 import { content } from '@/config/content'
 import { InquiryForm } from '@/components/sections/InquiryForm'
-import { SectionHeader } from '@/components/ui/SectionHeader'
 
 export const metadata: Metadata = {
   title: `Book Your Date | ${site.name}`,
@@ -27,16 +26,8 @@ export default function ContactPage() {
         }}
       />
 
-      <section className="pt-32 pb-8 px-6 bg-ivory">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            eyebrow={content.contactPage.eyebrow}
-            title={content.contactPage.title}
-            subtitle={site.availability}
-            centered
-          />
-        </div>
-      </section>
+      {/* Spacer for the fixed navbar — form's own SectionHeader is the page title. */}
+      <div className="pt-20" />
 
       <InquiryForm />
 

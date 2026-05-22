@@ -29,15 +29,6 @@ function imageCategory(resource: CloudinaryResource): Category {
   return 'Bridal'
 }
 
-// Extracts a short look name from Cloudinary tags or public_id.
-function imageLookName(resource: CloudinaryResource): string {
-  const meaningful = resource.tags.find((t) => !TAG_TO_CATEGORY[t.toLowerCase()])
-  if (meaningful) return meaningful.replace(/-/g, ' ')
-  // Fall back to the last segment of public_id without the ig- prefix.
-  const base = resource.public_id.split('/').pop() ?? ''
-  return base.replace(/^ig-/, '').replace(/[-_]/g, ' ')
-}
-
 const PAGE_SIZE = 12
 
 // Placeholder grid shown when Cloudinary folder has no curated photos yet.
@@ -106,7 +97,6 @@ export function PortfolioGrid({ images }: Props) {
                   width: 20, height: 20, crop: 'fill', quality: 'auto', format: 'webp',
                 })
                 const category   = imageCategory(img)
-                const lookName   = imageLookName(img)
 
                 return (
                   <motion.div
@@ -127,12 +117,9 @@ export function PortfolioGrid({ images }: Props) {
                       placeholder="blur"
                       blurDataURL={blurSrc}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                      <span className="text-xs uppercase tracking-widest text-gold-light mb-1">
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-dark/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                      <span className="text-xs uppercase tracking-widest text-gold-light">
                         {category}
-                      </span>
-                      <span className="text-ivory font-serif text-lg capitalize leading-tight">
-                        {lookName}
                       </span>
                     </div>
                   </motion.div>

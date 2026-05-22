@@ -201,7 +201,7 @@ export const cities: readonly City[] = [
       'Westmount',
       'Morrison'
     ],
-    nearbyCities: ['mississauga', 'brampton', 'oakville'],
+    nearbyCities: ['mississauga', 'brampton', 'etobicoke'],
   },
   {
     slug: 'vaughan',
