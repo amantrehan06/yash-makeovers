@@ -105,6 +105,16 @@ export const cities: readonly City[] = [
       body: `On May 21, 2026, a beautiful bride from Brampton entrusted Yash Makeovers to create her dream look for her Nikkah ceremony. Known for understanding the intricacies of South Asian bridal aesthetics, Yash and the talented team at Sandy B Beauty Lounge collaborated to craft a stunning appearance that radiated elegance and cultural authenticity. The bride's look featured an enchanting blend of traditional and modern elements, perfectly complementing her intricately designed outfit. With a focus on longevity, the makeup was tailored to withstand the joy-filled hours of celebration, ensuring she looked flawless in every photograph taken at the iconic Brampton Banquet Hall. The result was a breathtaking transformation that captured the essence of her special day, leaving her glowing with confidence and ready to celebrate this significant milestone surrounded by family and friends.`,
       imageUrl: ``,
     }
+  ,
+    {
+      id: `brampton-202605-ayushi-bridalmakeup`,
+      date: `2026-05-18`,
+      city: `brampton`,
+      service: `bridal`,
+      title: `Ayushi's Beautiful Bridal Look in Brampton`,
+      body: `On May 18, 2026, Ayushi celebrated her special day with a stunning bridal look created by Yash Makeovers. This talented team worked closely with Ayushi to achieve a look that embraced her Punjabi heritage while ensuring every detail was perfect for her ceremony and reception. Collaborating with @sandybbeautylounge for her hair, Ayushi radiated confidence throughout her events, capturing the essence of her culture with grace. The makeup was designed for longevity, ensuring she looked flawless for her photographers and guests alike. Ayushi’s choice of makeup, complemented by her bridal attire, created a timeless aesthetic that perfectly suited the vibrant atmosphere of her Brampton celebrations. It was a joy to be part of her journey, helping to make her vision come to life.`,
+      imageUrl: ``,
+    }
   ],
   },
   {
