@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://yashmakeovers.com
+Host: https://www.yashmakeovers.com
 
 # Sitemaps
-Sitemap: https://yashmakeovers.com/sitemap.xml
+Sitemap: https://www.yashmakeovers.com/sitemap.xml

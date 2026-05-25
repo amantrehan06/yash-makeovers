@@ -1,3 +1,14 @@
+// Studio address as a single source of truth. `address` (display string) is
+// derived from the structured parts below — edit any field once and both
+// the display string and the schema.org address update.
+const addressStructured = {
+  streetAddress:   '27 Divinity Circle',
+  addressLocality: 'Brampton',
+  addressRegion:   'ON',
+  postalCode:      'L7A 3Y3',
+  addressCountry:  'CA',
+} as const
+
 export const site = {
   name: 'Yash Makeovers',
   artistName: 'Yashpreet',
@@ -5,16 +16,18 @@ export const site = {
   phone: '+1 (647) 654-7288',
   whatsapp: '16476547288',
   email: 'info@yashmakeovers.com',
-  address: '27 Divinity Circle, Brampton ON L7A 3Y4',
-  addressStructured: {
-    streetAddress:   '27 Divinity Circle',
-    addressLocality: 'Brampton',
-    addressRegion:   'ON',
-    postalCode:      'L7A 3Y4',
-    addressCountry:  'CA',
-  },
+  // Derived — never edit directly. Update `addressStructured` instead.
+  address: `${addressStructured.streetAddress}, ${addressStructured.addressLocality} ${addressStructured.addressRegion} ${addressStructured.postalCode}`,
+  addressStructured,
   baseCity: 'Brampton, ON',
+  // Bare apex — used for display contexts (footer text, OG image, signatures)
+  // and email FROM addresses where 'www.' looks awkward.
   domain: 'yashmakeovers.com',
+  // Canonical hostname the site actually serves at. Used for every URL that
+  // ends up in <link rel="canonical">, og:url, schema.org @id fields,
+  // breadcrumbs, metadataBase, and the sitemap. Must match the host clients
+  // resolve to (apex 301s to this).
+  canonicalHost: 'www.yashmakeovers.com',
   instagram: 'yashmakeovers',
   facebook: 'https://facebook.com/yashmakeovers',
   googleBusiness: 'https://share.google/YFKrusBaeZJoi0d3b',

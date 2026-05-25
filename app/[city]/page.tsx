@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title:       city.metaTitle,
     description,
-    alternates:  { canonical: `https://${site.domain}/${city.slug}` },
+    alternates:  { canonical: `https://${site.canonicalHost}/${city.slug}` },
     openGraph: {
       title:       city.metaTitle,
       description,
@@ -95,8 +95,8 @@ export default async function CityPage({ params }: Props) {
             '@context': 'https://schema.org',
             '@type':    'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home',     item: `https://${site.domain}` },
-              { '@type': 'ListItem', position: 2, name: city.name,  item: `https://${site.domain}/${city.slug}` },
+              { '@type': 'ListItem', position: 1, name: 'Home',     item: `https://${site.canonicalHost}` },
+              { '@type': 'ListItem', position: 2, name: city.name,  item: `https://${site.canonicalHost}/${city.slug}` },
             ],
           }),
         }}

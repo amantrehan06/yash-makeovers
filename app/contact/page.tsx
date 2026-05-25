@@ -4,9 +4,9 @@ import { content } from '@/config/content'
 import { InquiryForm } from '@/components/sections/InquiryForm'
 
 export const metadata: Metadata = {
-  title: `Book Your Date | ${site.name}`,
+  title: 'Book Your Date',
   description: `Inquire about bridal makeup services with ${site.artistName} at ${site.name}. ${site.availability}. Based in ${site.addressStructured.addressLocality}, serving all of the GTA.`,
-  alternates: { canonical: `https://${site.domain}/contact` },
+  alternates: { canonical: `https://${site.canonicalHost}/contact` },
 }
 
 export default function ContactPage() {
@@ -19,8 +19,8 @@ export default function ContactPage() {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${site.domain}` },
-              { '@type': 'ListItem', position: 2, name: 'Contact', item: `https://${site.domain}/contact` },
+              { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${site.canonicalHost}` },
+              { '@type': 'ListItem', position: 2, name: 'Contact', item: `https://${site.canonicalHost}/contact` },
             ],
           }),
         }}

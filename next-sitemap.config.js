@@ -1,6 +1,8 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://yashmakeovers.com',
+  // Must match site.canonicalHost in config/site.ts so sitemap URLs line up
+  // with <link rel="canonical"> on each page.
+  siteUrl: 'https://www.yashmakeovers.com',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [{ userAgent: '*', allow: '/' }],

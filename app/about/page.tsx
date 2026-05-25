@@ -7,9 +7,9 @@ import { Button } from '@/components/ui/Button'
 import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
 
 export const metadata: Metadata = {
-  title: `About ${site.artistName} | ${site.name}`,
+  title: `About ${site.artistName}`,
   description: `Meet ${site.artistName} — ${site.addressStructured.addressLocality}'s most trusted bridal makeup artist with ${site.experience} years of experience and ${site.brideCount} brides served across the GTA.`,
-  alternates: { canonical: `https://${site.domain}/about` },
+  alternates: { canonical: `https://${site.canonicalHost}/about` },
 }
 
 export default async function AboutPage() {
@@ -24,8 +24,8 @@ export default async function AboutPage() {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${site.domain}` },
-              { '@type': 'ListItem', position: 2, name: 'About', item: `https://${site.domain}/about` },
+              { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${site.canonicalHost}` },
+              { '@type': 'ListItem', position: 2, name: 'About', item: `https://${site.canonicalHost}/about` },
             ],
           }),
         }}

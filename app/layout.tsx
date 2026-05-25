@@ -25,13 +25,15 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`https://${site.domain}`),
+  metadataBase: new URL(`https://${site.canonicalHost}`),
   title: {
     default: `${site.name} — Bridal Makeup Artist in ${site.baseCity}`,
     template: `%s | ${site.name}`,
   },
   description: `${site.name} is ${site.addressStructured.addressLocality}'s most trusted bridal makeup artist. ${site.experience} years of experience, ${site.brideCount} brides served across the GTA. Book your ${site.seasonYears} wedding date.`,
-  keywords: [...site.seo.keywords],
+  // Note: meta keywords intentionally not set. Google has ignored them since
+  // ~2009 and identical site-wide values add no SEO value. site.seo.keywords
+  // is still consumed by the homepage LocalBusiness `areaServed` schema.
   openGraph: {
     type: 'website',
     siteName: site.name,

@@ -68,7 +68,7 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: true,
     angle: 'home base, South Asian community hub',
-    metaTitle: 'Bridal Makeup Artist in Brampton, ON | Yash Makeovers',
+    metaTitle: 'Bridal Makeup Artist in Brampton, ON',
     metaDescription:
       "Yash Makeovers is Brampton's most trusted bridal makeup artist. {experience} years of experience and {brides} happy brides — South Asian and multicultural specialist. Book your {seasonYears} wedding.",
     h1: 'Bridal Makeup Artist in Brampton, ON',
@@ -123,7 +123,7 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'multicultural, premium clientele',
-    metaTitle: 'Bridal Makeup Artist in Mississauga, ON | Yash Makeovers',
+    metaTitle: 'Bridal Makeup Artist in Mississauga, ON',
     metaDescription:
       'Bridal makeup artist serving Mississauga\'s premium banquet halls and intimate venues. {experience} years of experience and luxury-grade products. Book {artistName} for your {seasonYears} wedding.',
     h1: 'Bridal Makeup Artist in Mississauga, ON',
@@ -159,7 +159,7 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'editorial, modern South Asian brides',
-    metaTitle: 'Bridal Makeup Artist in Toronto, ON | Yash Makeovers',
+    metaTitle: 'Bridal Makeup Artist in Toronto, ON',
     metaDescription:
       "Toronto's go-to bridal makeup artist for modern South Asian brides who want editorial, photo-forward looks. {rating} stars · {reviewCount} Google reviews. Book your {seasonYears} wedding.",
     h1: 'Bridal Makeup Artist in Toronto, ON',
@@ -190,7 +190,7 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'intimate, community feel',
-    metaTitle: 'Bridal Makeup Artist in Etobicoke, ON | Yash Makeovers',
+    metaTitle: 'Bridal Makeup Artist in Etobicoke, ON',
     metaDescription:
       "Calm, family-feel bridal makeup for Etobicoke weddings. {artistName} brings {experience} years of expertise and luxury products to your venue. Book for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Etobicoke, ON',
@@ -224,7 +224,7 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'luxury, high-budget weddings',
-    metaTitle: 'Bridal Makeup Artist in Oakville, ON | Yash Makeovers',
+    metaTitle: 'Bridal Makeup Artist in Oakville, ON',
     metaDescription:
       "Luxury bridal makeup for Oakville weddings at Glen Abbey, Le Dôme, and Oakville's grand estate venues. HD-rated luxury formulas. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Oakville, ON',
@@ -257,7 +257,7 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'South Asian diaspora, temple weddings',
-    metaTitle: 'Bridal Makeup Artist in Vaughan, ON | Yash Makeovers',
+    metaTitle: 'Bridal Makeup Artist in Vaughan, ON',
     metaDescription:
       "Bridal makeup for Vaughan's South Asian community — gurdwara, temple, and grand ballroom weddings. {experience} years of experience, mobile to your venue. Book {seasonYears}.",
     h1: 'Bridal Makeup Artist in Vaughan, ON',
@@ -292,7 +292,7 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'South Asian + Caribbean multicultural',
-    metaTitle: 'Bridal Makeup Artist in Scarborough, ON | Yash Makeovers',
+    metaTitle: 'Bridal Makeup Artist in Scarborough, ON',
     metaDescription:
       "Bridal makeup serving Scarborough's diverse South Asian and Caribbean wedding scene. Skilled across every skin tone, hair texture, and tradition. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Scarborough, ON',
@@ -325,7 +325,7 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'South Asian + East Asian multicultural',
-    metaTitle: 'Bridal Makeup Artist in Markham, ON | Yash Makeovers',
+    metaTitle: 'Bridal Makeup Artist in Markham, ON',
     metaDescription:
       "Bridal makeup for Markham's South Asian and East Asian wedding traditions. Fusion bridal looks done with care and a deep cross-cultural eye. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Markham, ON',
@@ -360,7 +360,7 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'urban, multicultural, accessible',
-    metaTitle: 'Bridal Makeup Artist in North York, ON | Yash Makeovers',
+    metaTitle: 'Bridal Makeup Artist in North York, ON',
     metaDescription:
       "Bridal makeup for North York weddings — urban, multicultural, accessible. {artistName} travels into Don Mills, Bayview, and the Yonge corridor regularly. Book for {seasonYears}.",
     h1: 'Bridal Makeup Artist in North York, ON',
@@ -394,7 +394,7 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'affluent, destination-adjacent',
-    metaTitle: 'Bridal Makeup Artist in Richmond Hill, ON | Yash Makeovers',
+    metaTitle: 'Bridal Makeup Artist in Richmond Hill, ON',
     metaDescription:
       "Bridal makeup for Richmond Hill's affluent neighbourhoods and estate venues. Trusted by brides planning multi-country weddings. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Richmond Hill, ON',

@@ -23,9 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(params.slug)
   if (!post) return {}
   return {
-    title:       `${post.title} | ${site.name} Blog`,
+    title:       post.title,
     description: post.excerpt,
-    alternates:  { canonical: `https://${site.domain}/blog/${post.slug}` },
+    alternates:  { canonical: `https://${site.canonicalHost}/blog/${post.slug}` },
     openGraph: {
       title:       post.title,
       description: post.excerpt,
@@ -94,9 +94,9 @@ export default function BlogPostPage({ params }: Props) {
             publisher: {
               '@type': 'Organization',
               name:    site.name,
-              logo:    { '@type': 'ImageObject', url: `https://${site.domain}/icon.png` },
+              logo:    { '@type': 'ImageObject', url: `https://${site.canonicalHost}/icon.png` },
             },
-            mainEntityOfPage: { '@type': 'WebPage', '@id': `https://${site.domain}/blog/${post.slug}` },
+            mainEntityOfPage: { '@type': 'WebPage', '@id': `https://${site.canonicalHost}/blog/${post.slug}` },
           }),
         }}
       />
@@ -108,9 +108,9 @@ export default function BlogPostPage({ params }: Props) {
             '@context': 'https://schema.org',
             '@type':    'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${site.domain}` },
-              { '@type': 'ListItem', position: 2, name: 'Blog', item: `https://${site.domain}/blog` },
-              { '@type': 'ListItem', position: 3, name: post.title, item: `https://${site.domain}/blog/${post.slug}` },
+              { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${site.canonicalHost}` },
+              { '@type': 'ListItem', position: 2, name: 'Blog', item: `https://${site.canonicalHost}/blog` },
+              { '@type': 'ListItem', position: 3, name: post.title, item: `https://${site.canonicalHost}/blog/${post.slug}` },
             ],
           }),
         }}

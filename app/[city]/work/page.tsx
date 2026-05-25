@@ -25,9 +25,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const city = cities.find((c) => c.slug === citySlug)
   if (!city) return {}
   return {
-    title:       `All Work in ${city.name} | ${site.name}`,
+    title:       `All Work in ${city.name}`,
     description: `Browse every bridal and event makeup job ${site.artistName} has completed in ${city.name}. Real clients, real transformations.`,
-    alternates:  { canonical: `https://${site.domain}/${city.slug}/work` },
+    alternates:  { canonical: `https://${site.canonicalHost}/${city.slug}/work` },
   }
 }
 

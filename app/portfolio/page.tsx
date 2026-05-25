@@ -10,9 +10,9 @@ import { BeforeAfter } from '@/components/sections/BeforeAfter'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: `Portfolio | ${site.name}`,
+  title: 'Portfolio',
   description: `Browse ${site.artistName}'s portfolio of bridal and event makeup looks — South Asian, multicultural, Full Glam, and more. Serving ${site.addressStructured.addressLocality} and all of the GTA.`,
-  alternates: { canonical: `https://${site.domain}/portfolio` },
+  alternates: { canonical: `https://${site.canonicalHost}/portfolio` },
 }
 
 export default async function PortfolioPage() {
@@ -34,8 +34,8 @@ export default async function PortfolioPage() {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home',      item: `https://${site.domain}` },
-              { '@type': 'ListItem', position: 2, name: 'Portfolio', item: `https://${site.domain}/portfolio` },
+              { '@type': 'ListItem', position: 1, name: 'Home',      item: `https://${site.canonicalHost}` },
+              { '@type': 'ListItem', position: 2, name: 'Portfolio', item: `https://${site.canonicalHost}/portfolio` },
             ],
           }),
         }}

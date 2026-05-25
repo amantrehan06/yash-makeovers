@@ -16,9 +16,9 @@ const cn     = content.termsPage
 const extras = t.extras as readonly Extra[]
 
 export const metadata: Metadata = {
-  title:       `${cn.title} | ${site.name}`,
+  title:       cn.title,
   description: `${site.name} booking terms and conditions. Punctuality, deposits, preparation, additional charges, and cancellation policies.`,
-  alternates:  { canonical: `https://${site.domain}/terms-and-conditions` },
+  alternates:  { canonical: `https://${site.canonicalHost}/terms-and-conditions` },
 }
 
 export default function TermsPage() {
@@ -31,8 +31,8 @@ export default function TermsPage() {
             '@context': 'https://schema.org',
             '@type':    'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home',                item: `https://${site.domain}` },
-              { '@type': 'ListItem', position: 2, name: 'Terms & Conditions',  item: `https://${site.domain}/terms-and-conditions` },
+              { '@type': 'ListItem', position: 1, name: 'Home',                item: `https://${site.canonicalHost}` },
+              { '@type': 'ListItem', position: 2, name: 'Terms & Conditions',  item: `https://${site.canonicalHost}/terms-and-conditions` },
             ],
           }),
         }}

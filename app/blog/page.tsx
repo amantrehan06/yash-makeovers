@@ -6,9 +6,9 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 import { BlogListing } from './BlogListing'
 
 export const metadata: Metadata = {
-  title: `Bridal Beauty Blog | ${site.name}`,
+  title: 'Bridal Beauty Blog',
   description: `Tips, inspiration, and advice for brides from ${site.artistName} at ${site.name} — ${site.baseCity}'s most trusted bridal makeup artist.`,
-  alternates: { canonical: `https://${site.domain}/blog` },
+  alternates: { canonical: `https://${site.canonicalHost}/blog` },
 }
 
 export default function BlogPage() {

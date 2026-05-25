@@ -27,6 +27,18 @@ const nextConfig = {
   // 301 REDIRECTS — preserve 7 years of SEO equity from the WordPress site.
   async redirects() {
     return [
+      // Apex → www (301). Forces a single canonical host for every URL on
+      // the site, matching what we set in <link rel="canonical">, og:url,
+      // and the sitemap. Vercel may also enforce this at the platform level
+      // via domain settings, but having it in code makes it explicit and
+      // keeps behaviour consistent in any other deploy target.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'yashmakeovers.com' }],
+        destination: 'https://www.yashmakeovers.com/:path*',
+        permanent: true,
+      },
+
       // Old WordPress city URLs → new dynamic city pages
       { source: '/bridal-hair-and-makeup-artist-in-brampton', destination: '/brampton',     permanent: true },
       { source: '/bridal-hair-and-makeup-artist-toronto',     destination: '/toronto',      permanent: true },

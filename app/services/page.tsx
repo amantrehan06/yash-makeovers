@@ -5,14 +5,15 @@ import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 import { FAQAccordion } from './FAQAccordion'
+import { servicesFaqs } from './faqs'
 
 // Compose the meta description from the same packages config the page renders.
 const packagesSummary = packages.map((p) => `${p.name} (${formatPrice(p.price)})`).join(', ')
 
 export const metadata: Metadata = {
-  title: `Services & Pricing | ${site.name}`,
+  title: 'Services & Pricing',
   description: `Explore ${site.name} bridal packages: ${packagesSummary}. Serving all of the GTA.`,
-  alternates: { canonical: `https://${site.domain}/services` },
+  alternates: { canonical: `https://${site.canonicalHost}/services` },
 }
 
 export default function ServicesPage() {
@@ -25,9 +26,24 @@ export default function ServicesPage() {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${site.domain}` },
-              { '@type': 'ListItem', position: 2, name: 'Services', item: `https://${site.domain}/services` },
+              { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${site.canonicalHost}` },
+              { '@type': 'ListItem', position: 2, name: 'Services', item: `https://${site.canonicalHost}/services` },
             ],
+          }),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type':    'FAQPage',
+            mainEntity: servicesFaqs.map((faq) => ({
+              '@type':         'Question',
+              name:            faq.q,
+              acceptedAnswer: { '@type': 'Answer', text: faq.a },
+            })),
           }),
         }}
       />
@@ -128,7 +144,7 @@ export default function ServicesPage() {
 
           <div className="mt-20">
             <SectionHeader eyebrow={content.servicesPage.faqEyebrow} title={content.servicesPage.faqTitle} />
-            <FAQAccordion />
+            <FAQAccordion faqs={servicesFaqs} />
             <p className="text-center text-muted text-sm mt-10">
               For our full booking policy, waiting charges, preparation guide,
               and additional service fees, please read our{' '}

@@ -18,10 +18,12 @@ import { FeaturedWork } from '@/components/sections/FeaturedWork'
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: `${site.name} — Bridal Makeup Artist in ${site.baseCity}`,
+  // `absolute` bypasses the layout's `%s | Yash Makeovers` template so the
+  // brand name (already at the start) isn't appended a second time.
+  title: { absolute: `${site.name} — Bridal Makeup Artist in ${site.baseCity}` },
   description: `${site.name} is ${site.addressStructured.addressLocality}'s most trusted bridal makeup artist. ${site.experience} years of experience, ${site.brideCount} brides served across the GTA. Book your ${site.seasonYears} wedding date.`,
   alternates: {
-    canonical: `https://${site.domain}`,
+    canonical: `https://${site.canonicalHost}`,
   },
 }
 
@@ -41,7 +43,7 @@ export default async function HomePage() {
             name: site.name,
             telephone: site.phone,
             email: site.email,
-            url: `https://${site.domain}`,
+            url: `https://${site.canonicalHost}`,
             address: {
               '@type': 'PostalAddress',
               ...site.addressStructured,
