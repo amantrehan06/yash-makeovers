@@ -101,7 +101,7 @@ export function Footer() {
           <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
           <p>{site.availability}</p>
           <p>
-            Website by{' '}
+            Powered by{' '}
             <a
               href="https://spotive.ca"
               target="_blank"
