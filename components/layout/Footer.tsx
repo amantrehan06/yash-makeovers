@@ -100,6 +100,17 @@ export function Footer() {
         <div className="border-t border-dark-3 pt-8 flex flex-col sm:flex-row justify-between gap-4 text-xs text-muted">
           <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
           <p>{site.availability}</p>
+          <p>
+            Website by{' '}
+            <a
+              href="https://spotive.ca"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gold-light transition-colors"
+            >
+              Spotive
+            </a>
+          </p>
         </div>
       </div>
     </footer>
