@@ -45,7 +45,10 @@ export const metadata: Metadata = {
     default: `${site.name} — Bridal Makeup Artist in ${site.baseCity}`,
     template: `%s | ${site.name}`,
   },
-  description: `${site.name} is ${site.addressStructured.addressLocality}'s most trusted bridal makeup artist. ${site.experience} years of experience, ${site.brideCount} brides served across the GTA. Book your ${site.seasonYears} wedding date.`,
+  // Inheritable fallback only — every public page declares its own
+  // description. Keep this short and brand-only so any uncaught page
+  // (e.g. /_error) still ships valid metadata.
+  description: `${site.name} — luxury bridal makeup and hair across the GTA.`,
   // hreflang — tells Google this is the Canadian-English version. Even on a
   // single-locale site, the `x-default` self-reference clears Search Console's
   // "no hreflang" warning and helps disambiguate from US/UK results.

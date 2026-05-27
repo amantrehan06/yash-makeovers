@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { cities, type City, type ContentBlock } from '@/config/cities'
 import { site } from '@/config/site'
-import { packages, formatPrice } from '@/config/packages'
+import { packages } from '@/config/packages'
 import { reviews } from '@/config/reviews'
 import { content, fillTemplate } from '@/config/content'
 import { getImagesFromFolder, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
@@ -11,6 +11,7 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
+import { PackageCard } from '@/components/ui/PackageCard'
 
 interface Props {
   params: { city: string }
@@ -224,38 +225,14 @@ export default async function CityPage({ params }: Props) {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
             {packages.map((pkg) => (
-              <div
+              <PackageCard
                 key={pkg.id}
-                className={`rounded-2xl p-6 border flex flex-col ${
-                  pkg.highlight ? 'bg-dark text-ivory border-dark-3' : 'bg-ivory border-ivory-4'
-                }`}
-              >
-                <p className={`text-xs uppercase tracking-widest mb-2 ${pkg.highlight ? 'text-gold-light' : 'text-gold'}`}>
-                  {pkg.name}
-                </p>
-                {pkg.originalPrice > pkg.price && (
-                  <p className={`text-sm mb-1 ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}>
-                    <span className="price-strike">{formatPrice(pkg.originalPrice)}</span>
-                  </p>
-                )}
-                <div className="flex items-baseline gap-2">
-                  <p className={`font-serif text-3xl ${pkg.highlight ? 'text-ivory' : 'text-dark'}`}>{formatPrice(pkg.price)}</p>
-                  {pkg.discountLabel && (
-                    <span className="text-xs uppercase tracking-widest text-gold font-medium">
-                      {pkg.discountLabel}
-                    </span>
-                  )}
-                </div>
-                <p className={`text-xs mt-1 mb-4 ${pkg.highlight ? 'text-ivory-4' : 'text-muted'}`}>{pkg.priceNote}</p>
-                <p className={`text-sm leading-relaxed mb-6 ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}>{pkg.tagline}</p>
-                <Button
-                  href="/contact"
-                  variant={pkg.highlight ? 'primary' : 'outline'}
-                  className="mt-auto w-full justify-center"
-                >
-                  Book in {city.name}
-                </Button>
-              </div>
+                pkg={pkg}
+                ctaText={`Book in ${city.name}`}
+                showIncludes={false}
+                showPopularBadge={false}
+                compact
+              />
             ))}
           </div>
         </div>

@@ -13,7 +13,8 @@ const yearsInBusiness = parseInt(site.experience, 10) || undefined
 
 export const metadata: Metadata = {
   title: `About ${site.artistName}`,
-  description: `Meet ${site.artistName} — ${site.addressStructured.addressLocality}'s most trusted bridal makeup artist with ${site.experience} years of experience and ${site.brideCount} brides served across the GTA.`,
+  // Artist-story angle — distinct from homepage (stats) and blog (tips).
+  description: `Meet ${site.artistName}, the bridal artist behind ${site.brideCount} GTA weddings. South Asian and multicultural bridal looks, ${site.experience} years of experience, based in ${site.addressStructured.addressLocality}.`,
   alternates: { canonical: `https://${site.canonicalHost}/about` },
 }
 

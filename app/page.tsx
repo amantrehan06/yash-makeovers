@@ -29,7 +29,9 @@ export const metadata: Metadata = {
   // `absolute` bypasses the layout's `%s | Yash Makeovers` template so the
   // brand name (already at the start) isn't appended a second time.
   title: { absolute: `${site.name} — Bridal Makeup Artist in ${site.baseCity}` },
-  description: `${site.name} is ${site.addressStructured.addressLocality}'s most trusted bridal makeup artist. ${site.experience} years of experience, ${site.brideCount} brides served across the GTA. Book your ${site.seasonYears} wedding date.`,
+  // Conversion-angle description for the homepage: stats + season.
+  // Distinct from layout fallback (brand-only) and /about (artist story).
+  description: `Award-winning bridal makeup and hair by ${site.artistName} — ${site.experience} years, ${site.brideCount} brides across the Greater Toronto Area. Now booking ${site.seasonYears} weddings.`,
   alternates: {
     canonical: `https://${site.canonicalHost}`,
   },
