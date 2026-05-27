@@ -1,7 +1,9 @@
 import { site } from './site'
 import { getPackage, formatPrice } from './packages'
 
-// Homepage FAQ — rendered as a visible section AND emitted as FAQPage JSON-LD.
+// Site-wide FAQ — rendered as a visible section AND emitted as FAQPage JSON-LD
+// on every page that surfaces an FAQ (homepage + /services). Single array so
+// the schema is identical across pages and there's no risk of stale content.
 //
 // All prices, names, fees, brands, and policy values are pulled from `site` and
 // `packages` so this file stays in sync with the rest of the config. To change
@@ -16,7 +18,7 @@ const party     = getPackage('party')
 const { policies, brands, artistName, name, address, brideCount } = site
 const { addOns, trial, consultation } = policies
 
-export const homepageFaqs = [
+export const faqs = [
   {
     q: 'How much does a bridal makeup artist cost in the GTA?',
     a: `Bridal packages at ${name} start at ${formatPrice(bridal.price)} ${bridal.priceNote} — this includes HD waterproof makeup, hairstyling, premium mink lashes, dupatta and jewelry setting, a touchup kit, and a consultation call. Pre-bridal events (Mehndi, Sangeet, Engagement) are ${formatPrice(preBridal.price)}, Full Glam is ${formatPrice(fullGlam.price)}, and Regular Party is ${formatPrice(party.price)}. All prices are ${bridal.priceNote}.`,

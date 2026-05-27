@@ -5,7 +5,7 @@ import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 import { FAQAccordion } from '@/components/ui/FAQAccordion'
-import { servicesFaqs } from './faqs'
+import { faqs } from '@/config/faq'
 
 // Compose the meta description from the same packages config the page renders.
 const packagesSummary = packages.map((p) => `${p.name} (${formatPrice(p.price)})`).join(', ')
@@ -39,7 +39,7 @@ export default function ServicesPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type':    'FAQPage',
-            mainEntity: servicesFaqs.map((faq) => ({
+            mainEntity: faqs.map((faq) => ({
               '@type':         'Question',
               name:            faq.q,
               acceptedAnswer: { '@type': 'Answer', text: faq.a },
@@ -144,7 +144,7 @@ export default function ServicesPage() {
 
           <div className="mt-20">
             <SectionHeader eyebrow={content.servicesPage.faqEyebrow} title={content.servicesPage.faqTitle} />
-            <FAQAccordion faqs={servicesFaqs} />
+            <FAQAccordion faqs={faqs} />
             <p className="text-center text-muted text-sm mt-10">
               For our full booking policy, waiting charges, preparation guide,
               and additional service fees, please read our{' '}

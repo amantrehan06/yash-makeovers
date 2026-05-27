@@ -4,7 +4,7 @@ import { seo } from '@/config/seo'
 import { features } from '@/config/features'
 import { cities } from '@/config/cities'
 import { reviews } from '@/config/reviews'
-import { homepageFaqs } from '@/config/faq'
+import { faqs } from '@/config/faq'
 import { getBeforeAfterPairs } from '@/lib/cloudinary'
 import { buildCloudinaryUrl } from '@/lib/cloudinaryUrl'
 import { Hero } from '@/components/sections/Hero'
@@ -127,7 +127,7 @@ export default async function HomePage() {
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type':    'FAQPage',
-    mainEntity: homepageFaqs.map((f) => ({
+    mainEntity: faqs.map((f) => ({
       '@type':         'Question',
       name:            f.q,
       acceptedAnswer:  { '@type': 'Answer', text: f.a },
@@ -159,7 +159,7 @@ export default async function HomePage() {
       {features.priceEstimator && <PriceEstimator />}
       <Reviews />
       <Cities />
-      <FAQ items={homepageFaqs} />
+      <FAQ items={faqs} />
       <InquiryForm />
     </>
   )
