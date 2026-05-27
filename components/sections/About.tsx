@@ -19,11 +19,11 @@ export async function About() {
             <CloudinaryImage
               publicId={portraitPublicId}
               alt={`${site.artistName}, bridal makeup artist at ${site.name} in ${site.baseCity}`}
-              width={720}
-              height={900}
+              width={480}
+              height={600}
               crop="fill"
               className="object-cover w-full h-full"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 768px) 92vw, 480px"
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center text-muted text-sm">

@@ -15,6 +15,13 @@ interface Props {
   params: { city: string }
 }
 
+// ISR: rebuild every 8h to match the Cloudinary unstable_cache TTL in
+// lib/cloudinary.ts. Combined with generateStaticParams below, every city
+// page is pre-rendered at build and served statically from the edge — fixes
+// the TTFB bottleneck (was 47% Good in CrUX field data) without re-running
+// the Cloudinary search on every request.
+export const revalidate = 28800
+
 export async function generateStaticParams() {
   return cities.map((c) => ({ city: c.slug }))
 }
@@ -147,12 +154,12 @@ export default async function CityPage({ params }: Props) {
                 <CloudinaryImage
                   publicId={cityHeroImage.public_id}
                   alt={`Bridal makeup by ${site.artistName} for a ${city.name} bride`}
-                  width={720}
-                  height={960}
+                  width={480}
+                  height={640}
                   priority
                   crop="fill"
                   className="object-cover w-full h-full"
-                  sizes="(max-width: 768px) 100vw, 42vw"
+                  sizes="(max-width: 768px) 92vw, 480px"
                 />
               </div>
             )}

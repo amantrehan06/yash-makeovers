@@ -57,12 +57,12 @@ export async function Hero() {
               <CloudinaryImage
                 publicId={heroPublicId}
                 alt={`${site.artistName} — bridal makeup artist in ${site.baseCity}`}
-                width={720}
-                height={960}
+                width={480}
+                height={640}
                 priority
                 crop="fill"
                 className="object-cover w-full h-full"
-                sizes="(max-width: 768px) 100vw, 48vw"
+                sizes="(max-width: 768px) 92vw, 480px"
               />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center text-muted text-sm">

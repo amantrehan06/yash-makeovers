@@ -13,9 +13,11 @@ import { Cities } from '@/components/sections/Cities'
 import { InquiryForm } from '@/components/sections/InquiryForm'
 import { FeaturedWork } from '@/components/sections/FeaturedWork'
 
-// Rebuild every hour so freshly uploaded Cloudinary photos appear without a
-// full redeploy. Matches the cadence used on /portfolio.
-export const revalidate = 3600
+// ISR: rebuild every 8h to match the Cloudinary unstable_cache TTL in
+// lib/cloudinary.ts. Serves the homepage statically from the edge so the
+// Cloudinary searches inside Hero/About/FeaturedWork don't add to TTFB
+// (was 47% Good in CrUX field data).
+export const revalidate = 28800
 
 export const metadata: Metadata = {
   // `absolute` bypasses the layout's `%s | Yash Makeovers` template so the
