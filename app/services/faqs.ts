@@ -10,12 +10,9 @@ import { site } from '@/config/site'
 
 const t = site.policies.terms
 
-export interface Faq {
-  q: string
-  a: string
-}
+import type { FaqItem } from '@/components/ui/FAQAccordion'
 
-export const servicesFaqs: Faq[] = [
+export const servicesFaqs: FaqItem[] = [
   {
     q: 'How far in advance should I book?',
     a: '6–12 months is ideal for wedding dates. Popular dates fill up quickly — especially May through October.',
@@ -42,7 +39,7 @@ export const servicesFaqs: Faq[] = [
   },
   {
     q: 'Do hair extensions cost extra?',
-    a: `Yes. Application of your own hair extensions is $${t.extras[1].fee} per set. Studio-provided extensions are $${t.extras[2].fee} per extension (includes application).`,
+    a: `Yes. Application of your own hair extensions is $${site.policies.addOns.clientHairExtensions.fee} per set. Studio-provided extensions are $${site.policies.addOns.studioHairExtensions.fee} per extension (includes application).`,
   },
   {
     q: 'How should I prep my face and hair before the appointment?',

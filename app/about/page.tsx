@@ -2,9 +2,14 @@ import type { Metadata } from 'next'
 import { site } from '@/config/site'
 import { content, fillTemplate } from '@/config/content'
 import { getImagesFromFolder, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
+import { buildCloudinaryUrl } from '@/lib/cloudinaryUrl'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
+
+// "10+" → 10. site.experience is a display string; schema wants a number.
+const yearsInBusiness = parseInt(site.experience, 10) || undefined
 
 export const metadata: Metadata = {
   title: `About ${site.artistName}`,
@@ -15,8 +20,44 @@ export const metadata: Metadata = {
 export default async function AboutPage() {
   const aboutImages = await getImagesFromFolder(CLOUDINARY_FOLDERS.about)
   const portraitPublicId = aboutImages[0]?.public_id
+
+  const businessUrl  = `https://${site.canonicalHost}`
+  const portraitUrl  = portraitPublicId
+    ? buildCloudinaryUrl(portraitPublicId, { width: 800, height: 800, crop: 'fill' })
+    : undefined
+
+  // Person schema — E-E-A-T signal. Google increasingly weighs author/operator
+  // identity, especially for beauty/wedding content. Description reuses
+  // site.about (single source) with tokens expanded.
+  const personSchema = {
+    '@context':  'https://schema.org',
+    '@type':     'Person',
+    '@id':       `${businessUrl}/about#artist`,
+    name:        site.artistName,
+    ...(site.artist.fullLegalName ? { alternateName: site.artist.fullLegalName } : {}),
+    jobTitle:    'Bridal Makeup Artist',
+    description: fillTemplate(site.about),
+    ...(portraitUrl ? { image: portraitUrl } : {}),
+    knowsAbout:  site.artist.knowsAbout,
+    ...(yearsInBusiness ? { hasOccupation: {
+      '@type':         'Occupation',
+      name:            'Bridal Makeup Artist',
+      experienceRequirements: `${yearsInBusiness}+ years`,
+    } } : {}),
+    worksFor:    { '@type': 'BeautyStudio', '@id': `${businessUrl}#business`, name: site.name },
+    address:     { '@type': 'PostalAddress', ...site.addressStructured },
+    sameAs:      [
+      site.instagram ? `https://www.instagram.com/${site.instagram}/` : '',
+      site.facebook,
+    ].filter(Boolean),
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -24,14 +65,17 @@ export default async function AboutPage() {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${site.canonicalHost}` },
-              { '@type': 'ListItem', position: 2, name: 'About', item: `https://${site.canonicalHost}/about` },
+              { '@type': 'ListItem', position: 1, name: 'Home', item: businessUrl },
+              { '@type': 'ListItem', position: 2, name: 'About', item: `${businessUrl}/about` },
             ],
           }),
         }}
       />
 
       <section className="pt-32 pb-16 px-6 bg-ivory">
+        <div className="max-w-7xl mx-auto">
+          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
+        </div>
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
           <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-ivory-3 sticky top-24">
             {portraitPublicId ? (
@@ -81,7 +125,7 @@ export default async function AboutPage() {
             <div className="border-t border-ivory-4 pt-10">
               <SectionHeader eyebrow={content.aboutPage.brandsEyebrow} title={content.aboutPage.brandsTitle} />
               <div className="flex flex-wrap gap-3">
-                {content.aboutPage.brands.map((brand) => (
+                {site.brands.map((brand) => (
                   <span
                     key={brand}
                     className="px-4 py-2 rounded-full border border-gold-pale text-gold-dim text-sm"

@@ -4,6 +4,7 @@ import { features } from '@/config/features'
 import { content } from '@/config/content'
 import { getImagesFromFolder, getBeforeAfterPairs, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { PortfolioGrid } from './PortfolioGrid'
 import { BeforeAfter } from '@/components/sections/BeforeAfter'
 
@@ -43,6 +44,7 @@ export default async function PortfolioPage() {
 
       <section className="pt-32 pb-16 px-6 bg-ivory">
         <div className="max-w-7xl mx-auto">
+          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Portfolio' }]} />
           <SectionHeader
             eyebrow={content.portfolioPage.eyebrow}
             title={content.portfolioPage.title}

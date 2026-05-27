@@ -1,6 +1,14 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { site } from '@/config/site'
 import { content } from '@/config/content'
+
+// Tell crawlers not to index the 404 itself — soft-404 indexing wastes crawl
+// budget and clutters Search Console. The page still renders normally for users.
+export const metadata: Metadata = {
+  title:  '404 — Page not found',
+  robots: { index: false, follow: true },
+}
 
 export default function NotFound() {
   return (

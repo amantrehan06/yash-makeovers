@@ -4,7 +4,7 @@ import { packages, formatPrice } from '@/config/packages'
 import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
-import { FAQAccordion } from './FAQAccordion'
+import { FAQAccordion } from '@/components/ui/FAQAccordion'
 import { servicesFaqs } from './faqs'
 
 // Compose the meta description from the same packages config the page renders.

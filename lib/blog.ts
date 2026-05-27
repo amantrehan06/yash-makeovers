@@ -22,6 +22,7 @@ function readPostFile(filename: string): BlogPost | null {
     slug,
     title:         String(data.title       ?? ''),
     date:          String(data.date        ?? ''),
+    updated:       data.updated ? String(data.updated) : undefined,
     excerpt:       String(data.excerpt     ?? ''),
     category:      data.category   as BlogCategory,
     readTime:      String(data.readTime    ?? '5 min read'),

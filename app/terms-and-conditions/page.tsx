@@ -4,16 +4,24 @@ import { site } from '@/config/site'
 import { content } from '@/config/content'
 import { formatPrice } from '@/config/packages'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { Button } from '@/components/ui/Button'
 
-// Each item in `extras` has different optional fields (some have `fee`,
-// some have `note`, some have both). `as const` on the site object creates
-// a narrow union — typing it explicitly lets us read `fee`/`note` directly.
-type Extra = { name: string; fee?: number; note?: string }
+// `terms.extras` items either reference an addOn by id (price + label flow
+// from site.policies.addOns) OR are standalone (client-provided, no fee).
+// Resolve to a uniform shape here so the render below stays simple.
+type ExtraRow = { name: string; fee?: number; note?: string }
 
-const t      = site.policies.terms
-const cn     = content.termsPage
-const extras = t.extras as readonly Extra[]
+const t  = site.policies.terms
+const cn = content.termsPage
+
+const extras: readonly ExtraRow[] = t.extras.map((x): ExtraRow => {
+  if ('addOnId' in x) {
+    const addOn = site.policies.addOns[x.addOnId]
+    return { name: addOn.label, fee: addOn.fee, note: 'note' in x ? x.note : undefined }
+  }
+  return x
+})
 
 export const metadata: Metadata = {
   title:       cn.title,
@@ -40,6 +48,7 @@ export default function TermsPage() {
 
       <section className="pt-32 pb-12 px-6 bg-ivory">
         <div className="max-w-3xl mx-auto">
+          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Terms & Conditions' }]} />
           <SectionHeader
             eyebrow={cn.eyebrow}
             title={cn.title}

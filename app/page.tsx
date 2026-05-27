@@ -1,7 +1,12 @@
 import type { Metadata } from 'next'
 import { site } from '@/config/site'
+import { seo } from '@/config/seo'
 import { features } from '@/config/features'
+import { cities } from '@/config/cities'
+import { reviews } from '@/config/reviews'
+import { homepageFaqs } from '@/config/faq'
 import { getBeforeAfterPairs } from '@/lib/cloudinary'
+import { buildCloudinaryUrl } from '@/lib/cloudinaryUrl'
 import { Hero } from '@/components/sections/Hero'
 import { Marquee } from '@/components/sections/Marquee'
 import { About } from '@/components/sections/About'
@@ -12,6 +17,7 @@ import { Reviews } from '@/components/sections/Reviews'
 import { Cities } from '@/components/sections/Cities'
 import { InquiryForm } from '@/components/sections/InquiryForm'
 import { FeaturedWork } from '@/components/sections/FeaturedWork'
+import { FAQ } from '@/components/sections/FAQ'
 
 // ISR: rebuild every 8h to match the Cloudinary unstable_cache TTL in
 // lib/cloudinary.ts. Serves the homepage statically from the edge so the
@@ -29,37 +35,116 @@ export const metadata: Metadata = {
   },
 }
 
+// Maps day name to its schema.org URI (required form for OpeningHoursSpecification).
+const DAY_URI: Record<string, string> = {
+  Monday:    'https://schema.org/Monday',
+  Tuesday:   'https://schema.org/Tuesday',
+  Wednesday: 'https://schema.org/Wednesday',
+  Thursday:  'https://schema.org/Thursday',
+  Friday:    'https://schema.org/Friday',
+  Saturday:  'https://schema.org/Saturday',
+  Sunday:    'https://schema.org/Sunday',
+}
+
 export default async function HomePage() {
   // Pre-fetch the first before/after pair on the server so the slider has real
   // images without any client-side loading flicker.
   const firstPair = features.beforeAfter ? (await getBeforeAfterPairs())[0] : undefined
 
+  // ── LocalBusiness schema (BeautyStudio) ──────────────────────────────
+  // Single object built from config — no hardcoded values. Empty branding
+  // image fields are omitted (Google validates "missing" cleanly; "empty
+  // string" is treated as broken).
+  const businessUrl = `https://${site.canonicalHost}`
+
+  const sameAs = [
+    site.instagram   ? `https://www.instagram.com/${site.instagram}/` : '',
+    site.facebook,
+    site.googleBusiness,
+  ].filter(Boolean)
+
+  const logoUrl = site.branding.logoPublicId
+    ? buildCloudinaryUrl(site.branding.logoPublicId, { width: 512, height: 512, crop: 'fill' })
+    : `${businessUrl}/icon.png`
+
+  const imageUrl = site.branding.ogImagePublicId
+    ? buildCloudinaryUrl(site.branding.ogImagePublicId, { width: 1200, height: 630, crop: 'fill' })
+    : undefined
+
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type':    'BeautyStudio',
+    '@id':      `${businessUrl}#business`,
+    name:       site.name,
+    telephone:  site.phone,
+    email:      site.email,
+    url:        businessUrl,
+    logo:       logoUrl,
+    ...(imageUrl ? { image: imageUrl } : {}),
+    address: {
+      '@type': 'PostalAddress',
+      ...site.addressStructured,
+    },
+    geo: {
+      '@type':    'GeoCoordinates',
+      latitude:   site.geo.latitude,
+      longitude:  site.geo.longitude,
+    },
+    sameAs,
+    openingHoursSpecification: site.hours.map((h) => ({
+      '@type':     'OpeningHoursSpecification',
+      dayOfWeek:   h.days.map((d) => DAY_URI[d]),
+      opens:       h.opens,
+      closes:      h.closes,
+    })),
+    // Real cities served — proper City objects, not parsed keyword fragments.
+    areaServed: cities.map((c) => ({
+      '@type': 'City',
+      name:    c.name,
+      '@id':   `${businessUrl}/${c.slug}`,
+    })),
+    // Topical keywords for AI/LLM crawlers (gemini, perplexity) that prefer
+    // explicit keyword arrays. Google ignores it for ranking but does parse it.
+    keywords: seo.keywords.join(', '),
+    priceRange: '$$$',
+    aggregateRating: {
+      '@type':     'AggregateRating',
+      ratingValue: site.googleRating,
+      reviewCount: site.googleReviewCount,
+    },
+    // Concrete reviews back up the AggregateRating — required to stay
+    // policy-compliant with Google's review rich-result guidelines.
+    review: reviews.map((r) => ({
+      '@type':       'Review',
+      author:        { '@type': 'Person', name: r.author },
+      reviewRating:  { '@type': 'Rating', ratingValue: r.rating, bestRating: 5 },
+      datePublished: r.datePublished,
+      reviewBody:    r.body,
+    })),
+  }
+
+  // ── FAQPage schema — mirrors what FAQ component renders visibly ──────
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type':    'FAQPage',
+    mainEntity: homepageFaqs.map((f) => ({
+      '@type':         'Question',
+      name:            f.q,
+      acceptedAnswer:  { '@type': 'Answer', text: f.a },
+    })),
+  }
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BeautyStudio',
-            name: site.name,
-            telephone: site.phone,
-            email: site.email,
-            url: `https://${site.canonicalHost}`,
-            address: {
-              '@type': 'PostalAddress',
-              ...site.addressStructured,
-            },
-            areaServed: site.seo.keywords.map((k) => k.split(' ').pop()).filter(Boolean),
-            priceRange: '$$$',
-            aggregateRating: {
-              '@type': 'AggregateRating',
-              ratingValue: site.googleRating,
-              reviewCount: site.googleReviewCount,
-            },
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       <Hero />
       <Marquee />
       <About />
@@ -74,6 +159,7 @@ export default async function HomePage() {
       {features.priceEstimator && <PriceEstimator />}
       <Reviews />
       <Cities />
+      <FAQ items={homepageFaqs} />
       <InquiryForm />
     </>
   )

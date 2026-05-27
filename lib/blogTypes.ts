@@ -12,6 +12,9 @@ export type BlogCategory = (typeof BLOG_CATEGORIES)[number]
 export interface BlogFrontmatter {
   title:         string
   date:          string
+  // Optional — set when meaningfully edited after publish. Drives
+  // Article.dateModified schema + sitemap lastmod. Falls back to `date`.
+  updated?:      string
   excerpt:       string
   category:      BlogCategory
   readTime:      string

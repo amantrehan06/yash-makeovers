@@ -91,7 +91,8 @@ export const content = {
     whyChooseTitle:    'What sets us apart',
     brandsEyebrow:     'Luxury brands',
     brandsTitle:       'Products used',
-    brands:            ['DIOR', 'Charlotte Tilbury', 'Chanel', 'YSL Beauty', 'Gucci', 'Too Faced'],
+    // Brand LIST lives in site.brands (single source). This file only owns
+    // the headings/copy around it. Read via `site.brands` in components.
     cta:               'Book your date with',  // followed by artist name
   },
 
@@ -175,7 +176,7 @@ import { site } from './site'
 // Example: ['A', 'B', 'C']  →  "A, B, and C"
 // Example: ['A', 'B']       →  "A and B"
 // Example: ['A']            →  "A"
-export function formatBrandList(brands: readonly string[] = content.aboutPage.brands): string {
+export function formatBrandList(brands: readonly string[] = site.brands): string {
   if (brands.length === 0) return ''
   if (brands.length === 1) return brands[0]
   if (brands.length === 2) return `${brands[0]} and ${brands[1]}`

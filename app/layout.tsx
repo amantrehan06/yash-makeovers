@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
@@ -8,6 +8,21 @@ import { FloatingWhatsApp } from '@/components/layout/FloatingWhatsApp'
 import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar'
 import { site } from '@/config/site'
 import { features } from '@/config/features'
+import { buildCloudinaryUrl } from '@/lib/cloudinaryUrl'
+
+// Default social-share image — used as fallback on any page that doesn't
+// declare its own openGraph.images. Empty publicId → omit entirely (Next
+// falls back to the host's favicon for previews).
+const defaultOgImage = site.branding.ogImagePublicId
+  ? [
+      {
+        url:    buildCloudinaryUrl(site.branding.ogImagePublicId, { width: 1200, height: 630, crop: 'fill' }),
+        width:  1200,
+        height: 630,
+        alt:    site.name,
+      },
+    ]
+  : undefined
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -31,21 +46,41 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description: `${site.name} is ${site.addressStructured.addressLocality}'s most trusted bridal makeup artist. ${site.experience} years of experience, ${site.brideCount} brides served across the GTA. Book your ${site.seasonYears} wedding date.`,
+  // hreflang — tells Google this is the Canadian-English version. Even on a
+  // single-locale site, the `x-default` self-reference clears Search Console's
+  // "no hreflang" warning and helps disambiguate from US/UK results.
+  alternates: {
+    languages: {
+      'en-CA':     `https://${site.canonicalHost}`,
+      'x-default': `https://${site.canonicalHost}`,
+    },
+  },
   // Note: meta keywords intentionally not set. Google has ignored them since
-  // ~2009 and identical site-wide values add no SEO value. site.seo.keywords
-  // is still consumed by the homepage LocalBusiness `areaServed` schema.
+  // ~2009 and identical site-wide values add no SEO value. The keyword list
+  // in config/seo.ts is still consumed by the homepage LocalBusiness
+  // `areaServed` schema.
   openGraph: {
     type: 'website',
     siteName: site.name,
     locale: 'en_CA',
+    ...(defaultOgImage ? { images: defaultOgImage } : {}),
   },
   twitter: {
     card: 'summary_large_image',
+    ...(defaultOgImage ? { images: defaultOgImage.map((i) => i.url) } : {}),
   },
   robots: {
     index: true,
     follow: true,
   },
+}
+
+// Next 14 split viewport/themeColor out of metadata. Driven by config so
+// rebrand = change one hex in site.branding.themeColor.
+export const viewport: Viewport = {
+  themeColor:    site.branding.themeColor,
+  width:         'device-width',
+  initialScale:  1,
 }
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID

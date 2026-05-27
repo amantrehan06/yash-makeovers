@@ -30,6 +30,14 @@ export function formatPrice(value: number): string {
   return `$${value.toLocaleString('en-CA')}`
 }
 
+// Lookup helper — throws on unknown id so a typo fails loudly at build, not silently
+// rendering "undefined" into the FAQ or schema.
+export function getPackage(id: string): Package {
+  const pkg = packages.find((p) => p.id === id)
+  if (!pkg) throw new Error(`getPackage: no package with id "${id}"`)
+  return pkg
+}
+
 export const packages: readonly Package[] = [
   {
     id: 'bridal',

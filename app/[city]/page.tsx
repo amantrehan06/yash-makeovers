@@ -10,6 +10,7 @@ import { getImagesFromFolder, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 
 interface Props {
   params: { city: string }
@@ -127,6 +128,7 @@ export default async function CityPage({ params }: Props) {
       {/* HERO */}
       <section className="pt-32 pb-16 px-6 bg-ivory">
         <div className="max-w-7xl mx-auto">
+          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: city.name }]} />
           <div className="grid md:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
             {/* Left: city intro + CTAs */}
             <div>

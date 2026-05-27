@@ -1,11 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import type { Faq } from './faqs'
+// Presentational only. Callers own their faq data — the same array typically
+// also feeds the FAQPage JSON-LD so visible content matches the schema (a
+// hard requirement for Google rich-results eligibility).
+export interface FaqItem { q: string; a: string }
 
-// Presentational only. The faqs array lives in ./faqs.ts so the same data
-// also feeds the FAQPage JSON-LD emitted by app/services/page.tsx.
-export function FAQAccordion({ faqs }: { faqs: readonly Faq[] }) {
+export function FAQAccordion({ faqs }: { faqs: readonly FaqItem[] }) {
   const [open, setOpen] = useState<number | null>(null)
 
   return (

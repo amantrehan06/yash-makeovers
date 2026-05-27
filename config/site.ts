@@ -19,7 +19,26 @@ export const site = {
   // Derived — never edit directly. Update `addressStructured` instead.
   address: `${addressStructured.streetAddress}, ${addressStructured.addressLocality} ${addressStructured.addressRegion} ${addressStructured.postalCode}`,
   addressStructured,
-  baseCity: 'Brampton, ON',
+
+  // ── Geo coordinates (LocalBusiness schema — critical for local pack ranking) ──
+  // Get from: maps.google.com → search the studio → right-click the pin →
+  // click the "lat, lng" line at the top to copy. Paste here as numbers.
+  geo: {
+    latitude:  43.69394533368765,   // ← FILL e.g. 43.7315
+    longitude: -79.85042919000966,   // ← FILL e.g. -79.7624
+  },
+
+  // ── Opening hours (LocalBusiness schema → eligible for SERP hours panel) ──
+  // Use 24-hr "HH:MM". One entry per day-group with identical hours.
+  // If you're strictly by-appointment-only, replace the array with:
+  //   hours: 'by-appointment' as const,
+  hours: [
+    { days: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '06:00', closes: '22:00' },
+  ],
+
+  // Derived from addressStructured — "Brampton, ON". Single source: edit the
+  // address fields above and this updates everywhere ({baseCity} token, schema, meta).
+  baseCity: `${addressStructured.addressLocality}, ${addressStructured.addressRegion}`,
   // Bare apex — used for display contexts (footer text, OG image, signatures)
   // and email FROM addresses where 'www.' looks awkward.
   domain: 'yashmakeovers.com',
@@ -78,6 +97,21 @@ but for making every bride feel comfortable, confident, and truly seen.`,
     earlyMorningFee:       100,
     earlyMorningThreshold: '4:30–6:00 AM',
 
+    // ── Optional add-ons (used by FAQ, services page, estimator) ──
+    // Single source of truth for every à-la-carte service. Edit a price here
+    // and it propagates to FAQ answers and any future add-on UI.
+    addOns: {
+      airbrush:              { fee: 40, label: 'Airbrush application' },
+      clientHairExtensions:  { fee: 35, label: "Client's own hair extension application" },
+      studioHairExtensions:  { fee: 75, label: 'Studio-provided hair extensions', unit: 'per extension' },
+      blowDryWetHair:        { fee: 20, label: 'Blow-dry on wet hair' },
+      bridalDupattaSetting:  { fee: 50, label: 'Bridal dupatta setting' },
+      partyDupattaSetting:   { fee: 30, label: 'Party dupatta setting' },
+      jewelrySetting:        { fee: 20, label: 'Jewelry setting' },
+      premiumMinkLashes:     { fee: 20, label: 'Premium mink lashes' },
+      touchupKit:            { fee: 25, label: 'Touchup kit' },
+    },
+
     // ── Consultation phone call ──
     // Standard process — included with Bridal and Pre-Bridal packages.
     consultation: {
@@ -117,11 +151,15 @@ but for making every bride feel comfortable, confident, and truly seen.`,
       hairPrep: 'For the hairstyling process, please wash your hair thoroughly using shampoo only — refrain from applying conditioner or other hair products. We recommend drying your hair straight the night before your appointment.',
 
       // 5. Excluded items / additional charges
+      // Items reference `addOns` by id — the fee/label flows from there so
+      // there's one source of truth for every price. `note` overrides on a
+      // per-context basis (T&C wording can differ from a generic add-on label).
+      // For client-provided items with no fee, use `name` + `note` (no addOnId).
       extras: [
         { name: 'Hair accessories (flowers, decorative items)', note: 'Clients provide; no application charge' },
-        { name: 'Client\'s own hair extensions',                fee: 35, note: 'per set, includes application' },
-        { name: 'Studio-provided hair extensions',              fee: 75, note: 'per extension, includes application' },
-        { name: 'Blow-drying on wet hair',                      fee: 20 },
+        { addOnId: 'clientHairExtensions', note: 'per set, includes application'        },
+        { addOnId: 'studioHairExtensions', note: 'per extension, includes application'  },
+        { addOnId: 'blowDryWetHair' },
       ],
 
       // 6. Getting-ready shots
@@ -149,13 +187,42 @@ but for making every bride feel comfortable, confident, and truly seen.`,
     },
   },
 
-  seo: {
-    keywords: [
-      'bridal makeup artist Brampton',
-      'bridal makeup Toronto',
-      'South Asian bridal makeup GTA',
-      'makeup artist near me Brampton',
-      'wedding makeup artist Mississauga',
-    ],
+  // Luxury brands used in the studio. Surfaces in FAQ answers and the
+  // {brands} template token (see whyChoose). Edit here, updates everywhere.
+  brands: ['DIOR', 'Charlotte Tilbury', 'Chanel', 'YSL Beauty', 'Gucci', 'Too Faced'],
+
+  // ── Branding (theme color + default OG image + logo for schema) ──
+  // Leave image fields empty until uploaded — wiring falls back gracefully:
+  //   ogImagePublicId empty → no social-share card image (title/desc only)
+  //   logoPublicId    empty → uses /icon.png (already in /app)
+  branding: {
+    themeColor:      '#bfa46f',  // ← VERIFY exact brand gold hex (used in browser chrome / PWA)
+    // 1200×630 image used for social share previews (WhatsApp, FB, X, iMessage, LinkedIn).
+    // When ready: upload to Cloudinary at path `yash-makeovers/og/og-default`
+    // then paste the public_id here (e.g. 'yash-makeovers/og/og-default').
+    ogImagePublicId: '',
+    // Square brand logo used in Article.publisher.logo JSON-LD (≥112×112, ideally 512×512 PNG/SVG).
+    // When ready: upload to Cloudinary at path `yash-makeovers/brand/logo-square`
+    // then paste the public_id here (e.g. 'yash-makeovers/brand/logo-square').
+    logoPublicId:    '',
   },
+
+  // ── Artist details (Person schema for E-E-A-T on /about) ──
+  // Only fields NOT already on `site` live here. The Person schema's
+  // `description` reads from `site.about` (with tokens expanded) and the
+  // `image` reads from the Cloudinary folder auto-fetch in app/about/page.tsx
+  // (yash-makeovers/about/*) — no separate image field needed here.
+  artist: {
+    knowsAbout: [                                            // ← edit to taste — Google reads these as topical expertise signals
+      'Bridal makeup',
+      'South Asian bridal makeup',
+      'Airbrush makeup',
+      'Bridal Makeup and Hair',
+      'Bridal hair styling',
+    ],
+    fullLegalName: '',  // ← optional — FILL only if different from site.artistName (e.g. 'Yashpreet Kaur')
+    // Note: years in business is derived from site.experience ('10+' → 10)
+    // at the schema wiring step. Edit site.experience to update everywhere.
+  },
+
 } as const
