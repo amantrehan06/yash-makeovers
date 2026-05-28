@@ -10,6 +10,14 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { ReadingProgress } from '@/components/blog/ReadingProgress'
 import { AuthorBio } from '@/components/blog/AuthorBio'
 import { RelatedPosts } from '@/components/blog/RelatedPosts'
+import {
+  PackagePrice,
+  PriceTable,
+  TravelFees,
+  AddOnPrice,
+  Stat,
+  CityCallout,
+} from '@/components/blog/BlogConfigComponents'
 
 // Rough word count for Article schema. ~200 words/min × readTime, or split
 // the content body when readTime isn't a clean integer.
@@ -91,6 +99,16 @@ const mdxComponents = {
   strong: (props: React.HTMLAttributes<HTMLElement>) => (
     <strong className="text-dark font-semibold" {...props} />
   ),
+
+  // Config-aware components. Posts call these by name and get live values
+  // from config — so a price change in packages.ts or site.ts auto-updates
+  // every blog post on the next deploy. See components/blog/BlogConfigComponents.tsx.
+  PackagePrice,
+  PriceTable,
+  TravelFees,
+  AddOnPrice,
+  Stat,
+  CityCallout,
 }
 
 export default function BlogPostPage({ params }: Props) {
