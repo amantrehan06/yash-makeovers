@@ -138,7 +138,7 @@ export const cities: readonly City[] = [
     angle: 'multicultural, premium clientele',
     metaTitle: 'Mississauga Wedding Makeup Artist — On-Site & Studio',
     metaDescription:
-      'Bridal makeup artist serving Mississauga\'s premium banquet halls and intimate venues. {experience} years of experience and luxury-grade products. Book {artistName} for your {seasonYears} wedding.',
+      "Pakistani and Afghan bridal makeup and hair specialist in Mississauga. {experience} years across Mehndi, Nikkah, and reception. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Mississauga',
     subtitle: 'Pakistani and Afghan bridal makeup and hair specialist for Mississauga brides.',
     geo: { latitude: 43.5890, longitude: -79.6441 },
@@ -209,7 +209,7 @@ export const cities: readonly City[] = [
     angle: 'intimate, community feel',
     metaTitle: 'Etobicoke Bridal Makeup Artist — On-Location Service',
     metaDescription:
-      "Calm, family-feel bridal makeup for Etobicoke weddings. {artistName} brings {experience} years of expertise and luxury products to your venue. Book for {seasonYears}.",
+      "Bridal makeup and hair for Etobicoke brides. On-location service, {experience} years experience, luxury products. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Etobicoke',
     subtitle: 'Bridal makeup and hair for Etobicoke brides. On-location service across the area.',
     geo: { latitude: 43.6205, longitude: -79.5132 },
@@ -245,7 +245,7 @@ export const cities: readonly City[] = [
     angle: 'luxury, high-budget weddings',
     metaTitle: 'Oakville Luxury Bridal Makeup Artist & Hair',
     metaDescription:
-      "Luxury bridal makeup for Oakville weddings at Glen Abbey, Le Dôme, and Oakville's grand estate venues. HD-rated luxury formulas. Book {artistName} for {seasonYears}.",
+      "Luxury bridal makeup artist for Oakville brides. {experience} years across Sikh ceremonies and white-wedding receptions. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Oakville',
     subtitle: 'Luxury bridal makeup artist offering bridal makeup and hair for Oakville brides.',
     geo: { latitude: 43.4675, longitude: -79.6877 },
@@ -314,10 +314,10 @@ export const cities: readonly City[] = [
     name: 'Scarborough',
     province: 'ON',
     isHome: false,
-    angle: 'South Asian + Caribbean multicultural',
+    angle: 'Pakistani + Afghan bridal hub',
     metaTitle: 'Scarborough Pakistani & Afghan Bridal Makeup Artist',
     metaDescription:
-      "Bridal makeup serving Scarborough's diverse South Asian and Caribbean wedding scene. Skilled across every skin tone, hair texture, and tradition. Book {artistName} for {seasonYears}.",
+      "Pakistani and Afghan bridal makeup and hair specialist in Scarborough. {experience} years of expertise. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Scarborough',
     subtitle: 'Pakistani and Afghan bridal makeup and hair specialist for Scarborough brides.',
     geo: { latitude: 43.7764, longitude: -79.2318 },
@@ -352,7 +352,7 @@ export const cities: readonly City[] = [
     angle: 'South Asian + East Asian multicultural',
     metaTitle: 'Markham Bridal Makeup Artist for Multicultural Weddings',
     metaDescription:
-      "Bridal makeup for Markham's South Asian and East Asian wedding traditions. Fusion bridal looks done with care and a deep cross-cultural eye. Book {artistName} for {seasonYears}.",
+      "Bridal makeup and hair for Markham's multicultural weddings. {experience} years of experience at venues across the city. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Markham',
     subtitle: 'Bridal makeup and hair for Markham brides. Trusted across multicultural weddings.',
     geo: { latitude: 43.8561, longitude: -79.3370 },
@@ -389,7 +389,7 @@ export const cities: readonly City[] = [
     angle: 'urban, multicultural, accessible',
     metaTitle: 'North York Bridal Makeup Artist & Hair Service',
     metaDescription:
-      "Bridal makeup for North York weddings — urban, multicultural, accessible. {artistName} travels into Don Mills, Bayview, and the Yonge corridor regularly. Book for {seasonYears}.",
+      "Bridal makeup and hair for North York brides and the Yonge corridor. {artistName} travels into Don Mills and Bayview. Book for {seasonYears}.",
     h1: 'Bridal Makeup Artist in North York',
     subtitle: 'Bridal makeup and hair for North York brides and the Yonge corridor.',
     geo: { latitude: 43.7615, longitude: -79.4111 },
