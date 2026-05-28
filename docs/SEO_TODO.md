@@ -20,6 +20,7 @@ Last updated: 2026-05-27 · Status: ~9.2/10 technical SEO score
 - Person schema on /about (E-E-A-T): name, jobTitle, description (from site.about), image from Cloudinary portrait folder, knowsAbout, hasOccupation, worksFor → BeautyStudio @id, sameAs
 - Article schema enriched: image, articleSection, wordCount, dateModified from MDX `updated` field, publisher.logo
 - **Per-city Service schema** with geo, areaServed.City, provider @id-chained to BeautyStudio, AggregateOffer derived from packages config — emitted on every /[city] page (S1 ✓)
+- **Per-package Product + Offer schema** on /services — replaces generic Service schema. Each package gets seller @id-chain to BeautyStudio, AggregateRating inheritance (4.9★ from 158 reviews), availability: InStock. Unlocks Google's commercial SERP rich card. `priceValidUntil` intentionally omitted (open-ended discount); add `discountEndsOn?` to Package and uncomment in lib/schema.ts when a real end date exists (S2 ✓)
 - FAQPage JSON-LD on /services only (concentrated for max rich-result eligibility — visible FAQ still on both / and /services for UX)
 - BreadcrumbList: extracted to `lib/schema.ts` helper, auto-emitted by `<Breadcrumbs>` component on all 7 pages
 
@@ -61,19 +62,6 @@ Last updated: 2026-05-27 · Status: ~9.2/10 technical SEO score
 ## 🔴 SEO RANKING WORK (the actual Google-ranking levers)
 
 These are the items most likely to move SERP positions in 4-12 weeks.
-
-### S2 — `Product` + `Offer` schema with `priceValidUntil` for the bridal discount
-**Why:** Current `Service` schema on /services is fine, but `Product` + `Offer` unlocks the strikethrough/price-drop **SERP rich card** in Google. For a commercial site with a live discount ($600 from $750), this is a real CTR multiplier on `services` queries.
-
-**Steps:**
-1. Add `discountEndsOn?: string` field to `Package` interface in `config/packages.ts`
-2. Add `buildProductSchema(pkg)` helper to `lib/schema.ts`
-3. Emit one Product per package on /services
-4. Include `priceValidUntil`, `availability: InStock`, `seller: { @id }`
-
-**Effort:** ~1 hour. **Impact:** MEDIUM-HIGH (CTR boost on services query).
-
----
 
 ### S3 — Upload OG image (1200×630) + square logo to Cloudinary
 **Why:** Every WhatsApp / iMessage / LinkedIn / FB / X share currently has NO image preview card. This is the single biggest social-CTR lever you can pull. Once uploaded, every page automatically renders branded preview cards.

@@ -7,6 +7,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { PackageCard } from '@/components/ui/PackageCard'
 import { FAQAccordion } from '@/components/ui/FAQAccordion'
 import { faqs } from '@/config/faq'
+import { buildPackageProductSchema } from '@/lib/schema'
 
 // Compose the meta description from the same packages config the page renders.
 const packagesSummary = packages.map((p) => `${p.name} (${formatPrice(p.price)})`).join(', ')
@@ -35,30 +36,15 @@ export default function ServicesPage() {
         }}
       />
 
+      {/* One Product schema per package. Upgrades from generic Service →
+          Product so each package becomes eligible for Google's commercial
+          SERP rich card (price + availability + ★ rating). Built via
+          buildPackageProductSchema() in lib/schema.ts so the shape edits
+          in one place. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            packages.map((pkg) => ({
-              '@context':   'https://schema.org',
-              '@type':      'Service',
-              name:         `${pkg.name} Makeup and Hair`,
-              description:  pkg.tagline,
-              provider:     { '@type': 'BeautyStudio', name: site.name },
-              areaServed:   'Greater Toronto Area',
-              offers: {
-                '@type':         'Offer',
-                price:           String(pkg.price),
-                priceCurrency:   'CAD',
-                priceSpecification: {
-                  '@type':         'UnitPriceSpecification',
-                  price:           String(pkg.price),
-                  priceCurrency:   'CAD',
-                  unitText:        'per person per event',
-                },
-              },
-            }))
-          ),
+          __html: JSON.stringify(packages.map((pkg) => buildPackageProductSchema(pkg))),
         }}
       />
 
