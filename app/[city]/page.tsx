@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/Button'
 import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { PackageCard } from '@/components/ui/PackageCard'
+import { ReviewCard } from '@/components/ui/ReviewCard'
 
 interface Props {
   params: { city: string }
@@ -306,17 +307,7 @@ export default async function CityPage({ params }: Props) {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
             {featuredReviews.map((review) => (
-              <div key={review.id} className="bg-dark-2 rounded-2xl p-8 border border-dark-3">
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: review.rating }).map((_, i) => (
-                    <span key={i} className="text-gold text-sm">⭐</span>
-                  ))}
-                </div>
-                <p className="text-ivory-3 text-sm leading-relaxed mb-6">
-                  &ldquo;{review.body}&rdquo;
-                </p>
-                <p className="text-ivory font-medium text-sm">{review.author}</p>
-              </div>
+              <ReviewCard key={review.id} review={review} />
             ))}
           </div>
         </div>

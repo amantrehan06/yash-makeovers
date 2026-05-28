@@ -2,6 +2,7 @@ import { reviews } from '@/config/reviews'
 import { site } from '@/config/site'
 import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { ReviewCard } from '@/components/ui/ReviewCard'
 
 export function Reviews() {
   return (
@@ -25,17 +26,7 @@ export function Reviews() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {reviews.map((review) => (
-            <div key={review.id} className="bg-dark-2 rounded-2xl p-8 border border-dark-3">
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: review.rating }).map((_, i) => (
-                  <span key={i} className="text-gold text-sm">⭐</span>
-                ))}
-              </div>
-              <p className="text-ivory-3 text-sm leading-relaxed mb-6">
-                &ldquo;{review.body}&rdquo;
-              </p>
-              <p className="text-ivory font-medium text-sm">{review.author}</p>
-            </div>
+            <ReviewCard key={review.id} review={review} />
           ))}
         </div>
       </div>
