@@ -20,6 +20,7 @@ Last updated: 2026-05-27 · Status: ~9.2/10 technical SEO score
 - Person schema on /about (E-E-A-T): name, jobTitle, description (from site.about), image from Cloudinary portrait folder, knowsAbout, hasOccupation, worksFor → BeautyStudio @id, sameAs
 - Article schema enriched: image, articleSection, wordCount, dateModified from MDX `updated` field, publisher.logo
 - **Per-city Service schema** with geo, areaServed.City, provider @id-chained to BeautyStudio, AggregateOffer derived from packages config — emitted on every /[city] page (S1 ✓)
+- **Varied metaTitle for top 5 cities** (Brampton, Mississauga, Toronto, Vaughan, Scarborough) — each highlights the city's unique angle (South Asian, on-site/studio, HD editorial, temple weddings, Caribbean+South Asian) to dodge SERP suppression on near-duplicate titles. Remaining 5 cities still pending (S4 — partial)
 - **Per-package Service schema** on /services — improved (NOT Product — bridal makeup is a service, not a physical good). Each Service: @id-chained to BeautyStudio via `provider`, AggregateRating inheritance (4.9★ from 158 reviews), availability: InStock, UnitPriceSpecification per person per event, areaServed: GTA. `priceValidUntil` intentionally omitted (open-ended discount); add `discountEndsOn?` to Package and emit conditionally when a real end date exists (S2 ✓)
 - FAQPage JSON-LD on /services only (concentrated for max rich-result eligibility — visible FAQ still on both / and /services for UX)
 - BreadcrumbList: extracted to `lib/schema.ts` helper, auto-emitted by `<Breadcrumbs>` component on all 7 pages
@@ -76,18 +77,10 @@ These are the items most likely to move SERP positions in 4-12 weeks.
 
 ---
 
-### S4 — Hand-vary 3-5 city page `metaTitle` values
-**Why:** All 10 cities currently use the pattern `"Bridal Makeup Artist in {City}, ON"`. Google penalizes near-duplicate titles via SERP suppression — only one of the cities wins for any shared keyword. Varying the angle per city dodges this.
-
-**Examples:**
-- Brampton (home): `"Brampton Bridal Makeup — South Asian Specialist | Yash Makeovers"`
-- Mississauga: `"Mississauga Wedding Makeup at Your Venue — On-Site Service"`
-- Toronto: `"Toronto Bridal Makeup & Hair — HD Photography Ready"`
-- Etobicoke: `"Etobicoke Bridal Beauty — Travel + Studio Service"`
-
-**Steps:** Edit `metaTitle` field on 4-5 city entries in `config/cities.ts`.
-
-**Effort:** 30 min. **Impact:** MEDIUM (resolves SERP suppression on shared keywords).
+### S4 — Hand-vary remaining 5 city `metaTitle` values (Etobicoke, Oakville, Markham, North York, Richmond Hill)
+**Why:** Top-5 cities (Brampton, Mississauga, Toronto, Vaughan, Scarborough) have unique titles ✓. Remaining 5 still use the duplicate `"Bridal Makeup Artist in {City}, ON"` pattern. Lower-volume cities but same SERP suppression risk applies.
+**Steps:** Edit `metaTitle` field on 5 remaining entries in `config/cities.ts`. Suggested in earlier S4 conversation if reference needed.
+**Effort:** 15 min. **Impact:** LOW-MEDIUM (smaller cities, less search volume).
 
 ---
 
