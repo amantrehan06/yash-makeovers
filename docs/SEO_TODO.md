@@ -218,18 +218,6 @@ Faster page = higher conversion AND better rankings. These are real wins for Yas
 **Fix:** Remove per-item motion; keep only CSS filter button transitions. Possibly drop framer-motion entirely (~40KB bundle savings).
 **Effort:** 1 hour
 
-### P3 — `blurDataURL` fetches real 20×20 from Cloudinary per image
-**Where:** `components/ui/CloudinaryImage.tsx:30-36`
-**Why:** Portfolio page = 18 images = 36 separate Cloudinary transform requests JUST for blur. Bypasses Next/Image, hits rate limits.
-**Fix:** Replace with SVG data URI (single-color rect using `site.branding.themeColor`). Zero network cost.
-**Effort:** 45 min
-
-### P4 — Images served 800×800 to phones
-**Where:** `components/sections/FeaturedWork.tsx:33-39` (and portfolio grid)
-**Why:** `sizes` attribute is set but Cloudinary `src` URL is same regardless of breakpoint. Phones download ~400KB/image they don't need. LCP impact on mobile.
-**Fix:** Build 2-3 Cloudinary URLs in srcSet (400 / 800 / 1200) OR use Cloudinary's `w_auto` responsive transform.
-**Effort:** 1 hour
-
 ---
 
 ## 🚀 Performance polish (MEDIUM, ~2.5 hours total)
