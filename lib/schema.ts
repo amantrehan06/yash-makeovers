@@ -52,7 +52,7 @@ export function buildPackageServiceSchema(pkg: Package) {
     name:          `${pkg.name} Makeup & Hair`,
     description:   pkg.tagline,
     serviceType:   'Bridal Makeup & Hair',
-    category:      'Bridal Beauty Service',
+    category:      site.businessCategory, // matches Google Business Profile
     provider:      { '@type': 'BeautyStudio', '@id': `${businessUrl}#business` },
     areaServed:    { '@type': 'AdministrativeArea', name: 'Greater Toronto Area' },
     offers: {

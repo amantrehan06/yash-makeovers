@@ -109,6 +109,9 @@ export default async function HomePage() {
     // explicit keyword arrays. Google ignores it for ranking but does parse it.
     keywords: seo.keywords.join(', '),
     priceRange: '$$$',
+    // Matches the primary category on Google Business Profile — helps Google
+    // confidently connect this schema with the GBP listing.
+    category: site.businessCategory,
     aggregateRating: {
       '@type':     'AggregateRating',
       ratingValue: site.googleRating,

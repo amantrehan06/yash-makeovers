@@ -12,6 +12,11 @@ const addressStructured = {
 export const site = {
   name: 'Yash Makeovers',
   artistName: 'Yashpreet',
+  // Business category — must match the primary category on your Google
+  // Business Profile (Google cross-references these). Surfaces in schema
+  // `category` fields and SERP knowledge cards. Change here AND in GBP if
+  // you ever rebrand (don't drift — Google notices).
+  businessCategory: 'Make-up artist',
   tagline: 'Your most beautiful moment',
   phone: '+1 (647) 654-7288',
   whatsapp: '16476547288',
