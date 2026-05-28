@@ -139,7 +139,14 @@ export default async function CityPage({ params }: Props) {
               <h1 className="font-serif text-4xl md:text-[56px] text-dark leading-[1.05] tracking-tight mb-6">
                 {city.h1}
               </h1>
-              <p className="text-muted text-lg leading-relaxed mb-8">{fillTemplate(city.intro)}</p>
+              {/* Split intro on \n\n boundaries and render each as its own
+                  <p>. Real paragraph semantics (better for SEO + a11y) instead
+                  of one big block with `whitespace-pre-line`. */}
+              <div className="space-y-4 mb-8">
+                {fillTemplate(city.intro).split('\n\n').map((para, i) => (
+                  <p key={i} className="text-muted text-lg leading-relaxed">{para}</p>
+                ))}
+              </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button href="/contact" size="lg">
                   Book in {city.name}
