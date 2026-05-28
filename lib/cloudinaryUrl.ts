@@ -44,10 +44,13 @@ export function buildCloudinaryUrl(publicId: string, options: BuildUrlOptions = 
     'placeholder'
 
   const parts: string[] = [`f_${format}`, `q_${quality}`, `c_${crop}`]
-  // Smart cropping: when forcing a target aspect ratio (fill/thumb), let
-  // Cloudinary auto-detect the subject (face, important content) and crop
-  // around it. Works for any source aspect ratio.
-  if (crop === 'fill' || crop === 'thumb') parts.push('g_auto')
+  // Smart cropping with face priority: when forcing a target aspect ratio
+  // (fill/thumb), Cloudinary detects the face first and centers the crop on
+  // it. Falls back to general subject detection if no clear face. Critical
+  // for bridal portraits — when cropping a portrait photo to landscape (e.g.
+  // blog cover 16:9), without `g_auto:face` the crop picks the middle of the
+  // image (lehenga/jewellery) and cuts off the bride's face.
+  if (crop === 'fill' || crop === 'thumb') parts.push('g_auto:face')
   if (width)  parts.push(`w_${width}`)
   if (height) parts.push(`h_${height}`)
 
