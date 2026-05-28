@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { site } from '@/config/site'
+import { cities } from '@/config/cities'
 
 export function Footer() {
   return (
@@ -47,24 +48,15 @@ export function Footer() {
           <div>
             <p className="text-xs uppercase tracking-widest text-gold mb-6">Cities served</p>
             <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-              {[
-                'Brampton',
-                'Mississauga',
-                'Toronto',
-                'Etobicoke',
-                'Oakville',
-                'Vaughan',
-                'Scarborough',
-                'Markham',
-                'North York',
-                'Richmond Hill',
-              ].map((city) => (
+              {/* Driven by config/cities.ts — add a city there and it appears
+                  here, in the sitemap, and as a routed page automatically. */}
+              {cities.map((city) => (
                 <Link
-                  key={city}
-                  href={`/${city.toLowerCase().replace(' ', '-')}`}
+                  key={city.slug}
+                  href={`/${city.slug}`}
                   className="text-muted-2 text-sm hover:text-gold-light transition-colors"
                 >
-                  {city}
+                  {city.name}
                 </Link>
               ))}
             </div>
