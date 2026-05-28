@@ -136,9 +136,15 @@ export default async function CityPage({ params }: Props) {
               <p className="text-xs uppercase tracking-widest text-gold mb-4">
                 {city.name}, {city.province}
               </p>
-              <h1 className="font-serif text-4xl md:text-[56px] text-dark leading-[1.05] tracking-tight mb-6">
+              <h1 className="font-serif text-4xl md:text-[56px] text-dark leading-[1.05] tracking-tight mb-4">
                 {city.h1}
               </h1>
+              {/* Keyword-rich subtitle below H1. Bakes "bridal makeup and hair
+                  {city}" and specialty keywords into the first 30 words of the
+                  page for long-tail SEO matching. */}
+              <p className="text-gold-dim text-lg md:text-xl font-medium leading-snug mb-8">
+                {city.subtitle}
+              </p>
               {/* Split intro on \n\n boundaries and render each as its own
                   <p>. Real paragraph semantics (better for SEO + a11y) instead
                   of one big block with `whitespace-pre-line`. */}
