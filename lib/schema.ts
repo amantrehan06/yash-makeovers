@@ -27,36 +27,40 @@ export interface BreadcrumbItem {
  * `item` on every position).
  */
 /**
- * Per-package Product + Offer schema. Emitted on /services (one per package).
+ * Per-package Service schema. Emitted on /services (one per package).
  *
- * `Product` (vs `Service`) is what unlocks Google's commercial SERP rich-result
- * features — price display, "In stock" cue, AggregateRating inheritance from
- * the homepage BeautyStudio. Provider chained via @id so Google understands
- * this isn't a separate vendor.
+ * Bridal makeup is a SERVICE (performed for the client) — not a Product
+ * (physical good you ship). Service is the semantically correct schema.org
+ * type per Google's spec. Don't be tempted to switch to Product just to
+ * chase SERP price-card rich results — Google's structured-data guidelines
+ * specifically warn against mistyping services as products.
  *
- * `priceValidUntil` is intentionally NOT emitted — the discount is open-ended
- * for now. When a real end date is set, add a `discountEndsOn` field to
- * Package and emit `priceValidUntil: pkg.discountEndsOn` conditionally below.
- * Without it, Google still ingests price + ranks the page, just no strikethrough
- * sale-urgency badge in SERP.
+ * The schema still includes the high-value improvements: @id chaining to
+ * homepage BeautyStudio (so Google sees it's the same operation),
+ * AggregateRating inheritance (4.9★ from 158 reviews surfaces in SERP),
+ * availability cue, and explicit areaServed.
+ *
+ * `priceValidUntil` is intentionally NOT emitted — the discount is open-ended.
+ * If a real end date is added later, include it via an optional
+ * `discountEndsOn?: string` field on Package and emit conditionally below.
  */
-export function buildPackageProductSchema(pkg: Package) {
+export function buildPackageServiceSchema(pkg: Package) {
   return {
     '@context':    'https://schema.org',
-    '@type':       'Product',
+    '@type':       'Service',
     '@id':         `${businessUrl}/services#${pkg.id}`,
-    name:          `${pkg.name} Makeup & Hair Package`,
+    name:          `${pkg.name} Makeup & Hair`,
     description:   pkg.tagline,
-    brand:         { '@type': 'Brand', name: site.name },
-    category:      'Bridal Makeup & Hair Service',
+    serviceType:   'Bridal Makeup & Hair',
+    category:      'Bridal Beauty Service',
+    provider:      { '@type': 'BeautyStudio', '@id': `${businessUrl}#business` },
+    areaServed:    { '@type': 'AdministrativeArea', name: 'Greater Toronto Area' },
     offers: {
       '@type':         'Offer',
       url:             `${businessUrl}/services`,
       priceCurrency:   'CAD',
       price:           pkg.price,
       availability:    'https://schema.org/InStock',
-      // Reference the studio so Google knows who's selling this.
-      seller:          { '@type': 'BeautyStudio', '@id': `${businessUrl}#business` },
       priceSpecification: {
         '@type':         'UnitPriceSpecification',
         price:           pkg.price,
@@ -64,8 +68,8 @@ export function buildPackageProductSchema(pkg: Package) {
         unitText:        pkg.priceNote, // e.g. "per person per event"
       },
     },
-    // Inherit the homepage's aggregateRating via @id so each Product card in
-    // SERPs can show the 4.9★ from 158 reviews — significant CTR lift.
+    // Inherit the homepage's aggregateRating so each Service entry can
+    // surface the 4.9★ rating in SERP enrichments.
     aggregateRating: {
       '@type':     'AggregateRating',
       ratingValue: site.googleRating,

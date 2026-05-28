@@ -20,7 +20,7 @@ Last updated: 2026-05-27 · Status: ~9.2/10 technical SEO score
 - Person schema on /about (E-E-A-T): name, jobTitle, description (from site.about), image from Cloudinary portrait folder, knowsAbout, hasOccupation, worksFor → BeautyStudio @id, sameAs
 - Article schema enriched: image, articleSection, wordCount, dateModified from MDX `updated` field, publisher.logo
 - **Per-city Service schema** with geo, areaServed.City, provider @id-chained to BeautyStudio, AggregateOffer derived from packages config — emitted on every /[city] page (S1 ✓)
-- **Per-package Product + Offer schema** on /services — replaces generic Service schema. Each package gets seller @id-chain to BeautyStudio, AggregateRating inheritance (4.9★ from 158 reviews), availability: InStock. Unlocks Google's commercial SERP rich card. `priceValidUntil` intentionally omitted (open-ended discount); add `discountEndsOn?` to Package and uncomment in lib/schema.ts when a real end date exists (S2 ✓)
+- **Per-package Service schema** on /services — improved (NOT Product — bridal makeup is a service, not a physical good). Each Service: @id-chained to BeautyStudio via `provider`, AggregateRating inheritance (4.9★ from 158 reviews), availability: InStock, UnitPriceSpecification per person per event, areaServed: GTA. `priceValidUntil` intentionally omitted (open-ended discount); add `discountEndsOn?` to Package and emit conditionally when a real end date exists (S2 ✓)
 - FAQPage JSON-LD on /services only (concentrated for max rich-result eligibility — visible FAQ still on both / and /services for UX)
 - BreadcrumbList: extracted to `lib/schema.ts` helper, auto-emitted by `<Breadcrumbs>` component on all 7 pages
 

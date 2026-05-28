@@ -7,7 +7,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { PackageCard } from '@/components/ui/PackageCard'
 import { FAQAccordion } from '@/components/ui/FAQAccordion'
 import { faqs } from '@/config/faq'
-import { buildPackageProductSchema } from '@/lib/schema'
+import { buildPackageServiceSchema } from '@/lib/schema'
 
 // Compose the meta description from the same packages config the page renders.
 const packagesSummary = packages.map((p) => `${p.name} (${formatPrice(p.price)})`).join(', ')
@@ -36,15 +36,14 @@ export default function ServicesPage() {
         }}
       />
 
-      {/* One Product schema per package. Upgrades from generic Service →
-          Product so each package becomes eligible for Google's commercial
-          SERP rich card (price + availability + ★ rating). Built via
-          buildPackageProductSchema() in lib/schema.ts so the shape edits
-          in one place. */}
+      {/* One Service schema per package. Bridal makeup is a service, not a
+          Product (which is for physical goods). Service is the correct
+          schema.org type per Google's spec. Helper in lib/schema.ts emits
+          the shape with @id chain to BeautyStudio, AggregateRating, etc. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(packages.map((pkg) => buildPackageProductSchema(pkg))),
+          __html: JSON.stringify(packages.map((pkg) => buildPackageServiceSchema(pkg))),
         }}
       />
 
