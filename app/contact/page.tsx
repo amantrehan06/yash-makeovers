@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { site } from '@/config/site'
 import { content } from '@/config/content'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { InquiryForm } from '@/components/sections/InquiryForm'
 
 export const metadata: Metadata = {
@@ -12,22 +13,17 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${site.canonicalHost}` },
-              { '@type': 'ListItem', position: 2, name: 'Contact', item: `https://${site.canonicalHost}/contact` },
-            ],
-          }),
-        }}
-      />
-
       {/* Spacer for the fixed navbar — form's own SectionHeader is the page title. */}
       <div className="pt-20" />
+
+      <div className="px-6 pt-4">
+        <div className="max-w-3xl mx-auto">
+          <Breadcrumbs
+            currentPath="/contact"
+            items={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
+          />
+        </div>
+      </div>
 
       <InquiryForm />
 

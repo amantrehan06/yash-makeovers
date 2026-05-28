@@ -3,6 +3,7 @@ import { site } from '@/config/site'
 import { packages, formatPrice } from '@/config/packages'
 import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { PackageCard } from '@/components/ui/PackageCard'
 import { FAQAccordion } from '@/components/ui/FAQAccordion'
 import { faqs } from '@/config/faq'
@@ -19,20 +20,6 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home', item: `https://${site.canonicalHost}` },
-              { '@type': 'ListItem', position: 2, name: 'Services', item: `https://${site.canonicalHost}/services` },
-            ],
-          }),
-        }}
-      />
-
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -77,6 +64,10 @@ export default function ServicesPage() {
 
       <section className="pt-32 pb-24 px-6 bg-ivory">
         <div className="max-w-7xl mx-auto">
+          <Breadcrumbs
+            currentPath="/services"
+            items={[{ label: 'Home', href: '/' }, { label: 'Services' }]}
+          />
           <SectionHeader
             eyebrow={content.servicesPage.eyebrow}
             title={content.servicesPage.title}

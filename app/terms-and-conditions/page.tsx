@@ -32,23 +32,12 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type':    'BreadcrumbList',
-            itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home',                item: `https://${site.canonicalHost}` },
-              { '@type': 'ListItem', position: 2, name: 'Terms & Conditions',  item: `https://${site.canonicalHost}/terms-and-conditions` },
-            ],
-          }),
-        }}
-      />
-
       <section className="pt-32 pb-12 px-6 bg-ivory">
         <div className="max-w-3xl mx-auto">
-          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Terms & Conditions' }]} />
+          <Breadcrumbs
+            currentPath="/terms-and-conditions"
+            items={[{ label: 'Home', href: '/' }, { label: 'Terms & Conditions' }]}
+          />
           <SectionHeader
             eyebrow={cn.eyebrow}
             title={cn.title}

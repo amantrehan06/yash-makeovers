@@ -59,23 +59,12 @@ export default async function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home', item: businessUrl },
-              { '@type': 'ListItem', position: 2, name: 'About', item: `${businessUrl}/about` },
-            ],
-          }),
-        }}
-      />
-
       <section className="pt-32 pb-16 px-6 bg-ivory">
         <div className="max-w-7xl mx-auto">
-          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
+          <Breadcrumbs
+            currentPath="/about"
+            items={[{ label: 'Home', href: '/' }, { label: 'About' }]}
+          />
         </div>
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
           <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-ivory-3 sticky top-24">

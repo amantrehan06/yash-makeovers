@@ -102,20 +102,6 @@ export default async function CityPage({ params }: Props) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type':    'BreadcrumbList',
-            itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home',     item: `https://${site.canonicalHost}` },
-              { '@type': 'ListItem', position: 2, name: city.name,  item: `https://${site.canonicalHost}/${city.slug}` },
-            ],
-          }),
-        }}
-      />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
             '@type':    'FAQPage',
             mainEntity: faqs.map((faq) => ({
               '@type': 'Question',
@@ -129,7 +115,10 @@ export default async function CityPage({ params }: Props) {
       {/* HERO */}
       <section className="pt-32 pb-16 px-6 bg-ivory">
         <div className="max-w-7xl mx-auto">
-          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: city.name }]} />
+          <Breadcrumbs
+            currentPath={`/${city.slug}`}
+            items={[{ label: 'Home', href: '/' }, { label: city.name }]}
+          />
           <div className="grid md:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
             {/* Left: city intro + CTAs */}
             <div>

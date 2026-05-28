@@ -145,24 +145,10 @@ export default function BlogPostPage({ params }: Props) {
         }}
       />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type':    'BreadcrumbList',
-            itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home', item: businessUrl },
-              { '@type': 'ListItem', position: 2, name: 'Blog', item: `${businessUrl}/blog` },
-              { '@type': 'ListItem', position: 3, name: post.title, item: postUrl },
-            ],
-          }),
-        }}
-      />
-
       <article className="pt-32 pb-24 px-6 bg-ivory">
         <div className="max-w-3xl mx-auto">
           <Breadcrumbs
+            currentPath={`/blog/${post.slug}`}
             items={[
               { label: 'Home', href: '/' },
               { label: 'Blog', href: '/blog' },

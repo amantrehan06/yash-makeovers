@@ -28,23 +28,12 @@ export default async function PortfolioPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home',      item: `https://${site.canonicalHost}` },
-              { '@type': 'ListItem', position: 2, name: 'Portfolio', item: `https://${site.canonicalHost}/portfolio` },
-            ],
-          }),
-        }}
-      />
-
       <section className="pt-32 pb-16 px-6 bg-ivory">
         <div className="max-w-7xl mx-auto">
-          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Portfolio' }]} />
+          <Breadcrumbs
+            currentPath="/portfolio"
+            items={[{ label: 'Home', href: '/' }, { label: 'Portfolio' }]}
+          />
           <SectionHeader
             eyebrow={content.portfolioPage.eyebrow}
             title={content.portfolioPage.title}
