@@ -17,6 +17,7 @@ import {
   AddOnPrice,
   Stat,
   CityCallout,
+  IndustryRange,
 } from '@/components/blog/BlogConfigComponents'
 
 // Rough word count for Article schema. ~200 words/min × readTime, or split
@@ -109,6 +110,7 @@ const mdxComponents = {
   AddOnPrice,
   Stat,
   CityCallout,
+  IndustryRange,
 }
 
 export default function BlogPostPage({ params }: Props) {

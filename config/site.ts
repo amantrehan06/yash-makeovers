@@ -196,6 +196,14 @@ but for making every bride feel comfortable, confident, and truly seen.`,
   // {brands} template token (see whyChoose). Edit here, updates everywhere.
   brands: ['DIOR', 'Charlotte Tilbury', 'Chanel', 'YSL Beauty', 'Gucci', 'Too Faced'],
 
+  // GTA bridal-makeup market price range — industry-wide context used in
+  // blog posts (e.g. "Bridal makeup in the GTA typically runs $500-$1000").
+  // Update when market shifts. Yashpreet's actual pricing lives in packages.ts.
+  industryPricing: {
+    bridalRangeLow:  500,
+    bridalRangeHigh: 1000,
+  },
+
   // ── Branding (theme color + default OG image + logo for schema) ──
   // Leave image fields empty until uploaded — wiring falls back gracefully:
   //   ogImagePublicId empty → no social-share card image (title/desc only)

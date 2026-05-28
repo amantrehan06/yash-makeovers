@@ -137,6 +137,19 @@ export function Stat({ field }: { field: keyof typeof STAT_MAP }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────
+// IndustryRange — GTA bridal-makeup market range ("$500-$1,000")
+// ─────────────────────────────────────────────────────────────────────
+
+export function IndustryRange() {
+  return (
+    <strong>
+      {formatPrice(site.industryPricing.bridalRangeLow)}-
+      {formatPrice(site.industryPricing.bridalRangeHigh)}
+    </strong>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────────────
 // CityCallout — linked card pointing to a /[city] page with quick facts
 // Used inside blog posts to drive internal link equity to city pages.
 // ─────────────────────────────────────────────────────────────────────
