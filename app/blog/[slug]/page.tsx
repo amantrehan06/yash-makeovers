@@ -166,7 +166,13 @@ export default function BlogPostPage({ params }: Props) {
       />
 
       <article className="pt-32 pb-24 px-6 bg-ivory">
-        <div className="max-w-3xl mx-auto">
+        {/* ─── HERO — magazine split layout ───────────────────────────────
+            Optimized for portrait bridal photos (the source format for ~99%
+            of Yashpreet's images). Image keeps its natural 3:4 portrait
+            aspect instead of being awkward-cropped to 16:9 landscape.
+            Mobile: text first (good for SEO + scanning), image after.
+            Desktop: image left, text right (editorial reading flow). */}
+        <div className="max-w-6xl mx-auto mb-16 md:mb-24">
           <Breadcrumbs
             currentPath={`/blog/${post.slug}`}
             items={[
@@ -175,38 +181,51 @@ export default function BlogPostPage({ params }: Props) {
               { label: post.title },
             ]}
           />
-          <Link href="/blog" className="text-gold text-sm hover:text-gold-dim transition-colors">
+
+          <div className="grid grid-cols-1 md:grid-cols-[5fr_6fr] gap-8 md:gap-14 mt-6 items-center">
+            {/* Portrait image — left on desktop, below text on mobile */}
+            <div className="order-2 md:order-1 relative aspect-[3/4] rounded-2xl bg-ivory-3 overflow-hidden">
+              {post.coverImage ? (
+                <CloudinaryImage
+                  publicId={post.coverImage}
+                  alt={post.title}
+                  width={600}
+                  height={800}
+                  crop="fill"
+                  priority
+                  className="object-cover w-full h-full"
+                  sizes="(max-width: 768px) 92vw, 480px"
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="font-serif text-6xl text-gold-pale">✦</span>
+                </div>
+              )}
+            </div>
+
+            {/* Title + excerpt + meta — right on desktop, top on mobile */}
+            <div className="order-1 md:order-2">
+              <p className="text-xs uppercase tracking-widest text-gold mb-4">{post.category}</p>
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-dark leading-[1.05] tracking-tight mb-6">
+                {post.title}
+              </h1>
+              <p className="text-muted text-lg leading-relaxed mb-8">{post.excerpt}</p>
+              <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-muted">
+                <span>By {site.artistName}</span>
+                <span aria-hidden>·</span>
+                <span>{formatDate(post.date)}</span>
+                <span aria-hidden>·</span>
+                <span>{post.readTime}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ─── BODY — narrower for reading ──────────────────────────────── */}
+        <div className="max-w-3xl mx-auto">
+          <Link href="/blog" className="inline-block mb-10 text-gold text-sm hover:text-gold-dim transition-colors">
             ← Back to blog
           </Link>
-
-          <div className="mt-8 aspect-[16/9] rounded-2xl bg-ivory-3 flex items-center justify-center mb-10 overflow-hidden">
-            {post.coverImage ? (
-              <CloudinaryImage
-                publicId={post.coverImage}
-                alt={post.title}
-                width={1200}
-                height={675}
-                crop="fill"
-                priority
-                className="object-cover w-full h-full"
-                sizes="(max-width: 768px) 100vw, 768px"
-              />
-            ) : (
-              <span className="font-serif text-6xl text-gold-pale">✦</span>
-            )}
-          </div>
-
-          <p className="text-xs uppercase tracking-widest text-gold mb-3">{post.category}</p>
-          <h1 className="font-serif text-4xl md:text-5xl text-dark leading-tight mb-6">
-            {post.title}
-          </h1>
-          <div className="flex gap-3 text-sm text-muted mb-12">
-            <span>By {site.artistName}</span>
-            <span aria-hidden>·</span>
-            <span>{formatDate(post.date)}</span>
-            <span aria-hidden>·</span>
-            <span>{post.readTime}</span>
-          </div>
 
           <div className="text-base">
             <MDXRemote source={post.content} components={mdxComponents} />
