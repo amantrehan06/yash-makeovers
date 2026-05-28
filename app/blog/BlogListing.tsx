@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import { BLOG_CATEGORIES, type BlogCategory, type BlogPost } from '@/lib/blogTypes'
+import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
 
 type Filter = 'All' | BlogCategory
 
@@ -43,9 +44,23 @@ export function BlogListing({ posts }: Props) {
           href={`/blog/${featured.slug}`}
           className="group block mt-10 rounded-2xl border border-ivory-4 overflow-hidden bg-ivory-2 hover:border-gold transition-colors"
         >
-          <div className="grid md:grid-cols-2">
-            <div className="aspect-[16/10] md:aspect-auto bg-ivory-3 flex items-center justify-center">
-              <span className="font-serif text-6xl text-gold-pale">✦</span>
+          <div className="grid md:grid-cols-[5fr_6fr]">
+            {/* Portrait-friendly cover. Mobile shows aspect-[3/4]; desktop
+                stretches to text-column height (looks like magazine spread). */}
+            <div className="relative aspect-[3/4] md:aspect-auto md:min-h-[420px] bg-ivory-3 flex items-center justify-center overflow-hidden">
+              {featured.coverImage ? (
+                <CloudinaryImage
+                  publicId={featured.coverImage}
+                  alt={featured.title}
+                  width={600}
+                  height={800}
+                  crop="fill"
+                  className="object-cover w-full h-full"
+                  sizes="(max-width: 768px) 100vw, 480px"
+                />
+              ) : (
+                <span className="font-serif text-6xl text-gold-pale">✦</span>
+              )}
             </div>
             <div className="p-8 md:p-12 flex flex-col justify-center">
               <div className="flex items-center gap-3 mb-4">
@@ -94,10 +109,25 @@ export function BlogListing({ posts }: Props) {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group rounded-2xl border border-ivory-4 overflow-hidden hover:border-gold transition-colors bg-ivory-2"
+              className="group rounded-2xl border border-ivory-4 overflow-hidden hover:border-gold transition-colors bg-ivory-2 flex flex-col"
             >
-              <div className="aspect-[16/9] bg-ivory-3 flex items-center justify-center">
-                <span className="font-serif text-4xl text-gold-pale">✦</span>
+              {/* Portrait-friendly thumbnail. aspect-[4/5] gives an
+                  Instagram-grid feel that works with portrait bridal photos
+                  without making the card excessively tall. */}
+              <div className="relative aspect-[4/5] bg-ivory-3 flex items-center justify-center overflow-hidden">
+                {post.coverImage ? (
+                  <CloudinaryImage
+                    publicId={post.coverImage}
+                    alt={post.title}
+                    width={480}
+                    height={600}
+                    crop="fill"
+                    className="object-cover w-full h-full"
+                    sizes="(max-width: 768px) 92vw, 360px"
+                  />
+                ) : (
+                  <span className="font-serif text-4xl text-gold-pale">✦</span>
+                )}
               </div>
               <div className="p-6">
                 <span className="text-xs text-gold uppercase tracking-widest">{post.category}</span>
