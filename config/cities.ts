@@ -81,7 +81,7 @@ export const cities: readonly City[] = [
     angle: 'home base, South Asian community hub',
     metaTitle: 'Brampton Bridal Makeup Artist — South Asian Specialist',
     metaDescription:
-      "Yash Makeovers is Brampton's most trusted bridal makeup artist. {experience} years of experience and {brides} happy brides — South Asian and multicultural specialist. Book your {seasonYears} wedding.",
+      "South Asian bridal makeup and hair specialist in Brampton. {experience} years and {brides} brides served, all from home base. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Brampton',
     subtitle: 'Bridal makeup and hair for Brampton brides. 10+ years and 1,500+ weddings, all from this city.',
     geo: { latitude: 43.6831, longitude: -79.7663 },
@@ -176,7 +176,7 @@ export const cities: readonly City[] = [
     angle: 'editorial, modern South Asian brides',
     metaTitle: 'Toronto Bridal Makeup & Hair - HD Editorial Looks',
     metaDescription:
-      "Toronto's go-to bridal makeup artist for modern South Asian brides who want editorial, photo-forward looks. {rating} stars · {reviewCount} Google reviews. Book your {seasonYears} wedding.",
+      "Bridal makeup and hair artist for Toronto brides. On-site morning service across the city. {rating}★ · {reviewCount} Google reviews. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Toronto',
     subtitle: 'Bridal makeup and hair for Toronto brides. On-site service across the city.',
     geo: { latitude: 43.6532, longitude: -79.3832 },
@@ -280,7 +280,7 @@ export const cities: readonly City[] = [
     angle: 'South Asian diaspora, temple weddings',
     metaTitle: 'Vaughan Bridal Makeup — Sikh & Hindu Temple Weddings',
     metaDescription:
-      "Bridal makeup for Vaughan's South Asian community — gurdwara, temple, and grand ballroom weddings. {experience} years of experience, mobile to your venue. Book {seasonYears}.",
+      "Luxury bridal makeup artist for Vaughan brides. {experience} years specializing in Sikh and Hindu temple weddings. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Vaughan',
     subtitle: 'Luxury bridal makeup artist for Vaughan brides. Bridal makeup and hair specialist for Sikh and Hindu temple weddings.',
     geo: { latitude: 43.8361, longitude: -79.4982 },
@@ -425,7 +425,7 @@ export const cities: readonly City[] = [
     angle: 'affluent, destination-adjacent',
     metaTitle: 'Richmond Hill Luxury Bridal Makeup Artist & Hair',
     metaDescription:
-      "Bridal makeup for Richmond Hill's affluent neighbourhoods and estate venues. Trusted by brides planning multi-country weddings. Book {artistName} for {seasonYears}.",
+      "Luxury bridal makeup artist for Richmond Hill brides. {experience} years with brides planning multi-country weddings. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Richmond Hill',
     subtitle: 'Luxury bridal makeup artist for Richmond Hill brides. Premium bridal makeup and hair service.',
     geo: { latitude: 43.8828, longitude: -79.4403 },
