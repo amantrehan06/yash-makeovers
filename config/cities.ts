@@ -136,7 +136,7 @@ export const cities: readonly City[] = [
     h1: 'Bridal Makeup Artist in Mississauga, ON',
     geo: { latitude: 43.5890, longitude: -79.6441 },
     intro:
-      "Mississauga brides know what they want. They've usually done their research, compared portfolios, and arrived at our first call with a clear vision and a refined eye for product quality. I love that. It makes the consultation efficient and the trial productive.\n\nWhat's specific to Mississauga weddings is the venue mix. The premier banquet halls like Pearson Convention Centre run grand and chandelier-heavy, while a growing share of brides choose intimate ceremonies at sophisticated hotel ballrooms or even private estates near Mineola and Lorne Park. The makeup approach shifts accordingly. Bigger venues need more visible structure, more pigment, more lash. Smaller spaces let you go softer, more skin-forward.\n\nEither way, I bring everything to you. Whether you're getting ready at a hotel near the airport or at your parents' home in Streetsville, the kit comes to the venue. No bridal party hauling outfits across the city in morning traffic.",
+      "Mississauga is where I do most of my Pakistani bridal work. The community here is large, the families are tight, and word-of-mouth from one Walima or Mehndi goes a long way. Pakistani bridal makeup has its own rhythm: softer pastels for the Mehndi, traditional red and gold for the Nikkah, then a fresh evolved look for the Walima. The dupatta drape, the jewellery setting, and the makeup intensity all shift across the events.\n\nThe venue mix in Mississauga ranges from grand banquet halls like Pearson Convention Centre to intimate hotel ballrooms or private estates near Mineola and Lorne Park. Each calls for different makeup choices. Larger spaces need more visible structure and pigment. Smaller spaces let the makeup go softer, more skin-forward.\n\nI travel to wherever you're getting ready. Whether that's a hotel near the airport or your parents' home in Streetsville, the kit comes to you.",
     venues: [
       'Mississauga Convention Centre',
       'Apollo Convention Centre',
@@ -167,7 +167,7 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'editorial, modern South Asian brides',
-    metaTitle: 'Toronto Bridal Makeup & Hair — HD Editorial Looks',
+    metaTitle: 'Toronto Bridal Makeup & Hair - HD Editorial Looks',
     metaDescription:
       "Toronto's go-to bridal makeup artist for modern South Asian brides who want editorial, photo-forward looks. {rating} stars · {reviewCount} Google reviews. Book your {seasonYears} wedding.",
     h1: 'Bridal Makeup Artist in Toronto, ON',
