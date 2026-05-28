@@ -13,6 +13,7 @@ import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { PackageCard } from '@/components/ui/PackageCard'
 import { ReviewCard } from '@/components/ui/ReviewCard'
+import { WhyChooseItem } from '@/components/ui/WhyChooseItem'
 
 interface Props {
   params: { city: string }
@@ -237,13 +238,7 @@ export default async function CityPage({ params }: Props) {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
             {site.whyChoose.map((item) => (
-              <div key={item.title} className="flex gap-4 bg-ivory-2 rounded-2xl p-6 border border-ivory-4">
-                <span className="text-gold mt-1 flex-shrink-0 text-lg">✦</span>
-                <div>
-                  <p className="font-semibold text-dark mb-2">{fillTemplate(item.title)}</p>
-                  <p className="text-muted text-sm leading-relaxed">{fillTemplate(item.body)}</p>
-                </div>
-              </div>
+              <WhyChooseItem key={item.title} title={item.title} body={item.body} boxed />
             ))}
           </div>
         </div>

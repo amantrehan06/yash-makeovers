@@ -7,6 +7,7 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
+import { WhyChooseItem } from '@/components/ui/WhyChooseItem'
 
 // "10+" → 10. site.experience is a display string; schema wants a number.
 const yearsInBusiness = parseInt(site.experience, 10) || undefined
@@ -101,13 +102,7 @@ export default async function AboutPage() {
               <SectionHeader eyebrow={content.aboutPage.whyChooseEyebrow} title={content.aboutPage.whyChooseTitle} />
               <div className="grid grid-cols-1 gap-6">
                 {site.whyChoose.map((item) => (
-                  <div key={item.title} className="flex gap-4">
-                    <span className="text-gold mt-1 flex-shrink-0">✦</span>
-                    <div>
-                      <p className="font-semibold text-dark mb-1">{fillTemplate(item.title)}</p>
-                      <p className="text-muted text-sm leading-relaxed">{fillTemplate(item.body)}</p>
-                    </div>
-                  </div>
+                  <WhyChooseItem key={item.title} title={item.title} body={item.body} />
                 ))}
               </div>
             </div>
