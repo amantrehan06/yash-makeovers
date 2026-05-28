@@ -1,5 +1,4 @@
 import { packages } from '@/config/packages'
-import { site } from '@/config/site'
 import { content } from '@/config/content'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { PackageCard } from '@/components/ui/PackageCard'
@@ -24,10 +23,6 @@ export function Services() {
             />
           ))}
         </div>
-
-        <p className="text-center text-muted text-sm mt-8">
-          All packages include travel within the GTA. Early morning fee of ${site.policies.earlyMorningFee}/person applies for {site.policies.earlyMorningThreshold} start times.
-        </p>
       </div>
     </section>
   )
