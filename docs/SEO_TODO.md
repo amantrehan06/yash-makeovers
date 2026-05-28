@@ -19,6 +19,7 @@ Last updated: 2026-05-27 · Status: ~9.2/10 technical SEO score
 - LocalBusiness (BeautyStudio): geo, openingHoursSpecification, sameAs (Instagram + Facebook + Google), real review[] array from reviews.ts, areaServed as City objects (from cities config), logo + image (graceful), aggregateRating
 - Person schema on /about (E-E-A-T): name, jobTitle, description (from site.about), image from Cloudinary portrait folder, knowsAbout, hasOccupation, worksFor → BeautyStudio @id, sameAs
 - Article schema enriched: image, articleSection, wordCount, dateModified from MDX `updated` field, publisher.logo
+- **Per-city Service schema** with geo, areaServed.City, provider @id-chained to BeautyStudio, AggregateOffer derived from packages config — emitted on every /[city] page (S1 ✓)
 - FAQPage JSON-LD on /services only (concentrated for max rich-result eligibility — visible FAQ still on both / and /services for UX)
 - BreadcrumbList: extracted to `lib/schema.ts` helper, auto-emitted by `<Breadcrumbs>` component on all 7 pages
 
@@ -60,19 +61,6 @@ Last updated: 2026-05-27 · Status: ~9.2/10 technical SEO score
 ## 🔴 SEO RANKING WORK (the actual Google-ranking levers)
 
 These are the items most likely to move SERP positions in 4-12 weeks.
-
-### S1 — Per-city `Service` schema with `geo` ⭐ BIGGEST REMAINING WIN
-**Why:** City pages currently emit FAQPage + BreadcrumbList only. Adding a localized `Service` schema with `provider: { @id: '...#business' }`, `areaServed: { @type: 'City', geo: {...} }`, and `serviceType: 'Bridal Makeup'` is the single largest local-pack ranking lever still available. Google increasingly uses geo + Service relationships to populate local pack results for "[service] near me" + "[service] [city]" queries.
-
-**Steps:**
-1. Add `geo: { latitude, longitude }` to each city in `config/cities.ts`
-2. Add `buildServiceSchema(city)` helper in `lib/schema.ts`
-3. Emit on each `/[city]` page
-4. Reference the parent BeautyStudio via `@id` chain
-
-**Effort:** ~1 hour. **Impact:** HIGH — directly affects local-pack inclusion.
-
----
 
 ### S2 — `Product` + `Offer` schema with `priceValidUntil` for the bridal discount
 **Why:** Current `Service` schema on /services is fine, but `Product` + `Offer` unlocks the strikethrough/price-drop **SERP rich card** in Google. For a commercial site with a live discount ($600 from $750), this is a real CTR multiplier on `services` queries.

@@ -55,6 +55,12 @@ export interface City {
   metaDescription: string
   h1:              string
   intro:           string
+  // Geographic centroid — used by per-city Service schema (areaServed.geo)
+  // for local-pack ranking. Approximate city center is fine here (not a
+  // specific pin) — represents the service area. Get from maps.google.com
+  // → search city → right-click center → copy "lat, lng" if you want to
+  // refine the defaults.
+  geo:             { latitude: number; longitude: number }
   venues:          readonly string[]
   neighborhoods:   readonly string[]
   nearbyCities:    readonly string[]
@@ -72,6 +78,7 @@ export const cities: readonly City[] = [
     metaDescription:
       "Yash Makeovers is Brampton's most trusted bridal makeup artist. {experience} years of experience and {brides} happy brides — South Asian and multicultural specialist. Book your {seasonYears} wedding.",
     h1: 'Bridal Makeup Artist in Brampton, ON',
+    geo: { latitude: 43.6831, longitude: -79.7663 },
     intro:
       "Brampton isn't just where Yash Makeovers is based — it's the heart of South Asian wedding culture in the GTA. Brampton weddings are legendary for their magnificent scale, vibrant energy, and deep cultural traditions, anchoring the very heart of the Greater Toronto Area's multicultural celebration scene. From grand, high-capacity sangeets and receptions at the lavish Embassy Grand Convention Centre to elegant, impeccably catered galas at the Pearson Convention Centre or the castle-like Grand Empire Banquet & Convention Centre, these vast spaces demand a masterclass in high-impact bridal beauty. Whether your multi-day celebration brings family together in the scenic enclaves of Castlemore, the bustling streets of Springdale, or the established avenues of Bramalea, your look must command the room while remaining effortlessly timeless. Yashpreet understands the unique rhythm of a Brampton wedding, where early morning gurdwara ceremonies seamlessly transition into late-night reception dancing under bright ballroom lights. Her signature approach pairs long-wear, camera-ready techniques with a calm, grounding presence, ensuring you look breathtakingly radiant through every ritual and celebratory milestone.",
     venues: [
@@ -127,6 +134,7 @@ export const cities: readonly City[] = [
     metaDescription:
       'Bridal makeup artist serving Mississauga\'s premium banquet halls and intimate venues. {experience} years of experience and luxury-grade products. Book {artistName} for your {seasonYears} wedding.',
     h1: 'Bridal Makeup Artist in Mississauga, ON',
+    geo: { latitude: 43.5890, longitude: -79.6441 },
     intro:
       "Mississauga weddings beautifully reflect the city’s dynamic blend of sophisticated waterfront charm and expansive, high-energy cultural gatherings. From grand, high-capacity celebrations at the iconic Mississauga Convention Centre or the modern, tech-forward Apollo Convention Centre to elegant, luxury galas at the Sagan Banquet Hall and Convention Centre, the city’s premier venues demand flawless execution in bridal beauty. Whether your multi-day festivities wind through the scenic lakeside avenues of Port Credit, the historic village streets of Streetsville, or the vibrant, family-centric neighborhoods of Churchill Meadows and Lorne Park, your makeup must transition seamlessly from outdoor portraits to bright ballroom spotlights. Yashpreet understands that a Mississauga bride requires a perfectly tailored balance of timeless cultural artistry and modern, editorial luxury. Her signature approach pairs impeccable, long-wear techniques with a calming presence, ensuring you look captivatingly radiant and camera-ready from your early morning ceremonies through to the final late-night dance.",
     venues: [
@@ -163,6 +171,7 @@ export const cities: readonly City[] = [
     metaDescription:
       "Toronto's go-to bridal makeup artist for modern South Asian brides who want editorial, photo-forward looks. {rating} stars · {reviewCount} Google reviews. Book your {seasonYears} wedding.",
     h1: 'Bridal Makeup Artist in Toronto, ON',
+    geo: { latitude: 43.6532, longitude: -79.3832 },
     intro:
       "Toronto weddings are a magnificent tapestry of global traditions, where stunning skyline views meet deeply rooted cultural celebrations. From grand, high-capacity galas at the Liberty Grand Entertainment Complex to sophisticated, modern celebrations at The Carlu or the One King West Hotel & Residence, the city demands a bridal look that transitions seamlessly from natural daylight to dramatic ballroom lighting. Whether you are hosting a multi-day South Asian celebration spanning vibrant downtown spots or an intimate gathering tucked away in historic Yorkville or the Distillery District, your makeup should feel uniquely yours. Yashpreet understands that a Toronto bride needs an effortless blend of modern luxury and timeless cultural heritage. Her signature approach ensures your look remains flawless, radiant, and camera-ready from your early morning portraits right through to the final dance.",
     venues:        ['Liberty Grand Entertainment Complex',
@@ -194,6 +203,7 @@ export const cities: readonly City[] = [
     metaDescription:
       "Calm, family-feel bridal makeup for Etobicoke weddings. {artistName} brings {experience} years of expertise and luxury products to your venue. Book for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Etobicoke, ON',
+    geo: { latitude: 43.6205, longitude: -79.5132 },
     intro:
       "Etobicoke weddings offer a spectacular blend of scenic waterfront charm along Lake Ontario and grand, high-capacity venues perfect for large-scale multicultural celebrations. From the opulent, sprawling ballrooms of the Grand Metropolitan Premium Event Venue to the beautifully manicured estate settings at the Toronto Congress Centre or the historic, riverside elegance of the Old Mill Toronto, this vibrant area demands a versatile and masterful approach to bridal beauty. Whether your multi-day traditional festivities feature outdoor portraits along the picturesque shores of Humber Bay Shores, intimate family gatherings in the upscale enclaves of The Kingsway, or a massive gala near Rexdale, your makeup must transition flawlessly from bright daylight to dramatic evening venue lighting. Yashpreet understands the sophisticated rhythm of an Etobicoke bride, where classical cultural heritage effortlessly meets modern, urban refinement. Her signature approach combines elite, long-wear techniques with a deeply calming presence, ensuring you look breathtakingly radiant and camera-ready from your early morning rituals right through to the final midnight celebration.",
     venues: [
@@ -228,6 +238,7 @@ export const cities: readonly City[] = [
     metaDescription:
       "Luxury bridal makeup for Oakville weddings at Glen Abbey, Le Dôme, and Oakville's grand estate venues. HD-rated luxury formulas. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Oakville, ON',
+    geo: { latitude: 43.4675, longitude: -79.6877 },
     intro:
       "Oakville weddings are synonymous with prestigious lakeside charm, manicured estates, and an elegant, high-end atmosphere that provides a spectacular backdrop for multicultural celebrations. From the sprawling, immaculate greens of the Glen Abbey Golf Club to the luxury, high-capacity ballrooms at the Oakville Conference & Banquet Centre or the sophisticated settings at the Harbour Banquet & Conference Centre, the local venue landscape requires an expert eye for timeless bridal beauty. Whether your multi-day traditional festivities lead you along the scenic, historic streets of Old Oakville, the breathtaking waterfront views of Bronte Village, or the exclusive enclaves of Glen Abbey and Joshua Creek, your makeup must look effortlessly flawless in both bright coastal sunlight and soft evening ballroom lighting. Yashpreet understands the discerning tastes of an Oakville bride, expertly blending modern, editorial luxury with rich, vibrant cultural heritage. Her signature approach combines premium, long-wear techniques with a deeply reassuring presence, ensuring you remain breathtakingly radiant and camera-ready from your early morning portraits through to your final midnight send-off.",
     venues: [
@@ -261,6 +272,7 @@ export const cities: readonly City[] = [
     metaDescription:
       "Bridal makeup for Vaughan's South Asian community — gurdwara, temple, and grand ballroom weddings. {experience} years of experience, mobile to your venue. Book {seasonYears}.",
     h1: 'Bridal Makeup Artist in Vaughan, ON',
+    geo: { latitude: 43.8361, longitude: -79.4982 },
     intro:
       "Vaughan weddings are defined by an undeniable sense of luxury, grand architecture, and high-end elegance that sets a spectacular stage for multicultural celebrations. From the opulent, crystal-chandeliered ballrooms of the Paramount EventSpace and The Venetian Banquet & Hospitality Centre to the sophisticated, modern aesthetics of the Universal EventSpace, the city’s premier venues demand a commanding and flawless bridal look. Whether you are exchanging vows amidst the historic charm of Kleinburg, hosting a massive multi-day gala near Woodbridge, or capturing editorial portraits in Maple, your makeup needs to withstand high-intensity venue lighting and high-definition lenses. Yashpreet understands the sophisticated tastes of a Vaughan bride, where traditional cultural elements meet contemporary, high-fashion sensibilities. Her signature approach blends long-wear, premium artistry with a serene, organized presence, ensuring your skin looks entirely luminous and perfectly camera-ready from your first morning look to your midnight send-off.",
     venues: [
@@ -296,6 +308,7 @@ export const cities: readonly City[] = [
     metaDescription:
       "Bridal makeup serving Scarborough's diverse South Asian and Caribbean wedding scene. Skilled across every skin tone, hair texture, and tradition. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Scarborough, ON',
+    geo: { latitude: 43.7764, longitude: -79.2318 },
     intro:
       "Scarborough weddings are celebrated for their immense cultural richness, coastal park backdrops, and deeply communal gatherings that bring families together from across the Greater Toronto Area. From high-capacity, grand cultural galas at the versatile Scarborough Convention Centre or the elegant Estate Banquet and Event Centre to sophisticated hotel ballroom celebrations at the Delta Hotels Toronto East, the local venue landscape requires a masterful touch in long-wear bridal beauty. Whether your multi-day festivities capture the scenic natural beauty of the Scarborough Bluffs, wind through the bustling neighborhoods of Agincourt and Wexford, or gather families in Rouge, your makeup must look breathtakingly radiant across all environments. Yashpreet deeply respects the vibrant traditions of Scarborough’s diverse communities, where classical cultural motifs effortlessly merge with modern Canadian style. Her signature approach pairs premium, flawless artistry with a calm, reassuring presence, ensuring you remain effortlessly luminous and camera-ready from the early morning rituals to the final evening reception.",
     venues: [
@@ -329,6 +342,7 @@ export const cities: readonly City[] = [
     metaDescription:
       "Bridal makeup for Markham's South Asian and East Asian wedding traditions. Fusion bridal looks done with care and a deep cross-cultural eye. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Markham, ON',
+    geo: { latitude: 43.8561, longitude: -79.3370 },
     intro:
       "Markham weddings represent a stunning intersection of timeless heritage and elite, modern luxury, making it one of the premier destination areas for grand multicultural celebrations in Ontario. From the high-capacity, crystal-lit ballrooms of the Markham Convention Centre and the lavishly updated spaces at Crystal Fountain to the sophisticated, luxury setups at the Hilton Toronto/Markham Suites Conference Centre & Spa, the city’s top-tier venues demand an exceptional eye for high-impact, long-wear bridal style. Whether your multi-day celebration takes place along the picturesque, historic storefronts of Unionville, the newly developed urban avenues of Downtown Markham, or the pristine, upscale enclaves of Angus Glen and Cachet, your look must effortlessly captivate under intensive ballroom spotlights and high-definition lenses. Yashpreet understands the nuanced aesthetic required for a Markham bride, perfectly marrying classical cultural elegance with contemporary, polished execution. Her signature approach pairs premium, camera-ready techniques with a deeply grounding presence, ensuring you look breathtakingly luminous from the very first morning portrait to your final evening reception send-off.",
     venues: [
@@ -364,6 +378,7 @@ export const cities: readonly City[] = [
     metaDescription:
       "Bridal makeup for North York weddings — urban, multicultural, accessible. {artistName} travels into Don Mills, Bayview, and the Yonge corridor regularly. Book for {seasonYears}.",
     h1: 'Bridal Makeup Artist in North York, ON',
+    geo: { latitude: 43.7615, longitude: -79.4111 },
     intro: "North York weddings balance urban sophistication with grand, upscale spaces, making it a highly desirable destination for premier multicultural celebrations. From the towering, luxury layout of Parkview Manor—capable of hosting magnificent, large-scale galas—to the high-end contemporary elegance of The Grand Luxe Event Boutique or the spacious Julius Event Centre, the area's premier venues demand a flawless approach to bridal design. Whether your multi-day traditional festivities are captured against the picturesque greenery of the Bridle Path, wind through the bustling streets of Willowdale, or gather extended family in the heart of Don Mills, your makeup must transition flawlessly from midday sun to intense ballroom spotlights. Yashpreet knows the aesthetic expectations of a North York bride, where high-fashion city refinement meets deep cultural heritage. Her signature approach pairs elite, high-definition techniques with a deeply grounding presence, ensuring your look remains entirely radiant and camera-ready from your early morning rituals through to your late-night reception.",
     venues: [
       'Parkview Manor',
@@ -398,6 +413,7 @@ export const cities: readonly City[] = [
     metaDescription:
       "Bridal makeup for Richmond Hill's affluent neighbourhoods and estate venues. Trusted by brides planning multi-country weddings. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Richmond Hill, ON',
+    geo: { latitude: 43.8828, longitude: -79.4403 },
     intro:
       "Richmond Hill weddings are characterized by an upscale, exclusive elegance that blends prestigious estate charm with grand, high-capacity ballroom celebrations. From the sprawling, picturesque vistas at the Richmond Hill Country Club to the bright, luxurious settings within the Sheraton Parkway Toronto North Hotel & Suites or the beautifully styled halls of Lusso Luxury Banquet Hall, venues in this region demand an exceptionally polished and editorial approach to bridal beauty. Whether you are hosting a multi-day South Asian gala near the multi-million dollar estates of Bayview Hill, exchanging vows near the scenic heritage backdrops of Mill Pond, or celebrating with loved ones in the newer enclaves of Jefferson and Oak Ridges, your look must transition flawlessly from soft outdoor daylight to high-intensity evening spotlights. Yashpreet deeply appreciates the sophisticated aesthetic of Richmond Hill brides, expertly balancing rich cultural traditions with contemporary, high-fashion refinement. Her signature approach combines elite, camera-ready artistry with a calming, organized presence, ensuring you remain breathtakingly radiant from your early morning rituals to the final reception dance.",
     venues: [

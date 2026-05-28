@@ -14,6 +14,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { PackageCard } from '@/components/ui/PackageCard'
 import { ReviewCard } from '@/components/ui/ReviewCard'
 import { WhyChooseItem } from '@/components/ui/WhyChooseItem'
+import { buildCityServiceSchema } from '@/lib/schema'
 
 interface Props {
   params: { city: string }
@@ -99,6 +100,14 @@ export default async function CityPage({ params }: Props) {
 
   return (
     <>
+      {/* Per-city Service schema — chains to homepage BeautyStudio via @id.
+          Tells Google this studio explicitly serves THIS city with these
+          coordinates as the service area. Biggest local-pack ranking lever
+          for "bridal makeup in {city}" queries. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildCityServiceSchema(city)) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
