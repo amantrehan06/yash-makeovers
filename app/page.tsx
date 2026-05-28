@@ -125,26 +125,17 @@ export default async function HomePage() {
     })),
   }
 
-  // ── FAQPage schema — mirrors what FAQ component renders visibly ──────
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type':    'FAQPage',
-    mainEntity: faqs.map((f) => ({
-      '@type':         'Question',
-      name:            f.q,
-      acceptedAnswer:  { '@type': 'Answer', text: f.a },
-    })),
-  }
+  // Note: FAQPage JSON-LD is intentionally emitted only on /services (the
+  // more authoritative URL for FAQ-driven queries: pricing, policy, etc.).
+  // The visible FAQ section stays here for UX, but identical schema on two
+  // URLs makes Google pick one for the rich result anyway — concentrating
+  // it on /services maximizes that page's eligibility.
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <Hero />
