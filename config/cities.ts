@@ -199,7 +199,19 @@ export const cities: readonly City[] = [
                       'Downtown Core',
                       'Liberty Village'],
     nearbyCities:  ['mississauga', 'etobicoke', 'vaughan', 'scarborough'],
-    contentBlocks: [],
+    contentBlocks: [
+    {
+      id: `toronto-202606-soft-pink-glam`,
+      date: `2026-06-05`,
+      city: `toronto`,
+      service: `bridal`,
+      title: `Amber's Soft Pink Glam for Her Toronto Wedding`,
+      body: `Amber envisioned a soft pink glam look for her special day, perfectly capturing her personality and style. On June 5, 2026, she entrusted Yash Makeovers to bring her vision to life for her Toronto wedding festivities. The delicate blush tones complemented her bridal attire, enhancing her natural beauty while ensuring she looked flawless in HD. This look was not only striking but also ideal for the intimate ceremonies and celebrations that reflect the rich cultural traditions of South Asian weddings. Amber felt confident and radiant, ready to celebrate her love with family and friends. A true testament to the artistry of Yash Makeovers, this soft glam look was crafted to last through the emotional moments of the day, from the ceremony to the reception.  
+
+    #softglam #pink #blush #makeupartist #bridalmakeup`,
+      imageUrl: ``,
+    }
+  ],
   },
   {
     slug: 'etobicoke',
