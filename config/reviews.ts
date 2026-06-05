@@ -20,10 +20,9 @@ export type Review = {
   id:            number
   author:        string
   rating:        number
-  city?:         string   // city slug — used for filtering on city pages
   datePublished: string   // ISO date e.g. '2024-08-15'
   show:          boolean  // master display switch
-  placements:    string[] // 'home' | city slug | both
+  placements:    string[] // 'home' | city slug — a review can have both
   body:          string
 }
 
@@ -32,17 +31,15 @@ export const reviews: Review[] = [
     id:            1,
     author:        'Jasmin Sandhu',
     rating:        5,
-    city:          'brampton',
     datePublished: '2026-01-14',
     show:          true,
-    placements:    ['home', 'brampton'],
+    placements:    ['home', 'brampton','mississauga'],
     body:          `Yash absolutely killed my wedding looks! I loved working with her from start to finish. Not only did she make me feel incredibly beautiful, but she also made me feel so comfortable, calm, and confident during one of the most important and emotional weekends of my life. Her professionalism, talent, and attention to detail truly stand out. Yash is extremely trustworthy, kind, and a pleasure to be around — I couldn't have asked for a better artist for my wedding. Highly recommend her to any bride!`,
   },
   {
     id:            2,
     author:        'Saina Tanwar',
     rating:        5,
-    city:          'mississauga',
     datePublished: '2026-04-23',
     show:          true,
     placements:    ['home', 'mississauga'],
@@ -52,7 +49,6 @@ export const reviews: Review[] = [
     id:            3,
     author:        'Shabnam Kaushik',
     rating:        5,
-    city:          'brampton',
     datePublished: '2026-04-07',
     show:          true,
     placements:    ['home', 'brampton'],
@@ -62,7 +58,6 @@ export const reviews: Review[] = [
     id:            4,
     author:        'Jasmine Parmar',
     rating:        5,
-    city:          'toronto',
     datePublished: '2025-12-08',
     show:          true,
     placements:    ['home', 'toronto'],
@@ -74,7 +69,16 @@ export const reviews: Review[] = [
     rating:        5,
     datePublished: '2025-09-19',
     show:          true,
-    placements:    ['home'],
+    placements:    ['home','mississauga'],
     body:          `I had the pleasure of having Yashpreet do my makeup for my wedding and it was absolutely wonderful. She is so professional, calm, and talented. She listened carefully to what I wanted and delivered beyond my expectations. My makeup lasted the entire day and through all the tears! Her products are top quality and she really knows how to work with different skin tones. I felt like a queen. I would 100% book her again and recommend her to anyone looking for an exceptional makeup artist.`,
+  },
+  {
+    id:            6,
+    author:        'Ayushi',
+    rating:        5,
+    datePublished: '2026-06-02',
+    show:          true,
+    placements:    ['home', 'toronto'],
+    body:          `Yash is absolutely amazing at what she does. She is on time, professional and easy to work with. She takes your vision into account and also suggests makeup looks which will look good on you. As a brown girly, it's important to go with someone who understands your skin tone better and can make you look fabulous for your big day. All my pictures came out so nice. Yash is great. I would totally recommend you hire her for bridal and non-bridal makeup and hair. She brought Sandy with her for my reception look and Sandy is amazing as well!!!!`,
   },
 ]
