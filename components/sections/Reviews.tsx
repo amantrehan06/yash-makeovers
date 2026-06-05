@@ -25,7 +25,7 @@ export function Reviews() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {reviews.map((review) => (
+          {reviews.filter((r) => r.show && r.placements.includes('home')).map((review) => (
             <ReviewCard key={review.id} review={review} />
           ))}
         </div>

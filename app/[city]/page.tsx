@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation'
 import { cities, type City, type ContentBlock } from '@/config/cities'
 import { site } from '@/config/site'
 import { packages } from '@/config/packages'
-import { reviews } from '@/config/reviews'
 import { content, fillTemplate } from '@/config/content'
 import { getImagesFromFolder, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
 import { SectionHeader } from '@/components/ui/SectionHeader'
@@ -12,8 +11,8 @@ import { Button } from '@/components/ui/Button'
 import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { PackageCard } from '@/components/ui/PackageCard'
-import { ReviewCard } from '@/components/ui/ReviewCard'
 import { WhyChooseItem } from '@/components/ui/WhyChooseItem'
+import { CityReviews } from '@/components/sections/CityReviews'
 import { buildCityServiceSchema } from '@/lib/schema'
 
 interface Props {
@@ -77,9 +76,6 @@ export default async function CityPage({ params }: Props) {
   if (!city) notFound()
 
   const faqs = cityFaqs(city.name)
-  // Pick 2 most relevant reviews — for now, the 2 most recent (all are bridal).
-  const featuredReviews = reviews.slice(0, 2)
-
   // Pick a hero image for this city: first portfolio photo tagged with the
   // city slug (e.g., 'brampton'). Yashpreet adds the tag in Cloudinary on
   // any portfolio photo she wants associated with that city. If no photo is
@@ -314,21 +310,7 @@ export default async function CityPage({ params }: Props) {
       )}
 
       {/* REVIEWS */}
-      <section className="py-16 px-6 bg-dark">
-        <div className="max-w-5xl mx-auto">
-          <SectionHeader
-            eyebrow={content.cityPage.reviewsEyebrow}
-            title={`What brides in the GTA are saying`}
-            light
-            centered
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
-            {featuredReviews.map((review) => (
-              <ReviewCard key={review.id} review={review} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <CityReviews citySlug={city.slug} cityName={city.name} />
 
       {/* FAQ */}
       <section className="py-16 px-6 bg-ivory">
