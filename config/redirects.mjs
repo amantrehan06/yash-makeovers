@@ -29,6 +29,9 @@ export const redirects = [
   { source: '/bridal-hair-and-makeup-artist-toronto',     destination: '/toronto',     permanent: true },
   { source: '/bridal-makeup-artist-mississauga',          destination: '/mississauga', permanent: true },
 
+  // ── Removed blog posts → blog index ──
+  { source: '/blog/south-asian-bridal-makeup-trends-2026', destination: '/blog', permanent: true },
+
   // ── Old WordPress page slugs → new pages ──
   { source: '/packages', destination: '/services', permanent: true },
 
