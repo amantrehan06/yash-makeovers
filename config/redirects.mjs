@@ -32,11 +32,6 @@ export const redirects = [
   // ── Old WordPress page slugs → new pages ──
   { source: '/packages', destination: '/services', permanent: true },
 
-  // ── Blog slug renames ──
-  // Original slug published briefly before SEO rename — 301 preserves any
-  // links or crawl equity accumulated in the short window it was live.
-  { source: '/blog/south-asian-bridal-makeup-mississauga', destination: '/blog/pakistani-bridal-makeup-artist-mississauga', permanent: true },
-
   // ── Old WordPress portfolio sub-paths → portfolio index ──
   // Use :path+ (one OR MORE segments) — :path* matches zero segments
   // too, which would make /portfolio redirect to itself in a loop.
