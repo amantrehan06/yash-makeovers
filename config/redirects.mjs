@@ -30,7 +30,7 @@ export const redirects = [
   { source: '/bridal-makeup-artist-mississauga',          destination: '/mississauga', permanent: true },
 
   // ── Removed blog posts → blog index ──
-  { source: '/blog/south-asian-bridal-makeup-trends-2026', destination: '/blog', permanent: true },
+  { source: '/blog/south-asian-bridal-makeup-trends-2026', destination: '/blog/south-asian-bridal-makeup-looks', permanent: true },
 
   // ── Old WordPress page slugs → new pages ──
   { source: '/packages', destination: '/services', permanent: true },
