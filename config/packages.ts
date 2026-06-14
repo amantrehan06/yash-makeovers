@@ -20,6 +20,7 @@ export interface Package {
   price:         number          // What the client pays now
   originalPrice: number          // Pre-discount price (set equal to `price` when no discount)
   discountLabel: string          // Badge text — use '' when no discount
+  discountNote:  string          // Small footnote below badge — use '' for none
   priceNote:     string
   highlight:     boolean
   includes:      readonly string[]
@@ -45,7 +46,8 @@ export const packages: readonly Package[] = [
     tagline: 'Ceremony, Reception, Nikkah, Walima, Baraat',
     price: 600,
     originalPrice: 750,
-    discountLabel: '2026 bookings only',
+    discountLabel: 'Limited Time',
+    discountNote:  '* 2026 bookings only',
     priceNote: 'per person per event',
     highlight: true,
     includes: [
@@ -65,7 +67,8 @@ export const packages: readonly Package[] = [
     tagline: 'Rokah, Jagoo, Engagement, Mehndi, Sangeet',
     price: 450,
     originalPrice: 600,
-    discountLabel: '2026 bookings only',
+    discountLabel: 'Limited Time',
+    discountNote:  '* 2026 bookings only',
     priceNote: 'per person per event',
     highlight: false,
     includes: [
@@ -83,6 +86,7 @@ export const packages: readonly Package[] = [
     price: 350,
     originalPrice: 350,
     discountLabel: '',
+    discountNote:  '',
     priceNote: 'per person per event',
     highlight: false,
     includes: [
@@ -99,6 +103,7 @@ export const packages: readonly Package[] = [
     price: 250,
     originalPrice: 250,
     discountLabel: '',
+    discountNote:  '',
     priceNote: 'per person per event',
     highlight: false,
     includes: [

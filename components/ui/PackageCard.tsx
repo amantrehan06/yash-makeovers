@@ -64,6 +64,11 @@ export function PackageCard({
           </span>
         )}
       </div>
+      {pkg.discountNote && (
+        <p className={`text-xs mb-1 ${pkg.highlight ? 'text-ivory-4' : 'text-muted'}`}>
+          {pkg.discountNote}
+        </p>
+      )}
 
       <p className={`text-xs mb-4 ${pkg.highlight ? 'text-ivory-4' : 'text-muted'}`}>
         {pkg.priceNote}
