@@ -44,6 +44,11 @@ export const site = {
   // Derived from addressStructured — "Brampton, ON". Single source: edit the
   // address fields above and this updates everywhere ({baseCity} token, schema, meta).
   baseCity: `${addressStructured.addressLocality}, ${addressStructured.addressRegion}`,
+  // Brand-level service area (GTA-wide) vs baseCity (the home studio). Used for
+  // homepage positioning so the brand reads area-wide, while city pages target
+  // each city specifically.
+  serviceArea:     'the GTA',
+  serviceAreaFull: 'the Greater Toronto Area',
   // Bare apex — used for display contexts (footer text, OG image, signatures)
   // and email FROM addresses where 'www.' looks awkward.
   domain: 'yashmakeovers.com',

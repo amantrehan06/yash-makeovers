@@ -26,12 +26,9 @@ import { FAQ } from '@/components/sections/FAQ'
 export const revalidate = 28800
 
 export const metadata: Metadata = {
-  // `absolute` bypasses the layout's `%s | Yash Makeovers` template so the
-  // brand name (already at the start) isn't appended a second time.
-  title: { absolute: `${site.name} — Bridal Makeup Artist in ${site.baseCity}` },
-  // Conversion-angle description for the homepage: stats + season.
-  // Distinct from layout fallback (brand-only) and /about (artist story).
-  description: `Award-winning bridal makeup and hair by ${site.artistName} — ${site.experience} years, ${site.brideCount} brides across the Greater Toronto Area. Now booking ${site.seasonYears} weddings.`,
+  // `absolute` bypasses the layout's `%s | Yash Makeovers` template.
+  title: { absolute: `${site.name} — Bridal Makeup Artist in ${site.serviceArea}` },
+  description: `Award-winning bridal makeup and hair by ${site.artistName} — ${site.experience} years, ${site.brideCount} brides across ${cities.slice(0, 3).map((c) => c.name).join(', ')} & the wider GTA. Now booking ${site.seasonYears} weddings.`,
   alternates: {
     canonical: `https://${site.canonicalHost}`,
   },

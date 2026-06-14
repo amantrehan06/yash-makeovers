@@ -7,6 +7,7 @@ import { Footer } from '@/components/layout/Footer'
 import { FloatingWhatsApp } from '@/components/layout/FloatingWhatsApp'
 import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar'
 import { site } from '@/config/site'
+import { cities } from '@/config/cities'
 import { features } from '@/config/features'
 import { buildCloudinaryUrl } from '@/lib/cloudinaryUrl'
 
@@ -42,13 +43,11 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${site.canonicalHost}`),
   title: {
-    default: `${site.name} — Bridal Makeup Artist in ${site.baseCity}`,
+    default: `${site.name} — Bridal Makeup Artist in ${site.serviceArea}`,
     template: `%s | ${site.name}`,
   },
-  // Inheritable fallback only — every public page declares its own
-  // description. Keep this short and brand-only so any uncaught page
-  // (e.g. /_error) still ships valid metadata.
-  description: `${site.name} — luxury bridal makeup and hair across the GTA.`,
+  // Inheritable fallback only — every public page declares its own description.
+  description: `${site.name} — luxury bridal makeup and hair across ${site.serviceAreaFull}: ${cities.slice(0, 3).map((c) => c.name).join(', ')}, and beyond. Studio in ${site.baseCity}, mobile to your venue.`,
   // hreflang — tells Google this is the Canadian-English version. Even on a
   // single-locale site, the `x-default` self-reference clears Search Console's
   // "no hreflang" warning and helps disambiguate from US/UK results.
