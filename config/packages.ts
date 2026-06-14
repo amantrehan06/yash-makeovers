@@ -45,7 +45,7 @@ export const packages: readonly Package[] = [
     tagline: 'Ceremony, Reception, Nikkah, Walima, Baraat',
     price: 600,
     originalPrice: 750,
-    discountLabel: 'Limited Time',
+    discountLabel: '2026 bookings only',
     priceNote: 'per person per event',
     highlight: true,
     includes: [
@@ -65,7 +65,7 @@ export const packages: readonly Package[] = [
     tagline: 'Rokah, Jagoo, Engagement, Mehndi, Sangeet',
     price: 450,
     originalPrice: 600,
-    discountLabel: 'Limited Time',
+    discountLabel: '2026 bookings only',
     priceNote: 'per person per event',
     highlight: false,
     includes: [
