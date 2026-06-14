@@ -2,12 +2,8 @@ import { ImageResponse } from 'next/og'
 import { readFileSync } from 'fs'
 import { join } from 'path'
 
-// Apple touch icon — used when a visitor adds the site to their iOS home
-// screen or saves a bookmark. iOS ignores SVG here and requires a raster
-// image, so we generate a 180×180 PNG at build with next/og, drawing the
-// YM monogram in the brand's Cormorant serif (vendored, no network fetch).
-// No rounded corners — iOS applies its own rounded mask.
-
+// iOS home-screen icon — must be raster, so generate a 180×180 PNG from the
+// vendored Cormorant serif. No rounded corners (iOS masks its own).
 export const size = { width: 180, height: 180 }
 export const contentType = 'image/png'
 

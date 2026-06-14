@@ -31,10 +31,7 @@ export async function POST(req: NextRequest) {
       resend.emails.send({
         from: FROM_EMAIL,
         to: OWNER_EMAIL,
-        // Reply-To is the client's address (with their name) so hitting
-        // "Reply" in the inbox goes straight to them. The From must stay on
-        // the verified domain — using the client's address as From fails
-        // SPF/DKIM and lands in spam.
+        // Reply goes to the client; From stays on the verified domain (SPF/DKIM).
         replyTo: `${name} <${email}>`,
         subject: `New inquiry from ${name} — ${occasionFull}${subjectDate}`,
         html: buildOwnerEmailHtml({ name, email, whatsapp, eventDate, readyTime, occasion: occasionFull, message }),

@@ -1,18 +1,12 @@
 import Link from 'next/link'
 import { site } from '@/config/site'
 
-// Brand logo lockup: a gold "YM" monogram + the wordmark. Live text (not an
-// image) so it stays crawlable, scales perfectly, and adapts to light/dark
-// surfaces. The monogram is always gold; the wordmark inherits the parent's
-// text colour (text-dark in the navbar, text-ivory in the footer).
-//
-// The matching favicon / schema logo lives at app/icon.svg — keep the two
-// visually in sync if you restyle the monogram.
-
+// Gold YM monogram + wordmark. Monogram is always gold; wordmark inherits
+// the parent's text colour. Matching favicon lives at app/icon.svg.
 interface LogoProps {
-  className?:         string  // applied to the <Link> — set the wordmark colour here
-  wordmarkClassName?: string  // size/utility classes for the wordmark text
-  showWordmark?:      boolean // false → monogram only
+  className?:         string  // sets the wordmark colour
+  wordmarkClassName?: string
+  showWordmark?:      boolean
   onClick?:           () => void
 }
 

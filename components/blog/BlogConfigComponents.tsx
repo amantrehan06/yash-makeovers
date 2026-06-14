@@ -1,25 +1,11 @@
-// Config-aware components for MDX blog posts. Posts call these by name
-// and get live values from config — so a price change in packages.ts or
-// site.ts auto-updates every blog post on the next deploy.
-//
-// Usage in MDX:
-//   <PackagePrice id="bridal" />        → "$600"
-//   <PackagePrice id="bridal" showOriginal />  → "~~$750~~ $600" with strike
-//   <PriceTable />                       → full 4-package pricing table
-//   <TravelFees />                       → inline travel fees sentence
-//   <AddOnPrice id="airbrush" />         → "$40"
-//   <Stat field="experience" />          → "10+"
-//   <Stat field="brideCount" />          → "1,500+"
-//   <CityCallout slug="brampton" />      → linked card with venues + neighborhoods
+// Config-aware components for MDX blog posts — live values from config so a
+// price/stat change propagates to every post on the next deploy.
 
 import Link from 'next/link'
 import { site } from '@/config/site'
+import { fillTemplate } from '@/config/content'
 import { packages, getPackage, formatPrice, type Package } from '@/config/packages'
 import { cities } from '@/config/cities'
-
-// ─────────────────────────────────────────────────────────────────────
-// PackagePrice — single inline price
-// ─────────────────────────────────────────────────────────────────────
 
 export function PackagePrice({
   id,
@@ -39,10 +25,6 @@ export function PackagePrice({
     </span>
   )
 }
-
-// ─────────────────────────────────────────────────────────────────────
-// PriceTable — full pricing table generated from packages config
-// ─────────────────────────────────────────────────────────────────────
 
 export function PriceTable() {
   return (
@@ -91,10 +73,6 @@ export function PriceTable() {
   )
 }
 
-// ─────────────────────────────────────────────────────────────────────
-// TravelFees — inline sentence with current Peel + GTA travel fees
-// ─────────────────────────────────────────────────────────────────────
-
 export function TravelFees() {
   return (
     <>
@@ -104,18 +82,10 @@ export function TravelFees() {
   )
 }
 
-// ─────────────────────────────────────────────────────────────────────
-// AddOnPrice — single add-on price from policies.addOns
-// ─────────────────────────────────────────────────────────────────────
-
 export function AddOnPrice({ id }: { id: keyof typeof site.policies.addOns }) {
   const addOn = site.policies.addOns[id]
   return <strong>{formatPrice(addOn.fee)}</strong>
 }
-
-// ─────────────────────────────────────────────────────────────────────
-// Stat — site-level numeric facts (experience, brideCount, rating, etc.)
-// ─────────────────────────────────────────────────────────────────────
 
 const STAT_MAP = {
   experience:       () => site.experience,
@@ -136,10 +106,6 @@ export function Stat({ field }: { field: keyof typeof STAT_MAP }) {
   return <strong>{value}</strong>
 }
 
-// ─────────────────────────────────────────────────────────────────────
-// IndustryRange — GTA bridal-makeup market range ("$500-$1,000")
-// ─────────────────────────────────────────────────────────────────────
-
 export function IndustryRange() {
   return (
     <strong>
@@ -149,11 +115,7 @@ export function IndustryRange() {
   )
 }
 
-// ─────────────────────────────────────────────────────────────────────
-// CityCallout — linked card pointing to a /[city] page with quick facts
-// Used inside blog posts to drive internal link equity to city pages.
-// ─────────────────────────────────────────────────────────────────────
-
+// Linked card to a /[city] page — drives internal link equity from posts.
 export function CityCallout({ slug }: { slug: string }) {
   const city = cities.find((c) => c.slug === slug)
   if (!city) return null
@@ -167,7 +129,7 @@ export function CityCallout({ slug }: { slug: string }) {
       <p className="font-serif text-2xl text-dark mb-2">
         Bridal makeup and hair in {city.name}
       </p>
-      <p className="text-muted text-sm leading-relaxed mb-3">{city.subtitle}</p>
+      <p className="text-muted text-sm leading-relaxed mb-3">{fillTemplate(city.subtitle)}</p>
       {city.neighborhoods.length > 0 && (
         <p className="text-xs text-muted-2">
           <span className="font-medium text-dark">Neighbourhoods served:</span>{' '}

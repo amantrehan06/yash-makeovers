@@ -78,19 +78,8 @@ export const content = {
       email:       { label: 'Email address',                   placeholder: 'your@email.com' },
       eventDate:   { label: 'Event date (optional)',           placeholder: 'e.g. June 14, 2026 or "Spring 2026"' },
       readyTime:   { label: 'Ready by time (optional)',        placeholder: 'e.g. 6:00 AM or "morning"' },
-      // Occasion replaces the old self-selected "service type" pills. Options
-      // are phrased from the client's point of view so the artist can map the
-      // correct package on the call — instead of letting a client pick a
-      // cheaper package than her event actually warrants. Mapping:
-      //   My wedding              → Bridal      (locked)
-      //   My pre-wedding event    → Pre-Bridal  (locked)
-      //   Photoshoot / baby shower→ Full Glam   (locked — always elevated)
-      //   Family wedding          → customer chooses via the familyLook
-      //                             follow-up: Full glam → Full Glam,
-      //                             Natural / guest look → Regular Party
-      //   Guest at someone's event→ Regular Party
-      // Letting a *family member* self-select their look is safe — the
-      // anti-undercharge protection only matters for the bride's own wedding.
+      // Asks the occasion, not the package — artist maps the tier on the call
+      // so a bride can't pick a cheaper package than her event warrants.
       occasion: {
         label:   'What\'s the occasion?',
         options: [
@@ -101,12 +90,10 @@ export const content = {
           'I\'m a guest at someone\'s event',
           'Not sure - happy to discuss',
         ],
-        // The option above that reveals the look-level follow-up below.
+        // Selecting this reveals the familyLook follow-up.
         familyTrigger: 'Family wedding',
       },
-      // Shown only when occasion === familyTrigger. Lets the family member
-      // pick how done-up they want to be (gray-area tier — their call). The
-      // 'Not sure' option keeps hesitant clients from abandoning the form.
+      // Shown only for a family wedding — the one gray tier the client picks.
       familyLook: {
         label:   'Which look for the family wedding?',
         options: [
