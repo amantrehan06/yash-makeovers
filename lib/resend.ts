@@ -1,5 +1,6 @@
 import { Resend } from 'resend'
 import { site } from '@/config/site'
+import { classifySource, type Attribution } from '@/lib/attribution'
 
 export const FROM_EMAIL = `${site.name} <noreply@${site.domain}>`
 export const OWNER_EMAIL = site.email
@@ -21,11 +22,26 @@ export function buildOwnerEmailHtml(data: {
   readyTime?: string
   occasion:   string
   message?:   string
+  attribution?: Attribution | null
 }): string {
   const optionalRow = (label: string, value?: string) =>
     value
       ? `<tr><td style="padding: 8px 0; color: #7A6A58;">${label}</td><td style="padding: 8px 0; font-weight: 600;">${value}</td></tr>`
       : ''
+
+  const a = data.attribution
+  const sourceBlock = a
+    ? `
+      <div style="margin-top: 24px; padding: 16px; background: #F3EFE8; border-radius: 6px;">
+        <p style="color: #7A6A58; margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em;">Where this lead came from</p>
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+          <tr><td style="padding: 4px 0; color: #7A6A58; width: 40%;">Source</td><td style="padding: 4px 0; font-weight: 700; color: #A8834A;">${classifySource(a)}</td></tr>
+          ${optionalRow('Landing page', a.landingPath)}
+          ${optionalRow('Campaign', a.utmCampaign)}
+          ${a.referrer ? `<tr><td style="padding: 4px 0; color: #7A6A58;">Referrer</td><td style="padding: 4px 0; color: #7A6A58; font-size: 12px;">${a.referrer}</td></tr>` : ''}
+        </table>
+      </div>`
+    : ''
 
   return `
     <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; color: #1C1410; background: #FAF8F4; padding: 40px; border-radius: 8px;">
@@ -44,6 +60,7 @@ export function buildOwnerEmailHtml(data: {
         <p style="margin: 0; white-space: pre-wrap;">${data.message}</p>
       </div>
       ` : ''}
+      ${sourceBlock}
     </div>
   `
 }

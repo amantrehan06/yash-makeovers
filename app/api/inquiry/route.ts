@@ -6,7 +6,7 @@ import { checkForSpam } from '@/lib/spam'
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { name, email, whatsapp, eventDate, readyTime, occasion, familyLook, message, website, formAgeMs } = body
+    const { name, email, whatsapp, eventDate, readyTime, occasion, familyLook, message, website, formAgeMs, attribution } = body
 
     // Fold the family-wedding look choice into the occasion string so the
     // subject line and email read e.g. "Family wedding (Full glam)".
@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
         // Reply goes to the client; From stays on the verified domain (SPF/DKIM).
         replyTo: `${name} <${email}>`,
         subject: `New inquiry from ${name} — ${occasionFull}${subjectDate}`,
-        html: buildOwnerEmailHtml({ name, email, whatsapp, eventDate, readyTime, occasion: occasionFull, message }),
+        html: buildOwnerEmailHtml({ name, email, whatsapp, eventDate, readyTime, occasion: occasionFull, message, attribution }),
       }),
       resend.emails.send({
         from: FROM_EMAIL,

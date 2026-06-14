@@ -6,6 +6,7 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { FloatingWhatsApp } from '@/components/layout/FloatingWhatsApp'
 import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar'
+import { AttributionCapture } from '@/components/AttributionCapture'
 import { site } from '@/config/site'
 import { cities } from '@/config/cities'
 import { features } from '@/config/features'
@@ -104,6 +105,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main-content">{children}</main>
         <Footer />
         {features.whatsapp && <FloatingWhatsApp />}
+        <AttributionCapture />
         {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
       </body>
     </html>

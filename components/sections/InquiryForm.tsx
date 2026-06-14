@@ -7,6 +7,7 @@ import { content } from '@/config/content'
 import { Button } from '@/components/ui/Button'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { trackEvent } from '@/lib/analytics'
+import { getOrInitAttribution } from '@/lib/attribution'
 
 interface FormData {
   name:     string
@@ -109,7 +110,7 @@ export function InquiryForm() {
       const res = await fetch('/api/inquiry', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ ...data, formAgeMs }),
+        body:    JSON.stringify({ ...data, formAgeMs, attribution: getOrInitAttribution() }),
       })
       if (!res.ok) throw new Error('Failed to send')
       trackEvent('inquiry_form_completed', {
