@@ -139,7 +139,7 @@ export default async function CityPage({ params }: Props) {
                   {city}" and specialty keywords into the first 30 words of the
                   page for long-tail SEO matching. */}
               <p className="text-gold-dim text-lg md:text-xl font-medium leading-snug mb-8">
-                {city.subtitle}
+                {fillTemplate(city.subtitle)}
               </p>
               {/* Split intro on \n\n boundaries and render each as its own
                   <p>. Real paragraph semantics (better for SEO + a11y) instead

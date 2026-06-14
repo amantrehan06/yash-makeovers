@@ -224,10 +224,10 @@ export function formatBrandList(brands: readonly string[] = site.brands): string
 // updates automatically — no copy-paste hunting across config files.
 //
 // Supported tokens:
-//   {experience}   → '12+'        (site.experience)
-//   {brides}       → '1,500+'     (site.brideCount)
+//   {experience}   → '10+'        (site.experience)
+//   {brides}       → '2,000+'     (site.brideCount)
 //   {rating}       → '4.9'        (site.googleRating)
-//   {reviewCount}  → '158'        (site.googleReviewCount)
+//   {reviewCount}  → '162'        (site.googleReviewCount)
 //   {seasonYears}  → '2026 & 2027' (site.seasonYears)
 //   {brands}       → 'DIOR, Charlotte Tilbury, ...' (Oxford-comma list)
 //   {artistName}   → 'Yashpreet'  (site.artistName)

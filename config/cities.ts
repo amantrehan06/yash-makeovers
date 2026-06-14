@@ -83,7 +83,7 @@ export const cities: readonly City[] = [
     metaDescription:
       "South Asian bridal makeup and hair specialist in Brampton. {experience} years and {brides} brides served, all from home base. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Brampton',
-    subtitle: 'Bridal makeup and hair for Brampton brides. 10+ years and 1,500+ weddings, all from this city.',
+    subtitle: 'Bridal makeup and hair for Brampton brides. {experience} years and {brides} weddings, all from this city.',
     geo: { latitude: 43.6831, longitude: -79.7663 },
     intro:
       "Brampton is home. I built Yash Makeovers here because this is where South Asian wedding culture in the GTA actually lives. Eight of ten brides I work with have some connection to this city, whether it's a Brampton gurdwara ceremony, a thousand-guest reception at Embassy Grand, or family flying in from India and settling into a Castlemore Airbnb for the week.\n\nWhat I love about Brampton weddings is the scale and the heart. They run long. A typical day starts at 5am with hair and makeup for the Anand karaj wedding, then a reception that goes past midnight. The makeup has to hold for sixteen hours and survive crying, laughing, hugging, dancing under hot ballroom lights. From Springdale to Bramalea, every neighbourhood feels familiar. This city raised the standard for what a South Asian wedding can be, and I've spent ten years getting better at meeting it.",
