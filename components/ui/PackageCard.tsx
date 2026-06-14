@@ -70,9 +70,6 @@ export function PackageCard({
         </p>
       )}
 
-      <p className={`text-xs mb-4 ${pkg.highlight ? 'text-ivory-4' : 'text-muted'}`}>
-        {pkg.priceNote}
-      </p>
 
       <p className={`text-sm leading-relaxed mb-6 ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}>
         {pkg.tagline}
