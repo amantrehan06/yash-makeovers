@@ -52,10 +52,11 @@ export function createOgImage({ eyebrow, title, subtitle }: OgInput): ImageRespo
               justifyContent:  'center',
               color:           COLORS.ivory,
               fontFamily:      'serif',
-              fontSize:        28,
+              fontSize:        22,
+              letterSpacing:   1,
             }}
           >
-            Y
+            YM
           </div>
           <div
             style={{
