@@ -3,42 +3,41 @@
 import { useEffect, useRef, useState } from 'react'
 import { features } from '@/config/features'
 import { site } from '@/config/site'
-import { packages } from '@/config/packages'
 import { content } from '@/config/content'
 import { Button } from '@/components/ui/Button'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { trackEvent } from '@/lib/analytics'
 
 interface FormData {
-  name:        string
-  whatsapp:    string
-  email:       string
-  eventDate:   string
-  readyTime:   string
-  serviceType: string
-  message:     string
+  name:     string
+  whatsapp: string
+  email:    string
+  eventDate: string
+  readyTime: string
+  occasion: string
+  familyLook: string  // only set when occasion === FAMILY_TRIGGER
+  message:  string
   // Honeypot field — invisible to humans, often filled by bots.
   // See lib/spam.ts for the checking logic.
-  website:     string
+  website:  string
 }
 
 const EMPTY: FormData = {
-  name:        '',
-  whatsapp:    '',
-  email:       '',
-  eventDate:   '',
-  readyTime:   '',
-  serviceType: '',
-  message:     '',
-  website:     '',
+  name:      '',
+  whatsapp:  '',
+  email:     '',
+  eventDate: '',
+  readyTime: '',
+  occasion:  '',
+  familyLook: '',
+  message:   '',
+  website:   '',
 }
 
-// Service options shown as pills. 'Not sure' is appended for clients who
-// haven't decided yet — same approach as the portfolio filter chips.
-const SERVICE_OPTIONS = [
-  ...packages.map((pkg) => pkg.name),
-  'Not sure',
-] as const
+// Occasion + family-look options come from config — reworded there, not here.
+const OCCASION_OPTIONS    = content.inquiryForm.fields.occasion.options
+const FAMILY_TRIGGER      = content.inquiryForm.fields.occasion.familyTrigger
+const FAMILY_LOOK_OPTIONS = content.inquiryForm.fields.familyLook.options
 
 type FieldErrors = Partial<Record<keyof FormData, string>>
 
@@ -65,6 +64,17 @@ export function InquiryForm() {
     if (errors[field]) setErrors((e) => ({ ...e, [field]: undefined }))
   }
 
+  // Occasion has a side effect: picking anything other than the family-wedding
+  // trigger clears any stale familyLook choice (and its error) so we never
+  // submit a look for a non-family occasion.
+  const updateOccasion = (value: string) => {
+    update('occasion', value)
+    if (value !== FAMILY_TRIGGER) {
+      setData((d) => ({ ...d, familyLook: '' }))
+      setErrors((e) => ({ ...e, familyLook: undefined }))
+    }
+  }
+
   function validate(): FieldErrors {
     const next: FieldErrors = {}
     if (!data.name.trim())     next.name        = 'Please enter your name.'
@@ -73,7 +83,9 @@ export function InquiryForm() {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
       next.email = 'That email doesn\'t look right — please double-check.'
     }
-    if (!data.serviceType.trim()) next.serviceType = 'Pick the service you\'re interested in.'
+    if (!data.occasion.trim()) next.occasion = 'Pick the occasion.'
+    // familyLook is optional — a family-wedding guest can leave it blank and
+    // sort the look out on the call.
     return next
   }
 
@@ -100,7 +112,9 @@ export function InquiryForm() {
         body:    JSON.stringify({ ...data, formAgeMs }),
       })
       if (!res.ok) throw new Error('Failed to send')
-      trackEvent('inquiry_form_completed', { service: data.serviceType })
+      trackEvent('inquiry_form_completed', {
+        occasion: data.occasion === FAMILY_TRIGGER ? `${data.occasion} (${data.familyLook})` : data.occasion,
+      })
       setSubmitted(true)
     } catch {
       setError(`${content.inquiryForm.errorBody} ${site.phone}.`)
@@ -210,33 +224,32 @@ export function InquiryForm() {
             />
           </div>
 
-          {/* Service type as branded pills — matches the portfolio filter design. */}
-          <div data-field="serviceType" tabIndex={-1}>
-            <label className="block text-xs uppercase tracking-widest text-muted mb-3">
-              {content.inquiryForm.fields.serviceType.label} <span className="text-gold">*</span>
-            </label>
-            <div className={`flex flex-wrap gap-2 ${errors.serviceType ? 'rounded-lg ring-2 ring-red-300 ring-offset-4 ring-offset-ivory-2' : ''}`}>
-              {SERVICE_OPTIONS.map((option) => {
-                const active = data.serviceType === option
-                return (
-                  <button
-                    key={option}
-                    type="button"
-                    onClick={() => update('serviceType', option)}
-                    className={`px-5 py-2 rounded-full text-sm font-medium border transition-colors ${
-                      active
-                        ? 'bg-gold text-ivory border-gold'
-                        : 'bg-ivory border-ivory-4 text-muted hover:border-gold hover:text-gold'
-                    }`}
-                    aria-pressed={active}
-                  >
-                    {option}
-                  </button>
-                )
-              })}
-            </div>
-            {errors.serviceType && <p className="text-red-600 text-xs mt-2">{errors.serviceType}</p>}
-          </div>
+          {/* Occasion as branded pills — replaces the old self-selected
+              package pills so the artist maps the correct package on the
+              call. The bride can't undercharge her own event; a family-wedding
+              guest gets a follow-up to choose their look level. */}
+          <PillGroup
+            name="occasion"
+            label={content.inquiryForm.fields.occasion.label}
+            options={OCCASION_OPTIONS}
+            value={data.occasion}
+            onChange={updateOccasion}
+            error={errors.occasion}
+          />
+
+          {/* Follow-up: only family weddings are a gray tier, so we let that
+              guest pick how done-up they want to be. Hidden otherwise. */}
+          {data.occasion === FAMILY_TRIGGER && (
+            <PillGroup
+              name="familyLook"
+              label={content.inquiryForm.fields.familyLook.label}
+              options={FAMILY_LOOK_OPTIONS}
+              value={data.familyLook}
+              onChange={(v) => update('familyLook', v)}
+              error={errors.familyLook}
+              required={false}
+            />
+          )}
 
           <div>
             <label className="block text-xs uppercase tracking-widest text-muted mb-2">
@@ -293,6 +306,55 @@ export function InquiryForm() {
         </form>
       </div>
     </section>
+  )
+}
+
+// Single-select pill group — branded chips matching the portfolio filter
+// design. `required` (default true) shows the gold asterisk.
+function PillGroup({
+  name,
+  label,
+  options,
+  value,
+  onChange,
+  error,
+  required = true,
+}: {
+  name:     string
+  label:    string
+  options:  readonly string[]
+  value:    string
+  onChange: (v: string) => void
+  error?:   string
+  required?: boolean
+}) {
+  return (
+    <div data-field={name} tabIndex={-1}>
+      <label className="block text-xs uppercase tracking-widest text-muted mb-3">
+        {label} {required && <span className="text-gold">*</span>}
+      </label>
+      <div className={`flex flex-wrap gap-2 ${error ? 'rounded-lg ring-2 ring-red-300 ring-offset-4 ring-offset-ivory-2' : ''}`}>
+        {options.map((option) => {
+          const active = value === option
+          return (
+            <button
+              key={option}
+              type="button"
+              onClick={() => onChange(option)}
+              className={`px-5 py-2 rounded-full text-sm font-medium border transition-colors ${
+                active
+                  ? 'bg-gold text-ivory border-gold'
+                  : 'bg-ivory border-ivory-4 text-muted hover:border-gold hover:text-gold'
+              }`}
+              aria-pressed={active}
+            >
+              {option}
+            </button>
+          )
+        })}
+      </div>
+      {error && <p className="text-red-600 text-xs mt-2">{error}</p>}
+    </div>
   )
 }
 

@@ -6,7 +6,11 @@ import { checkForSpam } from '@/lib/spam'
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { name, email, whatsapp, eventDate, readyTime, serviceType, message, website, formAgeMs } = body
+    const { name, email, whatsapp, eventDate, readyTime, occasion, familyLook, message, website, formAgeMs } = body
+
+    // Fold the family-wedding look choice into the occasion string so the
+    // subject line and email read e.g. "Family wedding (Full glam)".
+    const occasionFull = familyLook ? `${occasion} (${familyLook})` : occasion
 
     // Spam check (honeypot + time + URL count). We return a 200 OK to the
     // client either way so bots don't learn what triggered the rejection —
@@ -17,7 +21,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: true })
     }
 
-    if (!name || !email || !whatsapp || !serviceType) {
+    if (!name || !email || !whatsapp || !occasion) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
@@ -27,8 +31,13 @@ export async function POST(req: NextRequest) {
       resend.emails.send({
         from: FROM_EMAIL,
         to: OWNER_EMAIL,
-        subject: `New inquiry from ${name} — ${serviceType}${subjectDate}`,
-        html: buildOwnerEmailHtml({ name, email, whatsapp, eventDate, readyTime, serviceType, message }),
+        // Reply-To is the client's address (with their name) so hitting
+        // "Reply" in the inbox goes straight to them. The From must stay on
+        // the verified domain — using the client's address as From fails
+        // SPF/DKIM and lands in spam.
+        replyTo: `${name} <${email}>`,
+        subject: `New inquiry from ${name} — ${occasionFull}${subjectDate}`,
+        html: buildOwnerEmailHtml({ name, email, whatsapp, eventDate, readyTime, occasion: occasionFull, message }),
       }),
       resend.emails.send({
         from: FROM_EMAIL,

@@ -78,7 +78,43 @@ export const content = {
       email:       { label: 'Email address',                   placeholder: 'your@email.com' },
       eventDate:   { label: 'Event date (optional)',           placeholder: 'e.g. June 14, 2026 or "Spring 2026"' },
       readyTime:   { label: 'Ready by time (optional)',        placeholder: 'e.g. 6:00 AM or "morning"' },
-      serviceType: { label: 'Service type' },
+      // Occasion replaces the old self-selected "service type" pills. Options
+      // are phrased from the client's point of view so the artist can map the
+      // correct package on the call — instead of letting a client pick a
+      // cheaper package than her event actually warrants. Mapping:
+      //   My wedding              → Bridal      (locked)
+      //   My pre-wedding event    → Pre-Bridal  (locked)
+      //   Photoshoot / baby shower→ Full Glam   (locked — always elevated)
+      //   Family wedding          → customer chooses via the familyLook
+      //                             follow-up: Full glam → Full Glam,
+      //                             Natural / guest look → Regular Party
+      //   Guest at someone's event→ Regular Party
+      // Letting a *family member* self-select their look is safe — the
+      // anti-undercharge protection only matters for the bride's own wedding.
+      occasion: {
+        label:   'What\'s the occasion?',
+        options: [
+          'My wedding (Ceremony / Reception / Nikkah)',
+          'My pre-wedding event (Sangeet, Engagement / Rokha)',
+          'Photoshoot or Baby/Bridal shower',
+          'Family wedding',
+          'I\'m a guest at someone\'s event',
+          'Not sure - happy to discuss',
+        ],
+        // The option above that reveals the look-level follow-up below.
+        familyTrigger: 'Family wedding',
+      },
+      // Shown only when occasion === familyTrigger. Lets the family member
+      // pick how done-up they want to be (gray-area tier — their call). The
+      // 'Not sure' option keeps hesitant clients from abandoning the form.
+      familyLook: {
+        label:   'Which look for the family wedding?',
+        options: [
+          'Full glam',
+          'Natural / guest look',
+          'Not sure — let\'s decide together',
+        ],
+      },
       message:     { label: 'Message',                         placeholder: 'Anything else we should know? Number of people, venue or city, inspiration, questions about the package...' },
     },
   },

@@ -14,13 +14,13 @@ export function getResend(): Resend {
 }
 
 export function buildOwnerEmailHtml(data: {
-  name:        string
-  email:       string
-  whatsapp:    string
-  eventDate?:  string
-  readyTime?:  string
-  serviceType: string
-  message?:    string
+  name:       string
+  email:      string
+  whatsapp:   string
+  eventDate?: string
+  readyTime?: string
+  occasion:   string
+  message?:   string
 }): string {
   const optionalRow = (label: string, value?: string) =>
     value
@@ -34,7 +34,7 @@ export function buildOwnerEmailHtml(data: {
         <tr><td style="padding: 8px 0; color: #7A6A58; width: 40%;">Name</td><td style="padding: 8px 0; font-weight: 600;">${data.name}</td></tr>
         <tr><td style="padding: 8px 0; color: #7A6A58;">WhatsApp</td><td style="padding: 8px 0; font-weight: 600;">${data.whatsapp}</td></tr>
         <tr><td style="padding: 8px 0; color: #7A6A58;">Email</td><td style="padding: 8px 0; font-weight: 600;">${data.email}</td></tr>
-        <tr><td style="padding: 8px 0; color: #7A6A58;">Service</td><td style="padding: 8px 0; font-weight: 600;">${data.serviceType}</td></tr>
+        <tr><td style="padding: 8px 0; color: #7A6A58;">Occasion</td><td style="padding: 8px 0; font-weight: 700; color: #A8834A;">${data.occasion}</td></tr>
         ${optionalRow('Event Date',   data.eventDate)}
         ${optionalRow('Ready by',     data.readyTime)}
       </table>
