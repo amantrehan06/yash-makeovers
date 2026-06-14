@@ -58,7 +58,7 @@ export function buildClientEmailHtml(name: string): string {
       <p style="font-size: 16px; line-height: 1.7;">Dear ${name},</p>
       <p style="font-size: 16px; line-height: 1.7;">
         Thank you so much for reaching out! I'm thrilled you're considering ${site.name} for your special occasion.
-        I have received your inquiry and will personally WhatsApp you within 24 hours to discuss your vision and availability.
+        I have received your inquiry and will personally WhatsApp you as soon as possible to discuss your vision and availability.
       </p>
       <div style="background: #EDE7DC; border-radius: 8px; padding: 24px; margin: 28px 0;">
         <p style="margin: 0 0 12px; color: #A8834A; font-weight: 600; font-size: 15px;">A few things to know:</p>
