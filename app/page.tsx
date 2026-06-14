@@ -67,7 +67,7 @@ export default async function HomePage() {
 
   const logoUrl = site.branding.logoPublicId
     ? buildCloudinaryUrl(site.branding.logoPublicId, { width: 512, height: 512, crop: 'fill' })
-    : `${businessUrl}/icon.png`
+    : `${businessUrl}/icon.svg`
 
   const imageUrl = site.branding.ogImagePublicId
     ? buildCloudinaryUrl(site.branding.ogImagePublicId, { width: 1200, height: 630, crop: 'fill' })

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { site } from '@/config/site'
 import { cities } from '@/config/cities'
+import { Logo } from '@/components/ui/Logo'
 
 export function Footer() {
   return (
@@ -8,7 +9,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
-            <p className="font-serif text-2xl text-ivory mb-3">{site.name}</p>
+            <Logo className="text-ivory mb-3" wordmarkClassName="text-2xl" />
             <p className="text-muted-2 text-sm leading-relaxed">{site.tagline}</p>
             <p className="text-muted-2 text-sm mt-4">{site.address}</p>
             <p className="text-muted-2 text-sm mt-1">

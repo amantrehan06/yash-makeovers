@@ -62,9 +62,9 @@ export const site = {
   // values and the entire site (meta descriptions, city intros, body copy)
   // refreshes via fillTemplate() — no string hunting required.
   experience:        '10+',         // {experience} token
-  brideCount:        '1,500+',      // {brides} token
+  brideCount:        '2,000+',      // {brides} token
   googleRating:      '4.9',         // {rating} token
-  googleReviewCount: '158',         // {reviewCount} token
+  googleReviewCount: '162',         // {reviewCount} token
   seasonYears:       '2026 & 2027', // {seasonYears} token — bump yearly
 
   about: `With {experience} years of experience and {brides} brides transformed across the GTA,
@@ -207,9 +207,9 @@ but for making every bride feel comfortable, confident, and truly seen.`,
   // ── Branding (theme color + default OG image + logo for schema) ──
   // Leave image fields empty until uploaded — wiring falls back gracefully:
   //   ogImagePublicId empty → no social-share card image (title/desc only)
-  //   logoPublicId    empty → uses /icon.png (already in /app)
+  //   logoPublicId    empty → uses /icon.svg (the YM monogram in /app)
   branding: {
-    themeColor:      '#bfa46f',  // ← VERIFY exact brand gold hex (used in browser chrome / PWA)
+    themeColor:      '#A8834A',  // brand gold (--color-gold), used in browser chrome / PWA
     // 1200×630 image used for social share previews (WhatsApp, FB, X, iMessage, LinkedIn).
     // When ready: upload to Cloudinary at path `yash-makeovers/og/og-default`
     // then paste the public_id here (e.g. 'yash-makeovers/og/og-default').

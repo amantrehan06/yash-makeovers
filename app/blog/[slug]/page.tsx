@@ -124,7 +124,7 @@ export default function BlogPostPage({ params }: Props) {
   // Publisher logo: prefer Cloudinary brand logo, fall back to bundled icon.
   const publisherLogoUrl = site.branding.logoPublicId
     ? buildCloudinaryUrl(site.branding.logoPublicId, { width: 512, height: 512, crop: 'fill' })
-    : `${businessUrl}/icon.png`
+    : `${businessUrl}/icon.svg`
 
   // Cover image — used for Article.image (required for rich-result eligibility)
   // and for the hero render below.

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { site } from '@/config/site'
+import { Logo } from '@/components/ui/Logo'
 
 const navLinks = [
   { href: '/about', label: 'About' },
@@ -31,12 +31,10 @@ export function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link
-            href="/"
-            className="font-serif text-2xl text-dark tracking-wide hover:text-gold transition-colors"
-          >
-            {site.name}
-          </Link>
+          <Logo
+            className="text-dark hover:text-gold"
+            wordmarkClassName="text-xl sm:text-2xl max-[360px]:hidden"
+          />
 
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
@@ -89,13 +87,11 @@ export function Navbar() {
               className="w-72 bg-ivory h-full shadow-2xl flex flex-col p-8 gap-8"
             >
               <div className="flex items-center justify-between">
-                <Link
-                  href="/"
-                  className="font-serif text-xl text-dark"
+                <Logo
+                  className="text-dark"
+                  wordmarkClassName="text-xl"
                   onClick={() => setDrawerOpen(false)}
-                >
-                  {site.name}
-                </Link>
+                />
                 <button
                   onClick={() => setDrawerOpen(false)}
                   aria-label="Close menu"
