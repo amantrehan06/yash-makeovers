@@ -4,7 +4,7 @@ import { seo } from '@/config/seo'
 import { features } from '@/config/features'
 import { cities } from '@/config/cities'
 import { faqs } from '@/config/faq'
-import { getBeforeAfterPairs } from '@/lib/cloudinary'
+import { getBeforeAfterPairs, getImagesFromFolder, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
 import { buildCloudinaryUrl } from '@/lib/cloudinaryUrl'
 import { Hero } from '@/components/sections/Hero'
 import { Marquee } from '@/components/sections/Marquee'
@@ -27,7 +27,7 @@ export const revalidate = 28800
 export const metadata: Metadata = {
   // `absolute` bypasses the layout's `%s | Yash Makeovers` template.
   title: { absolute: `${site.name} — Bridal Makeup Artist in ${site.serviceArea}` },
-  description: `Award-winning bridal makeup and hair by ${site.artistName} — ${site.experience} years, ${site.brideCount} brides across ${cities.slice(0, 3).map((c) => c.name).join(', ')} & the wider GTA. Now booking ${site.seasonYears} weddings.`,
+  description: `Top bridal makeup and hair by ${site.artistName} — ${site.experience} years, ${site.brideCount} brides across ${cities.slice(0, 3).map((c) => c.name).join(', ')} & the wider GTA. Now booking ${site.seasonYears} weddings.`,
   alternates: {
     canonical: `https://${site.canonicalHost}`,
   },
@@ -69,6 +69,22 @@ export default async function HomePage() {
     ? buildCloudinaryUrl(site.branding.ogImagePublicId, { width: 1200, height: 630, crop: 'fill' })
     : undefined
 
+  // Business image for search/structured data. Prefer the hero photo so we
+  // steer Google's SERP thumbnail toward it instead of letting Google guess.
+  // Three face-aware crops (1:1, 4:3, 16:9) per Google's LocalBusiness image
+  // guidance. Falls back to the OG image, else omitted.
+  const heroImages = await getImagesFromFolder(CLOUDINARY_FOLDERS.hero)
+  const heroPublicId = heroImages[0]?.public_id
+  const businessImages = heroPublicId
+    ? [
+        buildCloudinaryUrl(heroPublicId, { width: 1200, height: 1200, crop: 'fill' }),
+        buildCloudinaryUrl(heroPublicId, { width: 1200, height: 900,  crop: 'fill' }),
+        buildCloudinaryUrl(heroPublicId, { width: 1200, height: 675,  crop: 'fill' }),
+      ]
+    : imageUrl
+      ? [imageUrl]
+      : undefined
+
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type':    'BeautyStudio',
@@ -78,7 +94,7 @@ export default async function HomePage() {
     email:      site.email,
     url:        businessUrl,
     logo:       logoUrl,
-    ...(imageUrl ? { image: imageUrl } : {}),
+    ...(businessImages ? { image: businessImages } : {}),
     address: {
       '@type': 'PostalAddress',
       ...site.addressStructured,
