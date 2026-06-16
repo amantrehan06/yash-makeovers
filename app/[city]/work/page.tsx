@@ -9,9 +9,13 @@ import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
 
 const BLOCKS_PER_PAGE = 12
 
+// Only the cities prerendered below are valid — unknown cities 404 instead of
+// triggering an on-demand render.
+export const dynamicParams = false
+
 interface Props {
-  params: Promise<{ city: string }>
-  searchParams: Promise<{ page?: string }>
+  params: { city: string }
+  searchParams: { page?: string }
 }
 
 export async function generateStaticParams() {
@@ -21,8 +25,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { city: citySlug } = await params
-  const city = cities.find((c) => c.slug === citySlug)
+  const city = cities.find((c) => c.slug === params.city)
   if (!city) return {}
   return {
     title:       `All Work in ${city.name}`,
@@ -31,12 +34,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function CityWorkArchive({ params, searchParams }: Props) {
-  const { city: citySlug } = await params
-  const { page: pageParam } = await searchParams
-
-  const city = cities.find((c) => c.slug === citySlug)
+export default function CityWorkArchive({ params, searchParams }: Props) {
+  const city = cities.find((c) => c.slug === params.city)
   if (!city) notFound()
+
+  const pageParam = searchParams.page
 
   const sorted = [...city.contentBlocks].sort((a, b) => b.date.localeCompare(a.date))
   if (sorted.length === 0) notFound()

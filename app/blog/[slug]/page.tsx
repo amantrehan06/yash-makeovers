@@ -32,6 +32,9 @@ interface Props {
 
 // Static — blog posts rebuild only on deploy, not on a timer.
 export const revalidate = false
+// Only real posts exist — unknown slugs (e.g. legacy SEO URLs) 404 cleanly
+// instead of attempting an on-demand render that fails on Vercel.
+export const dynamicParams = false
 
 export async function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }))
