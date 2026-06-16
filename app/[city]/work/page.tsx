@@ -7,15 +7,12 @@ import { packages } from '@/config/packages'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
 
-const BLOCKS_PER_PAGE = 12
-
 // Only the cities prerendered below are valid — unknown cities 404 instead of
 // triggering an on-demand render.
 export const dynamicParams = false
 
 interface Props {
   params: { city: string }
-  searchParams: { page?: string }
 }
 
 export async function generateStaticParams() {
@@ -34,21 +31,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function CityWorkArchive({ params, searchParams }: Props) {
+export default function CityWorkArchive({ params }: Props) {
   const city = cities.find((c) => c.slug === params.city)
   if (!city) notFound()
 
-  const pageParam = searchParams.page
-
   const sorted = [...city.contentBlocks].sort((a, b) => b.date.localeCompare(a.date))
   if (sorted.length === 0) notFound()
-
-  const currentPage = Math.max(1, parseInt(pageParam ?? '1', 10))
-  const totalPages  = Math.ceil(sorted.length / BLOCKS_PER_PAGE)
-  const pageBlocks  = sorted.slice(
-    (currentPage - 1) * BLOCKS_PER_PAGE,
-    currentPage * BLOCKS_PER_PAGE,
-  )
 
   return (
     <main className="min-h-screen bg-ivory">
@@ -75,32 +63,11 @@ export default function CityWorkArchive({ params, searchParams }: Props) {
       {/* ── Grid ── */}
       <section className="pb-16 px-6">
         <div className="max-w-5xl mx-auto flex flex-col gap-8">
-          {pageBlocks.map((block) => (
+          {sorted.map((block) => (
             <WorkCard key={block.id} block={block} />
           ))}
         </div>
       </section>
-
-      {/* ── Pagination ── */}
-      {totalPages > 1 && (
-        <nav className="pb-16 px-6 flex justify-center items-center gap-3" aria-label="Pagination">
-          {currentPage > 1 && (
-            <PaginationLink
-              href={`/${city.slug}/work${currentPage - 1 > 1 ? `?page=${currentPage - 1}` : ''}`}
-              label="← Newer"
-            />
-          )}
-          <span className="text-sm text-muted-2">
-            Page {currentPage} of {totalPages}
-          </span>
-          {currentPage < totalPages && (
-            <PaginationLink
-              href={`/${city.slug}/work?page=${currentPage + 1}`}
-              label="Older →"
-            />
-          )}
-        </nav>
-      )}
 
       {/* ── Back link ── */}
       <div className="pb-16 text-center">
@@ -149,17 +116,5 @@ function WorkCard({ block }: { block: ContentBlock }) {
         <p className="text-muted text-sm leading-relaxed">{block.body}</p>
       </div>
     </article>
-  )
-}
-
-// ── Pagination link ───────────────────────────────────────────────────────────
-function PaginationLink({ href, label }: { href: string; label: string }) {
-  return (
-    <Link
-      href={href}
-      className="text-sm font-medium text-gold border border-gold/40 rounded-full px-5 py-2 hover:bg-gold/5 transition-colors"
-    >
-      {label}
-    </Link>
   )
 }
