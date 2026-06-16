@@ -3,7 +3,6 @@ import { site } from '@/config/site'
 import { seo } from '@/config/seo'
 import { features } from '@/config/features'
 import { cities } from '@/config/cities'
-import { reviews } from '@/config/reviews'
 import { faqs } from '@/config/faq'
 import { getBeforeAfterPairs } from '@/lib/cloudinary'
 import { buildCloudinaryUrl } from '@/lib/cloudinaryUrl'
@@ -109,20 +108,9 @@ export default async function HomePage() {
     // Matches the primary category on Google Business Profile — helps Google
     // confidently connect this schema with the GBP listing.
     category: site.businessCategory,
-    aggregateRating: {
-      '@type':     'AggregateRating',
-      ratingValue: site.googleRating,
-      reviewCount: site.googleReviewCount,
-    },
-    // Concrete reviews back up the AggregateRating — required to stay
-    // policy-compliant with Google's review rich-result guidelines.
-    review: reviews.map((r) => ({
-      '@type':       'Review',
-      author:        { '@type': 'Person', name: r.author },
-      reviewRating:  { '@type': 'Rating', ratingValue: r.rating, bestRating: 5 },
-      datePublished: r.datePublished,
-      reviewBody:    r.body,
-    })),
+    // No self-authored aggregateRating/review here: Google disallows
+    // self-serving reviews on LocalBusiness/Organization. Real star ratings
+    // come from the linked Google Business Profile.
   }
 
   // Note: FAQPage JSON-LD is intentionally emitted only on /services (the

@@ -68,13 +68,8 @@ export function buildPackageServiceSchema(pkg: Package) {
         unitText:        pkg.priceNote, // e.g. "per person per event"
       },
     },
-    // Inherit the homepage's aggregateRating so each Service entry can
-    // surface the 4.9★ rating in SERP enrichments.
-    aggregateRating: {
-      '@type':     'AggregateRating',
-      ratingValue: site.googleRating,
-      reviewCount: site.googleReviewCount,
-    },
+    // No aggregateRating: Service isn't a supported review-snippet type and
+    // self-authored ratings are disallowed. Stars come from Google Business Profile.
   }
 }
 
