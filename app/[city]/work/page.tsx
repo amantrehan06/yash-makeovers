@@ -41,7 +41,7 @@ export default function CityWorkArchive({ params }: Props) {
   return (
     <main className="min-h-screen bg-ivory">
       {/* ── Breadcrumb ── */}
-      <nav className="px-6 pt-8 pb-2 max-w-5xl mx-auto text-xs text-muted-2 flex items-center gap-2">
+      <nav className="px-6 pt-28 pb-2 max-w-5xl mx-auto text-xs text-muted-2 flex items-center gap-2">
         <Link href="/" className="hover:text-gold transition-colors">Home</Link>
         <span aria-hidden>›</span>
         <Link href={`/${city.slug}`} className="hover:text-gold transition-colors">{city.name}</Link>
