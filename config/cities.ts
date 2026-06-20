@@ -404,7 +404,29 @@ export const cities: readonly City[] = [
       'West Hill'
     ],
     nearbyCities: ['toronto', 'markham', 'north-york', 'vaughan'],
-    contentBlocks: [],
+    contentBlocks: [
+    {
+      id: `brampton-202605-bridal-makeup-nikkah`,
+      date: `2026-05-23`,
+      city: `brampton`,
+      service: `bridal`,
+      title: `Bridal Makeup for a Nikkah Ceremony in Brampton`,
+      body: `A bridal makeup look for a Nikkah ceremony in Brampton. The service highlighted the trust between the artist and the bride, enhancing the bride's natural beauty. Yash Makeovers provided the makeup transformation, ensuring a polished finish for the occasion.`,
+      imageUrl: `yash-makeovers/work-blocks/brampton/bridal-makeup-brampton-bridal-makeup-nikkah-202605`,
+      sourceId: `DYslaNbFG6c`,
+    }
+  ,
+    {
+      id: `toronto-202605-sangeet-bride-makeup-hair`,
+      date: `2026-05-24`,
+      city: `toronto`,
+      service: `pre-bridal`,
+      title: `Sangeet Makeup and Hair in Toronto`,
+      body: `Beautiful Kannu's Sangeet featured makeup by Beauty by Reet and hair styling by Yash Makeovers. The look was created specifically for the Sangeet event, showcasing the collaborative efforts of both artists. Yash Makeovers is currently booking for 2026 and 2027.`,
+      imageUrl: `yash-makeovers/work-blocks/toronto/pre-bridal-makeup-toronto-sangeet-bride-makeup-hair-202605`,
+      sourceId: `DYtQh7mM2XC`,
+    }
+  ],
   },
   {
     slug: 'markham',
