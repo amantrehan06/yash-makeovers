@@ -37,6 +37,7 @@ const FOLDER_SPECS: Record<string, FolderSpec> = {
   'yash-makeovers/before-after/before':  { maxCount: 10,  aspectRatio: { w: 1,  h: 1 }, tolerance: 0.2,  label: 'Before photos' },
   'yash-makeovers/before-after/after':   { maxCount: 10,  aspectRatio: { w: 1,  h: 1 }, tolerance: 0.2,  label: 'After photos' },
   'yash-makeovers/blog':                 { maxCount: 999, aspectRatio: { w: 16, h: 9 }, tolerance: 0.25, label: 'Blog covers' },
+  'yash-makeovers/work-blocks':          { maxCount: 999, aspectRatio: { w: 4,  h: 3 }, tolerance: 0.4,  label: 'Work block photos' },
 }
 
 function validateImages(resources: CloudinaryResource[], folder: string): CloudinaryResource[] {

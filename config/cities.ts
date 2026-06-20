@@ -109,25 +109,6 @@ export const cities: readonly City[] = [
     ],
     nearbyCities: ['mississauga', 'toronto', 'vaughan', 'etobicoke'],
     contentBlocks: [
-    {
-      id: `brampton-202605-glowing-bride-magic`,
-      date: `2026-05-21`,
-      city: `brampton`,
-      service: `bridal`,
-      title: `A Glowing Bride's Magical Transformation in Brampton`,
-      body: `On May 21, 2026, I had the absolute pleasure of working with a beautiful Brampton bride to create her dream look for her Nikkah ceremony. Because Muslim bridal aesthetics call for a specific balance of striking elegance and soft traditional refinement, my team and I collaborated closely with the talented hairstylists at Sandy B Beauty Lounge to craft a cohesive, flawless appearance. We paired a deeply radiant, long-wear HD skin base with classic, clean definition to perfectly complement her intricately detailed bridal attire. Knowing how long multi-day South Asian celebrations run, I focused heavily on elite longevity techniques, ensuring her makeup looked entirely fresh, luminous, and camera-ready under the bright ballroom spotlights during her reception. It was an honor to help her step into this major milestone feeling completely comfortable, confident, and beautiful.`,
-      imageUrl: ``,
-    }
-  ,
-    {
-      id: `brampton-202605-ayushi-bridalmakeup`,
-      date: `2026-05-18`,
-      city: `brampton`,
-      service: `bridal`,
-      title: `Ayushi's Beautiful Bridal Look in Brampton`,
-      body: `On May 18, 2026, I had the pleasure of styling Ayushi for her beautiful multi-day Punjabi wedding celebrations right here in Brampton. For her morning Anand Karaj ceremony, we focused on building an incredibly durable, luminous HD skin finish designed to withstand early morning gurdwara lighting and stay completely flawless through hours of hugging and family portraits. Collaborating with the talented team at Sandy B Beauty Lounge for her hair design, we curated a look that honored her traditional heritage while maintaining a clean, modern aesthetic. Seeing her step out toward the ballroom doors radiating that level of confidence is exactly why I love doing what I do in my hometown.`,
-      imageUrl: ``,
-    }
   ],
   },
   {
@@ -201,15 +182,13 @@ export const cities: readonly City[] = [
     nearbyCities:  ['mississauga', 'etobicoke', 'vaughan', 'scarborough'],
     contentBlocks: [
     {
-      id: `toronto-202606-soft-pink-glam`,
-      date: `2026-06-05`,
+      id: `toronto-202606-bridal-red-gown-brown-makeup`,
+      date: `2026-06-17`,
       city: `toronto`,
       service: `bridal`,
-      title: `Amber's Soft Pink Glam for Her Toronto Wedding`,
-      body: `Amber envisioned a soft pink glam look for her special day, perfectly capturing her personality and style. On June 5, 2026, she entrusted Yash Makeovers to bring her vision to life for her Toronto wedding festivities. The delicate blush tones complemented her bridal attire, enhancing her natural beauty while ensuring she looked flawless in HD. This look was not only striking but also ideal for the intimate ceremonies and celebrations that reflect the rich cultural traditions of South Asian weddings. Amber felt confident and radiant, ready to celebrate her love with family and friends. A true testament to the artistry of Yash Makeovers, this soft glam look was crafted to last through the emotional moments of the day, from the ceremony to the reception.  
-
-    #softglam #pink #blush #makeupartist #bridalmakeup`,
-      imageUrl: ``,
+      title: `Bridal Makeup for a Red Gown with Brown Shades in Toronto`,
+      body: `A look featuring a stunning red silhouette gown was created. Soft, dreamy brown shades of chocolate were used for the makeup, achieving a romantic glow. This bridal makeup was designed to complement the beauty of the moment.`,
+      imageUrl: `yash-makeovers/work-blocks/toronto/bridal-makeup-toronto-bridal-red-gown-brown-202606`,
     }
   ],
   },
