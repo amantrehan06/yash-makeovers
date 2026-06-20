@@ -43,6 +43,8 @@ export interface ContentBlock {
   imageUrl?: string   // optional Cloudinary public_id
   city:      string   // city slug — redundant when nested, but the
                       // transform skill emits it for routing
+  sourceId?: string   // Instagram shortCode — used by SEO Engine to detect
+                      // already-processed posts. Delete the block → post is eligible again.
 }
 
 export interface City {
@@ -109,6 +111,50 @@ export const cities: readonly City[] = [
     ],
     nearbyCities: ['mississauga', 'toronto', 'vaughan', 'etobicoke'],
     contentBlocks: [
+  
+    {
+      id: `brampton-202303-bridal-goals-gold`,
+      date: `2023-03-09`,
+      city: `brampton`,
+      service: `bridal`,
+      title: `Bridal Makeup Goals in Brampton with Yash Makeovers`,
+      body: `A bridal look featuring gold tones for an event in Brampton. Makeup was done by Yash Makeovers. The outfit was provided by Svelegance. Jewelry was sourced from Lazevartoronto. Photography was captured by Aniket Sananse Weddings.`,
+      imageUrl: `yash-makeovers/work-blocks/brampton/bridal-makeup-brampton-bridal-goals-gold-202303`,
+      sourceId: `Cpk-mvrueGb`,
+    }
+  ,
+    {
+      id: `brampton-202202-bridal-goals-pakistani-nikkah`,
+      date: `2022-02-17`,
+      city: `brampton`,
+      service: `bridal`,
+      title: `Bridal Goals for a Pakistani Nikkah in Brampton`,
+      body: `A bridal look created by Yash Makeovers for a Pakistani nikkah. The makeup artist was @yashmakeovers, and the outfit was provided by @noorani_baksa. Jewelry was supplied by @jewellerybynusrat. Photography was done by @forevercreationsca.`,
+      imageUrl: `yash-makeovers/work-blocks/brampton/bridal-makeup-brampton-bridal-goals-pakistani-nikkah-202202`,
+      sourceId: `CaFzGpuv9x3`,
+    }
+  ,
+    {
+      id: `brampton-202606-red-gown-dreamy-brown-makeup`,
+      date: `2026-06-17`,
+      city: `brampton`,
+      service: `bridal`,
+      title: `Bridal makeup for a red gown in Brampton`,
+      body: `A look featuring a stunning red silhouette gown was created for a bridal event. The makeup included soft, dreamy brown shades of chocolate, designed to provide a romantic glow. This service reflects the artistry in creating looks that complement the beauty of the moment.`,
+      imageUrl: `yash-makeovers/work-blocks/brampton/bridal-makeup-brampton-red-gown-dreamy-brown-202606`,
+      sourceId: `DZqqciwFOmJ`,
+    }
+  ,
+    {
+      id: `brampton-202606-red-gold-bridal-lehenga`,
+      date: `2026-06-15`,
+      city: `brampton`,
+      service: `bridal`,
+      title: `Red and Gold Embroidered Lehenga for Bridal Ceremony in Brampton`,
+      body: `A red and gold embroidered lehenga was created for the bride, Jeeval, for her wedding ceremony. The outfit was provided by Frontier Brampton and Frontier Heritage. Yash Makeovers applied the bridal makeup, while Fotos by Anum captured the event. Jewelry was sourced from Queens Shingar.`,
+      imageUrl: `yash-makeovers/work-blocks/brampton/bridal-makeup-brampton-red-gold-bridal-lehenga-202606`,
+      sourceId: `DZnCZb2jjvV`,
+    }
   ],
   },
   {
@@ -147,7 +193,18 @@ export const cities: readonly City[] = [
       'Cooksville'
     ],
     nearbyCities: ['brampton', 'toronto', 'etobicoke', 'oakville'],
-    contentBlocks: [],
+    contentBlocks: [
+    {
+      id: `mississauga-202606-soft-glam-timeless-elegance`,
+      date: `2026-06-15`,
+      city: `mississauga`,
+      service: `bridal`,
+      title: `Soft Glam Bridal Makeup for Nikkah in Mississauga`,
+      body: `A soft glam bridal look for a nikkah was created for Bride Fariha. The makeup showcased timeless elegance, emphasizing grace from every angle. Hair and makeup services were provided by @yashmakeovers, while the saree draping was done by @pleatingbyvj.`,
+      imageUrl: `yash-makeovers/work-blocks/mississauga/bridal-makeup-mississauga-soft-glam-timeless-elegance-202606`,
+      sourceId: `DZnsSshCDm1`,
+    }
+  ],
   },
   {
     slug: 'toronto',
@@ -181,14 +238,28 @@ export const cities: readonly City[] = [
                       'Liberty Village'],
     nearbyCities:  ['mississauga', 'etobicoke', 'vaughan', 'scarborough'],
     contentBlocks: [
+
+  
     {
-      id: `toronto-202606-bridal-red-gown-brown-makeup`,
-      date: `2026-06-17`,
+      id: `toronto-202205-regal-bridal-look`,
+      date: `2022-05-09`,
       city: `toronto`,
       service: `bridal`,
-      title: `Bridal Makeup for a Red Gown with Brown Shades in Toronto`,
-      body: `A look featuring a stunning red silhouette gown was created. Soft, dreamy brown shades of chocolate were used for the makeup, achieving a romantic glow. This bridal makeup was designed to complement the beauty of the moment.`,
-      imageUrl: `yash-makeovers/work-blocks/toronto/bridal-makeup-toronto-bridal-red-gown-brown-202606`,
+      title: `Regal Bridal Look for an Indian Wedding in Toronto`,
+      body: `A regal bridal look was created for an Indian wedding. The makeup was done by HMUA @yashmakeovers, showcasing skilled artistry for the occasion. This look was designed for a ceremony, reception, Nikkah, Walima, and Baraat, highlighting traditional elements in bridal beauty.`,
+      imageUrl: `yash-makeovers/work-blocks/toronto/bridal-makeup-toronto-regal-bridal-look-202205`,
+      sourceId: `CdVpo1XrE9C`,
+    }
+  ,
+    {
+      id: `toronto-202606-pakistani-bridal-maroon-gold`,
+      date: `2026-06-19`,
+      city: `toronto`,
+      service: `bridal`,
+      title: `Maroon and Gold Bridal Look for a Pakistani Nikkah in Toronto`,
+      body: `A deep maroon and gold bridal look was created for a Pakistani nikkah in Toronto. The outfit featured intricate embroidery, designed by Dulhan by Raziya. Collaborators included photography by Burhan Photo, videography by Evince Films, and decor by Sira Decor.`,
+      imageUrl: `yash-makeovers/work-blocks/toronto/bridal-makeup-toronto-pakistani-bridal-maroon-gold-202606`,
+      sourceId: `DZyE5Rtokpa`,
     }
   ],
   },
