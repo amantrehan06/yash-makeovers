@@ -6,6 +6,7 @@ import { site } from '@/config/site'
 import { packages } from '@/config/packages'
 import { content, fillTemplate } from '@/config/content'
 import { getImagesFromFolder, CLOUDINARY_FOLDERS } from '@/lib/cloudinary'
+import { buildCloudinaryUrl } from '@/lib/cloudinaryUrl'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Button } from '@/components/ui/Button'
 import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
@@ -71,6 +72,12 @@ function cityFaqs(cityName: string) {
   ]
 }
 
+// Cloudinary URL for a content block's image — reuses the shared URL builder
+// (face-aware fill crop) so we never hardcode a Cloudinary path here.
+function blockImageUrl(publicId: string): string {
+  return buildCloudinaryUrl(publicId, { width: 1200, height: 900, crop: 'fill' })
+}
+
 export default async function CityPage({ params }: Props) {
   const city = cities.find((c) => c.slug === params.city)
   if (!city) notFound()
@@ -93,6 +100,37 @@ export default async function CityPage({ params }: Props) {
   const allWork = [...city.contentBlocks].sort((a, b) => b.date.localeCompare(a.date))
   const recentWork = allWork.slice(0, BLOCKS_ON_CITY_PAGE)
   const hasMoreWork = allWork.length > BLOCKS_ON_CITY_PAGE
+
+  // ImageGallery schema — one ImageObject per content block that has an image.
+  // Skipped entirely when no block has an image.
+  const blocksWithImage = city.contentBlocks.filter((b) => b.imageUrl)
+  const imageGallerySchema = blocksWithImage.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type':    'ImageGallery',
+        name:       `Bridal makeup and hair work in ${city.name}`,
+        url:        `https://${site.canonicalHost}/${city.slug}`,
+        image: blocksWithImage.map((block) => ({
+          '@type':          'ImageObject',
+          contentUrl:       blockImageUrl(block.imageUrl!),
+          name:             block.title,
+          description:      block.body,
+          dateCreated:      block.date,
+          creator:          { '@type': 'Person', name: site.artistName },
+          creditText:       site.name,
+          copyrightNotice:  site.name,
+          contentLocation: {
+            '@type': 'Place',
+            name:    `${city.name}, ${city.province}`,
+            geo: {
+              '@type':   'GeoCoordinates',
+              latitude:  city.geo.latitude,
+              longitude: city.geo.longitude,
+            },
+          },
+        })),
+      }
+    : null
 
   return (
     <>
@@ -118,6 +156,12 @@ export default async function CityPage({ params }: Props) {
           }),
         }}
       />
+      {imageGallerySchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(imageGallerySchema) }}
+        />
+      )}
 
       {/* HERO */}
       <section className="pt-32 pb-16 px-6 bg-ivory">
