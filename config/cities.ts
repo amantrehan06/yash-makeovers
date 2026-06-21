@@ -155,6 +155,29 @@ export const cities: readonly City[] = [
       imageUrl: `yash-makeovers/work-blocks/brampton/bridal-makeup-brampton-red-gold-bridal-lehenga-202606`,
       sourceId: `DZnCZb2jjvV`,
     }
+  ,
+    {
+      id: `brampton-202605-ayushi-bridal-makeup`,
+      date: `2026-05-14`,
+      city: `brampton`,
+      service: `bridal`,
+      title: `Ayushi's Bridal Makeup by Yash Makeovers in Brampton`,
+      body: `A bridal look was created for Ayushi by Yash Makeovers. The makeup artist focused on enhancing Ayushi's features while ensuring a glamorous appearance. The event type is not specified, but it is aligned with traditional bridal celebrations. Ayushi's Instagram handle is Ayushib55.`,
+      imageUrl: `yash-makeovers/work-blocks/brampton/bridal-makeup-brampton-ayushi-bridal-makeup-202605`,
+      sourceId: `DYVRB3giVKX`,
+    }
+  ,
+    {
+      id: `brampton-202605-bridal-makeup-hair`,
+      date: `2026-05-06`,
+      city: `brampton`,
+      service: `bridal`,
+      title: `Bridal Makeup and Hair for Manjot in Brampton`,
+      body: `Makeup and hair services were provided by Yash Makeovers for Manjot. The styling was done for a bridal event, featuring a cohesive look tailored to her needs. Collaborators who contributed to this look were tagged in the content.`,
+      imageUrl: `yash-makeovers/work-blocks/brampton/bridal-makeup-brampton-bridal-makeup-hair-202605`,
+      sourceId: `DYALnOUEbmK`,
+    }
+
   ],
   },
   {
@@ -203,6 +226,17 @@ export const cities: readonly City[] = [
       body: `A soft glam bridal look for a nikkah was created for Bride Fariha. The makeup showcased timeless elegance, emphasizing grace from every angle. Hair and makeup services were provided by @yashmakeovers, while the saree draping was done by @pleatingbyvj.`,
       imageUrl: `yash-makeovers/work-blocks/mississauga/bridal-makeup-mississauga-soft-glam-timeless-elegance-202606`,
       sourceId: `DZnsSshCDm1`,
+    }
+  ,
+    {
+      id: `brampton-202603-pakistani-bridal-makeup-hair`,
+      date: `2026-03-09`,
+      city: `brampton`,
+      service: `bridal`,
+      title: `Pakistani Bridal Makeup and Hair in Mississauga`,
+      body: `A deep maroon and gold bridal look for a Pakistani bride. The makeup and hair services were provided by Yash Makeovers, focusing on traditional elements suitable for the ceremony and reception. The techniques used highlighted the bride’s features while complementing her attire. Collaborators included various bridal makeup artists.`,
+      imageUrl: `yash-makeovers/work-blocks/mississauga/bridal-makeup-brampton-pakistani-bridal-makeup-hair-202603`,
+      sourceId: `DVq_rsFEVbB`,
     }
   ],
   },
@@ -260,6 +294,50 @@ export const cities: readonly City[] = [
       body: `A deep maroon and gold bridal look was created for a Pakistani nikkah in Toronto. The outfit featured intricate embroidery, designed by Dulhan by Raziya. Collaborators included photography by Burhan Photo, videography by Evince Films, and decor by Sira Decor.`,
       imageUrl: `yash-makeovers/work-blocks/toronto/bridal-makeup-toronto-pakistani-bridal-maroon-gold-202606`,
       sourceId: `DZyE5Rtokpa`,
+    }
+  ,
+
+    {
+      id: `toronto-202605-walima-glam`,
+      date: `2026-05-03`,
+      city: `toronto`,
+      service: `bridal`,
+      title: `Vania's Walima Glam in Toronto`,
+      body: `A glamorous bridal look for Vania's walima. Makeup and hair were expertly done by Yash Makeovers. The focus was on creating a polished and sophisticated appearance suitable for the event.`,
+      imageUrl: `yash-makeovers/work-blocks/toronto/bridal-makeup-toronto-walima-glam-202605`,
+      sourceId: `DX5J1ZJEboS`,
+    }
+  ,
+    {
+      id: `toronto-202604-bridal-makeup-amrita`,
+      date: `2026-04-29`,
+      city: `toronto`,
+      service: `bridal`,
+      title: `Bridal Makeup for Amrita by Yash Makeovers in Toronto`,
+      body: `A bridal makeup look for Amrita, created by Yash Makeovers, was showcased in Toronto. The makeup emphasized Amrita's features, fitting for her bridal celebration. Collaborators included Yash Makeovers, highlighting their expertise in bridal makeup.`,
+      imageUrl: `yash-makeovers/work-blocks/toronto/bridal-makeup-toronto-bridal-makeup-amrita-202604`,
+      sourceId: `DXuztcIlPAc`,
+    }
+  ,
+    {
+      id: `toronto-202603-bridal-look-for-nikkah`,
+      date: `2026-03-06`,
+      city: `toronto`,
+      service: `bridal`,
+      title: `Bridal Makeup for Nikkah in Toronto`,
+      body: `A bridal look for a Nikkah in Toronto is now available for bookings. Yash Makeovers invites brides to create their dream look for 2026. Collaborating closely, Yash Makeovers aims to capture the essence of modern bridal beauty.`,
+      imageUrl: `yash-makeovers/work-blocks/toronto/bridal-makeup-toronto-bridal-look-for-nikkah-202603`,
+      sourceId: `DVjim28EdCJ`,
+    },
+{
+      id: `brampton-202606-soft-pink-glam-bridal`,
+      date: `2026-06-05`,
+      city: `toronto`,
+      service: `bridal`,
+      title: `Soft Pink Glam Bridal Makeup in Toronto`,
+      body: `Soft pink glam was created for the bridal look, just as envisioned by the bride. Makeup was done by Yash Makeovers, with hair styled by Sandy B Beauty Lounge. This look was tailored for the bridal ceremony.`,
+      imageUrl: `yash-makeovers/work-blocks/toronto/bridal-makeup-toronto-soft-pink-glam-bridal-202606`,
+      sourceId: `DZNljrlFI6m`,
     }
   ],
   },
@@ -408,23 +486,35 @@ export const cities: readonly City[] = [
     {
       id: `brampton-202605-bridal-makeup-nikkah`,
       date: `2026-05-23`,
-      city: `brampton`,
+      city: `scarborough`,
       service: `bridal`,
-      title: `Bridal Makeup for a Nikkah Ceremony in Brampton`,
-      body: `A bridal makeup look for a Nikkah ceremony in Brampton. The service highlighted the trust between the artist and the bride, enhancing the bride's natural beauty. Yash Makeovers provided the makeup transformation, ensuring a polished finish for the occasion.`,
-      imageUrl: `yash-makeovers/work-blocks/brampton/bridal-makeup-brampton-bridal-makeup-nikkah-202605`,
+      title: `Bridal Makeup for a Nikkah Ceremony in Scarborough`,
+      body: `A bridal makeup look for a Nikkah ceremony in Scarborough. The service highlighted the trust between the artist and the bride, enhancing the bride's natural beauty. Yash Makeovers provided the makeup transformation, ensuring a polished finish for the occasion.`,
+      imageUrl: `yash-makeovers/work-blocks/scarborough/bridal-makeup-brampton-bridal-makeup-nikkah-202605`,
       sourceId: `DYslaNbFG6c`,
+    }
+
+  ,
+    {
+      id: `brampton-202604-engagement-bridal-makeup`,
+      date: `2026-04-09`,
+      city: `scarborough`,
+      service: `bridal`,
+      title: `Engagement Bridal Makeup for Vanshika in Scarborough`,
+      body: `A beautiful bridal makeup look for Vanshika's engagement. The makeup was done by Yash Makeovers. The outfit was provided by Velvet Room. The style reflects a combination of traditional and contemporary elements suitable for the engagement ceremony.`,
+      imageUrl: `yash-makeovers/work-blocks/scarborough/bridal-makeup-engagement-bridal-makeup-202604`,
+      sourceId: `DW6h22BkfeM`,
     }
   ,
     {
-      id: `toronto-202605-sangeet-bride-makeup-hair`,
-      date: `2026-05-24`,
-      city: `toronto`,
-      service: `pre-bridal`,
-      title: `Sangeet Makeup and Hair in Toronto`,
-      body: `Beautiful Kannu's Sangeet featured makeup by Beauty by Reet and hair styling by Yash Makeovers. The look was created specifically for the Sangeet event, showcasing the collaborative efforts of both artists. Yash Makeovers is currently booking for 2026 and 2027.`,
-      imageUrl: `yash-makeovers/work-blocks/toronto/pre-bridal-makeup-toronto-sangeet-bride-makeup-hair-202605`,
-      sourceId: `DYtQh7mM2XC`,
+      id: `brampton-202603-punjabi-bridal-makeup`,
+      date: `2026-03-04`,
+      city: `scarborough`,
+      service: `bridal`,
+      title: `Punjabi Bridal Makeup by Yash Makeovers in Scarborough`,
+      body: `A Punjabi bridal look created for a ceremony in Scarborough. The makeup was done by Yash Makeovers, showcasing traditional techniques suitable for the event. The bride's Instagram handle is Shabnam Sharma.`,
+      imageUrl: `yash-makeovers/work-blocks/scarborough/bridal-makeup-brampton-punjabi-bridal-makeup-202603`,
+      sourceId: `DVetSgBEWGh`,
     }
   ],
   },

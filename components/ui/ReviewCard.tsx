@@ -7,7 +7,7 @@ import type { Review } from '@/config/reviews'
 export function ReviewCard({ review }: { review: Review }) {
   return (
     <div className="bg-dark-2 rounded-2xl p-8 border border-dark-3">
-      <div className="flex gap-1 mb-4" aria-label={`${review.rating} out of 5 stars`}>
+      <div className="flex gap-1 mb-4" role="img" aria-label={`${review.rating} out of 5 stars`}>
         {Array.from({ length: review.rating }).map((_, i) => (
           <span key={i} aria-hidden className="text-gold text-sm">⭐</span>
         ))}

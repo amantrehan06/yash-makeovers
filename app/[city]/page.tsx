@@ -26,6 +26,10 @@ interface Props {
 // the TTFB bottleneck (was 47% Good in CrUX field data) without re-running
 // the Cloudinary search on every request.
 export const revalidate = 28800
+// Cities come from config — only the slugs below are valid. Any other
+// single-segment path (e.g. /llms.txt, /random) 404s cleanly instead of
+// triggering an on-demand render that 500s on Vercel.
+export const dynamicParams = false
 
 export async function generateStaticParams() {
   return cities.map((c) => ({ city: c.slug }))
