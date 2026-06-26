@@ -38,22 +38,20 @@ export function getOrInitAttribution(): Attribution | null {
   }
 }
 
-// Pure — safe to call server-side (email builder). Turns raw data into a
-// human label for the inquiry email.
+// Pure — safe to call server-side (email builder). Returns a short, neutral
+// technical label for the inquiry email's "Referral" row.
 export function classifySource(a?: Attribution | null): string {
-  if (!a) return 'Unknown'
-  if (a.gclid || a.utmMedium === 'cpc' || a.utmMedium === 'ppc') return 'Google Ads (paid)'
-  if (a.utmSource) {
-    return `Campaign: ${a.utmSource}${a.utmCampaign ? ` / ${a.utmCampaign}` : ''}`
-  }
+  if (!a) return 'Direct'
+  if (a.gclid || a.utmMedium === 'cpc' || a.utmMedium === 'ppc') return 'Google Ads'
+  if (a.utmSource) return a.utmSource
   const r = a.source.toLowerCase()
-  if (!r) return 'Direct / saved link / WhatsApp'
-  if (r.includes('google'))    return 'Google (organic search)'
-  if (r.includes('bing'))      return 'Bing (organic search)'
+  if (!r) return 'Direct'
+  if (r.includes('google'))    return 'Google'
+  if (r.includes('bing'))      return 'Bing'
   if (r.includes('instagram')) return 'Instagram'
   if (r.includes('facebook') || r.startsWith('fb') || r.includes('l.facebook')) return 'Facebook'
   if (r.includes('youtube'))   return 'YouTube'
-  if (r.includes('t.co') || r.includes('twitter') || r.includes('x.com')) return 'X / Twitter'
+  if (r.includes('t.co') || r.includes('twitter') || r.includes('x.com')) return 'X'
   if (r.includes('pinterest')) return 'Pinterest'
-  return r
+  return 'Referral'
 }
