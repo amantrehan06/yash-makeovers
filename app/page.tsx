@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { site } from '@/config/site'
-import { seo } from '@/config/seo'
+import { allKeywords } from '@/config/seo'
 import { features } from '@/config/features'
 import { cities } from '@/config/cities'
 import { faqs } from '@/config/faq'
@@ -26,9 +26,12 @@ import { buildPersonSchema } from '@/lib/schema'
 export const revalidate = 28800
 
 export const metadata: Metadata = {
-  // `absolute` bypasses the layout's `%s | Yash Makeovers` template.
-  title: { absolute: `${site.name} — Bridal Makeup Artist in ${site.serviceArea}` },
-  description: `Top bridal makeup and hair by ${site.artistName} — ${site.experience} years, ${site.brideCount} brides across ${cities.slice(0, 3).map((c) => c.name).join(', ')} & the wider GTA. Now booking ${site.seasonYears} weddings.`,
+  // A2 — head-term positioning: "Makeup Artist in Brampton, ON". Brand is
+  // appended explicitly because the layout's title.template only applies to
+  // CHILD segments, not this root page. baseCity derives from the studio
+  // address in site.ts.
+  title: { absolute: `Makeup Artist in ${site.baseCity} — Bridal, Party & Event Makeup | ${site.name}` },
+  description: `Bridal makeup specialist ${site.artistName} — plus party, prom & event glam across the GTA. ${site.brideCount} brides, ${site.googleRating}★ (${site.googleReviewCount} Google reviews). Booking ${site.seasonYears}.`,
   alternates: {
     canonical: `https://${site.canonicalHost}`,
   },
@@ -120,7 +123,7 @@ export default async function HomePage() {
     })),
     // Topical keywords for AI/LLM crawlers (gemini, perplexity) that prefer
     // explicit keyword arrays. Google ignores it for ranking but does parse it.
-    keywords: seo.keywords.join(', '),
+    keywords: allKeywords.join(', '),
     priceRange: '$$$',
     // Matches the primary category on Google Business Profile — helps Google
     // confidently connect this schema with the GBP listing.

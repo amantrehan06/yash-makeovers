@@ -32,20 +32,20 @@ function readSiteStats() {
     const grab = (key) => raw.match(new RegExp(`${key}:\\s*'([^']+)'`))?.[1]
     return {
       artistName:        grab('artistName')          ?? 'Yashpreet',
-      experience:        grab('experience')          ?? '12+',
-      brideCount:        grab('brideCount')          ?? '1,500+',
+      experience:        grab('experience')          ?? '10+',
+      brideCount:        grab('brideCount')          ?? '2,000+',
       googleRating:      grab('googleRating')        ?? '4.9',
-      googleReviewCount: grab('googleReviewCount')   ?? '158',
+      googleReviewCount: grab('googleReviewCount')   ?? '162',
       address:           grab('address')             ?? '',
       domain:            grab('domain')              ?? 'yashmakeovers.com',
     }
   } catch {
     return {
       artistName:        'Yashpreet',
-      experience:        '12+',
-      brideCount:        '1,500+',
+      experience:        '10+',
+      brideCount:        '2,000+',
       googleRating:      '4.9',
-      googleReviewCount: '158',
+      googleReviewCount: '162',
       address:           '',
       domain:            'yashmakeovers.com',
     }

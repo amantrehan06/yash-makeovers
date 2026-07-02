@@ -7,6 +7,7 @@
 import { site } from '@/config/site'
 import { packages, getPackage, type Package } from '@/config/packages'
 import { fillTemplate } from '@/config/content'
+import { seo } from '@/config/seo'
 import type { City } from '@/config/cities'
 import type { ServicePage } from '@/config/servicePages'
 
@@ -39,8 +40,8 @@ export interface BreadcrumbItem {
  *
  * The schema still includes the high-value improvements: @id chaining to
  * homepage BeautyStudio (so Google sees it's the same operation),
- * AggregateRating inheritance (4.9★ from 158 reviews surfaces in SERP),
- * availability cue, and explicit areaServed.
+ * availability cue, and explicit areaServed. Star ratings come from the
+ * linked Google Business Profile (live count in site.ts).
  *
  * `priceValidUntil` is intentionally NOT emitted — the discount is open-ended.
  * If a real end date is added later, include it via an optional
@@ -147,7 +148,10 @@ export function buildPersonSchema({ imageUrl }: { imageUrl?: string } = {}) {
     jobTitle:    'Makeup Artist', // matches GBP primary category (site.businessCategory)
     description: fillTemplate(site.about),
     ...(imageUrl ? { image: imageUrl } : {}),
-    knowsAbout:  site.artist.knowsAbout,
+    // Expertise topics from site.ts + the occasion terms from the seo.ts
+    // keyword groups (party/prom/engagement/eShoot) so the Person entity
+    // signals the non-bridal services too.
+    knowsAbout:  [...site.artist.knowsAbout, ...seo.keywords.services],
     ...(yearsInBusiness ? { hasOccupation: {
       '@type':         'Occupation',
       name:            'Makeup Artist',
