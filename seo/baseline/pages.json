@@ -1,0 +1,2504 @@
+{
+  "base": "http://localhost:4321",
+  "routes": {
+    "/": {
+      "route": "/",
+      "status": 200,
+      "title": "Yash Makeovers — Bridal Makeup Artist in the GTA",
+      "canonical": "https://www.yashmakeovers.com",
+      "description": "Top bridal makeup and hair by Yashpreet — 10+ years, 2,000+ brides across Brampton, Mississauga, Toronto & the wider GTA. Now booking 2026 & 2027 weddings.",
+      "h1": "Your most beautiful moment",
+      "jsonLdTypes": [
+        "BeautyStudio"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BeautyStudio",
+          "@id": "https://www.yashmakeovers.com#business",
+          "name": "Yash Makeovers",
+          "telephone": "+1 (647) 654-7288",
+          "email": "info@yashmakeovers.com",
+          "url": "https://www.yashmakeovers.com",
+          "logo": "https://www.yashmakeovers.com/icon.svg",
+          "image": [
+            "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_1200/hero-bridal_by29ts",
+            "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/hero-bridal_by29ts",
+            "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_675/hero-bridal_by29ts"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "27 Divinity Circle",
+            "addressLocality": "Brampton",
+            "addressRegion": "ON",
+            "postalCode": "L7A 3Y3",
+            "addressCountry": "CA"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 43.69394533368765,
+            "longitude": -79.85042919000966
+          },
+          "sameAs": [
+            "https://www.instagram.com/yashmakeovers/",
+            "https://facebook.com/yashmakeovers",
+            "https://share.google/YFKrusBaeZJoi0d3b"
+          ],
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "https://schema.org/Monday",
+                "https://schema.org/Tuesday",
+                "https://schema.org/Wednesday",
+                "https://schema.org/Thursday",
+                "https://schema.org/Friday",
+                "https://schema.org/Saturday",
+                "https://schema.org/Sunday"
+              ],
+              "opens": "06:00",
+              "closes": "22:00"
+            }
+          ],
+          "areaServed": [
+            {
+              "@type": "City",
+              "name": "Brampton",
+              "@id": "https://www.yashmakeovers.com/brampton"
+            },
+            {
+              "@type": "City",
+              "name": "Mississauga",
+              "@id": "https://www.yashmakeovers.com/mississauga"
+            },
+            {
+              "@type": "City",
+              "name": "Toronto",
+              "@id": "https://www.yashmakeovers.com/toronto"
+            },
+            {
+              "@type": "City",
+              "name": "Etobicoke",
+              "@id": "https://www.yashmakeovers.com/etobicoke"
+            },
+            {
+              "@type": "City",
+              "name": "Oakville",
+              "@id": "https://www.yashmakeovers.com/oakville"
+            },
+            {
+              "@type": "City",
+              "name": "Vaughan",
+              "@id": "https://www.yashmakeovers.com/vaughan"
+            },
+            {
+              "@type": "City",
+              "name": "Scarborough",
+              "@id": "https://www.yashmakeovers.com/scarborough"
+            },
+            {
+              "@type": "City",
+              "name": "Markham",
+              "@id": "https://www.yashmakeovers.com/markham"
+            },
+            {
+              "@type": "City",
+              "name": "North York",
+              "@id": "https://www.yashmakeovers.com/north-york"
+            },
+            {
+              "@type": "City",
+              "name": "Richmond Hill",
+              "@id": "https://www.yashmakeovers.com/richmond-hill"
+            }
+          ],
+          "keywords": "bridal makeup artist Brampton, bridal makeup Toronto, South Asian bridal makeup GTA, makeup artist near me Brampton, wedding makeup artist Mississauga",
+          "priceRange": "$$$",
+          "category": "Make-up artist"
+        }
+      ]
+    },
+    "/services": {
+      "route": "/services",
+      "status": 200,
+      "title": "Services & Pricing | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/services",
+      "description": "Explore Yash Makeovers bridal packages: Bridal ($600), Pre-Bridal ($450), Full Glam ($350), Regular Party ($250). Serving all of the GTA.",
+      "h1": null,
+      "jsonLdTypes": [
+        "Array:Service,Service,Service,Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonLd": [
+        [
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "@id": "https://www.yashmakeovers.com/services#bridal",
+            "name": "Bridal Makeup & Hair",
+            "description": "Ceremony, Reception, Nikkah, Walima, Baraat",
+            "serviceType": "Bridal Makeup & Hair",
+            "category": "Make-up artist",
+            "provider": {
+              "@type": "BeautyStudio",
+              "@id": "https://www.yashmakeovers.com#business"
+            },
+            "areaServed": {
+              "@type": "AdministrativeArea",
+              "name": "Greater Toronto Area"
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.yashmakeovers.com/services",
+              "priceCurrency": "CAD",
+              "price": 600,
+              "availability": "https://schema.org/InStock",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": 600,
+                "priceCurrency": "CAD",
+                "unitText": "per person per event"
+              }
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "@id": "https://www.yashmakeovers.com/services#pre-bridal",
+            "name": "Pre-Bridal Makeup & Hair",
+            "description": "Rokah, Jagoo, Engagement, Mehndi, Sangeet",
+            "serviceType": "Bridal Makeup & Hair",
+            "category": "Make-up artist",
+            "provider": {
+              "@type": "BeautyStudio",
+              "@id": "https://www.yashmakeovers.com#business"
+            },
+            "areaServed": {
+              "@type": "AdministrativeArea",
+              "name": "Greater Toronto Area"
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.yashmakeovers.com/services",
+              "priceCurrency": "CAD",
+              "price": 450,
+              "availability": "https://schema.org/InStock",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": 450,
+                "priceCurrency": "CAD",
+                "unitText": "per person per event"
+              }
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "@id": "https://www.yashmakeovers.com/services#full-glam",
+            "name": "Full Glam Makeup & Hair",
+            "description": "eShoot, Baby Shower, Sister/Brother Weddings",
+            "serviceType": "Bridal Makeup & Hair",
+            "category": "Make-up artist",
+            "provider": {
+              "@type": "BeautyStudio",
+              "@id": "https://www.yashmakeovers.com#business"
+            },
+            "areaServed": {
+              "@type": "AdministrativeArea",
+              "name": "Greater Toronto Area"
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.yashmakeovers.com/services",
+              "priceCurrency": "CAD",
+              "price": 350,
+              "availability": "https://schema.org/InStock",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": 350,
+                "priceCurrency": "CAD",
+                "unitText": "per person per event"
+              }
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "@id": "https://www.yashmakeovers.com/services#party",
+            "name": "Regular Party Makeup & Hair",
+            "description": "Everyday events and celebrations",
+            "serviceType": "Bridal Makeup & Hair",
+            "category": "Make-up artist",
+            "provider": {
+              "@type": "BeautyStudio",
+              "@id": "https://www.yashmakeovers.com#business"
+            },
+            "areaServed": {
+              "@type": "AdministrativeArea",
+              "name": "Greater Toronto Area"
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.yashmakeovers.com/services",
+              "priceCurrency": "CAD",
+              "price": 250,
+              "availability": "https://schema.org/InStock",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": 250,
+                "priceCurrency": "CAD",
+                "unitText": "per person per event"
+              }
+            }
+          }
+        ],
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Services",
+              "item": "https://www.yashmakeovers.com/services"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much does a bridal makeup artist cost in the GTA?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Bridal packages at Yash Makeovers start at $600 per person per event — this includes HD waterproof makeup, hairstyling, premium mink lashes, dupatta and jewelry setting, a touchup kit, and a consultation call. Pre-bridal events (Mehndi, Sangeet, Engagement) are $450, Full Glam is $350, and Regular Party is $250. All prices are per person per event."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How far in advance should I book my wedding makeup?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We recommend booking 6–12 months in advance, especially for peak wedding season (May through October) when dates fill up fast. A 30% non-refundable deposit via e-transfer secures your date — no payment is required until we've spoken and you're ready to move forward."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you travel to my venue?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes — Yashpreet travels to venues across the entire GTA. Travel fees are $75 within Peel Region and up to $150 for the wider GTA. Alternatively, you're welcome to visit the studio at 27 Divinity Circle, Brampton ON L7A 3Y3."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you offer a trial before the wedding day?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "All Bridal and Pre-Bridal packages include a consultation call 2-3 weeks prior to event date to discuss your look and review inspiration pictures. If you'd also like a full makeup trial, the fee is $250. Trials are scheduled within 2-3 business days of booking confirmation, subject to availability. If you decide not to proceed after the trial, the deposit for the main event dates is fully refundable, provided the trial is booked immediately following the booking. If the trial is scheduled at a later date, the deposit becomes non-refundable."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What makeup brands and products do you use?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet works exclusively with professional-grade luxury brands — DIOR, Charlotte Tilbury, Chanel, YSL Beauty, Gucci, Too Faced. These formulas are chosen specifically for all-day wear through the long hours of wedding."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you do hair styling as well as makeup?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, every package includes both makeup and hairstyling. The Bridal package includes full hairstyling with hair padding, pins, and dupatta and jewelry setting. For best results, please for the hairstyling process, please wash your hair thoroughly using shampoo only — refrain from applying conditioner or other hair products. We recommend drying your hair straight the night before your appointment."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What events does the Bridal package cover?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The Bridal package ($600) is designed for main ceremony events — Ceremony, Reception, Nikkah, Walima, Baraat. For pre-wedding events like Rokah, Jagoo, Engagement, Mehndi, Sangeet, the Pre-Bridal package ($450) is the right fit."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is there an extra charge for early morning appointments?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, a $100 early morning fee applies for start times between 4:30–6:00 AM, as these require significantly earlier preparation and travel."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I add services like airbrush or hair extensions?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, several add-ons are available: airbrush application ($40), client's own hair extension application ($35), studio-provided hair extensions ($75 per extension), blow-dry on wet hair ($20), bridal dupatta setting ($50), party dupatta setting ($30), jewelry setting ($20), premium mink lashes ($20), and touchup kit ($25)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is your cancellation and deposit policy?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A 30% deposit is required to confirm your booking and is non-refundable and non-transferable. Partial cancellation of a booked package is not permitted — all included services must be completed. The one exception is the trial-linked refund: if a trial is booked immediately after confirmation and you choose not to proceed, the deposit is fully refundable."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How should I prepare for my appointment?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "For makeup: for optimal results, please arrive with a freshly washed face, free of makeup or mascara. This ensures the best outcome for your appointment. For hair: for the hairstyling process, please wash your hair thoroughly using shampoo only — refrain from applying conditioner or other hair products. We recommend drying your hair straight the night before your appointment. This gives Yashpreet the best possible base to work with and ensures the longest-lasting results."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you work with all skin tones and cultural wedding traditions?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolutely. Yashpreet specializes in South Asian and multicultural bridal looks and has worked with 2,000+ brides across Indian, Pakistani and other traditions. She has deep experience with all skin tones, undertones, and cultural styling requirements from gurdwara ceremonies to grand ballroom receptions."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "/portfolio": {
+      "route": "/portfolio",
+      "status": 200,
+      "title": "Portfolio | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/portfolio",
+      "description": "Browse Yashpreet's portfolio of bridal and event makeup looks — South Asian, multicultural, Full Glam, and more. Serving Brampton and all of the GTA.",
+      "h1": null,
+      "jsonLdTypes": [
+        "BreadcrumbList"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Portfolio",
+              "item": "https://www.yashmakeovers.com/portfolio"
+            }
+          ]
+        }
+      ]
+    },
+    "/about": {
+      "route": "/about",
+      "status": 200,
+      "title": "About Yashpreet | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/about",
+      "description": "Meet Yashpreet, the bridal artist behind 2,000+ GTA weddings. South Asian and multicultural bridal looks, 10+ years of experience, based in Brampton.",
+      "h1": null,
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "Person"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "About",
+              "item": "https://www.yashmakeovers.com/about"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "@id": "https://www.yashmakeovers.com/about#artist",
+          "name": "Yashpreet",
+          "jobTitle": "Bridal Makeup Artist",
+          "description": "With 10+ years of experience and 2,000+ brides transformed across the GTA,\nYashpreet brings an unmatched blend of artistry and calm to every appointment.\nHer journey began with a deep love for makeup and a belief that every woman deserves\nto feel like the most radiant version of herself on her wedding day. Specialising in\nSouth Asian and multicultural bridal looks, she has become the most trusted name for\nbrides in Brampton, Mississauga, Toronto, and beyond — known not just for flawless results,\nbut for making every bride feel comfortable, confident, and truly seen.",
+          "image": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_800,h_800/yash_makeovers_aokphr",
+          "knowsAbout": [
+            "Bridal makeup",
+            "South Asian bridal makeup",
+            "Airbrush makeup",
+            "Bridal Makeup and Hair",
+            "Bridal hair styling"
+          ],
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Bridal Makeup Artist",
+            "experienceRequirements": "10+ years"
+          },
+          "worksFor": {
+            "@type": "BeautyStudio",
+            "@id": "https://www.yashmakeovers.com#business",
+            "name": "Yash Makeovers"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "27 Divinity Circle",
+            "addressLocality": "Brampton",
+            "addressRegion": "ON",
+            "postalCode": "L7A 3Y3",
+            "addressCountry": "CA"
+          },
+          "sameAs": [
+            "https://www.instagram.com/yashmakeovers/",
+            "https://facebook.com/yashmakeovers"
+          ]
+        }
+      ]
+    },
+    "/contact": {
+      "route": "/contact",
+      "status": 200,
+      "title": "Book Your Date | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/contact",
+      "description": "Inquire about bridal makeup services with Yashpreet at Yash Makeovers. Now booking 2026 & 2027 weddings. Based in Brampton, serving all of the GTA.",
+      "h1": null,
+      "jsonLdTypes": [
+        "BreadcrumbList"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Contact",
+              "item": "https://www.yashmakeovers.com/contact"
+            }
+          ]
+        }
+      ]
+    },
+    "/blog": {
+      "route": "/blog",
+      "status": 200,
+      "title": "Bridal Beauty Blog | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/blog",
+      "description": "Bridal beauty tips, wedding-day prep, and South Asian makeup trends — written by Yashpreet from real GTA wedding experience.",
+      "h1": null,
+      "jsonLdTypes": [],
+      "jsonLd": []
+    },
+    "/terms-and-conditions": {
+      "route": "/terms-and-conditions",
+      "status": 200,
+      "title": "Terms & Conditions | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/terms-and-conditions",
+      "description": "Yash Makeovers booking terms and conditions. Punctuality, deposits, preparation, additional charges, and cancellation policies.",
+      "h1": null,
+      "jsonLdTypes": [
+        "BreadcrumbList"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Terms & Conditions",
+              "item": "https://www.yashmakeovers.com/terms-and-conditions"
+            }
+          ]
+        }
+      ]
+    },
+    "/brampton": {
+      "route": "/brampton",
+      "status": 200,
+      "title": "Brampton Bridal Makeup Artist — South Asian Specialist | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/brampton",
+      "description": "South Asian bridal makeup and hair specialist in Brampton. 10+ years and 2,000+ brides served, all from home base. Book Yashpreet for 2026 & 2027.",
+      "h1": "Bridal Makeup Artist in Brampton",
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "ImageGallery",
+        "Service"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Brampton",
+              "item": "https://www.yashmakeovers.com/brampton"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much does bridal makeup cost in Brampton?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet's bridal packages start at 600 per person per event for the full Bridal package — including HD Waterproof Makeup, Hairstyling, Premium mink lashes, Dupatta setting, and more. Pre-Bridal events are 450, Full Glam is 350, and Regular Party is 250 per person."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Yashpreet travel to Brampton?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes — Yashpreet travels to all venues across the GTA. Travel fees: $75 within Peel Region, up to $150 for the wider GTA. Alternatively, visit the studio at 27 Divinity Circle, Brampton ON L7A 3Y3."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How far in advance should I book?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet is currently now booking 2026 & 2027 weddings, with popular dates filling up quickly (especially May through October). We recommend reaching out 6–12 months before your wedding. A 30% non-refundable deposit via e-transfer secures your date."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "ImageGallery",
+          "name": "Bridal makeup and hair work in Brampton",
+          "url": "https://www.yashmakeovers.com/brampton",
+          "image": [
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/brampton/bridal-makeup-brampton-bridal-goals-gold-202303",
+              "name": "Bridal Makeup Goals in Brampton with Yash Makeovers",
+              "description": "A bridal look featuring gold tones for an event in Brampton. Makeup was done by Yash Makeovers. The outfit was provided by Svelegance. Jewelry was sourced from Lazevartoronto. Photography was captured by Aniket Sananse Weddings.",
+              "dateCreated": "2023-03-09",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Brampton, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.6831,
+                  "longitude": -79.7663
+                }
+              }
+            },
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/brampton/bridal-makeup-brampton-bridal-goals-pakistani-nikkah-202202",
+              "name": "Bridal Goals for a Pakistani Nikkah in Brampton",
+              "description": "A bridal look created by Yash Makeovers for a Pakistani nikkah. The makeup artist was @yashmakeovers, and the outfit was provided by @noorani_baksa. Jewelry was supplied by @jewellerybynusrat. Photography was done by @forevercreationsca.",
+              "dateCreated": "2022-02-17",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Brampton, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.6831,
+                  "longitude": -79.7663
+                }
+              }
+            },
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/brampton/bridal-makeup-brampton-red-gown-dreamy-brown-202606",
+              "name": "Bridal makeup for a red gown in Brampton",
+              "description": "A look featuring a stunning red silhouette gown was created for a bridal event. The makeup included soft, dreamy brown shades of chocolate, designed to provide a romantic glow. This service reflects the artistry in creating looks that complement the beauty of the moment.",
+              "dateCreated": "2026-06-17",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Brampton, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.6831,
+                  "longitude": -79.7663
+                }
+              }
+            },
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/brampton/bridal-makeup-brampton-red-gold-bridal-lehenga-202606",
+              "name": "Red and Gold Embroidered Lehenga for Bridal Ceremony in Brampton",
+              "description": "A red and gold embroidered lehenga was created for the bride, Jeeval, for her wedding ceremony. The outfit was provided by Frontier Brampton and Frontier Heritage. Yash Makeovers applied the bridal makeup, while Fotos by Anum captured the event. Jewelry was sourced from Queens Shingar.",
+              "dateCreated": "2026-06-15",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Brampton, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.6831,
+                  "longitude": -79.7663
+                }
+              }
+            },
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/brampton/bridal-makeup-brampton-ayushi-bridal-makeup-202605",
+              "name": "Ayushi's Bridal Makeup by Yash Makeovers in Brampton",
+              "description": "A bridal look was created for Ayushi by Yash Makeovers. The makeup artist focused on enhancing Ayushi's features while ensuring a glamorous appearance. The event type is not specified, but it is aligned with traditional bridal celebrations. Ayushi's Instagram handle is Ayushib55.",
+              "dateCreated": "2026-05-14",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Brampton, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.6831,
+                  "longitude": -79.7663
+                }
+              }
+            },
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/brampton/bridal-makeup-brampton-bridal-makeup-hair-202605",
+              "name": "Bridal Makeup and Hair for Manjot in Brampton",
+              "description": "Makeup and hair services were provided by Yash Makeovers for Manjot. The styling was done for a bridal event, featuring a cohesive look tailored to her needs. Collaborators who contributed to this look were tagged in the content.",
+              "dateCreated": "2026-05-06",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Brampton, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.6831,
+                  "longitude": -79.7663
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.yashmakeovers.com/brampton#service",
+          "name": "Bridal Makeup & Hair in Brampton",
+          "serviceType": "Bridal Makeup & Hair",
+          "description": "On-location and studio bridal makeup and hair services by Yashpreet for brides in Brampton, ON.",
+          "url": "https://www.yashmakeovers.com/brampton",
+          "provider": {
+            "@type": "BeautyStudio",
+            "@id": "https://www.yashmakeovers.com#business"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Brampton",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Brampton",
+              "addressRegion": "ON",
+              "addressCountry": "CA"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 43.6831,
+              "longitude": -79.7663
+            }
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "CAD",
+            "lowPrice": 250,
+            "highPrice": 600,
+            "offerCount": 4,
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    },
+    "/mississauga": {
+      "route": "/mississauga",
+      "status": 200,
+      "title": "Mississauga Wedding Makeup Artist — On-Site & Studio | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/mississauga",
+      "description": "Pakistani and Afghan bridal makeup and hair specialist in Mississauga. 10+ years across Mehndi, Nikkah, and reception. Book Yashpreet for 2026 & 2027.",
+      "h1": "Bridal Makeup Artist in Mississauga",
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "ImageGallery",
+        "Service"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Mississauga",
+              "item": "https://www.yashmakeovers.com/mississauga"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much does bridal makeup cost in Mississauga?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet's bridal packages start at 600 per person per event for the full Bridal package — including HD Waterproof Makeup, Hairstyling, Premium mink lashes, Dupatta setting, and more. Pre-Bridal events are 450, Full Glam is 350, and Regular Party is 250 per person."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Yashpreet travel to Mississauga?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes — Yashpreet travels to all venues across the GTA. Travel fees: $75 within Peel Region, up to $150 for the wider GTA. Alternatively, visit the studio at 27 Divinity Circle, Brampton ON L7A 3Y3."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How far in advance should I book?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet is currently now booking 2026 & 2027 weddings, with popular dates filling up quickly (especially May through October). We recommend reaching out 6–12 months before your wedding. A 30% non-refundable deposit via e-transfer secures your date."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "ImageGallery",
+          "name": "Bridal makeup and hair work in Mississauga",
+          "url": "https://www.yashmakeovers.com/mississauga",
+          "image": [
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/mississauga/bridal-makeup-mississauga-soft-glam-timeless-elegance-202606",
+              "name": "Soft Glam Bridal Makeup for Nikkah in Mississauga",
+              "description": "A soft glam bridal look for a nikkah was created for Bride Fariha. The makeup showcased timeless elegance, emphasizing grace from every angle. Hair and makeup services were provided by @yashmakeovers, while the saree draping was done by @pleatingbyvj.",
+              "dateCreated": "2026-06-15",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Mississauga, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.589,
+                  "longitude": -79.6441
+                }
+              }
+            },
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/mississauga/bridal-makeup-brampton-pakistani-bridal-makeup-hair-202603",
+              "name": "Pakistani Bridal Makeup and Hair in Mississauga",
+              "description": "A deep maroon and gold bridal look for a Pakistani bride. The makeup and hair services were provided by Yash Makeovers, focusing on traditional elements suitable for the ceremony and reception. The techniques used highlighted the bride’s features while complementing her attire. Collaborators included various bridal makeup artists.",
+              "dateCreated": "2026-03-09",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Mississauga, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.589,
+                  "longitude": -79.6441
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.yashmakeovers.com/mississauga#service",
+          "name": "Bridal Makeup & Hair in Mississauga",
+          "serviceType": "Bridal Makeup & Hair",
+          "description": "On-location and studio bridal makeup and hair services by Yashpreet for brides in Mississauga, ON.",
+          "url": "https://www.yashmakeovers.com/mississauga",
+          "provider": {
+            "@type": "BeautyStudio",
+            "@id": "https://www.yashmakeovers.com#business"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Mississauga",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Mississauga",
+              "addressRegion": "ON",
+              "addressCountry": "CA"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 43.589,
+              "longitude": -79.6441
+            }
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "CAD",
+            "lowPrice": 250,
+            "highPrice": 600,
+            "offerCount": 4,
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    },
+    "/toronto": {
+      "route": "/toronto",
+      "status": 200,
+      "title": "Toronto Bridal Makeup & Hair - HD Editorial Looks | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/toronto",
+      "description": "Bridal makeup and hair artist for Toronto brides. On-site morning service across the city. 4.9★ · 162 Google reviews. Book Yashpreet for 2026 & 2027.",
+      "h1": "Bridal Makeup Artist in Toronto",
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "ImageGallery",
+        "Service"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Toronto",
+              "item": "https://www.yashmakeovers.com/toronto"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much does bridal makeup cost in Toronto?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet's bridal packages start at 600 per person per event for the full Bridal package — including HD Waterproof Makeup, Hairstyling, Premium mink lashes, Dupatta setting, and more. Pre-Bridal events are 450, Full Glam is 350, and Regular Party is 250 per person."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Yashpreet travel to Toronto?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes — Yashpreet travels to all venues across the GTA. Travel fees: $75 within Peel Region, up to $150 for the wider GTA. Alternatively, visit the studio at 27 Divinity Circle, Brampton ON L7A 3Y3."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How far in advance should I book?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet is currently now booking 2026 & 2027 weddings, with popular dates filling up quickly (especially May through October). We recommend reaching out 6–12 months before your wedding. A 30% non-refundable deposit via e-transfer secures your date."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "ImageGallery",
+          "name": "Bridal makeup and hair work in Toronto",
+          "url": "https://www.yashmakeovers.com/toronto",
+          "image": [
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/toronto/bridal-makeup-toronto-regal-bridal-look-202205",
+              "name": "Regal Bridal Look for an Indian Wedding in Toronto",
+              "description": "A regal bridal look was created for an Indian wedding. The makeup was done by HMUA @yashmakeovers, showcasing skilled artistry for the occasion. This look was designed for a ceremony, reception, Nikkah, Walima, and Baraat, highlighting traditional elements in bridal beauty.",
+              "dateCreated": "2022-05-09",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Toronto, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.6532,
+                  "longitude": -79.3832
+                }
+              }
+            },
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/toronto/bridal-makeup-toronto-pakistani-bridal-maroon-gold-202606",
+              "name": "Maroon and Gold Bridal Look for a Pakistani Nikkah in Toronto",
+              "description": "A deep maroon and gold bridal look was created for a Pakistani nikkah in Toronto. The outfit featured intricate embroidery, designed by Dulhan by Raziya. Collaborators included photography by Burhan Photo, videography by Evince Films, and decor by Sira Decor.",
+              "dateCreated": "2026-06-19",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Toronto, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.6532,
+                  "longitude": -79.3832
+                }
+              }
+            },
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/toronto/bridal-makeup-toronto-walima-glam-202605",
+              "name": "Vania's Walima Glam in Toronto",
+              "description": "A glamorous bridal look for Vania's walima. Makeup and hair were expertly done by Yash Makeovers. The focus was on creating a polished and sophisticated appearance suitable for the event.",
+              "dateCreated": "2026-05-03",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Toronto, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.6532,
+                  "longitude": -79.3832
+                }
+              }
+            },
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/toronto/bridal-makeup-toronto-bridal-makeup-amrita-202604",
+              "name": "Bridal Makeup for Amrita by Yash Makeovers in Toronto",
+              "description": "A bridal makeup look for Amrita, created by Yash Makeovers, was showcased in Toronto. The makeup emphasized Amrita's features, fitting for her bridal celebration. Collaborators included Yash Makeovers, highlighting their expertise in bridal makeup.",
+              "dateCreated": "2026-04-29",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Toronto, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.6532,
+                  "longitude": -79.3832
+                }
+              }
+            },
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/toronto/bridal-makeup-toronto-bridal-look-for-nikkah-202603",
+              "name": "Bridal Makeup for Nikkah in Toronto",
+              "description": "A bridal look for a Nikkah in Toronto is now available for bookings. Yash Makeovers invites brides to create their dream look for 2026. Collaborating closely, Yash Makeovers aims to capture the essence of modern bridal beauty.",
+              "dateCreated": "2026-03-06",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Toronto, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.6532,
+                  "longitude": -79.3832
+                }
+              }
+            },
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/toronto/bridal-makeup-toronto-soft-pink-glam-bridal-202606",
+              "name": "Soft Pink Glam Bridal Makeup in Toronto",
+              "description": "Soft pink glam was created for the bridal look, just as envisioned by the bride. Makeup was done by Yash Makeovers, with hair styled by Sandy B Beauty Lounge. This look was tailored for the bridal ceremony.",
+              "dateCreated": "2026-06-05",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Toronto, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.6532,
+                  "longitude": -79.3832
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.yashmakeovers.com/toronto#service",
+          "name": "Bridal Makeup & Hair in Toronto",
+          "serviceType": "Bridal Makeup & Hair",
+          "description": "On-location and studio bridal makeup and hair services by Yashpreet for brides in Toronto, ON.",
+          "url": "https://www.yashmakeovers.com/toronto",
+          "provider": {
+            "@type": "BeautyStudio",
+            "@id": "https://www.yashmakeovers.com#business"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Toronto",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Toronto",
+              "addressRegion": "ON",
+              "addressCountry": "CA"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 43.6532,
+              "longitude": -79.3832
+            }
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "CAD",
+            "lowPrice": 250,
+            "highPrice": 600,
+            "offerCount": 4,
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    },
+    "/etobicoke": {
+      "route": "/etobicoke",
+      "status": 200,
+      "title": "Etobicoke Bridal Makeup Artist — On-Location Service | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/etobicoke",
+      "description": "Bridal makeup and hair for Etobicoke brides. On-location service, 10+ years experience, luxury products. Book Yashpreet for 2026 & 2027.",
+      "h1": "Bridal Makeup Artist in Etobicoke",
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "Service"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Etobicoke",
+              "item": "https://www.yashmakeovers.com/etobicoke"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much does bridal makeup cost in Etobicoke?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet's bridal packages start at 600 per person per event for the full Bridal package — including HD Waterproof Makeup, Hairstyling, Premium mink lashes, Dupatta setting, and more. Pre-Bridal events are 450, Full Glam is 350, and Regular Party is 250 per person."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Yashpreet travel to Etobicoke?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes — Yashpreet travels to all venues across the GTA. Travel fees: $75 within Peel Region, up to $150 for the wider GTA. Alternatively, visit the studio at 27 Divinity Circle, Brampton ON L7A 3Y3."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How far in advance should I book?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet is currently now booking 2026 & 2027 weddings, with popular dates filling up quickly (especially May through October). We recommend reaching out 6–12 months before your wedding. A 30% non-refundable deposit via e-transfer secures your date."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.yashmakeovers.com/etobicoke#service",
+          "name": "Bridal Makeup & Hair in Etobicoke",
+          "serviceType": "Bridal Makeup & Hair",
+          "description": "On-location and studio bridal makeup and hair services by Yashpreet for brides in Etobicoke, ON.",
+          "url": "https://www.yashmakeovers.com/etobicoke",
+          "provider": {
+            "@type": "BeautyStudio",
+            "@id": "https://www.yashmakeovers.com#business"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Etobicoke",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Etobicoke",
+              "addressRegion": "ON",
+              "addressCountry": "CA"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 43.6205,
+              "longitude": -79.5132
+            }
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "CAD",
+            "lowPrice": 250,
+            "highPrice": 600,
+            "offerCount": 4,
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    },
+    "/oakville": {
+      "route": "/oakville",
+      "status": 200,
+      "title": "Oakville Luxury Bridal Makeup Artist & Hair | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/oakville",
+      "description": "Luxury bridal makeup artist for Oakville brides. 10+ years across Sikh ceremonies and white-wedding receptions. Book Yashpreet for 2026 & 2027.",
+      "h1": "Bridal Makeup Artist in Oakville",
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "Service"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Oakville",
+              "item": "https://www.yashmakeovers.com/oakville"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much does bridal makeup cost in Oakville?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet's bridal packages start at 600 per person per event for the full Bridal package — including HD Waterproof Makeup, Hairstyling, Premium mink lashes, Dupatta setting, and more. Pre-Bridal events are 450, Full Glam is 350, and Regular Party is 250 per person."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Yashpreet travel to Oakville?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes — Yashpreet travels to all venues across the GTA. Travel fees: $75 within Peel Region, up to $150 for the wider GTA. Alternatively, visit the studio at 27 Divinity Circle, Brampton ON L7A 3Y3."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How far in advance should I book?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet is currently now booking 2026 & 2027 weddings, with popular dates filling up quickly (especially May through October). We recommend reaching out 6–12 months before your wedding. A 30% non-refundable deposit via e-transfer secures your date."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.yashmakeovers.com/oakville#service",
+          "name": "Bridal Makeup & Hair in Oakville",
+          "serviceType": "Bridal Makeup & Hair",
+          "description": "On-location and studio bridal makeup and hair services by Yashpreet for brides in Oakville, ON.",
+          "url": "https://www.yashmakeovers.com/oakville",
+          "provider": {
+            "@type": "BeautyStudio",
+            "@id": "https://www.yashmakeovers.com#business"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Oakville",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Oakville",
+              "addressRegion": "ON",
+              "addressCountry": "CA"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 43.4675,
+              "longitude": -79.6877
+            }
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "CAD",
+            "lowPrice": 250,
+            "highPrice": 600,
+            "offerCount": 4,
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    },
+    "/vaughan": {
+      "route": "/vaughan",
+      "status": 200,
+      "title": "Vaughan Bridal Makeup — Sikh & Hindu Temple Weddings | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/vaughan",
+      "description": "Luxury bridal makeup artist for Vaughan brides. 10+ years specializing in Sikh and Hindu temple weddings. Book Yashpreet for 2026 & 2027.",
+      "h1": "Bridal Makeup Artist in Vaughan",
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "Service"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Vaughan",
+              "item": "https://www.yashmakeovers.com/vaughan"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much does bridal makeup cost in Vaughan?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet's bridal packages start at 600 per person per event for the full Bridal package — including HD Waterproof Makeup, Hairstyling, Premium mink lashes, Dupatta setting, and more. Pre-Bridal events are 450, Full Glam is 350, and Regular Party is 250 per person."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Yashpreet travel to Vaughan?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes — Yashpreet travels to all venues across the GTA. Travel fees: $75 within Peel Region, up to $150 for the wider GTA. Alternatively, visit the studio at 27 Divinity Circle, Brampton ON L7A 3Y3."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How far in advance should I book?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet is currently now booking 2026 & 2027 weddings, with popular dates filling up quickly (especially May through October). We recommend reaching out 6–12 months before your wedding. A 30% non-refundable deposit via e-transfer secures your date."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.yashmakeovers.com/vaughan#service",
+          "name": "Bridal Makeup & Hair in Vaughan",
+          "serviceType": "Bridal Makeup & Hair",
+          "description": "On-location and studio bridal makeup and hair services by Yashpreet for brides in Vaughan, ON.",
+          "url": "https://www.yashmakeovers.com/vaughan",
+          "provider": {
+            "@type": "BeautyStudio",
+            "@id": "https://www.yashmakeovers.com#business"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Vaughan",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Vaughan",
+              "addressRegion": "ON",
+              "addressCountry": "CA"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 43.8361,
+              "longitude": -79.4982
+            }
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "CAD",
+            "lowPrice": 250,
+            "highPrice": 600,
+            "offerCount": 4,
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    },
+    "/scarborough": {
+      "route": "/scarborough",
+      "status": 200,
+      "title": "Scarborough Pakistani & Afghan Bridal Makeup Artist | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/scarborough",
+      "description": "Pakistani and Afghan bridal makeup and hair specialist in Scarborough. 10+ years of expertise. Book Yashpreet for 2026 & 2027.",
+      "h1": "Bridal Makeup Artist in Scarborough",
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "ImageGallery",
+        "Service"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Scarborough",
+              "item": "https://www.yashmakeovers.com/scarborough"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much does bridal makeup cost in Scarborough?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet's bridal packages start at 600 per person per event for the full Bridal package — including HD Waterproof Makeup, Hairstyling, Premium mink lashes, Dupatta setting, and more. Pre-Bridal events are 450, Full Glam is 350, and Regular Party is 250 per person."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Yashpreet travel to Scarborough?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes — Yashpreet travels to all venues across the GTA. Travel fees: $75 within Peel Region, up to $150 for the wider GTA. Alternatively, visit the studio at 27 Divinity Circle, Brampton ON L7A 3Y3."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How far in advance should I book?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet is currently now booking 2026 & 2027 weddings, with popular dates filling up quickly (especially May through October). We recommend reaching out 6–12 months before your wedding. A 30% non-refundable deposit via e-transfer secures your date."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "ImageGallery",
+          "name": "Bridal makeup and hair work in Scarborough",
+          "url": "https://www.yashmakeovers.com/scarborough",
+          "image": [
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/scarborough/bridal-makeup-brampton-bridal-makeup-nikkah-202605",
+              "name": "Bridal Makeup for a Nikkah Ceremony in Scarborough",
+              "description": "A bridal makeup look for a Nikkah ceremony in Scarborough. The service highlighted the trust between the artist and the bride, enhancing the bride's natural beauty. Yash Makeovers provided the makeup transformation, ensuring a polished finish for the occasion.",
+              "dateCreated": "2026-05-23",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Scarborough, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.7764,
+                  "longitude": -79.2318
+                }
+              }
+            },
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/scarborough/bridal-makeup-engagement-bridal-makeup-202604",
+              "name": "Engagement Bridal Makeup for Vanshika in Scarborough",
+              "description": "A beautiful bridal makeup look for Vanshika's engagement. The makeup was done by Yash Makeovers. The outfit was provided by Velvet Room. The style reflects a combination of traditional and contemporary elements suitable for the engagement ceremony.",
+              "dateCreated": "2026-04-09",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Scarborough, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.7764,
+                  "longitude": -79.2318
+                }
+              }
+            },
+            {
+              "@type": "ImageObject",
+              "contentUrl": "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_900/yash-makeovers/work-blocks/scarborough/bridal-makeup-brampton-punjabi-bridal-makeup-202603",
+              "name": "Punjabi Bridal Makeup by Yash Makeovers in Scarborough",
+              "description": "A Punjabi bridal look created for a ceremony in Scarborough. The makeup was done by Yash Makeovers, showcasing traditional techniques suitable for the event. The bride's Instagram handle is Shabnam Sharma.",
+              "dateCreated": "2026-03-04",
+              "creator": {
+                "@type": "Person",
+                "name": "Yashpreet"
+              },
+              "creditText": "Yash Makeovers",
+              "copyrightNotice": "Yash Makeovers",
+              "contentLocation": {
+                "@type": "Place",
+                "name": "Scarborough, ON",
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 43.7764,
+                  "longitude": -79.2318
+                }
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.yashmakeovers.com/scarborough#service",
+          "name": "Bridal Makeup & Hair in Scarborough",
+          "serviceType": "Bridal Makeup & Hair",
+          "description": "On-location and studio bridal makeup and hair services by Yashpreet for brides in Scarborough, ON.",
+          "url": "https://www.yashmakeovers.com/scarborough",
+          "provider": {
+            "@type": "BeautyStudio",
+            "@id": "https://www.yashmakeovers.com#business"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Scarborough",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Scarborough",
+              "addressRegion": "ON",
+              "addressCountry": "CA"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 43.7764,
+              "longitude": -79.2318
+            }
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "CAD",
+            "lowPrice": 250,
+            "highPrice": 600,
+            "offerCount": 4,
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    },
+    "/markham": {
+      "route": "/markham",
+      "status": 200,
+      "title": "Markham Bridal Makeup Artist for Multicultural Weddings | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/markham",
+      "description": "Bridal makeup and hair for Markham's multicultural weddings. 10+ years of experience at venues across the city. Book Yashpreet for 2026 & 2027.",
+      "h1": "Bridal Makeup Artist in Markham",
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "Service"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Markham",
+              "item": "https://www.yashmakeovers.com/markham"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much does bridal makeup cost in Markham?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet's bridal packages start at 600 per person per event for the full Bridal package — including HD Waterproof Makeup, Hairstyling, Premium mink lashes, Dupatta setting, and more. Pre-Bridal events are 450, Full Glam is 350, and Regular Party is 250 per person."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Yashpreet travel to Markham?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes — Yashpreet travels to all venues across the GTA. Travel fees: $75 within Peel Region, up to $150 for the wider GTA. Alternatively, visit the studio at 27 Divinity Circle, Brampton ON L7A 3Y3."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How far in advance should I book?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet is currently now booking 2026 & 2027 weddings, with popular dates filling up quickly (especially May through October). We recommend reaching out 6–12 months before your wedding. A 30% non-refundable deposit via e-transfer secures your date."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.yashmakeovers.com/markham#service",
+          "name": "Bridal Makeup & Hair in Markham",
+          "serviceType": "Bridal Makeup & Hair",
+          "description": "On-location and studio bridal makeup and hair services by Yashpreet for brides in Markham, ON.",
+          "url": "https://www.yashmakeovers.com/markham",
+          "provider": {
+            "@type": "BeautyStudio",
+            "@id": "https://www.yashmakeovers.com#business"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Markham",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Markham",
+              "addressRegion": "ON",
+              "addressCountry": "CA"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 43.8561,
+              "longitude": -79.337
+            }
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "CAD",
+            "lowPrice": 250,
+            "highPrice": 600,
+            "offerCount": 4,
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    },
+    "/north-york": {
+      "route": "/north-york",
+      "status": 200,
+      "title": "North York Bridal Makeup Artist & Hair Service | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/north-york",
+      "description": "Bridal makeup and hair for North York brides and the Yonge corridor. Yashpreet travels into Don Mills and Bayview. Book for 2026 & 2027.",
+      "h1": "Bridal Makeup Artist in North York",
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "Service"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "North York",
+              "item": "https://www.yashmakeovers.com/north-york"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much does bridal makeup cost in North York?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet's bridal packages start at 600 per person per event for the full Bridal package — including HD Waterproof Makeup, Hairstyling, Premium mink lashes, Dupatta setting, and more. Pre-Bridal events are 450, Full Glam is 350, and Regular Party is 250 per person."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Yashpreet travel to North York?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes — Yashpreet travels to all venues across the GTA. Travel fees: $75 within Peel Region, up to $150 for the wider GTA. Alternatively, visit the studio at 27 Divinity Circle, Brampton ON L7A 3Y3."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How far in advance should I book?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet is currently now booking 2026 & 2027 weddings, with popular dates filling up quickly (especially May through October). We recommend reaching out 6–12 months before your wedding. A 30% non-refundable deposit via e-transfer secures your date."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.yashmakeovers.com/north-york#service",
+          "name": "Bridal Makeup & Hair in North York",
+          "serviceType": "Bridal Makeup & Hair",
+          "description": "On-location and studio bridal makeup and hair services by Yashpreet for brides in North York, ON.",
+          "url": "https://www.yashmakeovers.com/north-york",
+          "provider": {
+            "@type": "BeautyStudio",
+            "@id": "https://www.yashmakeovers.com#business"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "North York",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "North York",
+              "addressRegion": "ON",
+              "addressCountry": "CA"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 43.7615,
+              "longitude": -79.4111
+            }
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "CAD",
+            "lowPrice": 250,
+            "highPrice": 600,
+            "offerCount": 4,
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    },
+    "/richmond-hill": {
+      "route": "/richmond-hill",
+      "status": 200,
+      "title": "Richmond Hill Luxury Bridal Makeup Artist & Hair | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/richmond-hill",
+      "description": "Luxury bridal makeup artist for Richmond Hill brides. 10+ years with brides planning multi-country weddings. Book Yashpreet for 2026 & 2027.",
+      "h1": "Bridal Makeup Artist in Richmond Hill",
+      "jsonLdTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "Service"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Richmond Hill",
+              "item": "https://www.yashmakeovers.com/richmond-hill"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How much does bridal makeup cost in Richmond Hill?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet's bridal packages start at 600 per person per event for the full Bridal package — including HD Waterproof Makeup, Hairstyling, Premium mink lashes, Dupatta setting, and more. Pre-Bridal events are 450, Full Glam is 350, and Regular Party is 250 per person."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does Yashpreet travel to Richmond Hill?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes — Yashpreet travels to all venues across the GTA. Travel fees: $75 within Peel Region, up to $150 for the wider GTA. Alternatively, visit the studio at 27 Divinity Circle, Brampton ON L7A 3Y3."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How far in advance should I book?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yashpreet is currently now booking 2026 & 2027 weddings, with popular dates filling up quickly (especially May through October). We recommend reaching out 6–12 months before your wedding. A 30% non-refundable deposit via e-transfer secures your date."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.yashmakeovers.com/richmond-hill#service",
+          "name": "Bridal Makeup & Hair in Richmond Hill",
+          "serviceType": "Bridal Makeup & Hair",
+          "description": "On-location and studio bridal makeup and hair services by Yashpreet for brides in Richmond Hill, ON.",
+          "url": "https://www.yashmakeovers.com/richmond-hill",
+          "provider": {
+            "@type": "BeautyStudio",
+            "@id": "https://www.yashmakeovers.com#business"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Richmond Hill",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Richmond Hill",
+              "addressRegion": "ON",
+              "addressCountry": "CA"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 43.8828,
+              "longitude": -79.4403
+            }
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "CAD",
+            "lowPrice": 250,
+            "highPrice": 600,
+            "offerCount": 4,
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    },
+    "/blog/bridal-makeup-artist-brampton": {
+      "route": "/blog/bridal-makeup-artist-brampton",
+      "status": 200,
+      "title": "How to Choose Your Bridal Makeup Artist in Brampton | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/blog/bridal-makeup-artist-brampton",
+      "description": "Choosing the right makeup artist for your wedding is one of the most important decisions you will make. Here is what to look for in the GTA.",
+      "h1": "How to Choose Your Bridal Makeup Artist in Brampton",
+      "jsonLdTypes": [
+        "Article",
+        "BreadcrumbList"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "How to Choose Your Bridal Makeup Artist in Brampton",
+          "description": "Choosing the right makeup artist for your wedding is one of the most important decisions you will make. Here is what to look for in the GTA.",
+          "datePublished": "2025-01-15",
+          "dateModified": "2025-01-15",
+          "articleSection": "Bridal Tips",
+          "wordCount": 397,
+          "image": [
+            "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_675/punjabi-bride-9"
+          ],
+          "author": {
+            "@type": "Person",
+            "@id": "https://www.yashmakeovers.com/about#artist",
+            "name": "Yashpreet"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://www.yashmakeovers.com#business",
+            "name": "Yash Makeovers",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.yashmakeovers.com/icon.svg"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.yashmakeovers.com/blog/bridal-makeup-artist-brampton"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.yashmakeovers.com/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "How to Choose Your Bridal Makeup Artist in Brampton",
+              "item": "https://www.yashmakeovers.com/blog/bridal-makeup-artist-brampton"
+            }
+          ]
+        }
+      ]
+    },
+    "/blog/bridal-makeup-artist-mississauga-how-to-choose": {
+      "route": "/blog/bridal-makeup-artist-mississauga-how-to-choose",
+      "status": 200,
+      "title": "Bridal Makeup Artist in Mississauga — How to Choose One for a South Asian Wedding | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/blog/bridal-makeup-artist-mississauga-how-to-choose",
+      "description": "Searching for a bridal makeup artist in Mississauga? Here's an honest guide — from an experienced South Asian bridal artist — on exactly what to look for and what to avoid.",
+      "h1": "Bridal Makeup Artist in Mississauga — How to Choose One for a South Asian Wedding",
+      "jsonLdTypes": [
+        "Article",
+        "BreadcrumbList"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "Bridal Makeup Artist in Mississauga — How to Choose One for a South Asian Wedding",
+          "description": "Searching for a bridal makeup artist in Mississauga? Here's an honest guide — from an experienced South Asian bridal artist — on exactly what to look for and what to avoid.",
+          "datePublished": "2026-05-27",
+          "dateModified": "2026-05-27",
+          "articleSection": "Bridal Tips",
+          "wordCount": 1083,
+          "image": [
+            "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_675/punjabi-bride-6"
+          ],
+          "author": {
+            "@type": "Person",
+            "@id": "https://www.yashmakeovers.com/about#artist",
+            "name": "Yashpreet"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://www.yashmakeovers.com#business",
+            "name": "Yash Makeovers",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.yashmakeovers.com/icon.svg"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.yashmakeovers.com/blog/bridal-makeup-artist-mississauga-how-to-choose"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.yashmakeovers.com/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Bridal Makeup Artist in Mississauga — How to Choose One for a South Asian Wedding",
+              "item": "https://www.yashmakeovers.com/blog/bridal-makeup-artist-mississauga-how-to-choose"
+            }
+          ]
+        }
+      ]
+    },
+    "/blog/bridal-makeup-trial-brampton": {
+      "route": "/blog/bridal-makeup-trial-brampton",
+      "status": 200,
+      "title": "Bridal Makeup Trial in Brampton — What to Bring and What to Expect | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/blog/bridal-makeup-trial-brampton",
+      "description": "Booked a bridal makeup trial in Brampton? Here's exactly what to bring, what happens during the session, and why it's the most important appointment before your wedding.",
+      "h1": "Bridal Makeup Trial in Brampton — What to Bring and What to Expect",
+      "jsonLdTypes": [
+        "Article",
+        "BreadcrumbList"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "Bridal Makeup Trial in Brampton — What to Bring and What to Expect",
+          "description": "Booked a bridal makeup trial in Brampton? Here's exactly what to bring, what happens during the session, and why it's the most important appointment before your wedding.",
+          "datePublished": "2026-05-27",
+          "dateModified": "2026-05-27",
+          "articleSection": "Bridal Tips",
+          "wordCount": 1479,
+          "image": [
+            "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_675/punjabi-bride-10"
+          ],
+          "author": {
+            "@type": "Person",
+            "@id": "https://www.yashmakeovers.com/about#artist",
+            "name": "Yashpreet"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://www.yashmakeovers.com#business",
+            "name": "Yash Makeovers",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.yashmakeovers.com/icon.svg"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.yashmakeovers.com/blog/bridal-makeup-trial-brampton"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.yashmakeovers.com/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Bridal Makeup Trial in Brampton — What to Bring and What to Expect",
+              "item": "https://www.yashmakeovers.com/blog/bridal-makeup-trial-brampton"
+            }
+          ]
+        }
+      ]
+    },
+    "/blog/how-long-does-bridal-makeup-take-south-asian-wedding": {
+      "route": "/blog/how-long-does-bridal-makeup-take-south-asian-wedding",
+      "status": 200,
+      "title": "How Long Does Bridal Makeup Take for a South Asian Wedding? A Real Timeline | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/blog/how-long-does-bridal-makeup-take-south-asian-wedding",
+      "description": "Planning your getting-ready schedule for a South Asian wedding? Here's a real breakdown — mehndi night, sangeet, ceremony day — with actual times, not guesses.",
+      "h1": "How Long Does Bridal Makeup Take for a South Asian Wedding? A Real Timeline",
+      "jsonLdTypes": [
+        "Article",
+        "BreadcrumbList"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "How Long Does Bridal Makeup Take for a South Asian Wedding? A Real Timeline",
+          "description": "Planning your getting-ready schedule for a South Asian wedding? Here's a real breakdown — mehndi night, sangeet, ceremony day — with actual times, not guesses.",
+          "datePublished": "2026-05-27",
+          "dateModified": "2026-05-27",
+          "articleSection": "Bridal Tips",
+          "wordCount": 1242,
+          "image": [
+            "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_675/punjabi-bride-7"
+          ],
+          "author": {
+            "@type": "Person",
+            "@id": "https://www.yashmakeovers.com/about#artist",
+            "name": "Yashpreet"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://www.yashmakeovers.com#business",
+            "name": "Yash Makeovers",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.yashmakeovers.com/icon.svg"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.yashmakeovers.com/blog/how-long-does-bridal-makeup-take-south-asian-wedding"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.yashmakeovers.com/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "How Long Does Bridal Makeup Take for a South Asian Wedding? A Real Timeline",
+              "item": "https://www.yashmakeovers.com/blog/how-long-does-bridal-makeup-take-south-asian-wedding"
+            }
+          ]
+        }
+      ]
+    },
+    "/blog/pakistani-bridal-makeup-artist-mississauga": {
+      "route": "/blog/pakistani-bridal-makeup-artist-mississauga",
+      "status": 200,
+      "title": "Pakistani Bridal Makeup Artist in Mississauga: Mehndi, Nikkah & Walima Looks Explained | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/blog/pakistani-bridal-makeup-artist-mississauga",
+      "description": "What does Pakistani bridal makeup actually look like for a Mehndi, Nikkah, and Walima? A Mississauga artist breaks down each look — and what makes them different.",
+      "h1": "Pakistani Bridal Makeup Artist in Mississauga: Mehndi, Nikkah & Walima Looks Explained",
+      "jsonLdTypes": [
+        "Article",
+        "BreadcrumbList"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "Pakistani Bridal Makeup Artist in Mississauga: Mehndi, Nikkah & Walima Looks Explained",
+          "description": "What does Pakistani bridal makeup actually look like for a Mehndi, Nikkah, and Walima? A Mississauga artist breaks down each look — and what makes them different.",
+          "datePublished": "2026-05-27",
+          "dateModified": "2026-05-27",
+          "articleSection": "South Asian Weddings",
+          "wordCount": 1132,
+          "image": [
+            "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_675/punjabi-bride-6"
+          ],
+          "author": {
+            "@type": "Person",
+            "@id": "https://www.yashmakeovers.com/about#artist",
+            "name": "Yashpreet"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://www.yashmakeovers.com#business",
+            "name": "Yash Makeovers",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.yashmakeovers.com/icon.svg"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.yashmakeovers.com/blog/pakistani-bridal-makeup-artist-mississauga"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.yashmakeovers.com/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Pakistani Bridal Makeup Artist in Mississauga: Mehndi, Nikkah & Walima Looks Explained",
+              "item": "https://www.yashmakeovers.com/blog/pakistani-bridal-makeup-artist-mississauga"
+            }
+          ]
+        }
+      ]
+    },
+    "/blog/soft-glam-bridal-makeup-toronto": {
+      "route": "/blog/soft-glam-bridal-makeup-toronto",
+      "status": 200,
+      "title": "What Is Soft Glam Bridal Makeup? A Guide for South Asian Brides in Toronto | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/blog/soft-glam-bridal-makeup-toronto",
+      "description": "Soft glam keeps coming up on bridal Pinterest boards — but what does it actually mean for South Asian skin tones and weddings? A Toronto bridal artist explains.",
+      "h1": "What Is Soft Glam Bridal Makeup? A Guide for South Asian Brides in Toronto",
+      "jsonLdTypes": [
+        "Article",
+        "BreadcrumbList"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "What Is Soft Glam Bridal Makeup? A Guide for South Asian Brides in Toronto",
+          "description": "Soft glam keeps coming up on bridal Pinterest boards — but what does it actually mean for South Asian skin tones and weddings? A Toronto bridal artist explains.",
+          "datePublished": "2026-05-27",
+          "dateModified": "2026-05-27",
+          "articleSection": "South Asian Weddings",
+          "wordCount": 1355,
+          "image": [
+            "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_675/punjabi-bride-5"
+          ],
+          "author": {
+            "@type": "Person",
+            "@id": "https://www.yashmakeovers.com/about#artist",
+            "name": "Yashpreet"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://www.yashmakeovers.com#business",
+            "name": "Yash Makeovers",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.yashmakeovers.com/icon.svg"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.yashmakeovers.com/blog/soft-glam-bridal-makeup-toronto"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.yashmakeovers.com/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "What Is Soft Glam Bridal Makeup? A Guide for South Asian Brides in Toronto",
+              "item": "https://www.yashmakeovers.com/blog/soft-glam-bridal-makeup-toronto"
+            }
+          ]
+        }
+      ]
+    },
+    "/blog/south-asian-bridal-makeup-cost-brampton-gta": {
+      "route": "/blog/south-asian-bridal-makeup-cost-brampton-gta",
+      "status": 200,
+      "title": "How Much Does South Asian Bridal Makeup & Hair Cost in Brampton & the GTA? (2026 Complete Guide) | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/blog/south-asian-bridal-makeup-cost-brampton-gta",
+      "description": "A warm, honest 2026 pricing guide for South Asian bridal makeup and hair in Brampton and the GTA. Real numbers, the full wedding-week math, and what actually goes into the cost.",
+      "h1": "How Much Does South Asian Bridal Makeup & Hair Cost in Brampton & the GTA? (2026 Complete Guide)",
+      "jsonLdTypes": [
+        "Article",
+        "BreadcrumbList"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "How Much Does South Asian Bridal Makeup & Hair Cost in Brampton & the GTA? (2026 Complete Guide)",
+          "description": "A warm, honest 2026 pricing guide for South Asian bridal makeup and hair in Brampton and the GTA. Real numbers, the full wedding-week math, and what actually goes into the cost.",
+          "datePublished": "2026-05-28",
+          "dateModified": "2026-05-28",
+          "articleSection": "Bridal Tips",
+          "wordCount": 2186,
+          "image": [
+            "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_675/punjabi-bride-8"
+          ],
+          "author": {
+            "@type": "Person",
+            "@id": "https://www.yashmakeovers.com/about#artist",
+            "name": "Yashpreet"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://www.yashmakeovers.com#business",
+            "name": "Yash Makeovers",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.yashmakeovers.com/icon.svg"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.yashmakeovers.com/blog/south-asian-bridal-makeup-cost-brampton-gta"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.yashmakeovers.com/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "How Much Does South Asian Bridal Makeup & Hair Cost in Brampton & the GTA? (2026 Complete Guide)",
+              "item": "https://www.yashmakeovers.com/blog/south-asian-bridal-makeup-cost-brampton-gta"
+            }
+          ]
+        }
+      ]
+    },
+    "/blog/south-asian-bridal-makeup-looks": {
+      "route": "/blog/south-asian-bridal-makeup-looks",
+      "status": 200,
+      "title": "South Asian Bridal Makeup Looks: What GTA Brides Are Requesting Right Now | Yash Makeovers",
+      "canonical": "https://www.yashmakeovers.com/blog/south-asian-bridal-makeup-looks",
+      "description": "From luminous skin to bold editorial eyes — the looks South Asian brides across the GTA are requesting most this wedding season.",
+      "h1": "South Asian Bridal Makeup Looks: What GTA Brides Are Requesting Right Now",
+      "jsonLdTypes": [
+        "Article",
+        "BreadcrumbList"
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "South Asian Bridal Makeup Looks: What GTA Brides Are Requesting Right Now",
+          "description": "From luminous skin to bold editorial eyes — the looks South Asian brides across the GTA are requesting most this wedding season.",
+          "datePublished": "2025-02-01",
+          "dateModified": "2025-02-01",
+          "articleSection": "South Asian Weddings",
+          "wordCount": 380,
+          "image": [
+            "https://res.cloudinary.com/djdzrnp0f/image/upload/f_webp,q_auto:good,c_fill,g_auto:face,w_1200,h_675/punjabi-bride-2"
+          ],
+          "author": {
+            "@type": "Person",
+            "@id": "https://www.yashmakeovers.com/about#artist",
+            "name": "Yashpreet"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "@id": "https://www.yashmakeovers.com#business",
+            "name": "Yash Makeovers",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.yashmakeovers.com/icon.svg"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.yashmakeovers.com/blog/south-asian-bridal-makeup-looks"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yashmakeovers.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.yashmakeovers.com/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "South Asian Bridal Makeup Looks: What GTA Brides Are Requesting Right Now",
+              "item": "https://www.yashmakeovers.com/blog/south-asian-bridal-makeup-looks"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
