@@ -14,7 +14,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { PackageCard } from '@/components/ui/PackageCard'
 import { WhyChooseItem } from '@/components/ui/WhyChooseItem'
 import { CityReviews } from '@/components/sections/CityReviews'
-import { buildCityServiceSchema } from '@/lib/schema'
+import { buildCityServiceSchema, buildFaqSchema } from '@/lib/schema'
 
 interface Props {
   params: { city: string }
@@ -148,17 +148,7 @@ export default async function CityPage({ params }: Props) {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type':    'FAQPage',
-            mainEntity: faqs.map((faq) => ({
-              '@type': 'Question',
-              name:    faq.q,
-              acceptedAnswer: { '@type': 'Answer', text: faq.a },
-            })),
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqSchema(faqs)) }}
       />
       {imageGallerySchema && (
         <script

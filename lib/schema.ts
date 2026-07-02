@@ -122,6 +122,23 @@ export function buildCityServiceSchema(city: City) {
   }
 }
 
+/**
+ * FAQPage schema from a list of {q, a} pairs. One shared builder so /services,
+ * city pages, and service pages all emit the identical shape Google's Rich
+ * Results Test validates. Emit at most ONE FAQPage per URL.
+ */
+export function buildFaqSchema(faqs: readonly { q: string; a: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type':    'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name:    faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  }
+}
+
 export function buildBreadcrumbSchema(items: readonly BreadcrumbItem[], currentPath: string) {
   return {
     '@context': 'https://schema.org',
