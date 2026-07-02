@@ -5,9 +5,10 @@
 // Add a builder here whenever a schema type is needed on 2+ pages.
 
 import { site } from '@/config/site'
-import { packages, type Package } from '@/config/packages'
+import { packages, getPackage, type Package } from '@/config/packages'
 import { fillTemplate } from '@/config/content'
 import type { City } from '@/config/cities'
+import type { ServicePage } from '@/config/servicePages'
 
 // Derived once at module load — refreshes on rebuild whenever packages change.
 const packagePrices = packages.map((p) => p.price)
@@ -158,6 +159,38 @@ export function buildPersonSchema({ imageUrl }: { imageUrl?: string } = {}) {
       site.instagram ? `https://www.instagram.com/${site.instagram}/` : '',
       site.facebook,
     ].filter(Boolean),
+  }
+}
+
+/**
+ * Per-occasion Service schema for the service pages (/party-makeup, ...).
+ * Same shape family as buildCityServiceSchema: @id chained to the homepage
+ * BeautyStudio, GTA-wide areaServed, and an AggregateOffer derived from the
+ * page's own packageIds so a price change in config/packages.ts flows here.
+ */
+export function buildServicePageSchema(page: ServicePage) {
+  const pageUrl      = `${businessUrl}/${page.slug}`
+  const pagePackages = page.packageIds.map(getPackage)
+  const prices       = pagePackages.map((p) => p.price)
+  return {
+    '@context':   'https://schema.org',
+    '@type':      'Service',
+    '@id':        `${pageUrl}#service`,
+    name:         page.h1,
+    serviceType:  page.serviceType,
+    description:  fillTemplate(page.metaDescription),
+    url:          pageUrl,
+    category:     site.businessCategory,
+    provider:     { '@type': 'BeautyStudio', '@id': `${businessUrl}#business` },
+    areaServed:   { '@type': 'AdministrativeArea', name: 'Greater Toronto Area' },
+    offers: {
+      '@type':       'AggregateOffer',
+      priceCurrency: 'CAD',
+      lowPrice:      Math.min(...prices),
+      highPrice:     Math.max(...prices),
+      offerCount:    pagePackages.length,
+      availability:  'https://schema.org/InStock',
+    },
   }
 }
 

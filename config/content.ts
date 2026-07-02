@@ -157,6 +157,24 @@ export const content = {
     reviewsEyebrow:     'Client love',
     faqEyebrow:         'FAQ',
     faqTitle:           'Frequently asked',
+    // B2 — non-bridal cross-link section appended below existing content.
+    nonBridalLinksLead: 'Explore the occasion pages:',
+  },
+
+  // Occasion service pages (/party-makeup, /prom-makeup, ...). Page COPY
+  // lives in config/servicePages.ts; this owns only the shared UI labels.
+  servicePage: {
+    servicesEyebrow:  'Packages & Pricing',
+    servicesSubtitle: 'Transparent pricing. No hidden fees.',
+    galleryEyebrow:   'Our work',
+    galleryTitle:     'Recent looks from the studio',
+    gallerySubtitle:  'For the latest, follow along on Instagram.',
+    faqEyebrow:       'FAQ',
+    faqTitle:         'Frequently asked',
+    citiesEyebrow:    'Service area',
+    citiesTitle:      'Available across the GTA',
+    relatedEyebrow:   'More occasions',
+    relatedTitle:     'Other services',
   },
 
   termsPage: {

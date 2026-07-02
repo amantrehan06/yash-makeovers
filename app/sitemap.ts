@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { site } from '@/config/site'
 import { cities } from '@/config/cities'
+import { servicePages } from '@/config/servicePages'
 import { getAllPosts } from '@/lib/blog'
 
 // Dynamic sitemap — replaces next-sitemap (which baked the same lastmod
@@ -25,6 +26,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/blog`,                lastModified: now, changeFrequency: 'weekly',  priority: 0.6 },
     { url: `${base}/terms-and-conditions`,lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
   ]
+
+  // ── Occasion service pages (party / prom / engagement / photoshoot) ──
+  // Driven by config/servicePages.ts — add a page there and it appears here.
+  const serviceRoutes: MetadataRoute.Sitemap = servicePages.map((p) => ({
+    url:             `${base}/${p.slug}`,
+    lastModified:    now,
+    changeFrequency: 'monthly',
+    priority:        0.85,
+  }))
 
   // ── City pages (and their /work archives where contentBlocks exist) ──
   // City pages are the heart of local-SEO; weight them just under home/services.
@@ -63,5 +73,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority:        0.5,
   }))
 
-  return [...staticPages, ...cityPages, ...blogPages]
+  return [...staticPages, ...serviceRoutes, ...cityPages, ...blogPages]
 }

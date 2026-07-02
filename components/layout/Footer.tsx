@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { site } from '@/config/site'
 import { cities } from '@/config/cities'
+import { servicePages } from '@/config/servicePages'
 import { Logo } from '@/components/ui/Logo'
 
 export function Footer() {
@@ -31,6 +32,8 @@ export function Footer() {
                 ['About', '/about'],
                 ['Portfolio', '/portfolio'],
                 ['Services', '/services'],
+                // Occasion pages — driven by config/servicePages.ts.
+                ...servicePages.map((p) => [p.name, `/${p.slug}`] as const),
                 ['Blog', '/blog'],
                 ['Contact', '/contact'],
                 ['Terms & Conditions', '/terms-and-conditions'],

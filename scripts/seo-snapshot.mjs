@@ -26,6 +26,13 @@ function cityRoutes() {
   return slugs.map((s) => `/${s}`)
 }
 
+function serviceRoutes() {
+  try {
+    const src = readFileSync('config/servicePages.ts', 'utf-8')
+    return [...src.matchAll(/^\s{4}slug:\s*'([^']+)'/gm)].map((m) => `/${m[1]}`)
+  } catch { return [] }
+}
+
 function blogRoutes() {
   return readdirSync('content/blog')
     .filter((f) => /\.mdx?$/.test(f))
@@ -80,7 +87,7 @@ async function snapshotRoute(route) {
   return { route, status: 200, ...extract(await res.text()) }
 }
 
-const routes = [...STATIC_ROUTES, ...cityRoutes(), ...blogRoutes()]
+const routes = [...STATIC_ROUTES, ...serviceRoutes(), ...cityRoutes(), ...blogRoutes()]
 const pages = {}
 for (const route of routes) {
   pages[route] = await snapshotRoute(route)
