@@ -156,7 +156,7 @@ export async function ServicePageContent({ page }: { page: ServicePage }) {
         <div className="max-w-3xl mx-auto">
           <SectionHeader
             eyebrow={content.servicePage.faqEyebrow}
-            title={`${content.servicePage.faqTitle} — ${page.name.toLowerCase()}`}
+            title={`${content.servicePage.faqTitle}: ${page.name.toLowerCase()}`}
           />
           <div className="divide-y divide-ivory-4">
             {page.faq.map((faq, i) => (

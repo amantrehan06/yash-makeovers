@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   // appended explicitly because the layout's title.template only applies to
   // CHILD segments, not this root page. baseCity derives from the studio
   // address in site.ts.
-  title: { absolute: `Makeup Artist in ${site.baseCity} — Bridal, Party & Event Makeup | ${site.name}` },
-  description: `Bridal makeup specialist ${site.artistName} — plus party, prom & event glam across the GTA. ${site.brideCount} brides, ${site.googleRating}★ (${site.googleReviewCount} Google reviews). Booking ${site.seasonYears}.`,
+  title: { absolute: `Makeup Artist in ${site.baseCity} | Bridal, Party & Event Makeup | ${site.name}` },
+  description: `Bridal makeup specialist ${site.artistName}, plus party, prom & event glam across the GTA. ${site.brideCount} brides, ${site.googleRating}★ (${site.googleReviewCount} Google reviews). Booking ${site.seasonYears}.`,
   alternates: {
     canonical: `https://${site.canonicalHost}`,
   },

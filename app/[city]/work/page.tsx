@@ -55,7 +55,7 @@ export default function CityWorkArchive({ params }: Props) {
           <SectionHeader
             eyebrow="Portfolio"
             title={`All work in ${city.name}`}
-            subtitle={`Every bridal and event transformation ${site.artistName} has completed in ${city.name} — real clients, real results.`}
+            subtitle={`Every bridal and event transformation ${site.artistName} has completed in ${city.name}: real clients, real results.`}
           />
         </div>
       </section>

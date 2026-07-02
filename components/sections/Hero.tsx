@@ -22,7 +22,7 @@ export async function Hero() {
           </h1>
 
           <p className="mt-6 text-muted text-lg leading-relaxed max-w-lg">
-            Bridal makeup artistry by {site.artistName} — serving brides across the GTA with over{' '}
+            Bridal makeup artistry by {site.artistName}, serving brides across the GTA with over{' '}
             {site.experience} years of expertise and {site.brideCount} happy brides.
           </p>
 
@@ -56,7 +56,7 @@ export async function Hero() {
             {heroPublicId ? (
               <CloudinaryImage
                 publicId={heroPublicId}
-                alt={`${site.artistName} — bridal makeup artist in ${site.baseCity}`}
+                alt={`${site.artistName}, bridal makeup artist in ${site.baseCity}`}
                 width={480}
                 height={640}
                 priority

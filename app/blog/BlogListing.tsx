@@ -102,7 +102,7 @@ export function BlogListing({ posts }: Props) {
       </div>
 
       {rest.length === 0 ? (
-        <p className="text-muted text-sm">No posts in this category yet — check back soon.</p>
+        <p className="text-muted text-sm">No posts in this category yet. Check back soon.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {rest.map((post) => (

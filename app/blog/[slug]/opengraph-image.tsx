@@ -5,7 +5,7 @@ import { site } from '@/config/site'
 // Note: must be Node runtime (not edge) because lib/blog reads the local
 // filesystem to parse MDX frontmatter. Next.js handles caching either way.
 export const runtime = 'nodejs'
-export const alt = `${site.name} — Bridal Beauty Blog`
+export const alt = `${site.name} | Bridal Beauty Blog`
 export const size = OG_SIZE
 export const contentType = OG_CONTENT_TYPE
 

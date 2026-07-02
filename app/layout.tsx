@@ -46,11 +46,11 @@ export const metadata: Metadata = {
   title: {
     // Fallback for any page without its own title — mirrors the homepage's
     // A2 head-term positioning (homepage sets its own via the template).
-    default: `Makeup Artist in ${site.baseCity} — Bridal, Party & Event Makeup | ${site.name}`,
+    default: `Makeup Artist in ${site.baseCity} | Bridal, Party & Event Makeup | ${site.name}`,
     template: `%s | ${site.name}`,
   },
   // Inheritable fallback only — every public page declares its own description.
-  description: `${site.name} — luxury bridal makeup and hair across ${site.serviceAreaFull}: ${cities.slice(0, 3).map((c) => c.name).join(', ')}, and beyond. Studio in ${site.baseCity}, mobile to your venue.`,
+  description: `${site.name} offers luxury bridal makeup and hair across ${site.serviceAreaFull}: ${cities.slice(0, 3).map((c) => c.name).join(', ')}, and beyond. Studio in ${site.baseCity}, mobile to your venue.`,
   // hreflang — tells Google this is the Canadian-English version. Even on a
   // single-locale site, the `x-default` self-reference clears Search Console's
   // "no hreflang" warning and helps disambiguate from US/UK results.

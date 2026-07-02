@@ -57,7 +57,7 @@ export const packages: readonly Package[] = [
       'Dupatta setting',
       'Jewelry setting',
       'Hair padding and pins',
-      '30-min consultation call (3–4 weeks before)',
+      '30-min consultation call (3 to 4 weeks before)',
       'Touchup kit',
     ],
   },

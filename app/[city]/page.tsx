@@ -64,15 +64,15 @@ function cityFaqs(cityName: string) {
   return [
     {
       q: `How much does bridal makeup cost in ${cityName}?`,
-      a: `${site.artistName}'s bridal packages start at ${bridal.price} per person per event for the full Bridal package — including ${bridal.includes.slice(0, 4).join(', ')}, and more. Pre-Bridal events are ${preBridal.price}, Full Glam is ${fullGlam.price}, and Regular Party is ${party.price} per person.`,
+      a: `${site.artistName}'s bridal packages start at ${bridal.price} per person per event for the full Bridal package, including ${bridal.includes.slice(0, 4).join(', ')}, and more. Pre-Bridal events are ${preBridal.price}, Full Glam is ${fullGlam.price}, and Regular Party is ${party.price} per person.`,
     },
     {
       q: `Does ${site.artistName} travel to ${cityName}?`,
-      a: `Yes — ${site.artistName} travels to all venues across the GTA. Travel fees: $${site.policies.travelPeel} within Peel Region, up to $${site.policies.travelGTA} for the wider GTA. Alternatively, visit the studio at ${site.address}.`,
+      a: `Yes, ${site.artistName} travels to all venues across the GTA. Travel fees: $${site.policies.travelPeel} within Peel Region, up to $${site.policies.travelGTA} for the wider GTA. Alternatively, visit the studio at ${site.address}.`,
     },
     {
       q: 'How far in advance should I book?',
-      a: `${site.artistName} is currently ${site.availability.toLowerCase()}, with popular dates filling up quickly (especially May through October). We recommend reaching out 6–12 months before your wedding. A ${site.policies.depositPercent}% non-refundable deposit via e-transfer secures your date.`,
+      a: `${site.artistName} is currently ${site.availability.toLowerCase()}, with popular dates filling up quickly (especially May through October). We recommend reaching out 6 to 12 months before your wedding. A ${site.policies.depositPercent}% non-refundable deposit via e-transfer secures your date.`,
     },
   ]
 }
@@ -356,7 +356,7 @@ export default async function CityPage({ params }: Props) {
         <div className="max-w-3xl mx-auto">
           <SectionHeader
             eyebrow={content.cityPage.faqEyebrow}
-            title={`${content.cityPage.faqTitle} — ${city.name}`}
+            title={`${content.cityPage.faqTitle}: ${city.name}`}
           />
           <div className="divide-y divide-ivory-4">
             {faqs.map((faq, i) => (

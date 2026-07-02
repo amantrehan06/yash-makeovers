@@ -55,7 +55,7 @@ export function PriceEstimator() {
   const totalLabel =
     minPeople === maxPeople
       ? formatPrice(minTotal)
-      : `${formatPrice(minTotal)} – ${formatPrice(maxTotal)}`
+      : `${formatPrice(minTotal)} to ${formatPrice(maxTotal)}`
 
   return (
     <section className="py-24 px-6 bg-ivory-2">
@@ -96,8 +96,8 @@ export function PriceEstimator() {
                 className="w-full border border-ivory-4 rounded-lg px-4 py-3 text-dark bg-ivory text-sm focus:outline-none focus:ring-2 focus:ring-gold"
               >
                 <option value="1">1 person</option>
-                <option value="2-3">2–3 people</option>
-                <option value="4-6">4–6 people</option>
+                <option value="2-3">2-3 people</option>
+                <option value="4-6">4-6 people</option>
                 <option value="7+">7+ people</option>
               </select>
             </div>
@@ -143,7 +143,7 @@ export function PriceEstimator() {
                 >
                   {earlyMorning && <span className="text-ivory text-xs font-bold">✓</span>}
                 </span>
-                Early morning start ({site.policies.earlyMorningThreshold}) — +${site.policies.earlyMorningFee}/person
+                Early morning start ({site.policies.earlyMorningThreshold}): +${site.policies.earlyMorningFee}/person
               </button>
             </div>
           </div>

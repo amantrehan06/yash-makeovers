@@ -8,7 +8,7 @@ import { BlogListing } from './BlogListing'
 export const metadata: Metadata = {
   title: 'Bridal Beauty Blog',
   // Journal/tips angle — focus on content type, not credentials.
-  description: `Bridal beauty tips, wedding-day prep, and South Asian makeup trends — written by ${site.artistName} from real GTA wedding experience.`,
+  description: `Bridal beauty tips, wedding-day prep, and South Asian makeup trends, written by ${site.artistName} from real GTA wedding experience.`,
   alternates: { canonical: `https://${site.canonicalHost}/blog` },
 }
 

@@ -21,15 +21,15 @@ const { addOns, trial, consultation } = policies
 export const faqs = [
   {
     q: 'How much does a bridal makeup artist cost in the GTA?',
-    a: `Bridal packages at ${name} start at ${formatPrice(bridal.price)} ${bridal.priceNote} — this includes HD waterproof makeup, hairstyling, premium mink lashes, dupatta and jewelry setting, a touchup kit, and a consultation call. Pre-bridal events (Mehndi, Sangeet, Engagement) are ${formatPrice(preBridal.price)}, Full Glam is ${formatPrice(fullGlam.price)}, and Regular Party is ${formatPrice(party.price)}. All prices are ${bridal.priceNote}.`,
+    a: `Bridal packages at ${name} start at ${formatPrice(bridal.price)} ${bridal.priceNote}. This includes HD waterproof makeup, hairstyling, premium mink lashes, dupatta and jewelry setting, a touchup kit, and a consultation call. Pre-bridal events (Mehndi, Sangeet, Engagement) are ${formatPrice(preBridal.price)}, Full Glam is ${formatPrice(fullGlam.price)}, and Regular Party is ${formatPrice(party.price)}. All prices are ${bridal.priceNote}.`,
   },
   {
     q: 'How far in advance should I book my wedding makeup?',
-    a: `We recommend booking 6–12 months in advance, especially for peak wedding season (May through October) when dates fill up fast. A ${policies.depositPercent}% non-refundable deposit via e-transfer secures your date — no payment is required until we've spoken and you're ready to move forward.`,
+    a: `We recommend booking 6 to 12 months in advance, especially for peak wedding season (May through October) when dates fill up fast. A ${policies.depositPercent}% non-refundable deposit via e-transfer secures your date. No payment is required until we've spoken and you're ready to move forward.`,
   },
   {
     q: 'Do you travel to my venue?',
-    a: `Yes — ${artistName} travels to venues across the entire GTA. Travel fees are ${formatPrice(policies.travelPeel)} within Peel Region and up to ${formatPrice(policies.travelGTA)} for the wider GTA. Alternatively, you're welcome to visit the studio at ${address}.`,
+    a: `Yes, ${artistName} travels to venues across the entire GTA. Travel fees are ${formatPrice(policies.travelPeel)} within Peel Region and up to ${formatPrice(policies.travelGTA)} for the wider GTA. Alternatively, you're welcome to visit the studio at ${address}.`,
   },
   {
     q: 'Do you offer a trial before the wedding day?',
@@ -37,7 +37,7 @@ export const faqs = [
   },
   {
     q: 'What makeup brands and products do you use?',
-    a: `${artistName} works exclusively with professional-grade luxury brands — ${brands.join(', ')}. These formulas are chosen specifically for all-day wear through the long hours of wedding.`,
+    a: `${artistName} works exclusively with professional-grade luxury brands: ${brands.join(', ')}. These formulas are chosen specifically for all-day wear through the long hours of wedding.`,
   },
   {
     q: 'Do you do hair styling as well as makeup?',
@@ -45,11 +45,11 @@ export const faqs = [
   },
   {
     q: 'What events does the Bridal package cover?',
-    a: `The Bridal package (${formatPrice(bridal.price)}) is designed for main ceremony events — ${bridal.tagline}. For pre-wedding events like ${preBridal.tagline}, the Pre-Bridal package (${formatPrice(preBridal.price)}) is the right fit.`,
+    a: `The Bridal package (${formatPrice(bridal.price)}) is designed for main ceremony events: ${bridal.tagline}. For pre-wedding events like ${preBridal.tagline}, the Pre-Bridal package (${formatPrice(preBridal.price)}) is the right fit.`,
   },
   {
     q: 'Is there an extra charge for early morning appointments?',
-    a: `Yes, a ${formatPrice(policies.earlyMorningFee)} early morning fee applies for start times between ${policies.earlyMorningThreshold}, as these require significantly earlier preparation and travel.`,
+    a: `Yes, a ${formatPrice(policies.earlyMorningFee)} early morning fee applies for start times from ${policies.earlyMorningThreshold}, as these require significantly earlier preparation and travel.`,
   },
   {
     q: 'Can I add services like airbrush or hair extensions?',
@@ -57,7 +57,7 @@ export const faqs = [
   },
   {
     q: 'What is your cancellation and deposit policy?',
-    a: `A ${policies.depositPercent}% deposit is required to confirm your booking and is non-refundable and non-transferable. Partial cancellation of a booked package is not permitted — all included services must be completed. The one exception is the trial-linked refund: if a trial is booked immediately after confirmation and you choose not to proceed, the deposit is fully refundable.`,
+    a: `A ${policies.depositPercent}% deposit is required to confirm your booking and is non-refundable and non-transferable. Partial cancellation of a booked package is not permitted. All included services must be completed. The one exception is the trial-linked refund: if a trial is booked immediately after confirmation and you choose not to proceed, the deposit is fully refundable.`,
   },
   {
     q: 'How should I prepare for my appointment?',

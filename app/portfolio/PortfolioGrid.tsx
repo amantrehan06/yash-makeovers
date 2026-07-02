@@ -110,7 +110,7 @@ export function PortfolioGrid({ images }: Props) {
                   >
                     <Image
                       src={src}
-                      alt={`${site.name} — ${category} look ${i + 1}`}
+                      alt={`${site.name} | ${category} look ${i + 1}`}
                       fill
                       sizes="(max-width: 768px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"

@@ -77,13 +77,13 @@ export const site = {
 Her journey began with a deep love for makeup and a belief that every woman deserves
 to feel like the most radiant version of herself on her wedding day. Specialising in
 South Asian and multicultural bridal looks, she has become the most trusted name for
-brides in Brampton, Mississauga, Toronto, and beyond — known not just for flawless results,
+brides in Brampton, Mississauga, Toronto, and beyond, known not just for flawless results,
 but for making every bride feel comfortable, confident, and truly seen.`,
 
   whyChoose: [
     {
       title: '{experience} Years of Expertise',
-      body:  'Over a decade perfecting bridal artistry — you are in the most experienced hands in the GTA.',
+      body:  'Over a decade perfecting bridal artistry. You are in the most experienced hands in the GTA.',
     },
     {
       title: '{brides} Brides Served',
@@ -91,11 +91,11 @@ but for making every bride feel comfortable, confident, and truly seen.`,
     },
     {
       title: 'Luxury Products Only',
-      body:  '{brands} — professional-grade products for a flawless, lasting finish.',
+      body:  '{brands}: professional-grade products for a flawless, lasting finish.',
     },
     {
       title: 'Exceptional Reviews',
-      body:  '{rating} stars across {reviewCount} Google reviews — built entirely on word-of-mouth from happy brides.',
+      body:  '{rating} stars across {reviewCount} Google reviews, built entirely on word-of-mouth from happy brides.',
     },
   ],
 
@@ -105,7 +105,7 @@ but for making every bride feel comfortable, confident, and truly seen.`,
     travelPeel:     75,
     travelGTA:      150,
     earlyMorningFee:       100,
-    earlyMorningThreshold: '4:30–6:00 AM',
+    earlyMorningThreshold: '4:30 to 6:00 AM',
 
     // ── Optional add-ons (used by FAQ, services page, estimator) ──
     // Single source of truth for every à-la-carte service. Edit a price here
@@ -158,7 +158,7 @@ but for making every bride feel comfortable, confident, and truly seen.`,
       facePrep: 'For optimal results, please arrive with a freshly washed face, free of makeup or mascara. This ensures the best outcome for your appointment.',
 
       // 4. Hair preparation
-      hairPrep: 'For the hairstyling process, please wash your hair thoroughly using shampoo only — refrain from applying conditioner or other hair products. We recommend drying your hair straight the night before your appointment.',
+      hairPrep: 'For the hairstyling process, please wash your hair thoroughly using shampoo only, and refrain from applying conditioner or other hair products. We recommend drying your hair straight the night before your appointment.',
 
       // 5. Excluded items / additional charges
       // Items reference `addOns` by id — the fee/label flows from there so
@@ -181,10 +181,10 @@ but for making every bride feel comfortable, confident, and truly seen.`,
       },
 
       // 7. Deposit policy (cross-references the trial refund exception above)
-      deposit: 'A non-refundable and non-transferable deposit is required to secure your appointment. The only exception is the trial-linked refund described above — see "Do you offer a consultation or trial?" for details.',
+      deposit: 'A non-refundable and non-transferable deposit is required to secure your appointment. The only exception is the trial-linked refund described above. See "Do you offer a consultation or trial?" for details.',
 
       // 8. Partial cancellation
-      partialCancellation: 'Partial cancellation of services is not permitted — all services included in a booked package must be completed.',
+      partialCancellation: 'Partial cancellation of services is not permitted. All services included in a booked package must be completed.',
 
       // 9. Party package exclusions
       partyExclusions: 'Our Regular Party package does not include Tikka, jewelry, dressing, or dupatta setting.',

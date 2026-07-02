@@ -3,7 +3,7 @@ import { cities } from '@/config/cities'
 import { site } from '@/config/site'
 
 export const runtime = 'edge'
-export const alt = `Bridal Makeup Artist — ${site.name}`
+export const alt = `Bridal Makeup Artist | ${site.name}`
 export const size = OG_SIZE
 export const contentType = OG_CONTENT_TYPE
 

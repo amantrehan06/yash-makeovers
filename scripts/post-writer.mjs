@@ -99,6 +99,7 @@ WRITING RULES:
 - Every post must include AT LEAST 1 concrete stated opinion or recommendation ("I recommend X over Y because…") — hedge-free
 - VENUES you may cite (real venues from the artist's city pages — never invent one): ${VENUES.join(', ')}
 - BANNED PHRASES (a validator rejects the post if any appear): "In today's fast-paced world", "When it comes to", "Look no further", "Let's dive in", "delve", "elevate your look", "unmatched", "seamless", "transformative journey", "Not only…but also" constructions, conclusions that restate the intro, and any advice generic enough to fit any city or any artist
+- NO EM DASHES (—) OR EN DASHES (–) anywhere — title, excerpt, or body (validator rejects). Use a comma, period, or colon instead; write ranges as "6 to 12 months", never "6–12"
 
 SEO RULES:
 - Target keyword density: 1–2% naturally (do not stuff)
