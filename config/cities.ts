@@ -86,7 +86,7 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: true,
     angle: 'home base, South Asian community hub',
-    metaTitle: 'Makeup Artist in Brampton — Bridal & Party | South Asian Specialist',
+    metaTitle: 'Makeup Artist in Brampton — South Asian Bridal & Party',
     metaDescription:
       "South Asian bridal, party & event makeup in Brampton. {experience} years and {brides} brides served, all from home base. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Brampton',
@@ -193,9 +193,9 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'multicultural, premium clientele',
-    metaTitle: 'Makeup Artist in Mississauga — Bridal & Party, On-Site & Studio',
+    metaTitle: 'Makeup Artist in Mississauga — Bridal, Party & On-Site',
     metaDescription:
-      "Pakistani and Afghan bridal makeup in Mississauga — plus party and guest looks. {experience} years across Mehndi, Nikkah and reception. Book {artistName} for {seasonYears}.",
+      "Pakistani and Afghan bridal makeup in Mississauga — plus party and guest looks. {experience} years across Mehndi, Nikkah and reception. Book {artistName}.",
     h1: 'Bridal Makeup Artist in Mississauga',
     subtitle: 'Pakistani and Afghan bridal makeup and hair specialist for Mississauga brides.',
     geo: { latitude: 43.5890, longitude: -79.6441 },
@@ -257,7 +257,7 @@ export const cities: readonly City[] = [
     angle: 'editorial, modern South Asian brides',
     metaTitle: 'Makeup Artist in Toronto — Bridal & Party Makeup + Hair',
     metaDescription:
-      "Bridal, party and event makeup artist for Toronto. On-site service across the city. {rating}★ · {reviewCount} Google reviews. Book {artistName} for {seasonYears}.",
+      "Bridal, party and event makeup artist for Toronto. On-site service across the city. {rating}★ · {reviewCount} Google reviews. Book {artistName}.",
     h1: 'Bridal Makeup Artist in Toronto',
     subtitle: 'Bridal makeup and hair for Toronto brides. On-site service across the city.',
     geo: { latitude: 43.6532, longitude: -79.3832 },
@@ -398,7 +398,7 @@ export const cities: readonly City[] = [
     angle: 'luxury, high-budget weddings',
     metaTitle: 'Makeup Artist in Oakville — Luxury Bridal & Event Makeup',
     metaDescription:
-      "Luxury bridal and event makeup artist in Oakville. {experience} years across Sikh ceremonies, white-wedding receptions and parties. Book {artistName} for {seasonYears}.",
+      "Luxury bridal and event makeup artist in Oakville. {experience} years across Sikh ceremonies, white-wedding receptions and parties. Book {artistName}.",
     h1: 'Bridal Makeup Artist in Oakville',
     subtitle: 'Luxury bridal makeup artist offering bridal makeup and hair for Oakville brides.',
     geo: { latitude: 43.4675, longitude: -79.6877 },
@@ -472,7 +472,7 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'Pakistani + Afghan bridal hub',
-    metaTitle: 'Makeup Artist in Scarborough — Bridal & Party | Pakistani & Afghan',
+    metaTitle: 'Makeup Artist in Scarborough — Pakistani & Afghan Bridal',
     metaDescription:
       "Pakistani and Afghan bridal makeup in Scarborough — plus party and guest glam. {experience} years of expertise. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Scarborough',
@@ -543,7 +543,7 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'South Asian + East Asian multicultural',
-    metaTitle: 'Makeup Artist in Markham — Bridal & Party, Multicultural Weddings',
+    metaTitle: 'Makeup Artist in Markham — Multicultural Bridal & Party',
     metaDescription:
       "Bridal, party and event makeup for Markham's multicultural weddings. {experience} years at venues across the city. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Markham',
