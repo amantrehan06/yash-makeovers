@@ -42,6 +42,8 @@ export const seo = {
       'engagement makeup artist Brampton',
       'eshoot makeup artist GTA',
       'pre-wedding shoot makeup Toronto',
+      'editorial makeup artist GTA',
+      'brand shoot makeup Toronto',
       'South Asian bridal makeup GTA',
     ],
     longtail: [

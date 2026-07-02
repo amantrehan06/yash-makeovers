@@ -273,7 +273,7 @@ export const servicePages: readonly ServicePage[] = [
     packageIds: ['full-glam'],
     packagesTitle: 'The eShoot package',
     intro:
-      `An eShoot — the engagement or pre-wedding photoshoot couples do in the months before the wedding — is the one booking where the camera is the entire audience. There's no long ceremony to get through; there's a lens two feet from your face for a couple of hours. The makeup has to be built for that.\n\nEvery eShoot I do runs on the ${fullGlam.name} package (${formatPrice(fullGlam.price)} per person): HD waterproof makeup, hairstyling, and premium mink lashes — the same finish I use on wedding mornings, tuned for close-up photography rather than banquet-hall distance.\n\nOne note on scope: this service is for eShoot and pre-wedding couples' sessions. I don't offer editorial, fashion, or commercial-shoot makeup.`,
+      `An eShoot — the engagement or pre-wedding photoshoot couples do in the months before the wedding — is the one booking where the camera is the entire audience. There's no long ceremony to get through; there's a lens two feet from your face for a couple of hours. The makeup has to be built for that.\n\nEvery eShoot I do runs on the ${fullGlam.name} package (${formatPrice(fullGlam.price)} per person): HD waterproof makeup, hairstyling, and premium mink lashes — the same finish I use on wedding mornings, tuned for close-up photography rather than banquet-hall distance.\n\neShoot and pre-wedding sessions are the heart of this service, and editorial and brand-shoot makeup are available too — same ${fullGlam.name} package, same pricing.`,
     sections: [
       {
         heading: 'Makeup that reads on camera',
@@ -310,7 +310,7 @@ export const servicePages: readonly ServicePage[] = [
       },
       {
         q: 'Do you do editorial or brand-shoot makeup?',
-        a: `No — this service is specifically eShoot and pre-wedding couples' sessions, alongside my bridal and event work. If that's what you're planning, you're in the right place.`,
+        a: `Yes — editorial and brand/commercial shoots run on the same ${fullGlam.name} package (${formatPrice(fullGlam.price)} per person per event), with the same HD waterproof, camera-first finish. eShoot and pre-wedding sessions are the core of this service; send your shoot details through the inquiry form and I'll plan the chair time around your call sheet.`,
       },
     ],
     galleryTag: 'full-glam',
