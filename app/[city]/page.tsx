@@ -14,6 +14,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { PackageCard } from '@/components/ui/PackageCard'
 import { WhyChooseItem } from '@/components/ui/WhyChooseItem'
 import { CityReviews } from '@/components/sections/CityReviews'
+import { NonBridalSection } from '@/components/sections/NonBridalSection'
 import { buildCityServiceSchema, buildFaqSchema } from '@/lib/schema'
 
 interface Props {
@@ -395,6 +396,11 @@ export default async function CityPage({ params }: Props) {
           </div>
         </section>
       )}
+
+      {/* PARTY / PROM / EVENT cross-links — additive below all existing
+          city content (B2). Copy sources: cities.ts nonBridalBlurb +
+          content.ts cityPage.nonBridalBody. */}
+      <NonBridalSection city={city} />
 
       {/* CTA */}
       <section className="py-20 px-6 bg-gold">

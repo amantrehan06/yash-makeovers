@@ -62,6 +62,11 @@ export interface City {
   // the H1 itself. Keep under ~20 words. Should contain the city name.
   subtitle:        string
   intro:           string
+  // One unique city-specific sentence for the "Party, Prom & Event Makeup"
+  // section (NonBridalSection). Reuses this city's venue/neighbourhood data —
+  // never generic filler, never duplicated across cities. Shared surrounding
+  // copy lives in content.ts → cityPage.nonBridalBody.
+  nonBridalBlurb:  string
   // Geographic centroid — used by per-city Service schema (areaServed.geo)
   // for local-pack ranking. Approximate city center is fine here (not a
   // specific pin) — represents the service area. Get from maps.google.com
@@ -109,9 +114,11 @@ export const cities: readonly City[] = [
       'Fletcher\'s Meadow',
       'Bram West'
     ],
+    nonBridalBlurb:
+      "With the studio right here in Brampton, solo party and prom appointments are the easiest of any city — no travel fee, just book a chair, whether you're coming from Springdale, Bramalea, or Mount Pleasant.",
     nearbyCities: ['mississauga', 'toronto', 'vaughan', 'etobicoke'],
     contentBlocks: [
-  
+
     {
       id: `brampton-202303-bridal-goals-gold`,
       date: `2023-03-09`,
@@ -215,6 +222,8 @@ export const cities: readonly City[] = [
       'Meadowvale',
       'Cooksville'
     ],
+    nonBridalBlurb:
+      'Guest and party glam runs on the same Mehndi-and-reception circuit I already work across Mississauga, from Streetsville homes to the halls around Pearson Convention Centre.',
     nearbyCities: ['brampton', 'toronto', 'etobicoke', 'oakville'],
     contentBlocks: [
     {
@@ -270,6 +279,8 @@ export const cities: readonly City[] = [
                       'Leslieville',
                       'Downtown Core',
                       'Liberty Village'],
+    nonBridalBlurb:
+      'For downtown events — a reception at Liberty Grand, a party in Yorkville or Liberty Village — bookings of two or more bring the kit into Toronto to you.',
     nearbyCities:  ['mississauga', 'etobicoke', 'vaughan', 'scarborough'],
     contentBlocks: [
 
@@ -374,6 +385,8 @@ export const cities: readonly City[] = [
       'New Toronto',
       'Markland Wood'
     ],
+    nonBridalBlurb:
+      'The quick 427 run from the studio makes Etobicoke one of the easiest group bookings — a Kingsway dinner party, prom photos along Humber Bay Shores, or a hall out by Rexdale.',
     nearbyCities: ['mississauga', 'toronto', 'brampton', 'vaughan'],
     contentBlocks: [],
   },
@@ -409,6 +422,8 @@ export const cities: readonly City[] = [
       'Westmount',
       'Morrison'
     ],
+    nonBridalBlurb:
+      'Event and eShoot glam finished for the same lakeside settings Oakville brides book — Glen Abbey, Bronte Village, and the estate properties along the water.',
     nearbyCities: ['mississauga', 'brampton', 'etobicoke'],
     contentBlocks: [],
   },
@@ -446,6 +461,8 @@ export const cities: readonly City[] = [
       'Vellore Village',
       'Sonoma Heights'
     ],
+    nonBridalBlurb:
+      "Sangeet and engagement bookings pair naturally with Vaughan's multi-day wedding circuit — from Woodbridge and Kleinburg homes to receptions at Paramount or Universal EventSpace.",
     nearbyCities: ['brampton', 'toronto', 'richmond-hill', 'north-york'],
     contentBlocks: [],
   },
@@ -481,6 +498,8 @@ export const cities: readonly City[] = [
       'Milliken',
       'West Hill'
     ],
+    nonBridalBlurb:
+      'Party and guest makeup slots into the same Scarborough runs as my Nikkah and reception work — Agincourt, Milliken, and the halls around the Scarborough Convention Centre.',
     nearbyCities: ['toronto', 'markham', 'north-york', 'vaughan'],
     contentBlocks: [
     {
@@ -552,6 +571,8 @@ export const cities: readonly City[] = [
      'Greensborough',
      'Cathedraltown'
    ],
+    nonBridalBlurb:
+      "Full-glam finishes built for Markham's crisp modern venues — Crystal Fountain, Angus Glen, and the ballrooms around Downtown Markham and Unionville.",
     nearbyCities: ['toronto', 'richmond-hill', 'scarborough', 'vaughan'],
     contentBlocks: [],
   },
@@ -588,6 +609,8 @@ export const cities: readonly City[] = [
       'Downsview',
       'Lawrence Park North'
     ],
+   nonBridalBlurb:
+     'North York sits at the centre of the GTA, so family events land here from every direction — Willowdale, Don Mills, or a hall along the Yonge corridor, group bookings travel easily.',
    nearbyCities: ['vaughan', 'toronto', 'richmond-hill', 'markham'],
    contentBlocks: [],
   },
@@ -623,6 +646,8 @@ export const cities: readonly City[] = [
       'South Richvale',
       'Doncrest'
     ],
+   nonBridalBlurb:
+     "Engagement shoots and event glam finished to the same standard Richmond Hill's venues expect — Bayview Hill, Mill Pond, and the Richmond Hill Country Club.",
    nearbyCities: ['vaughan', 'markham', 'north-york', 'toronto'],
    contentBlocks: [],
   },
