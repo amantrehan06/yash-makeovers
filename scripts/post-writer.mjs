@@ -52,8 +52,25 @@ function readSiteStats() {
   }
 }
 
+// Pull real GTA venue names from config/cities.ts so posts can cite places
+// the artist actually works at (a business-specific-fact requirement — see
+// WRITING RULES). Same regex-over-source approach as the price list.
+function readVenueList() {
+  try {
+    const raw = readFileSync('config/cities.ts', 'utf-8')
+    const venues = []
+    for (const block of raw.matchAll(/venues:\s*\[([\s\S]*?)\]/g)) {
+      for (const v of block[1].matchAll(/'((?:[^'\\]|\\.)+)'/g)) venues.push(v[1].replace(/\\'/g, "'"))
+    }
+    return [...new Set(venues)]
+  } catch {
+    return []
+  }
+}
+
 const PRICE_LIST = readPackagePriceList()
 const STATS      = readSiteStats()
+const VENUES     = readVenueList()
 
 const SYSTEM_PROMPT = `You are an expert SEO content strategist and blog writer for Yash Makeovers, a luxury bridal makeup artist in Brampton, Ontario, Canada.
 
@@ -77,6 +94,11 @@ WRITING RULES:
 - Warm, reassuring tone — brides are nervous, make them feel safe
 - Primary keyword appears in: title, first H2, first paragraph, meta description
 - Include internal links (Markdown style) to: /services, /portfolio, /contact, and one city page
+- Write in Yashpreet's first person ("In 10 years of Brampton weddings, I…") — she is the author, not an anonymous blog
+- Every post must include AT LEAST 3 business-specific facts: exact package prices from the price list above, named GTA venues (see VENUES below), seasonal booking patterns (e.g. May–October peak, summer weekends filling months ahead), or product names from the brand list
+- Every post must include AT LEAST 1 concrete stated opinion or recommendation ("I recommend X over Y because…") — hedge-free
+- VENUES you may cite (real venues from the artist's city pages — never invent one): ${VENUES.join(', ')}
+- BANNED PHRASES (a validator rejects the post if any appear): "In today's fast-paced world", "When it comes to", "Look no further", "Let's dive in", "delve", "elevate your look", "unmatched", "seamless", "transformative journey", "Not only…but also" constructions, conclusions that restate the intro, and any advice generic enough to fit any city or any artist
 
 SEO RULES:
 - Target keyword density: 1–2% naturally (do not stuff)
@@ -98,7 +120,19 @@ OUTPUT FORMAT — return ONLY a valid JSON object, no markdown fence, no explana
 
 The body must NOT include the frontmatter block or the title H1 — those are added by the publisher.`
 
-export async function writePost({ trends, publishedTopics }) {
+// `rewriteOf` (optional): { post, violations } from a failed validator pass —
+// triggers ONE corrective rewrite of the same topic instead of a fresh pick.
+export async function writePost({ trends, publishedTopics, rewriteOf }) {
+  const rewriteBlock = rewriteOf
+    ? `
+
+YOUR PREVIOUS ATTEMPT WAS REJECTED by the pre-publish validator. Rewrite the
+SAME topic ("${rewriteOf.post.title}", keyword: "${rewriteOf.post.targetKeyword}"),
+fixing every violation below. Do not switch topics.
+VIOLATIONS:
+${rewriteOf.violations.map((v) => `  - ${v}`).join('\n')}`
+    : ''
+
   const userPrompt = `Write a blog post for Yash Makeovers.
 
 CURRENT TRENDS RESEARCH:
@@ -114,7 +148,7 @@ Choose the best topic based on:
 4. High commercial intent for GTA brides
 
 Pick ONE category from the allowed list and write a complete, publication-ready post.
-Return ONLY the JSON object — no markdown fence, no explanation.`
+Return ONLY the JSON object — no markdown fence, no explanation.${rewriteBlock}`
 
   const response = await client.messages.create({
     model: MODEL,

@@ -12,10 +12,11 @@
 //   ANTHROPIC_API_KEY=... RESEND_API_KEY=... node scripts/blog-engine.mjs
 //   DRY_RUN=true node scripts/blog-engine.mjs   # writes file, no git push or email
 
-import { readdir, readFile } from 'node:fs/promises'
+import { readdir, readFile, appendFile, mkdir } from 'node:fs/promises'
 import { join } from 'node:path'
 import { researchTrends } from './trend-researcher.mjs'
 import { writePost } from './post-writer.mjs'
+import { validatePost } from './post-validator.mjs'
 import { publishPost } from './post-publisher.mjs'
 import { sendNotification } from './notifier.mjs'
 
@@ -70,9 +71,32 @@ async function main() {
 
   // 3. Write the post
   console.log('✍️  Writing post with Claude...')
-  const post = await writePost({ trends, publishedTopics })
+  let post = await writePost({ trends, publishedTopics })
   console.log(`   Title: ${post.title}`)
   console.log(`   Slug:  ${post.slug}`)
+
+  // 3b. Validate — one corrective rewrite allowed, then skip (never ship filler).
+  let check = validatePost(post)
+  if (!check.ok) {
+    console.warn(`⚠️  Validator rejected the post (${check.violations.length} violations) — one rewrite attempt...`)
+    check.violations.forEach((v) => console.warn(`   - ${v}`))
+    post = await writePost({ trends, publishedTopics, rewriteOf: { post, violations: check.violations } })
+    check = validatePost(post)
+  }
+  if (!check.ok) {
+    const entry = [
+      `## ${new Date().toISOString()} — post skipped by validator`,
+      `Title: ${post.title}`,
+      `Keyword: ${post.targetKeyword}`,
+      ...check.violations.map((v) => `- ${v}`),
+      '',
+    ].join('\n')
+    await mkdir('seo', { recursive: true })
+    await appendFile('seo/issues.md', entry + '\n', 'utf-8')
+    console.error('❌ Validator rejected the rewrite too. Logged to seo/issues.md — NOT publishing.')
+    return
+  }
+  console.log('✅ Validator passed')
 
   // 4. Publish (or skip in dry-run)
   console.log(dryRun ? '🧪 Writing MDX only (dry run)' : '🚀 Publishing post...')
