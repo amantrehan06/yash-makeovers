@@ -39,7 +39,7 @@ export function buildOwnerEmailHtml(data: {
 
   return `
     <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; color: #1C1410; background: #FAF8F4; padding: 40px; border-radius: 8px;">
-      <h2 style="color: #A8834A; font-size: 24px; margin-bottom: 24px;">New Inquiry — ${site.name}</h2>
+      <h2 style="color: #A8834A; font-size: 24px; margin-bottom: 24px;">New Inquiry | ${site.name}</h2>
       <table style="width: 100%; border-collapse: collapse;">
         <tr><td style="padding: 8px 0; color: #7A6A58; width: 40%;">Name</td><td style="padding: 8px 0; font-weight: 600;">${data.name}</td></tr>
         <tr><td style="padding: 8px 0; color: #7A6A58;">WhatsApp</td><td style="padding: 8px 0; font-weight: 600;">${data.whatsapp}</td></tr>

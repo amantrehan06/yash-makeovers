@@ -26,7 +26,7 @@ export const content = {
   servicesSection: {
     eyebrow:    'Services & Pricing',
     title:      'Packages crafted for every occasion',
-    subtitle:   'From the bridal ceremony to intimate celebrations — every look is designed to last all day.',
+    subtitle:   'From the bridal ceremony to intimate celebrations, every look is designed to last all day.',
     popularBadge: 'Most Popular',
     bookCTA:    'Book this package',
   },
@@ -42,13 +42,13 @@ export const content = {
   beforeAfter: {
     eyebrow:  'Transformation',
     title:    'See the difference',
-    subtitle: 'Drag the slider — or use the arrow keys — to reveal the before and after.',
+    subtitle: 'Drag the slider, or use the arrow keys, to reveal the before and after.',
   },
 
   priceEstimator: {
     eyebrow:  'Price Estimator',
     title:    'Estimate your investment',
-    subtitle: 'Get an instant range before booking. No surprises — just transparency.',
+    subtitle: 'Get an instant range before booking. No surprises, just transparency.',
   },
 
   reviewsSection: {
@@ -70,7 +70,7 @@ export const content = {
     notAcceptingTitle: 'Not accepting new bookings',
     notAcceptingBody:  'We are currently not accepting new bookings. Please follow',
     successTitle:      'Inquiry received!',
-    successBody:       'will reach out to you soon to discuss your vision. Keep an eye on your WhatsApp or email — we can\'t wait to make your day unforgettable.',
+    successBody:       'will reach out to you soon to discuss your vision. Keep an eye on your WhatsApp or email. We can\'t wait to make your day unforgettable.',
     errorBody:         'Something went wrong. Please WhatsApp us directly at',
     fields: {
       name:        { label: 'Full name',                       placeholder: 'Your full name' },
@@ -99,7 +99,7 @@ export const content = {
         options: [
           'Full glam',
           'Natural / guest look',
-          'Not sure — let\'s decide together',
+          'Not sure, let\'s decide together',
         ],
       },
       message:     { label: 'Message',                         placeholder: 'Anything else we should know? Number of people, venue or city, inspiration, questions about the package...' },
@@ -164,7 +164,7 @@ export const content = {
     // sentence lives in cities.ts → nonBridalBlurb.
     nonBridalEyebrow: 'Beyond bridal',
     nonBridalBody:
-      'Bridal is the heart of the studio, but the same kit and the same hands cover every other occasion in {city} — party and guest looks, prom season, engagement and Sangeet nights, and pre-wedding eShoots. Each service has its own page with transparent pricing, group-size rules, and travel details.',
+      'Bridal is the heart of the studio, but the same kit and the same hands cover every other occasion in {city}: party and guest looks, prom season, engagement and Sangeet nights, and pre-wedding eShoots. Each service has its own page with transparent pricing, group-size rules, and travel details.',
     nonBridalLinksLead: 'Explore the occasion pages:',
   },
 
@@ -187,7 +187,7 @@ export const content = {
   termsPage: {
     eyebrow:  'Legal',
     title:    'Terms & Conditions',
-    subtitle: 'Our booking terms — please read before confirming your appointment.',
+    subtitle: 'Our booking terms. Please read before confirming your appointment.',
     sections: {
       punctuality:         { number: '1',  title: 'Punctuality & waiting charges' },
       studioVisitors:      { number: '2',  title: 'Studio visitors' },
@@ -201,7 +201,7 @@ export const content = {
       timeChange:          { number: '10', title: 'Time changes' },
       consultation:        { number: '11', title: 'Consultation calls' },
     },
-    questionsHelp: 'Questions about any of these? Please reach out before booking — we\'re happy to clarify.',
+    questionsHelp: 'Questions about any of these? Please reach out before booking. We\'re happy to clarify.',
     inquiryAgreement: 'By submitting this inquiry, you acknowledge our',
     inquiryAgreementLink: 'Terms & Conditions',
   },

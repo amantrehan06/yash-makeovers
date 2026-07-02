@@ -82,7 +82,7 @@ export function InquiryForm() {
     if (!data.whatsapp.trim()) next.whatsapp    = 'A real WhatsApp number is required so we can reach you.'
     if (!data.email.trim())    next.email       = 'Please enter your email address.'
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
-      next.email = 'That email doesn\'t look right — please double-check.'
+      next.email = 'That email doesn\'t look right. Please double-check.'
     }
     if (!data.occasion.trim()) next.occasion = 'Pick the occasion.'
     // familyLook is optional — a family-wedding guest can leave it blank and

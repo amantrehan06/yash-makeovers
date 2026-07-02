@@ -11,7 +11,7 @@ export function AuthorBio() {
         <p className="text-xs uppercase tracking-widest text-gold mb-2">About the author</p>
         <p className="font-serif text-2xl text-dark mb-2">{site.artistName}</p>
         <p className="text-muted text-sm leading-relaxed mb-4">
-          {site.artistName} is the founder of {site.name} — {site.experience} years of bridal
+          {site.artistName} is the founder of {site.name}, with {site.experience} years of bridal
           artistry and {site.brideCount} brides served across the GTA. Based in {site.baseCity}.
         </p>
         <Link

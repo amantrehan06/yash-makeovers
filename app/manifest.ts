@@ -4,7 +4,7 @@ import { site } from '@/config/site'
 // Web app manifest — Android add-to-home-screen (name, theme colour, icon).
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name:             `${site.name} — Bridal Makeup Artist`,
+    name:             `${site.name} | Bridal Makeup Artist`,
     short_name:       site.name,
     description:      `Luxury bridal makeup and hair across the GTA by ${site.artistName}.`,
     start_url:        '/',

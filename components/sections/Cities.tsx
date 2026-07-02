@@ -11,7 +11,7 @@ export function Cities() {
         <SectionHeader
           eyebrow={content.citiesSection.eyebrow}
           title={content.citiesSection.title}
-          subtitle={`${site.artistName} travels to your venue — wherever your celebration takes you.`}
+          subtitle={`${site.artistName} travels to your venue, wherever your celebration takes you.`}
           centered
         />
 

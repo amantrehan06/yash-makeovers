@@ -9,9 +9,9 @@ export const dynamic = 'force-static'
 export function GET() {
   const base = `https://${site.canonicalHost}`
   const cityLinks = cities.map((c) => `- [${c.name}](${base}/${c.slug})`).join('\n')
-  const packageList = packages.map((p) => `- ${p.name} — ${p.tagline}`).join('\n')
+  const packageList = packages.map((p) => `- ${p.name}: ${p.tagline}`).join('\n')
 
-  const body = `# ${site.name} — Bridal Makeup Artist in ${site.serviceAreaFull}
+  const body = `# ${site.name} | Bridal Makeup Artist in ${site.serviceAreaFull}
 
 > ${site.tagline}. ${site.experience} years of experience and ${site.brideCount} brides across ${site.serviceAreaFull}, based in ${site.baseCity}. Specialising in South Asian and multicultural bridal makeup and hair.
 

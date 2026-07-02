@@ -21,7 +21,7 @@ import { getPackage, formatPrice } from './packages'
 export const bookingPolicies = {
   // Max people per booking — applies to the party package, and to the
   // people accompanying a bride on bridal bookings.
-  groupMax: '4–5',
+  groupMax: '4 to 5',
   // Solo party/prom/guest appointments are studio-only (no travel for one
   // person). Travel is available for groups of this size or larger.
   travelMinGroup: 2,
@@ -77,8 +77,8 @@ const fmtHour = (t: string) => {
 }
 const studioHours = `${fmtHour(site.hours[0].opens)} to ${fmtHour(site.hours[0].closes)}`
 const travelFees = `${formatPrice(policies.travelPeel)} within Peel Region and up to ${formatPrice(policies.travelGTA)} across the wider GTA`
-const depositLine = `A ${policies.depositPercent}% deposit via e-transfer secures your date — no payment is required until we've spoken and you're ready to confirm.`
-const soloStudioLine = `Solo appointments happen at my studio in {baseCity} — I don't travel for a single booking. For groups of ${bookingPolicies.travelMinGroup} or more, travel is available: ${travelFees}.`
+const depositLine = `A ${policies.depositPercent}% deposit via e-transfer secures your date. No payment is required until we've spoken and you're ready to confirm.`
+const soloStudioLine = `Solo appointments happen at my studio in {baseCity}. I don't travel for a single booking. For groups of ${bookingPolicies.travelMinGroup} or more, travel is available: ${travelFees}.`
 // "$450, reduced from $600 for 2026 bookings" — emitted only while the
 // discount is live; disappears automatically when originalPrice == price.
 const preBridalPriceText = preBridal.originalPrice > preBridal.price
@@ -92,51 +92,51 @@ export const servicePages: readonly ServicePage[] = [
     eyebrow: 'Party & Event Makeup',
     metaTitle: 'Party Makeup Artist in Brampton & the GTA',
     metaDescription:
-      `Party and event makeup by {artistName} — from the {baseCity} studio, or on-location for groups of ${bookingPolicies.travelMinGroup}+. Two tiers from ${formatPrice(party.price)}. {rating}★ · {reviewCount} Google reviews.`,
+      `Party and event makeup by {artistName}, from the {baseCity} studio, or on-location for groups of ${bookingPolicies.travelMinGroup}+. Two tiers from ${formatPrice(party.price)}. {rating}★ · {reviewCount} Google reviews.`,
     h1:       'Party Makeup Artist in Brampton & the GTA',
-    subtitle: 'Two straightforward tiers — regular finish or full glam — at the {baseCity} studio, or on-location for groups.',
+    subtitle: 'Two straightforward tiers (regular finish or full glam) at the {baseCity} studio, or on-location for groups.',
     serviceType: 'Party & Event Makeup and Hair',
     packageIds: ['party', 'full-glam'],
     packagesTitle: 'Party packages & pricing',
     intro:
-      `Not every celebration needs a bridal-scale production, but the makeup still has to look right in person and in photos. Party makeup covers everything outside the wedding day itself — birthdays, anniversaries, baby showers, receptions you're attending as a guest, and any evening where you want a professional finish that actually lasts.\n\nThere are two tiers, and choosing between them is simple. The ${party.name} package (${formatPrice(party.price)}) keeps it clean: regular-finish makeup, regular lashes, and a simple hairdo — updos, curls, or basic volume. ${fullGlam.name} (${formatPrice(fullGlam.price)}) steps up to HD waterproof makeup, full hairstyling, and premium mink lashes; it's the tier I recommend when the event is being professionally photographed.\n\nBoth are priced per person per event, and both use the same kit I bring to weddings: {brands}.`,
+      `Not every celebration needs a bridal-scale production, but the makeup still has to look right in person and in photos. Party makeup covers everything outside the wedding day itself: birthdays, anniversaries, baby showers, receptions you're attending as a guest, and any evening where you want a professional finish that actually lasts.\n\nThere are two tiers, and choosing between them is simple. The ${party.name} package (${formatPrice(party.price)}) keeps it clean: regular-finish makeup, regular lashes, and a simple hairdo (updos, curls, or basic volume). ${fullGlam.name} (${formatPrice(fullGlam.price)}) steps up to HD waterproof makeup, full hairstyling, and premium mink lashes; it's the tier I recommend when the event is being professionally photographed.\n\nBoth are priced per person per event, and both use the same kit I bring to weddings: {brands}.`,
     sections: [
       {
-        heading: 'Studio or on-location — how it works',
+        heading: 'Studio or on-location: how it works',
         body:
-          `${soloStudioLine} Keeping solo appointments in the studio is what keeps the pricing flat and the schedule reliable, and the studio runs ${studioHours} seven days a week, so even an early start is workable.\n\nParty bookings take a maximum of ${bookingPolicies.groupMax} people. That cap is deliberate: one artist, proper time in the chair for every face, rather than an assembly-line pass ten minutes before you have to leave.`,
+          `${soloStudioLine} Keeping solo appointments in the studio is what keeps the pricing flat and the schedule reliable, and the studio runs ${studioHours} seven days a week, so even an early start is workable.\n\nParty bookings take ${bookingPolicies.groupMax} people at most. That cap is deliberate: one artist, proper time in the chair for every face, rather than an assembly-line pass ten minutes before you have to leave.`,
       },
       {
-        heading: "What's included — and what's an add-on",
+        heading: "What's included, and what's an add-on",
         body:
           `The ${party.name} package deliberately leaves out tikka, jewelry, dressing, and dupatta setting, because most party clients don't need them. When you do, they're straightforward add-ons: ${addOns.partyDupattaSetting.label.toLowerCase()} is ${formatPrice(addOns.partyDupattaSetting.fee)} and ${addOns.jewelrySetting.label.toLowerCase()} is ${formatPrice(addOns.jewelrySetting.fee)}.\n\nOther popular extras: ${addOns.airbrush.label.toLowerCase()} (${formatPrice(addOns.airbrush.fee)}), ${addOns.premiumMinkLashes.label.toLowerCase()} (${formatPrice(addOns.premiumMinkLashes.fee)}), a ${addOns.blowDryWetHair.label.toLowerCase()} (${formatPrice(addOns.blowDryWetHair.fee)}), and a ${addOns.touchupKit.label.toLowerCase()} (${formatPrice(addOns.touchupKit.fee)}) so the look survives a long night.`,
       },
       {
         heading: 'Booking your date',
         body:
-          `${depositLine} There's no formal cutoff on how late you can book, but ${bookingPolicies.leadTimeNote}.\n\nCome with a freshly washed face, free of makeup, and hair washed with shampoo only — no conditioner or products. The makeup sits better and lasts longer on a clean base.`,
+          `${depositLine} There's no formal cutoff on how late you can book, but ${bookingPolicies.leadTimeNote}.\n\nCome with a freshly washed face, free of makeup, and hair washed with shampoo only, no conditioner or products. The makeup sits better and lasts longer on a clean base.`,
       },
     ],
     faq: [
       {
         q: 'How much does party makeup cost in Brampton?',
-        a: `The ${party.name} package is ${formatPrice(party.price)} per person per event — regular-finish makeup, regular lashes, and a simple hairdo. ${fullGlam.name} is ${formatPrice(fullGlam.price)} with HD waterproof makeup, full hairstyling, and premium mink lashes. A ${policies.depositPercent}% deposit confirms your booking.`,
+        a: `The ${party.name} package is ${formatPrice(party.price)} per person per event: regular-finish makeup, regular lashes, and a simple hairdo. ${fullGlam.name} is ${formatPrice(fullGlam.price)} with HD waterproof makeup, full hairstyling, and premium mink lashes. A ${policies.depositPercent}% deposit confirms your booking.`,
       },
       {
         q: 'Do you travel for party makeup?',
-        a: `For groups of ${bookingPolicies.travelMinGroup} or more, yes — travel is ${travelFees}. Solo party appointments are studio-only, at ${site.address}.`,
+        a: `For groups of ${bookingPolicies.travelMinGroup} or more, yes. Travel is ${travelFees}. Solo party appointments are studio-only, at ${site.address}.`,
       },
       {
         q: 'How many people can book party makeup together?',
-        a: `Up to ${bookingPolicies.groupMax} people per booking. The same cap applies to family and friends booking alongside a bride on a wedding morning — it's what keeps every face getting proper time.`,
+        a: `${bookingPolicies.groupMax} people per booking at most. The same cap applies to family and friends booking alongside a bride on a wedding morning; it's what keeps every face getting proper time.`,
       },
       {
         q: `What's the difference between ${party.name} and ${fullGlam.name}?`,
-        a: `${party.name} (${formatPrice(party.price)}) is a regular-finish look: ${party.includes.join(', ').toLowerCase()}. ${fullGlam.name} (${formatPrice(fullGlam.price)}) upgrades to ${fullGlam.includes.join(', ').toLowerCase()} — the better choice when there's a professional photographer.`,
+        a: `${party.name} (${formatPrice(party.price)}) is a regular-finish look: ${party.includes.join(', ').toLowerCase()}. ${fullGlam.name} (${formatPrice(fullGlam.price)}) upgrades to ${fullGlam.includes.join(', ').toLowerCase()}, the better choice when there's a professional photographer.`,
       },
       {
         q: 'Does party makeup include hairstyling?',
-        a: `Yes. ${party.name} includes a simple hairdo — updos, curls, or basic volume. ${fullGlam.name} includes full hairstyling. If your hair will be wet on arrival, a ${addOns.blowDryWetHair.label.toLowerCase()} is ${formatPrice(addOns.blowDryWetHair.fee)}; ideally arrive with it washed (shampoo only) and dried straight.`,
+        a: `Yes. ${party.name} includes a simple hairdo: updos, curls, or basic volume. ${fullGlam.name} includes full hairstyling. If your hair will be wet on arrival, a ${addOns.blowDryWetHair.label.toLowerCase()} is ${formatPrice(addOns.blowDryWetHair.fee)}; ideally arrive with it washed (shampoo only) and dried straight.`,
       },
     ],
     galleryTag: 'full-glam',
@@ -149,51 +149,51 @@ export const servicePages: readonly ServicePage[] = [
     eyebrow: 'Prom Season',
     metaTitle: 'Prom Makeup & Hair in Brampton',
     metaDescription:
-      `Prom makeup and hair in Brampton by {artistName} — ${formatPrice(party.price)} per person with lashes and hairstyling included. Studio, or travel for groups of ${bookingPolicies.travelMinGroup}+.`,
+      `Prom makeup and hair in Brampton by {artistName}, ${formatPrice(party.price)} per person with lashes and hairstyling included. Studio, or travel for groups of ${bookingPolicies.travelMinGroup}+.`,
     h1:       'Prom Makeup & Hair in Brampton',
-    subtitle: 'One flat rate for makeup, lashes and hair — solo at the {baseCity} studio, or with your friends on-location.',
+    subtitle: 'One flat rate for makeup, lashes and hair. Solo at the {baseCity} studio, or with your friends on-location.',
     serviceType: 'Prom Makeup and Hair',
     packageIds: ['party'],
     packagesTitle: 'Prom package & pricing',
     intro:
-      `Prom is one of the few nights that gets documented from every angle — the driveway photos, the limo, the dance floor. My prom service is the same package I run for parties: makeup, regular lashes, and hair (updos, curls, or basic volume) at ${formatPrice(party.price)} per person, with no required extras.\n\nIf you're coming solo, you'll visit my studio in {baseCity}. Getting ready with friends is honestly the better way to do it — groups of ${bookingPolicies.travelMinGroup} or more can book travel, and the getting-ready photos happen at home instead of in a parking lot between appointments.`,
+      `Prom is one of the few nights that gets documented from every angle: the driveway photos, the limo, the dance floor. My prom service is the same package I run for parties: makeup, regular lashes, and hair (updos, curls, or basic volume) at ${formatPrice(party.price)} per person, with no required extras.\n\nIf you're coming solo, you'll visit my studio in {baseCity}. Getting ready with friends is honestly the better way to do it: groups of ${bookingPolicies.travelMinGroup} or more can book travel, and the getting-ready photos happen at home instead of in a parking lot between appointments.`,
     sections: [
       {
         heading: 'Book it with your friends',
         body:
-          `Travel for groups of ${bookingPolicies.travelMinGroup} or more is ${travelFees}, and a booking takes up to ${bookingPolicies.groupMax} people. One artist works through the group in turn, so plan the afternoon with staggered chair times — the studio runs ${studioHours}, so there's plenty of room before an evening prom.`,
+          `Travel for groups of ${bookingPolicies.travelMinGroup} or more is ${travelFees}, and a booking takes ${bookingPolicies.groupMax} people at most. One artist works through the group in turn, so plan the afternoon with staggered chair times. The studio runs ${studioHours}, so there's plenty of room before an evening prom.`,
       },
       {
-        heading: 'Prom season timing — April to June',
+        heading: 'Prom season timing: April to June',
         body:
-          `Prom season lands in April, May, and June, exactly when the GTA wedding season ramps up — and wedding mornings claim the early slots first. There's no formal booking cutoff, but ${bookingPolicies.leadTimeNote}. ${depositLine}`,
+          `Prom season lands in April, May, and June, exactly when the GTA wedding season ramps up, and wedding mornings claim the early slots first. There's no formal booking cutoff, but ${bookingPolicies.leadTimeNote}. ${depositLine}`,
       },
       {
         heading: 'Upgrades that make sense for prom',
         body:
-          `The flat rate covers the full look, but a few add-ons come up often: ${addOns.premiumMinkLashes.label.toLowerCase()} (${formatPrice(addOns.premiumMinkLashes.fee)}), ${addOns.airbrush.label.toLowerCase()} (${formatPrice(addOns.airbrush.fee)}), and a ${addOns.touchupKit.label.toLowerCase()} (${formatPrice(addOns.touchupKit.fee)}) to get you from photos through the last dance.\n\nWearing extensions? Application of your own set is ${formatPrice(addOns.clientHairExtensions.fee)}, or studio-provided extensions are ${formatPrice(addOns.studioHairExtensions.fee)} ${addOns.studioHairExtensions.unit}. And if you want the step-up HD waterproof finish with premium mink lashes, ask about ${fullGlam.name} (${formatPrice(fullGlam.price)}) — the tier I use for photoshoots.`,
+          `The flat rate covers the full look, but a few add-ons come up often: ${addOns.premiumMinkLashes.label.toLowerCase()} (${formatPrice(addOns.premiumMinkLashes.fee)}), ${addOns.airbrush.label.toLowerCase()} (${formatPrice(addOns.airbrush.fee)}), and a ${addOns.touchupKit.label.toLowerCase()} (${formatPrice(addOns.touchupKit.fee)}) to get you from photos through the last dance.\n\nWearing extensions? Application of your own set is ${formatPrice(addOns.clientHairExtensions.fee)}, or studio-provided extensions are ${formatPrice(addOns.studioHairExtensions.fee)} ${addOns.studioHairExtensions.unit}. And if you want the step-up HD waterproof finish with premium mink lashes, ask about ${fullGlam.name} (${formatPrice(fullGlam.price)}), the tier I use for photoshoots.`,
       },
     ],
     faq: [
       {
         q: 'How much does prom makeup cost in Brampton?',
-        a: `${formatPrice(party.price)} per person, and that includes the makeup, regular lashes, and hairstyling — updos, curls, or basic volume. A ${policies.depositPercent}% deposit via e-transfer confirms your slot.`,
+        a: `${formatPrice(party.price)} per person, and that includes the makeup, regular lashes, and hairstyling (updos, curls, or basic volume). A ${policies.depositPercent}% deposit via e-transfer confirms your slot.`,
       },
       {
         q: 'Can my friends and I get ready together?',
-        a: `Yes — that's the best way to do prom. Groups of ${bookingPolicies.travelMinGroup} or more can book travel (${travelFees}) and I come to you; up to ${bookingPolicies.groupMax} people per booking. Booking solo? You'll come to the studio in ${site.addressStructured.addressLocality}.`,
+        a: `Yes, that's the best way to do prom. Groups of ${bookingPolicies.travelMinGroup} or more can book travel (${travelFees}) and I come to you; ${bookingPolicies.groupMax} people per booking at most. Booking solo? You'll come to the studio in ${site.addressStructured.addressLocality}.`,
       },
       {
         q: 'Do you do prom hair as well as makeup?',
-        a: `Yes, hair is included in the flat rate — simple updos, curls, and basic volume. Hair extension application is available as an add-on: ${formatPrice(addOns.clientHairExtensions.fee)} for your own set, or ${formatPrice(addOns.studioHairExtensions.fee)} ${addOns.studioHairExtensions.unit} for studio-provided.`,
+        a: `Yes, hair is included in the flat rate: simple updos, curls, and basic volume. Hair extension application is available as an add-on: ${formatPrice(addOns.clientHairExtensions.fee)} for your own set, or ${formatPrice(addOns.studioHairExtensions.fee)} ${addOns.studioHairExtensions.unit} for studio-provided.`,
       },
       {
         q: 'When should I book prom makeup?',
-        a: `As soon as you have the date. Prom season (April–June) overlaps the start of GTA wedding season, and ${bookingPolicies.leadTimeNote}. There's no formal cutoff — late asks are welcome if the calendar allows — but early is safest.`,
+        a: `As soon as you have the date. Prom season (April to June) overlaps the start of GTA wedding season, and ${bookingPolicies.leadTimeNote}. There's no formal cutoff (late asks are welcome if the calendar allows), but early is safest.`,
       },
       {
         q: 'How should I prepare for the appointment?',
-        a: `Arrive with a freshly washed face, free of makeup or mascara, and hair washed with shampoo only — no conditioner or styling products — ideally dried straight the night before. That gives the longest-lasting result for a long prom night.`,
+        a: `Arrive with a freshly washed face, free of makeup or mascara, and hair washed with shampoo only (no conditioner or styling products), ideally dried straight the night before. That gives the longest-lasting result for a long prom night.`,
       },
     ],
     galleryTag: 'full-glam',
@@ -204,53 +204,56 @@ export const servicePages: readonly ServicePage[] = [
     slug:    'engagement-makeup',
     name:    'Engagement Makeup',
     eyebrow: 'Engagement & Pre-Wedding Events',
-    metaTitle: 'Engagement Makeup Artist in Brampton — Reception & Guests',
+    metaTitle: 'Engagement Makeup Artist in Brampton | Reception & Guests',
     metaDescription:
-      `Engagement and reception makeup by {artistName} — Pre-Bridal glam for Rokah, Mehndi, Sangeet and engagement events, plus guest makeup. {experience} years across the GTA.`,
+      `Engagement and reception makeup by {artistName}: Pre-Bridal glam for Rokah, Mehndi, Sangeet and engagement events, plus guest makeup. {experience} years across the GTA.`,
     h1:       'Engagement, Reception & Guest Makeup',
-    subtitle: 'Pre-Bridal glam for Rokah, engagement, Mehndi and Sangeet — and party makeup for the family celebrating with you.',
+    subtitle: 'Pre-Bridal glam for Rokah, engagement, Mehndi and Sangeet, plus party makeup for the family celebrating with you.',
     serviceType: 'Engagement & Pre-Wedding Event Makeup and Hair',
-    packageIds: ['pre-bridal', 'party'],
+    // Pre-Bridal is the recommended package; Bridal is the step-up for main
+    // ceremony days (owner-confirmed). Guests book the party package — see
+    // the 'Guest and family makeup' section and /party-makeup.
+    packageIds: ['pre-bridal', 'bridal'],
     packagesTitle: 'Packages for engagement events',
     intro:
-      `An engagement, Rokah, or Sangeet is its own event with its own look — usually softer than the wedding day, but it still has to survive hugs, tears, and a few hundred photos. The ${preBridal.name} package is built for exactly this stage: ${preBridal.tagline}.\n\nIt includes HD waterproof makeup, hairstyling, premium mink lashes, light dupatta setting, and hair padding and pins, at ${preBridalPriceText}. A consultation call is part of the package — we talk through your outfit, jewelry, and inspiration pictures ${consultation.timing.replace(' prior to event date', ' before the event')}.\n\nAnd because these are family events, I handle the guests too — more on that below.`,
+      `An engagement, Rokah, or Sangeet is its own event with its own look, usually softer than the wedding day, but it still has to survive hugs, tears, and a few hundred photos. The ${preBridal.name} package is the one I recommend for exactly this stage: ${preBridal.tagline}.\n\nIt includes HD waterproof makeup, hairstyling, premium mink lashes, light dupatta setting, and hair padding and pins, at ${preBridalPriceText}. A consultation call is part of the package. We talk through your outfit, jewelry, and inspiration pictures ${consultation.timing.replace(' prior to event date', ' before the event')}.\n\nIf your date is actually a main ceremony day (${bridal.tagline}), the ${bridal.name} package (${formatPrice(bridal.price)}) is the step-up: it adds full dupatta setting, jewelry setting, and a touchup kit. And because these are family events, I handle the guests too. More on that below.`,
     sections: [
       {
         heading: 'Which package for which event',
         body:
-          `The ${preBridal.name} package (${formatPrice(preBridal.price)}) covers the pre-wedding circuit: ${preBridal.tagline}. The ${bridal.name} package (${formatPrice(bridal.price)}) is reserved for main ceremony days — ${bridal.tagline} — where the full dupatta setting, jewelry setting, and touchup kit come into play.\n\nNot sure which side your event lands on? Send the details through the inquiry form and we'll decide together — the pricing is per person per event either way, so there's no penalty for asking.`,
+          `The ${preBridal.name} package (${formatPrice(preBridal.price)}) covers the pre-wedding circuit: ${preBridal.tagline}. The ${bridal.name} package (${formatPrice(bridal.price)}) is reserved for main ceremony days (${bridal.tagline}), where the full dupatta setting, jewelry setting, and touchup kit come into play.\n\nNot sure which side your event lands on? Send the details through the inquiry form and we'll decide together. The pricing is per person per event either way, so there's no penalty for asking.`,
       },
       {
         heading: 'Guest and family makeup',
         body:
-          `For the people celebrating with you, the ${party.name} package (${formatPrice(party.price)}) covers a regular-finish look with lashes and a simple hairdo, and ${fullGlam.name} (${formatPrice(fullGlam.price)}) is the step up for close family — it's the tier named for sister and brother weddings.\n\nGuest makeup works best at the studio; travel is available when ${bookingPolicies.travelMinGroup} or more people are getting ready together. Bookings take up to ${bookingPolicies.groupMax} people alongside you.`,
+          `For the people celebrating with you, the ${party.name} package (${formatPrice(party.price)}) covers a regular-finish look with lashes and a simple hairdo, and ${fullGlam.name} (${formatPrice(fullGlam.price)}) is the step up for close family; it's the tier named for sister and brother weddings.\n\nGuest makeup works best at the studio; travel is available when ${bookingPolicies.travelMinGroup} or more people are getting ready together. Bookings take ${bookingPolicies.groupMax} people alongside you at most.`,
       },
       {
         heading: 'Travel, the studio, and early starts',
         body:
-          `I travel across the GTA for engagement events: ${travelFees}. Or come to the studio in {baseCity} — it runs ${studioHours} daily. For ceremonies with very early ready times, a ${formatPrice(policies.earlyMorningFee)} early-morning fee applies between ${policies.earlyMorningThreshold}.\n\n${depositLine}`,
+          `I travel across the GTA for engagement events: ${travelFees}. Or come to the studio in {baseCity}; it runs ${studioHours} daily. For ceremonies with very early ready times, a ${formatPrice(policies.earlyMorningFee)} early-morning fee applies between ${policies.earlyMorningThreshold}.\n\n${depositLine}`,
       },
     ],
     faq: [
       {
         q: 'How much does engagement makeup cost in Brampton?',
-        a: `The ${preBridal.name} package is ${preBridalPriceText} — HD waterproof makeup, hairstyling, premium mink lashes, light dupatta setting, and hair padding. Guests can book the ${party.name} package at ${formatPrice(party.price)}.`,
+        a: `The recommended package is ${preBridal.name} at ${preBridalPriceText}. It includes HD waterproof makeup, hairstyling, premium mink lashes, light dupatta setting, and hair padding. For main ceremony days, the ${bridal.name} package (${formatPrice(bridal.price)}) is the step-up. Guests can book the ${party.name} package at ${formatPrice(party.price)}.`,
       },
       {
         q: `What's the difference between the ${preBridal.name} and ${bridal.name} packages?`,
-        a: `${preBridal.name} (${formatPrice(preBridal.price)}) is for pre-wedding events — ${preBridal.tagline}. ${bridal.name} (${formatPrice(bridal.price)}) is for main ceremony days (${bridal.tagline}) and adds full dupatta setting, jewelry setting, and a touchup kit.`,
+        a: `${preBridal.name} (${formatPrice(preBridal.price)}) is for pre-wedding events: ${preBridal.tagline}. ${bridal.name} (${formatPrice(bridal.price)}) is for main ceremony days (${bridal.tagline}) and adds full dupatta setting, jewelry setting, and a touchup kit.`,
       },
       {
         q: 'Is a consultation call included?',
-        a: `Yes — consultation calls come with the ${consultation.eligibility.join(' and ')} packages, scheduled ${consultation.timing.toLowerCase()}. Have your questions and inspiration pictures ready, ideally once your outfit and jewelry are decided. A full makeup trial is also available for ${trial.feeText}.`,
+        a: `Yes, consultation calls come with the ${consultation.eligibility.join(' and ')} packages, scheduled ${consultation.timing.toLowerCase()}. Have your questions and inspiration pictures ready, ideally once your outfit and jewelry are decided. A full makeup trial is also available for ${trial.feeText}.`,
       },
       {
         q: 'Do you cover Mehndi and Sangeet nights too?',
-        a: `Yes — Mehndi and Sangeet are exactly what the ${preBridal.name} package is for, alongside Rokah, Jagoo, and the engagement itself. Pricing is per person per event, so multi-event bookings simply stack.`,
+        a: `Yes, Mehndi and Sangeet are exactly what the ${preBridal.name} package is for, alongside Rokah, Jagoo, and the engagement itself. Pricing is per person per event, so multi-event bookings simply stack.`,
       },
       {
         q: 'Can my mom and sisters get makeup at the same appointment?',
-        a: `Yes — up to ${bookingPolicies.groupMax} people can book alongside you. Guest makeup is studio-preferred; travel opens up when ${bookingPolicies.travelMinGroup} or more people are getting services at your location.`,
+        a: `Yes, ${bookingPolicies.groupMax} people at most can book alongside you. Guest makeup is studio-preferred; travel opens up when ${bookingPolicies.travelMinGroup} or more people are getting services at your location.`,
       },
     ],
     galleryTag: 'full-glam',
@@ -261,53 +264,53 @@ export const servicePages: readonly ServicePage[] = [
     slug:    'photoshoot-makeup',
     name:    'eShoot Makeup',
     eyebrow: 'eShoot & Pre-Wedding Shoots',
-    metaTitle: 'eShoot & Pre-Wedding Photoshoot Makeup — GTA',
+    metaTitle: 'eShoot & Pre-Wedding Photoshoot Makeup | GTA',
     metaDescription:
-      `eShoot and pre-wedding photoshoot makeup across the GTA — HD waterproof ${fullGlam.name} by {artistName}, built for the camera. Studio or on-location for ${bookingPolicies.travelMinGroup}+.`,
+      `eShoot and pre-wedding photoshoot makeup across the GTA: HD waterproof ${fullGlam.name} by {artistName}, built for the camera. Studio or on-location for ${bookingPolicies.travelMinGroup}+.`,
     h1:       'eShoot & Pre-Wedding Photoshoot Makeup',
-    subtitle: 'Full Glam built for the camera — engagement shoots and pre-wedding sessions across the GTA.',
+    subtitle: 'Full Glam built for the camera: engagement shoots and pre-wedding sessions across the GTA.',
     serviceType: 'eShoot & Pre-Wedding Photoshoot Makeup and Hair',
     packageIds: ['full-glam'],
     packagesTitle: 'The eShoot package',
     intro:
-      `An eShoot — the engagement or pre-wedding photoshoot couples do in the months before the wedding — is the one booking where the camera is the entire audience. There's no long ceremony to get through; there's a lens two feet from your face for a couple of hours. The makeup has to be built for that.\n\nEvery eShoot I do runs on the ${fullGlam.name} package (${formatPrice(fullGlam.price)} per person): HD waterproof makeup, hairstyling, and premium mink lashes — the same finish I use on wedding mornings, tuned for close-up photography rather than banquet-hall distance.\n\nOne note on scope: this service is for eShoot and pre-wedding couples' sessions. I don't offer editorial, fashion, or commercial-shoot makeup.`,
+      `An eShoot, the engagement or pre-wedding photoshoot couples do in the months before the wedding, is the one booking where the camera is the entire audience. There's no long ceremony to get through; there's a lens two feet from your face for a couple of hours. The makeup has to be built for that.\n\nEvery eShoot I do runs on the ${fullGlam.name} package (${formatPrice(fullGlam.price)} per person): HD waterproof makeup, hairstyling, and premium mink lashes. It's the same finish I use on wedding mornings, tuned for close-up photography rather than banquet-hall distance.\n\neShoot and pre-wedding sessions are the heart of this service, and editorial and brand-shoot makeup are available too: same ${fullGlam.name} package, same pricing.`,
     sections: [
       {
         heading: 'Makeup that reads on camera',
         body:
-          `The base is HD waterproof — it's listed in the package for a reason, because outdoor sessions mean wind, warmth, and the occasional happy tear. I work exclusively with {brands}, and if you prefer an airbrushed finish, ${addOns.airbrush.label.toLowerCase()} is a ${formatPrice(addOns.airbrush.fee)} add-on.\n\nPremium mink lashes are included, and a ${addOns.touchupKit.label.toLowerCase()} (${formatPrice(addOns.touchupKit.fee)}) is worth adding for longer sessions or a two-location shoot day.`,
+          `The base is HD waterproof. It's listed in the package for a reason, because outdoor sessions mean wind, warmth, and the occasional happy tear. I work exclusively with {brands}, and if you prefer an airbrushed finish, ${addOns.airbrush.label.toLowerCase()} is a ${formatPrice(addOns.airbrush.fee)} add-on.\n\nPremium mink lashes are included, and a ${addOns.touchupKit.label.toLowerCase()} (${formatPrice(addOns.touchupKit.fee)}) is worth adding for longer sessions or a two-location shoot day.`,
       },
       {
         heading: "Planning around your photographer's light",
         body:
-          `Most shoot schedules are built backwards from the light — usually the golden-hour window your photographer wants. I plan the makeup start time the same way. The studio opens at ${fmtHour(site.hours[0].opens)} daily, and if you need to be camera-ready very early, a ${formatPrice(policies.earlyMorningFee)} early-morning fee applies for ${policies.earlyMorningThreshold} starts.\n\nTell me the shoot time and location when you inquire and I'll work out when the chair time needs to begin.`,
+          `Most shoot schedules are built backwards from the light, usually the golden-hour window your photographer wants. I plan the makeup start time the same way. The studio opens at ${fmtHour(site.hours[0].opens)} daily, and if you need to be camera-ready very early, a ${formatPrice(policies.earlyMorningFee)} early-morning fee applies for ${policies.earlyMorningThreshold} starts.\n\nTell me the shoot time and location when you inquire and I'll work out when the chair time needs to begin.`,
       },
       {
         heading: 'Studio or on-location',
         body:
-          `If one person is getting makeup — typically the bride-to-be — the appointment happens at my studio in {baseCity}. When ${bookingPolicies.travelMinGroup} or more people are getting services (say your mom or sister is joining the shoot), travel is available: ${travelFees}.\n\n${depositLine}`,
+          `If one person is getting makeup (typically the bride-to-be), the appointment happens at my studio in {baseCity}. When ${bookingPolicies.travelMinGroup} or more people are getting services (say your mom or sister is joining the shoot), travel is available: ${travelFees}.\n\n${depositLine}`,
       },
     ],
     faq: [
       {
         q: 'What does eShoot makeup cost in the GTA?',
-        a: `${formatPrice(fullGlam.price)} per person per event on the ${fullGlam.name} package — HD waterproof makeup, hairstyling, and premium mink lashes included. A ${policies.depositPercent}% deposit confirms the booking.`,
+        a: `${formatPrice(fullGlam.price)} per person per event on the ${fullGlam.name} package, with HD waterproof makeup, hairstyling, and premium mink lashes included. A ${policies.depositPercent}% deposit confirms the booking.`,
       },
       {
         q: 'Is an eShoot the same as a bridal makeup trial?',
-        a: `No — but it's a genuinely useful preview of how a full face photographs on you. The formal bridal trial is a separate service (${trial.feeText}), booked around your consultation. Many brides treat the eShoot as the real-world test and the trial as the fine-tuning.`,
+        a: `No, but it's a genuinely useful preview of how a full face photographs on you. The formal bridal trial is a separate service (${trial.feeText}), booked around your consultation. Many brides treat the eShoot as the real-world test and the trial as the fine-tuning.`,
       },
       {
         q: 'Do you travel to photoshoot locations?',
-        a: `When ${bookingPolicies.travelMinGroup} or more people are getting makeup, yes — ${travelFees}. If it's just one person, the appointment is at the studio (${site.address}), and you head to the shoot from there.`,
+        a: `When ${bookingPolicies.travelMinGroup} or more people are getting makeup, yes: ${travelFees}. If it's just one person, the appointment is at the studio (${site.address}), and you head to the shoot from there.`,
       },
       {
         q: 'Will the makeup hold up outdoors?',
-        a: `That's what the HD waterproof base is for — it's designed to last through long, warm, emotional wedding days, and an outdoor shoot is a lighter test than that. Add a ${addOns.touchupKit.label.toLowerCase()} (${formatPrice(addOns.touchupKit.fee)}) if your session runs multiple hours or locations.`,
+        a: `That's what the HD waterproof base is for. It's designed to last through long, warm, emotional wedding days, and an outdoor shoot is a lighter test than that. Add a ${addOns.touchupKit.label.toLowerCase()} (${formatPrice(addOns.touchupKit.fee)}) if your session runs multiple hours or locations.`,
       },
       {
         q: 'Do you do editorial or brand-shoot makeup?',
-        a: `No — this service is specifically eShoot and pre-wedding couples' sessions, alongside my bridal and event work. If that's what you're planning, you're in the right place.`,
+        a: `Yes, editorial and brand/commercial shoots run on the same ${fullGlam.name} package (${formatPrice(fullGlam.price)} per person per event), with the same HD waterproof, camera-first finish. eShoot and pre-wedding sessions are the core of this service; send your shoot details through the inquiry form and I'll plan the chair time around your call sheet.`,
       },
     ],
     galleryTag: 'full-glam',

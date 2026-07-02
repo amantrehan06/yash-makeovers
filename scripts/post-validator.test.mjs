@@ -19,12 +19,12 @@ const para = (n) => Array.from({ length: n }, (_, i) =>
 const passingPost = {
   title: 'Bridal Makeup Cost in Brampton: What Your Quote Actually Covers',
   targetKeyword: 'bridal makeup cost in Brampton',
-  excerpt: 'What bridal makeup cost in Brampton includes — real package prices and where the money goes. Get a quote for your date.',
+  excerpt: 'What bridal makeup cost in Brampton includes: real package prices and where the money goes. Get a quote for your date.',
   body: `The first question I hear is about bridal makeup cost in Brampton, so let me answer it with real numbers instead of a range: my Bridal package is $600 per person per event, and Pre-Bridal events are $450.
 
 ## What the price includes
 
-${para(8)} I recommend booking the trial rather than skipping it — seeing the look under your own bathroom lighting beats any Instagram reference.
+${para(8)} I recommend booking the trial rather than skipping it. Seeing the look under your own bathroom lighting beats any Instagram reference.
 
 ## Venues change the makeup
 
@@ -38,7 +38,7 @@ I work with DIOR and Charlotte Tilbury because they hold through crying and danc
 
 **How much is bridal makeup in Brampton?** My Bridal package is $600 per person per event; guests can book from $250. ${para(3)}
 
-**When should I book?** Summer weekends fill months ahead — May through October is peak. ${para(3)}
+**When should I book?** Summer weekends fill months ahead; May through October is peak. ${para(3)}
 
 **Do you travel?** Yes, across the GTA. ${para(3)}
 
@@ -70,5 +70,21 @@ assert.match(text, /Word count/,                 'should flag word count')
 assert.match(text, /internal link/,              'should flag missing internal links')
 assert.match(text, /missing from title/,         'should flag keyword missing from title')
 
+// ── Fixture 3: identical to the passing post except for ONE em dash ─────
+// Isolates the no-dash style rule: this must be the only reason it fails.
+const emDashPost = {
+  ...passingPost,
+  body: passingPost.body.replace(
+    'so let me answer it with real numbers instead of a range:',
+    'so let me answer it with real numbers — not a range:'
+  ),
+}
+assert.notEqual(emDashPost.body, passingPost.body, 'em-dash fixture must differ from passing fixture')
+const dash = validatePost(emDashPost, context)
+assert.equal(dash.ok, false, 'Expected em-dash fixture to fail')
+assert.equal(dash.violations.length, 1, `em dash should be the ONLY violation, got: ${dash.violations.join(' | ')}`)
+assert.match(dash.violations[0], /—/, 'violation should name the em dash')
+
 console.log('✓ post-validator: passing fixture accepted')
 console.log(`✓ post-validator: failing fixture rejected with ${fail.violations.length} violations`)
+console.log('✓ post-validator: em-dash fixture rejected with exactly 1 violation')

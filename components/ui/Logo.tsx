@@ -20,7 +20,7 @@ export function Logo({
     <Link
       href="/"
       onClick={onClick}
-      aria-label={`${site.name} — home`}
+      aria-label={`${site.name}, home`}
       className={`inline-flex items-center gap-2.5 transition-colors ${className}`}
     >
       <span className="text-gold flex-shrink-0" aria-hidden="true">

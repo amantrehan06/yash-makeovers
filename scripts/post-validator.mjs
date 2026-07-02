@@ -13,7 +13,11 @@ export const MIN_INTERNAL_LINKS = 2
 
 // Phrases that mark a post as generic AI filler. Case-insensitive substring
 // match (kept in lockstep with the BANNED list in post-writer's SYSTEM_PROMPT).
+// The em/en dash entries enforce the site-wide style rule: no — or – in any
+// user-facing text (rewrite with a comma, period, colon, or "to" for ranges).
 export const BANNED_PHRASES = [
+  '—',
+  '–',
   'in today’s fast-paced world',
   "in today's fast-paced world",
   'when it comes to',

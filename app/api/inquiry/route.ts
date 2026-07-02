@@ -33,13 +33,13 @@ export async function POST(req: NextRequest) {
         to: OWNER_EMAIL,
         // Reply goes to the client; From stays on the verified domain (SPF/DKIM).
         replyTo: `${name} <${email}>`,
-        subject: `New inquiry from ${name} — ${occasionFull}${subjectDate}`,
+        subject: `New inquiry from ${name}: ${occasionFull}${subjectDate}`,
         html: buildOwnerEmailHtml({ name, email, whatsapp, eventDate, readyTime, occasion: occasionFull, message, attribution }),
       }),
       resend.emails.send({
         from: FROM_EMAIL,
         to: email,
-        subject: `Your inquiry is received — ${site.name}`,
+        subject: `Your inquiry is received | ${site.name}`,
         html: buildClientEmailHtml(name),
       }),
     ])

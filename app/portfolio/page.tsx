@@ -12,7 +12,7 @@ export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: 'Portfolio',
-  description: `Browse ${site.artistName}'s portfolio of bridal and event makeup looks — South Asian, multicultural, Full Glam, and more. Serving ${site.addressStructured.addressLocality} and all of the GTA.`,
+  description: `Browse ${site.artistName}'s portfolio of bridal and event makeup looks: South Asian, multicultural, Full Glam, and more. Serving ${site.addressStructured.addressLocality} and all of the GTA.`,
   alternates: { canonical: `https://${site.canonicalHost}/portfolio` },
 }
 

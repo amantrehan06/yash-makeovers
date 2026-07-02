@@ -6,7 +6,7 @@ export const runtime = 'edge'
 
 const page = getServicePage('party-makeup')
 
-export const alt = `${page.name} — ${site.name}`
+export const alt = `${page.name} | ${site.name}`
 export const size = OG_SIZE
 export const contentType = OG_CONTENT_TYPE
 
