@@ -6,6 +6,7 @@
 
 import { site } from '@/config/site'
 import { packages, type Package } from '@/config/packages'
+import { fillTemplate } from '@/config/content'
 import type { City } from '@/config/cities'
 
 // Derived once at module load — refreshes on rebuild whenever packages change.
@@ -119,6 +120,44 @@ export function buildCityServiceSchema(city: City) {
       offerCount:      packages.length,
       availability:    'https://schema.org/InStock',
     },
+  }
+}
+
+// "10+" → 10. site.experience is a display string; schema wants a number.
+const yearsInBusiness = parseInt(site.experience, 10) || undefined
+
+/**
+ * Person schema for Yashpreet — E-E-A-T signal. Google increasingly weighs
+ * author/operator identity, especially for beauty/wedding content. One shared
+ * `@id` (`/about#artist`) on every page that emits it, so Google sees a single
+ * entity. Description reuses site.about (single source) with tokens expanded;
+ * expertise topics come from site.artist.knowsAbout.
+ *
+ * `imageUrl` is optional — /about passes its Cloudinary portrait; pages
+ * without a fetched portrait omit it (Google validates "missing" cleanly).
+ */
+export function buildPersonSchema({ imageUrl }: { imageUrl?: string } = {}) {
+  return {
+    '@context':  'https://schema.org',
+    '@type':     'Person',
+    '@id':       `${businessUrl}/about#artist`,
+    name:        site.artistName,
+    ...(site.artist.fullLegalName ? { alternateName: site.artist.fullLegalName } : {}),
+    jobTitle:    'Makeup Artist', // matches GBP primary category (site.businessCategory)
+    description: fillTemplate(site.about),
+    ...(imageUrl ? { image: imageUrl } : {}),
+    knowsAbout:  site.artist.knowsAbout,
+    ...(yearsInBusiness ? { hasOccupation: {
+      '@type':         'Occupation',
+      name:            'Makeup Artist',
+      experienceRequirements: `${yearsInBusiness}+ years`,
+    } } : {}),
+    worksFor:    { '@type': 'BeautyStudio', '@id': `${businessUrl}#business`, name: site.name },
+    address:     { '@type': 'PostalAddress', ...site.addressStructured },
+    sameAs:      [
+      site.instagram ? `https://www.instagram.com/${site.instagram}/` : '',
+      site.facebook,
+    ].filter(Boolean),
   }
 }
 

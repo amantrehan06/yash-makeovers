@@ -17,6 +17,7 @@ import { Cities } from '@/components/sections/Cities'
 import { InquiryForm } from '@/components/sections/InquiryForm'
 import { FeaturedWork } from '@/components/sections/FeaturedWork'
 import { FAQ } from '@/components/sections/FAQ'
+import { buildPersonSchema } from '@/lib/schema'
 
 // ISR: rebuild every 8h to match the Cloudinary unstable_cache TTL in
 // lib/cloudinary.ts. Serves the homepage statically from the edge so the
@@ -140,6 +141,12 @@ export default async function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      {/* Person entity for the artist (E-E-A-T) — same @id as on /about so
+          Google links the two mentions to one person. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildPersonSchema()) }}
       />
 
       <Hero />
