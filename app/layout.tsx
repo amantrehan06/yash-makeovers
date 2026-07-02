@@ -44,7 +44,9 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${site.canonicalHost}`),
   title: {
-    default: `${site.name} — Bridal Makeup Artist in ${site.serviceArea}`,
+    // Fallback for any page without its own title — mirrors the homepage's
+    // A2 head-term positioning (homepage sets its own via the template).
+    default: `Makeup Artist in ${site.baseCity} — Bridal, Party & Event Makeup | ${site.name}`,
     template: `%s | ${site.name}`,
   },
   // Inheritable fallback only — every public page declares its own description.

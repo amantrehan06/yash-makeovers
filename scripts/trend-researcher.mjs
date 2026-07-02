@@ -8,6 +8,18 @@ const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
 const MODEL = 'claude-sonnet-4-6'
 
+// D3 — standing topic queue. High-intent topics the owner wants covered;
+// fed to the researcher as priority hints and merged into the offline
+// fallback so they surface even when web search is unavailable.
+export const SEED_TOPICS = [
+  'makeup cost Brampton 2026',
+  'prom makeup Brampton',
+  'GTA banquet halls for South Asian weddings',
+  'bridal trial prep — what to bring and expect',
+  'party vs bridal makeup — which package to book',
+  'airbrush vs traditional makeup for Indian weddings',
+]
+
 export async function researchTrends() {
   try {
     const response = await client.messages.create({
@@ -29,6 +41,10 @@ export async function researchTrends() {
 3. Trending makeup looks on Instagram and Pinterest for South Asian weddings
 4. Any upcoming wedding seasons or cultural events (e.g. peak Punjabi wedding season)
 5. New makeup products or techniques brides are asking about
+
+STANDING TOPIC QUEUE — the owner wants these covered; when one is seasonally
+relevant or trending, prioritize it in contentAngles (skip any already published):
+${SEED_TOPICS.map((t) => `- ${t}`).join('\n')}
 
 Return a JSON object with this exact shape:
 {
@@ -87,6 +103,8 @@ function getDefaultTrends() {
       'bridal makeup artist Mississauga',
     ],
     contentAngles: [
+      // Seed queue first so owner-priority topics ship even without web data.
+      ...SEED_TOPICS,
       'trending bridal looks for the season',
       'product and technique recommendations',
       'how to book the right artist',

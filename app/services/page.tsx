@@ -7,7 +7,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { PackageCard } from '@/components/ui/PackageCard'
 import { FAQAccordion } from '@/components/ui/FAQAccordion'
 import { faqs } from '@/config/faq'
-import { buildPackageServiceSchema } from '@/lib/schema'
+import { buildPackageServiceSchema, buildFaqSchema } from '@/lib/schema'
 
 // Compose the meta description from the same packages config the page renders.
 const packagesSummary = packages.map((p) => `${p.name} (${formatPrice(p.price)})`).join(', ')
@@ -23,17 +23,7 @@ export default function ServicesPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type':    'FAQPage',
-            mainEntity: faqs.map((faq) => ({
-              '@type':         'Question',
-              name:            faq.q,
-              acceptedAnswer: { '@type': 'Answer', text: faq.a },
-            })),
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqSchema(faqs)) }}
       />
 
       {/* One Service schema per package. Bridal makeup is a service, not a

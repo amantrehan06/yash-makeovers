@@ -5,8 +5,11 @@
 // Add a builder here whenever a schema type is needed on 2+ pages.
 
 import { site } from '@/config/site'
-import { packages, type Package } from '@/config/packages'
+import { packages, getPackage, type Package } from '@/config/packages'
+import { fillTemplate } from '@/config/content'
+import { seo } from '@/config/seo'
 import type { City } from '@/config/cities'
+import type { ServicePage } from '@/config/servicePages'
 
 // Derived once at module load — refreshes on rebuild whenever packages change.
 const packagePrices = packages.map((p) => p.price)
@@ -37,8 +40,8 @@ export interface BreadcrumbItem {
  *
  * The schema still includes the high-value improvements: @id chaining to
  * homepage BeautyStudio (so Google sees it's the same operation),
- * AggregateRating inheritance (4.9★ from 158 reviews surfaces in SERP),
- * availability cue, and explicit areaServed.
+ * availability cue, and explicit areaServed. Star ratings come from the
+ * linked Google Business Profile (live count in site.ts).
  *
  * `priceValidUntil` is intentionally NOT emitted — the discount is open-ended.
  * If a real end date is added later, include it via an optional
@@ -119,6 +122,96 @@ export function buildCityServiceSchema(city: City) {
       offerCount:      packages.length,
       availability:    'https://schema.org/InStock',
     },
+  }
+}
+
+// "10+" → 10. site.experience is a display string; schema wants a number.
+const yearsInBusiness = parseInt(site.experience, 10) || undefined
+
+/**
+ * Person schema for Yashpreet — E-E-A-T signal. Google increasingly weighs
+ * author/operator identity, especially for beauty/wedding content. One shared
+ * `@id` (`/about#artist`) on every page that emits it, so Google sees a single
+ * entity. Description reuses site.about (single source) with tokens expanded;
+ * expertise topics come from site.artist.knowsAbout.
+ *
+ * `imageUrl` is optional — /about passes its Cloudinary portrait; pages
+ * without a fetched portrait omit it (Google validates "missing" cleanly).
+ */
+export function buildPersonSchema({ imageUrl }: { imageUrl?: string } = {}) {
+  return {
+    '@context':  'https://schema.org',
+    '@type':     'Person',
+    '@id':       `${businessUrl}/about#artist`,
+    name:        site.artistName,
+    ...(site.artist.fullLegalName ? { alternateName: site.artist.fullLegalName } : {}),
+    jobTitle:    'Makeup Artist', // matches GBP primary category (site.businessCategory)
+    description: fillTemplate(site.about),
+    ...(imageUrl ? { image: imageUrl } : {}),
+    // Expertise topics from site.ts + the occasion terms from the seo.ts
+    // keyword groups (party/prom/engagement/eShoot) so the Person entity
+    // signals the non-bridal services too.
+    knowsAbout:  [...site.artist.knowsAbout, ...seo.keywords.services],
+    ...(yearsInBusiness ? { hasOccupation: {
+      '@type':         'Occupation',
+      name:            'Makeup Artist',
+      experienceRequirements: `${yearsInBusiness}+ years`,
+    } } : {}),
+    worksFor:    { '@type': 'BeautyStudio', '@id': `${businessUrl}#business`, name: site.name },
+    address:     { '@type': 'PostalAddress', ...site.addressStructured },
+    sameAs:      [
+      site.instagram ? `https://www.instagram.com/${site.instagram}/` : '',
+      site.facebook,
+    ].filter(Boolean),
+  }
+}
+
+/**
+ * Per-occasion Service schema for the service pages (/party-makeup, ...).
+ * Same shape family as buildCityServiceSchema: @id chained to the homepage
+ * BeautyStudio, GTA-wide areaServed, and an AggregateOffer derived from the
+ * page's own packageIds so a price change in config/packages.ts flows here.
+ */
+export function buildServicePageSchema(page: ServicePage) {
+  const pageUrl      = `${businessUrl}/${page.slug}`
+  const pagePackages = page.packageIds.map(getPackage)
+  const prices       = pagePackages.map((p) => p.price)
+  return {
+    '@context':   'https://schema.org',
+    '@type':      'Service',
+    '@id':        `${pageUrl}#service`,
+    name:         page.h1,
+    serviceType:  page.serviceType,
+    description:  fillTemplate(page.metaDescription),
+    url:          pageUrl,
+    category:     site.businessCategory,
+    provider:     { '@type': 'BeautyStudio', '@id': `${businessUrl}#business` },
+    areaServed:   { '@type': 'AdministrativeArea', name: 'Greater Toronto Area' },
+    offers: {
+      '@type':       'AggregateOffer',
+      priceCurrency: 'CAD',
+      lowPrice:      Math.min(...prices),
+      highPrice:     Math.max(...prices),
+      offerCount:    pagePackages.length,
+      availability:  'https://schema.org/InStock',
+    },
+  }
+}
+
+/**
+ * FAQPage schema from a list of {q, a} pairs. One shared builder so /services,
+ * city pages, and service pages all emit the identical shape Google's Rich
+ * Results Test validates. Emit at most ONE FAQPage per URL.
+ */
+export function buildFaqSchema(faqs: readonly { q: string; a: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type':    'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name:    faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
   }
 }
 

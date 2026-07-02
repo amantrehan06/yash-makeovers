@@ -157,6 +157,31 @@ export const content = {
     reviewsEyebrow:     'Client love',
     faqEyebrow:         'FAQ',
     faqTitle:           'Frequently asked',
+    // B2 — non-bridal section appended below existing city-page content.
+    // The H2 is composed in NonBridalSection as
+    // "Party, Prom & Event Makeup Artist in {city.name}". {city} in the body
+    // is replaced with the city name by the component; the unique per-city
+    // sentence lives in cities.ts → nonBridalBlurb.
+    nonBridalEyebrow: 'Beyond bridal',
+    nonBridalBody:
+      'Bridal is the heart of the studio, but the same kit and the same hands cover every other occasion in {city} — party and guest looks, prom season, engagement and Sangeet nights, and pre-wedding eShoots. Each service has its own page with transparent pricing, group-size rules, and travel details.',
+    nonBridalLinksLead: 'Explore the occasion pages:',
+  },
+
+  // Occasion service pages (/party-makeup, /prom-makeup, ...). Page COPY
+  // lives in config/servicePages.ts; this owns only the shared UI labels.
+  servicePage: {
+    servicesEyebrow:  'Packages & Pricing',
+    servicesSubtitle: 'Transparent pricing. No hidden fees.',
+    galleryEyebrow:   'Our work',
+    galleryTitle:     'Recent looks from the studio',
+    gallerySubtitle:  'For the latest, follow along on Instagram.',
+    faqEyebrow:       'FAQ',
+    faqTitle:         'Frequently asked',
+    citiesEyebrow:    'Service area',
+    citiesTitle:      'Available across the GTA',
+    relatedEyebrow:   'More occasions',
+    relatedTitle:     'Other services',
   },
 
   termsPage: {

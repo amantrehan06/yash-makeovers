@@ -62,6 +62,11 @@ export interface City {
   // the H1 itself. Keep under ~20 words. Should contain the city name.
   subtitle:        string
   intro:           string
+  // One unique city-specific sentence for the "Party, Prom & Event Makeup"
+  // section (NonBridalSection). Reuses this city's venue/neighbourhood data —
+  // never generic filler, never duplicated across cities. Shared surrounding
+  // copy lives in content.ts → cityPage.nonBridalBody.
+  nonBridalBlurb:  string
   // Geographic centroid — used by per-city Service schema (areaServed.geo)
   // for local-pack ranking. Approximate city center is fine here (not a
   // specific pin) — represents the service area. Get from maps.google.com
@@ -81,9 +86,9 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: true,
     angle: 'home base, South Asian community hub',
-    metaTitle: 'Brampton Bridal Makeup Artist — South Asian Specialist',
+    metaTitle: 'Makeup Artist in Brampton — Bridal & Party | South Asian Specialist',
     metaDescription:
-      "South Asian bridal makeup and hair specialist in Brampton. {experience} years and {brides} brides served, all from home base. Book {artistName} for {seasonYears}.",
+      "South Asian bridal, party & event makeup in Brampton. {experience} years and {brides} brides served, all from home base. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Brampton',
     subtitle: 'Bridal makeup and hair for Brampton brides. {experience} years and {brides} weddings, all from this city.',
     geo: { latitude: 43.6831, longitude: -79.7663 },
@@ -109,9 +114,11 @@ export const cities: readonly City[] = [
       'Fletcher\'s Meadow',
       'Bram West'
     ],
+    nonBridalBlurb:
+      "With the studio right here in Brampton, solo party and prom appointments are the easiest of any city — no travel fee, just book a chair, whether you're coming from Springdale, Bramalea, or Mount Pleasant.",
     nearbyCities: ['mississauga', 'toronto', 'vaughan', 'etobicoke'],
     contentBlocks: [
-  
+
     {
       id: `brampton-202303-bridal-goals-gold`,
       date: `2023-03-09`,
@@ -186,9 +193,9 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'multicultural, premium clientele',
-    metaTitle: 'Mississauga Wedding Makeup Artist — On-Site & Studio',
+    metaTitle: 'Makeup Artist in Mississauga — Bridal & Party, On-Site & Studio',
     metaDescription:
-      "Pakistani and Afghan bridal makeup and hair specialist in Mississauga. {experience} years across Mehndi, Nikkah, and reception. Book {artistName} for {seasonYears}.",
+      "Pakistani and Afghan bridal makeup in Mississauga — plus party and guest looks. {experience} years across Mehndi, Nikkah and reception. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Mississauga',
     subtitle: 'Pakistani and Afghan bridal makeup and hair specialist for Mississauga brides.',
     geo: { latitude: 43.5890, longitude: -79.6441 },
@@ -215,6 +222,8 @@ export const cities: readonly City[] = [
       'Meadowvale',
       'Cooksville'
     ],
+    nonBridalBlurb:
+      'Guest and party glam runs on the same Mehndi-and-reception circuit I already work across Mississauga, from Streetsville homes to the halls around Pearson Convention Centre.',
     nearbyCities: ['brampton', 'toronto', 'etobicoke', 'oakville'],
     contentBlocks: [
     {
@@ -246,9 +255,9 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'editorial, modern South Asian brides',
-    metaTitle: 'Toronto Bridal Makeup & Hair - HD Editorial Looks',
+    metaTitle: 'Makeup Artist in Toronto — Bridal & Party Makeup + Hair',
     metaDescription:
-      "Bridal makeup and hair artist for Toronto brides. On-site morning service across the city. {rating}★ · {reviewCount} Google reviews. Book {artistName} for {seasonYears}.",
+      "Bridal, party and event makeup artist for Toronto. On-site service across the city. {rating}★ · {reviewCount} Google reviews. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Toronto',
     subtitle: 'Bridal makeup and hair for Toronto brides. On-site service across the city.',
     geo: { latitude: 43.6532, longitude: -79.3832 },
@@ -270,6 +279,8 @@ export const cities: readonly City[] = [
                       'Leslieville',
                       'Downtown Core',
                       'Liberty Village'],
+    nonBridalBlurb:
+      'For downtown events — a reception at Liberty Grand, a party in Yorkville or Liberty Village — bookings of two or more bring the kit into Toronto to you.',
     nearbyCities:  ['mississauga', 'etobicoke', 'vaughan', 'scarborough'],
     contentBlocks: [
 
@@ -347,9 +358,9 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'intimate, community feel',
-    metaTitle: 'Etobicoke Bridal Makeup Artist — On-Location Service',
+    metaTitle: 'Makeup Artist in Etobicoke — Bridal & Party, On-Location',
     metaDescription:
-      "Bridal makeup and hair for Etobicoke brides. On-location service, {experience} years experience, luxury products. Book {artistName} for {seasonYears}.",
+      "Bridal, party and prom makeup for Etobicoke. On-location service, {experience} years experience, luxury products. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Etobicoke',
     subtitle: 'Bridal makeup and hair for Etobicoke brides. On-location service across the area.',
     geo: { latitude: 43.6205, longitude: -79.5132 },
@@ -374,6 +385,8 @@ export const cities: readonly City[] = [
       'New Toronto',
       'Markland Wood'
     ],
+    nonBridalBlurb:
+      'The quick 427 run from the studio makes Etobicoke one of the easiest group bookings — a Kingsway dinner party, prom photos along Humber Bay Shores, or a hall out by Rexdale.',
     nearbyCities: ['mississauga', 'toronto', 'brampton', 'vaughan'],
     contentBlocks: [],
   },
@@ -383,9 +396,9 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'luxury, high-budget weddings',
-    metaTitle: 'Oakville Luxury Bridal Makeup Artist & Hair',
+    metaTitle: 'Makeup Artist in Oakville — Luxury Bridal & Event Makeup',
     metaDescription:
-      "Luxury bridal makeup artist for Oakville brides. {experience} years across Sikh ceremonies and white-wedding receptions. Book {artistName} for {seasonYears}.",
+      "Luxury bridal and event makeup artist in Oakville. {experience} years across Sikh ceremonies, white-wedding receptions and parties. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Oakville',
     subtitle: 'Luxury bridal makeup artist offering bridal makeup and hair for Oakville brides.',
     geo: { latitude: 43.4675, longitude: -79.6877 },
@@ -409,6 +422,8 @@ export const cities: readonly City[] = [
       'Westmount',
       'Morrison'
     ],
+    nonBridalBlurb:
+      'Event and eShoot glam finished for the same lakeside settings Oakville brides book — Glen Abbey, Bronte Village, and the estate properties along the water.',
     nearbyCities: ['mississauga', 'brampton', 'etobicoke'],
     contentBlocks: [],
   },
@@ -418,9 +433,9 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'South Asian diaspora, temple weddings',
-    metaTitle: 'Vaughan Bridal Makeup — Sikh & Hindu Temple Weddings',
+    metaTitle: 'Makeup Artist in Vaughan — Bridal, Party & Temple Weddings',
     metaDescription:
-      "Luxury bridal makeup artist for Vaughan brides. {experience} years specializing in Sikh and Hindu temple weddings. Book {artistName} for {seasonYears}.",
+      "Bridal, party and Sangeet makeup artist in Vaughan. {experience} years specializing in Sikh and Hindu temple weddings. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Vaughan',
     subtitle: 'Luxury bridal makeup artist for Vaughan brides. Bridal makeup and hair specialist for Sikh and Hindu temple weddings.',
     geo: { latitude: 43.8361, longitude: -79.4982 },
@@ -446,6 +461,8 @@ export const cities: readonly City[] = [
       'Vellore Village',
       'Sonoma Heights'
     ],
+    nonBridalBlurb:
+      "Sangeet and engagement bookings pair naturally with Vaughan's multi-day wedding circuit — from Woodbridge and Kleinburg homes to receptions at Paramount or Universal EventSpace.",
     nearbyCities: ['brampton', 'toronto', 'richmond-hill', 'north-york'],
     contentBlocks: [],
   },
@@ -455,9 +472,9 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'Pakistani + Afghan bridal hub',
-    metaTitle: 'Scarborough Pakistani & Afghan Bridal Makeup Artist',
+    metaTitle: 'Makeup Artist in Scarborough — Bridal & Party | Pakistani & Afghan',
     metaDescription:
-      "Pakistani and Afghan bridal makeup and hair specialist in Scarborough. {experience} years of expertise. Book {artistName} for {seasonYears}.",
+      "Pakistani and Afghan bridal makeup in Scarborough — plus party and guest glam. {experience} years of expertise. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Scarborough',
     subtitle: 'Pakistani and Afghan bridal makeup and hair specialist for Scarborough brides.',
     geo: { latitude: 43.7764, longitude: -79.2318 },
@@ -481,6 +498,8 @@ export const cities: readonly City[] = [
       'Milliken',
       'West Hill'
     ],
+    nonBridalBlurb:
+      'Party and guest makeup slots into the same Scarborough runs as my Nikkah and reception work — Agincourt, Milliken, and the halls around the Scarborough Convention Centre.',
     nearbyCities: ['toronto', 'markham', 'north-york', 'vaughan'],
     contentBlocks: [
     {
@@ -524,9 +543,9 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'South Asian + East Asian multicultural',
-    metaTitle: 'Markham Bridal Makeup Artist for Multicultural Weddings',
+    metaTitle: 'Makeup Artist in Markham — Bridal & Party, Multicultural Weddings',
     metaDescription:
-      "Bridal makeup and hair for Markham's multicultural weddings. {experience} years of experience at venues across the city. Book {artistName} for {seasonYears}.",
+      "Bridal, party and event makeup for Markham's multicultural weddings. {experience} years at venues across the city. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Markham',
     subtitle: 'Bridal makeup and hair for Markham brides. Trusted across multicultural weddings.',
     geo: { latitude: 43.8561, longitude: -79.3370 },
@@ -552,6 +571,8 @@ export const cities: readonly City[] = [
      'Greensborough',
      'Cathedraltown'
    ],
+    nonBridalBlurb:
+      "Full-glam finishes built for Markham's crisp modern venues — Crystal Fountain, Angus Glen, and the ballrooms around Downtown Markham and Unionville.",
     nearbyCities: ['toronto', 'richmond-hill', 'scarborough', 'vaughan'],
     contentBlocks: [],
   },
@@ -561,9 +582,9 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'urban, multicultural, accessible',
-    metaTitle: 'North York Bridal Makeup Artist & Hair Service',
+    metaTitle: 'Makeup Artist in North York — Bridal, Party & Hair Service',
     metaDescription:
-      "Bridal makeup and hair for North York brides and the Yonge corridor. {artistName} travels into Don Mills and Bayview. Book for {seasonYears}.",
+      "Bridal, party and event makeup for North York and the Yonge corridor. {artistName} travels into Don Mills and Bayview. Book for {seasonYears}.",
     h1: 'Bridal Makeup Artist in North York',
     subtitle: 'Bridal makeup and hair for North York brides and the Yonge corridor.',
     geo: { latitude: 43.7615, longitude: -79.4111 },
@@ -588,6 +609,8 @@ export const cities: readonly City[] = [
       'Downsview',
       'Lawrence Park North'
     ],
+   nonBridalBlurb:
+     'North York sits at the centre of the GTA, so family events land here from every direction — Willowdale, Don Mills, or a hall along the Yonge corridor, group bookings travel easily.',
    nearbyCities: ['vaughan', 'toronto', 'richmond-hill', 'markham'],
    contentBlocks: [],
   },
@@ -597,9 +620,9 @@ export const cities: readonly City[] = [
     province: 'ON',
     isHome: false,
     angle: 'affluent, destination-adjacent',
-    metaTitle: 'Richmond Hill Luxury Bridal Makeup Artist & Hair',
+    metaTitle: 'Makeup Artist in Richmond Hill — Luxury Bridal, Party & Hair',
     metaDescription:
-      "Luxury bridal makeup artist for Richmond Hill brides. {experience} years with brides planning multi-country weddings. Book {artistName} for {seasonYears}.",
+      "Luxury bridal, party and eShoot makeup in Richmond Hill. {experience} years with brides planning multi-country weddings. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Richmond Hill',
     subtitle: 'Luxury bridal makeup artist for Richmond Hill brides. Premium bridal makeup and hair service.',
     geo: { latitude: 43.8828, longitude: -79.4403 },
@@ -623,6 +646,8 @@ export const cities: readonly City[] = [
       'South Richvale',
       'Doncrest'
     ],
+   nonBridalBlurb:
+     "Engagement shoots and event glam finished to the same standard Richmond Hill's venues expect — Bayview Hill, Mill Pond, and the Richmond Hill Country Club.",
    nearbyCities: ['vaughan', 'markham', 'north-york', 'toronto'],
    contentBlocks: [],
   },

@@ -8,9 +8,7 @@ import { Button } from '@/components/ui/Button'
 import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 import { WhyChooseItem } from '@/components/ui/WhyChooseItem'
-
-// "10+" → 10. site.experience is a display string; schema wants a number.
-const yearsInBusiness = parseInt(site.experience, 10) || undefined
+import { buildPersonSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
   title: `About ${site.artistName}`,
@@ -23,36 +21,13 @@ export default async function AboutPage() {
   const aboutImages = await getImagesFromFolder(CLOUDINARY_FOLDERS.about)
   const portraitPublicId = aboutImages[0]?.public_id
 
-  const businessUrl  = `https://${site.canonicalHost}`
-  const portraitUrl  = portraitPublicId
+  const portraitUrl = portraitPublicId
     ? buildCloudinaryUrl(portraitPublicId, { width: 800, height: 800, crop: 'fill' })
     : undefined
 
-  // Person schema — E-E-A-T signal. Google increasingly weighs author/operator
-  // identity, especially for beauty/wedding content. Description reuses
-  // site.about (single source) with tokens expanded.
-  const personSchema = {
-    '@context':  'https://schema.org',
-    '@type':     'Person',
-    '@id':       `${businessUrl}/about#artist`,
-    name:        site.artistName,
-    ...(site.artist.fullLegalName ? { alternateName: site.artist.fullLegalName } : {}),
-    jobTitle:    'Bridal Makeup Artist',
-    description: fillTemplate(site.about),
-    ...(portraitUrl ? { image: portraitUrl } : {}),
-    knowsAbout:  site.artist.knowsAbout,
-    ...(yearsInBusiness ? { hasOccupation: {
-      '@type':         'Occupation',
-      name:            'Bridal Makeup Artist',
-      experienceRequirements: `${yearsInBusiness}+ years`,
-    } } : {}),
-    worksFor:    { '@type': 'BeautyStudio', '@id': `${businessUrl}#business`, name: site.name },
-    address:     { '@type': 'PostalAddress', ...site.addressStructured },
-    sameAs:      [
-      site.instagram ? `https://www.instagram.com/${site.instagram}/` : '',
-      site.facebook,
-    ].filter(Boolean),
-  }
+  // Person schema — shared builder (lib/schema.ts) so /about and the homepage
+  // emit the same entity under one @id.
+  const personSchema = buildPersonSchema({ imageUrl: portraitUrl })
 
   return (
     <>
