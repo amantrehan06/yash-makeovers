@@ -210,10 +210,13 @@ export const servicePages: readonly ServicePage[] = [
     h1:       'Engagement, Reception & Guest Makeup',
     subtitle: 'Pre-Bridal glam for Rokah, engagement, Mehndi and Sangeet — and party makeup for the family celebrating with you.',
     serviceType: 'Engagement & Pre-Wedding Event Makeup and Hair',
-    packageIds: ['pre-bridal', 'party'],
+    // Pre-Bridal is the recommended package; Bridal is the step-up for main
+    // ceremony days (owner-confirmed). Guests book the party package — see
+    // the 'Guest and family makeup' section and /party-makeup.
+    packageIds: ['pre-bridal', 'bridal'],
     packagesTitle: 'Packages for engagement events',
     intro:
-      `An engagement, Rokah, or Sangeet is its own event with its own look — usually softer than the wedding day, but it still has to survive hugs, tears, and a few hundred photos. The ${preBridal.name} package is built for exactly this stage: ${preBridal.tagline}.\n\nIt includes HD waterproof makeup, hairstyling, premium mink lashes, light dupatta setting, and hair padding and pins, at ${preBridalPriceText}. A consultation call is part of the package — we talk through your outfit, jewelry, and inspiration pictures ${consultation.timing.replace(' prior to event date', ' before the event')}.\n\nAnd because these are family events, I handle the guests too — more on that below.`,
+      `An engagement, Rokah, or Sangeet is its own event with its own look — usually softer than the wedding day, but it still has to survive hugs, tears, and a few hundred photos. The ${preBridal.name} package is the one I recommend for exactly this stage: ${preBridal.tagline}.\n\nIt includes HD waterproof makeup, hairstyling, premium mink lashes, light dupatta setting, and hair padding and pins, at ${preBridalPriceText}. A consultation call is part of the package — we talk through your outfit, jewelry, and inspiration pictures ${consultation.timing.replace(' prior to event date', ' before the event')}.\n\nIf your date is actually a main ceremony day — ${bridal.tagline} — the ${bridal.name} package (${formatPrice(bridal.price)}) is the step-up: it adds full dupatta setting, jewelry setting, and a touchup kit. And because these are family events, I handle the guests too — more on that below.`,
     sections: [
       {
         heading: 'Which package for which event',
@@ -234,7 +237,7 @@ export const servicePages: readonly ServicePage[] = [
     faq: [
       {
         q: 'How much does engagement makeup cost in Brampton?',
-        a: `The ${preBridal.name} package is ${preBridalPriceText} — HD waterproof makeup, hairstyling, premium mink lashes, light dupatta setting, and hair padding. Guests can book the ${party.name} package at ${formatPrice(party.price)}.`,
+        a: `The recommended package is ${preBridal.name} at ${preBridalPriceText} — HD waterproof makeup, hairstyling, premium mink lashes, light dupatta setting, and hair padding. For main ceremony days, the ${bridal.name} package (${formatPrice(bridal.price)}) is the step-up. Guests can book the ${party.name} package at ${formatPrice(party.price)}.`,
       },
       {
         q: `What's the difference between the ${preBridal.name} and ${bridal.name} packages?`,
