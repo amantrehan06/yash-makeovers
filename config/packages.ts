@@ -64,7 +64,7 @@ export const packages: readonly Package[] = [
   {
     id: 'pre-bridal',
     name: 'Pre-Bridal',
-    tagline: 'Rokah, Jagoo, Engagement, Mehndi, Sangeet',
+    tagline: 'Rokah, Jaggo, Engagement, Mehndi, Sangeet',
     price: 450,
     originalPrice: 600,
     discountLabel: 'Limited Time',

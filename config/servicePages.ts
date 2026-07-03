@@ -35,6 +35,9 @@ export const bookingPolicies = {
 export interface ServicePageSection {
   heading: string
   body:    string   // \n\n-separated paragraphs; tokens allowed
+  // Optional anchor (e.g. 'mehndi-makeup') — rendered as the section's id so
+  // /engagement-makeup#mehndi-makeup deep-links work. Omit on plain sections.
+  id?:     string
 }
 
 export interface ServicePageFaq { q: string; a: string }
@@ -68,6 +71,11 @@ const party     = getPackage('party')
 
 const { policies } = site
 const { addOns, trial, consultation } = policies
+
+// Pre-wedding event names parsed from the Pre-Bridal tagline (single source:
+// edit the tagline in packages.ts and these rename everywhere). Positional:
+// 'Rokah, Jaggo, Engagement, Mehndi, Sangeet'.
+const [rokah, jagoo, , mehndi, sangeet] = preBridal.tagline.split(', ')
 
 // Shared composed fragments — one source, four pages.
 // '06:00' → '6:00 AM' (site.hours stores 24-hr strings for the schema).
@@ -204,7 +212,7 @@ export const servicePages: readonly ServicePage[] = [
     slug:    'engagement-makeup',
     name:    'Engagement Makeup',
     eyebrow: 'Engagement & Pre-Wedding Events',
-    metaTitle: 'Engagement Makeup Artist in Brampton | Reception & Guests',
+    metaTitle: 'Engagement & Pre-Wedding Makeup | Rokah, Mehndi, Sangeet',
     metaDescription:
       `Engagement and reception makeup by {artistName}: Pre-Bridal glam for Rokah, Mehndi, Sangeet and engagement events, plus guest makeup. {experience} years across the GTA.`,
     h1:       'Engagement, Reception & Guest Makeup',
@@ -216,12 +224,30 @@ export const servicePages: readonly ServicePage[] = [
     packageIds: ['pre-bridal', 'bridal'],
     packagesTitle: 'Packages for engagement events',
     intro:
-      `An engagement, Rokah, or Sangeet is its own event with its own look, usually softer than the wedding day, but it still has to survive hugs, tears, and a few hundred photos. The ${preBridal.name} package is the one I recommend for exactly this stage: ${preBridal.tagline}.\n\nIt includes HD waterproof makeup, hairstyling, premium mink lashes, light dupatta setting, and hair padding and pins, at ${preBridalPriceText}. A consultation call is part of the package. We talk through your outfit, jewelry, and inspiration pictures ${consultation.timing.replace(' prior to event date', ' before the event')}.\n\nIf your date is actually a main ceremony day (${bridal.tagline}), the ${bridal.name} package (${formatPrice(bridal.price)}) is the step-up: it adds full dupatta setting, jewelry setting, and a touchup kit. And because these are family events, I handle the guests too. More on that below.`,
+      `An engagement, Rokah, or Sangeet is its own event with its own look, usually softer than the wedding day, but it still has to survive hugs, tears, and a few hundred photos. The ${preBridal.name} package is the one I recommend for exactly this stage: ${preBridal.tagline}.\n\nIt includes HD waterproof makeup, hairstyling, premium mink lashes, light dupatta setting, and hair padding and pins, at ${preBridalPriceText}. A consultation call is part of the package. We talk through your outfit, jewelry, and inspiration pictures ${consultation.timing.replace(' prior to event date', ' before the event')}.\n\nIf your date is actually a main ceremony day (${bridal.tagline}), the ${bridal.name} package (${formatPrice(bridal.price)}) is the step-up: it adds full dupatta setting, jewelry setting, and a touchup kit. And because these are family events, I handle the guests too. More on that below.\n\nThe ${preBridal.name} package is priced ${preBridal.priceNote}, so most brides book ${rokah}, ${mehndi}, and ${sangeet} together and keep one artist across every event. The looks evolve on purpose, the schedule is planned once, and the photos stay consistent from the first ceremony to the last dance.`,
     sections: [
       {
         heading: 'Which package for which event',
         body:
           `The ${preBridal.name} package (${formatPrice(preBridal.price)}) covers the pre-wedding circuit: ${preBridal.tagline}. The ${bridal.name} package (${formatPrice(bridal.price)}) is reserved for main ceremony days (${bridal.tagline}), where the full dupatta setting, jewelry setting, and touchup kit come into play.\n\nNot sure which side your event lands on? Send the details through the inquiry form and we'll decide together. The pricing is per person per event either way, so there's no penalty for asking.`,
+      },
+      {
+        heading: `${rokah} & ${jagoo} makeup`,
+        id:      'rokah-jaggo-makeup',
+        body:
+          `A ${rokah} is usually the most intimate event of the wedding cycle: close family, a living room or a small hall, and photos taken at conversation distance. The makeup stays soft and skin-forward so it reads naturally up close. ${jagoo} night is the opposite energy. It is a dancing night, and the look has to survive dhol, sweat, and a few hours of movement without budging.\n\nBoth run on the ${preBridal.name} package (${formatPrice(preBridal.price)} ${preBridal.priceNote}): HD waterproof makeup, hairstyling, premium mink lashes, and light dupatta setting where the outfit calls for it.`,
+      },
+      {
+        heading: `${mehndi} makeup`,
+        id:      'mehndi-makeup',
+        body:
+          `${mehndi} is a daytime event, and daylight changes the makeup math. Natural light is honest, so the base has to be sweat-proof and blended for close-up viewing rather than ballroom distance. The classic yellow and green outfits pull warmth toward the face, so I balance the skin tones against them.\n\nAnd your hands are in every photo, from the cone to the final reveal, which means the look has to stay put through hours of sitting, hugging, and holding your palms up to the camera. HD waterproof makeup, hairstyling, and premium mink lashes come with the ${preBridal.name} package (${formatPrice(preBridal.price)} ${preBridal.priceNote}).`,
+      },
+      {
+        heading: `${sangeet} makeup`,
+        id:      'sangeet-makeup',
+        body:
+          `${sangeet} is the performance night. Stage lighting, choreographed dances, and a videographer catching every second mean the makeup has to behave like it is on set. The HD waterproof base is built for exactly that: heat, movement, and hours under bright light without separating.\n\nPremium mink lashes matter more here than at any other event, because the eyes carry the look on video. Hairstyling is set to survive the dancing, with hair padding and pins holding through the last song. Like every pre-wedding event, ${sangeet} runs on the ${preBridal.name} package at ${formatPrice(preBridal.price)} ${preBridal.priceNote}.`,
       },
       {
         heading: 'Guest and family makeup',
@@ -249,11 +275,23 @@ export const servicePages: readonly ServicePage[] = [
       },
       {
         q: 'Do you cover Mehndi and Sangeet nights too?',
-        a: `Yes, Mehndi and Sangeet are exactly what the ${preBridal.name} package is for, alongside Rokah, Jagoo, and the engagement itself. Pricing is per person per event, so multi-event bookings simply stack.`,
+        a: `Yes, Mehndi and Sangeet are exactly what the ${preBridal.name} package is for, alongside Rokah, ${jagoo}, and the engagement itself. Pricing is per person per event, so multi-event bookings simply stack.`,
       },
       {
         q: 'Can my mom and sisters get makeup at the same appointment?',
         a: `Yes, ${bookingPolicies.groupMax} people at most can book alongside you. Guest makeup is studio-preferred; travel opens up when ${bookingPolicies.travelMinGroup} or more people are getting services at your location.`,
+      },
+      {
+        q: `Do you do ${mehndi} makeup in Brampton?`,
+        a: `Yes, ${mehndi} bookings are one of the most common uses of the ${preBridal.name} package (${preBridalPriceText}). I build the look for daytime light: a sweat-proof HD base, tones balanced against the yellow and green outfits, and hair that lasts the whole afternoon. Come to the studio in ${site.addressStructured.addressLocality}, or I travel when ${bookingPolicies.travelMinGroup} or more people are getting ready together.`,
+      },
+      {
+        q: 'Can I book all my pre-wedding events together?',
+        a: `Yes, and I recommend it. The ${preBridal.name} package is priced ${preBridal.priceNote}, so ${rokah}, ${jagoo}, ${mehndi}, and ${sangeet} bookings simply stack, with one ${policies.depositPercent}% deposit conversation and one artist across every event. That consistency shows in the photos, because the looks are planned as a sequence instead of one-offs.`,
+      },
+      {
+        q: `How do ${mehndi} and ${sangeet} makeup looks differ?`,
+        a: `${mehndi} is daytime: softer, skin-forward, and sweat-proof for natural light and close-up photos of you and your hands. ${sangeet} is the evening performance: a stronger HD base for stage lighting and dancing, and lashes that define the eyes on video. Same ${preBridal.name} package for both; I tune the look to the event.`,
       },
     ],
     galleryTag: 'full-glam',
