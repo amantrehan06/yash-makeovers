@@ -168,8 +168,10 @@ export const servicePages: readonly ServicePage[] = [
     h1:       'Prom Makeup & Hair in Brampton',
     subtitle: 'One flat rate for makeup, lashes and hair. Solo at the {baseCity} studio, or with your friends on-location.',
     serviceType: 'Prom Makeup and Hair',
-    packageIds: ['party'],
-    packagesTitle: 'Prom package & pricing',
+    // Regular Party is the base prom look; Full Glam is the step-up (HD
+    // waterproof + premium mink lashes) the copy already points to.
+    packageIds: ['party', 'full-glam'],
+    packagesTitle: 'Prom packages & pricing',
     intro:
       `Prom is one of the few nights that gets documented from every angle: the driveway photos, the limo, the dance floor. My prom service is the same package I run for parties: makeup, regular lashes, and hair (updos, curls, or basic volume) at ${formatPrice(party.price)} per person, with no required extras.\n\nIf you're coming solo, you'll visit my studio in {baseCity}. Getting ready with friends is honestly the better way to do it: groups of ${bookingPolicies.travelMinGroup} or more can book travel, and the getting-ready photos happen at home instead of in a parking lot between appointments.`,
     sections: [
