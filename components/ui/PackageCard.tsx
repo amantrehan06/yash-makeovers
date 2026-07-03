@@ -17,6 +17,10 @@ export interface PackageCardProps {
   showIncludes?:    boolean  // defaults true. City pages set false for a denser grid.
   showPopularBadge?:boolean  // defaults true. Hide on contexts that don't need the visual emphasis.
   compact?:         boolean  // defaults false. Smaller text + tighter padding for city pages.
+  // Force the dark "highlight" treatment regardless of pkg.highlight. Used for
+  // a lone card on a single-package service page so it reads as intentional.
+  // Only ever forces ON; the real pkg.highlight still drives multi-card grids.
+  forceHighlight?:  boolean
 }
 
 export function PackageCard({
@@ -26,14 +30,18 @@ export function PackageCard({
   showIncludes     = true,
   showPopularBadge = true,
   compact          = false,
+  forceHighlight   = false,
 }: PackageCardProps) {
-  const padding   = compact ? 'p-6' : 'p-7'
-  const priceSize = compact ? 'text-3xl' : 'text-4xl'
+  const padding    = compact ? 'p-6' : 'p-7'
+  const priceSize  = compact ? 'text-3xl' : 'text-4xl'
+  // Dark treatment when the package is the highlighted tier OR the caller
+  // forces it (lone service-page card).
+  const highlighted = forceHighlight || pkg.highlight
 
   return (
     <div
       className={`relative rounded-2xl ${padding} flex flex-col ${
-        pkg.highlight
+        highlighted
           ? 'bg-dark text-ivory border border-dark-3'
           : 'bg-ivory-2 text-dark border border-ivory-4'
       }`}
@@ -44,18 +52,18 @@ export function PackageCard({
         </span>
       )}
 
-      <p className={`text-xs uppercase tracking-widest mb-2 ${pkg.highlight ? 'text-gold-light' : 'text-gold'}`}>
+      <p className={`text-xs uppercase tracking-widest mb-2 ${highlighted ? 'text-gold-light' : 'text-gold'}`}>
         {pkg.name}
       </p>
 
       {pkg.originalPrice > pkg.price && (
-        <p className={`text-sm mb-1 ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}>
+        <p className={`text-sm mb-1 ${highlighted ? 'text-ivory-3' : 'text-muted'}`}>
           <span className="price-strike">{formatPrice(pkg.originalPrice)}</span>
         </p>
       )}
 
       <div className="flex items-baseline gap-2 mb-1">
-        <p className={`font-serif ${priceSize} ${pkg.highlight ? 'text-ivory' : 'text-dark'}`}>
+        <p className={`font-serif ${priceSize} ${highlighted ? 'text-ivory' : 'text-dark'}`}>
           {formatPrice(pkg.price)}
         </p>
         {pkg.discountLabel && (
@@ -65,13 +73,13 @@ export function PackageCard({
         )}
       </div>
       {pkg.discountNote && (
-        <p className={`text-xs mb-1 ${pkg.highlight ? 'text-ivory-4' : 'text-muted'}`}>
+        <p className={`text-xs mb-1 ${highlighted ? 'text-ivory-4' : 'text-muted'}`}>
           {pkg.discountNote}
         </p>
       )}
 
 
-      <p className={`text-sm leading-relaxed mb-6 ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}>
+      <p className={`text-sm leading-relaxed mb-6 ${highlighted ? 'text-ivory-3' : 'text-muted'}`}>
         {pkg.tagline}
       </p>
 
@@ -80,7 +88,7 @@ export function PackageCard({
           {pkg.includes.map((item) => (
             <li
               key={item}
-              className={`text-sm flex gap-2 items-start ${pkg.highlight ? 'text-ivory-3' : 'text-muted'}`}
+              className={`text-sm flex gap-2 items-start ${highlighted ? 'text-ivory-3' : 'text-muted'}`}
             >
               <span className="text-gold mt-0.5 flex-shrink-0">✓</span>
               {item}
@@ -91,7 +99,7 @@ export function PackageCard({
 
       <Button
         href={ctaHref}
-        variant={pkg.highlight ? 'primary' : 'outline'}
+        variant={highlighted ? 'primary' : 'outline'}
         className={`${showIncludes ? 'mt-8' : 'mt-auto'} w-full justify-center`}
       >
         {ctaText}

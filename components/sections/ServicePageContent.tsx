@@ -103,7 +103,13 @@ export async function ServicePageContent({ page }: { page: ServicePage }) {
               squeezing it into a tall, narrow column. */}
           <div className={`grid gap-6 mt-10 mx-auto ${pagePackages.length === 1 ? 'grid-cols-1 max-w-md' : 'grid-cols-1 sm:grid-cols-2 max-w-3xl'}`}>
             {pagePackages.map((pkg) => (
-              <PackageCard key={pkg.id} pkg={pkg} ctaText={content.servicesSection.bookCTA} showPopularBadge={false} />
+              <PackageCard
+                key={pkg.id}
+                pkg={pkg}
+                ctaText={content.servicesSection.bookCTA}
+                showPopularBadge={false}
+                forceHighlight={pagePackages.length === 1}
+              />
             ))}
           </div>
         </div>
