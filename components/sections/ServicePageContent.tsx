@@ -97,7 +97,11 @@ export async function ServicePageContent({ page }: { page: ServicePage }) {
             subtitle={content.servicePage.servicesSubtitle}
             centered
           />
-          <div className={`grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 ${pagePackages.length === 1 ? 'max-w-md mx-auto' : 'max-w-3xl mx-auto'}`}>
+          {/* Single-package pages (prom, photoshoot, nikkah-walima) render one
+              centered card; only multi-package pages use the 2-up grid.
+              Applying sm:grid-cols-2 to a lone card left it at half width,
+              squeezing it into a tall, narrow column. */}
+          <div className={`grid gap-6 mt-10 mx-auto ${pagePackages.length === 1 ? 'grid-cols-1 max-w-md' : 'grid-cols-1 sm:grid-cols-2 max-w-3xl'}`}>
             {pagePackages.map((pkg) => (
               <PackageCard key={pkg.id} pkg={pkg} ctaText={content.servicesSection.bookCTA} showPopularBadge={false} />
             ))}
