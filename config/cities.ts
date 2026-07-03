@@ -223,7 +223,7 @@ export const cities: readonly City[] = [
       'Cooksville'
     ],
     nonBridalBlurb:
-      'Guest and party glam runs on the same Mehndi-and-reception circuit I already work across Mississauga, from Streetsville homes to the halls around Pearson Convention Centre.',
+      'Guest and party glam runs on the same Mehndi-and-reception circuit I already work across Mississauga, from Streetsville homes to the halls around Pearson Convention Centre. Muslim brides can also book dedicated [Nikkah and Walima makeup](/nikkah-walima-makeup) for both days.',
     nearbyCities: ['brampton', 'toronto', 'etobicoke', 'oakville'],
     contentBlocks: [
     {
@@ -499,7 +499,7 @@ export const cities: readonly City[] = [
       'West Hill'
     ],
     nonBridalBlurb:
-      'Party and guest makeup slots into the same Scarborough runs as my Nikkah and reception work across Agincourt, Milliken, and the halls around the Scarborough Convention Centre.',
+      'Party and guest makeup slots into the same Scarborough runs as my Nikkah and reception work across Agincourt, Milliken, and the halls around the Scarborough Convention Centre. For the wedding days themselves, see [Nikkah and Walima makeup](/nikkah-walima-makeup).',
     nearbyCities: ['toronto', 'markham', 'north-york', 'vaughan'],
     contentBlocks: [
     {

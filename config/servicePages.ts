@@ -77,6 +77,10 @@ const { addOns, trial, consultation } = policies
 // 'Rokah, Jaggo, Engagement, Mehndi, Sangeet'.
 const [rokah, jagoo, , mehndi, sangeet] = preBridal.tagline.split(', ')
 
+// Nikkah and Walima parsed from the Bridal tagline (same single-source rule).
+// Positional: 'Ceremony, Reception, Nikkah, Walima, Baraat'.
+const [, , nikkah, walima] = bridal.tagline.split(', ')
+
 // Shared composed fragments — one source, four pages.
 // '06:00' → '6:00 AM' (site.hours stores 24-hr strings for the schema).
 const fmtHour = (t: string) => {
@@ -92,6 +96,9 @@ const soloStudioLine = `Solo appointments happen at my studio in {baseCity}. I d
 const preBridalPriceText = preBridal.originalPrice > preBridal.price
   ? `${formatPrice(preBridal.price)} per person per event, reduced from ${formatPrice(preBridal.originalPrice)} (${preBridal.discountNote.replace(/^\*\s*/, '')})`
   : `${formatPrice(preBridal.price)} per person per event`
+const bridalPriceText = bridal.originalPrice > bridal.price
+  ? `${formatPrice(bridal.price)} per person per event, reduced from ${formatPrice(bridal.originalPrice)} (${bridal.discountNote.replace(/^\*\s*/, '')})`
+  : `${formatPrice(bridal.price)} per person per event`
 
 export const servicePages: readonly ServicePage[] = [
   {
@@ -296,6 +303,70 @@ export const servicePages: readonly ServicePage[] = [
     ],
     galleryTag: 'full-glam',
     ctaTitle:   'Ready to book your engagement date?',
+  },
+
+  {
+    slug:    'nikkah-walima-makeup',
+    name:    'Nikkah & Walima',
+    eyebrow: 'Nikkah & Walima Makeup',
+    metaTitle: 'Nikkah & Walima Makeup Artist | Brampton & the GTA',
+    metaDescription:
+      `${nikkah} and ${walima} makeup by {artistName} in the GTA. HD waterproof bridal looks that hold through the ceremony and the reception. {rating}★ · {reviewCount} reviews.`,
+    h1:       'Nikkah & Walima Makeup Artist in the GTA',
+    subtitle: `Bridal makeup and hair for your ${nikkah} and ${walima}, built to last both days.`,
+    serviceType: 'Nikkah & Walima Bridal Makeup and Hair',
+    packageIds: ['bridal'],
+    packagesTitle: 'The bridal package',
+    intro:
+      `Your ${nikkah} and ${walima} are two different days with two different moods, and the makeup should reflect that. Both run on the ${bridal.name} package (${bridalPriceText}), the same all-day bridal service I bring to every ceremony: ${bridal.includes.slice(0, 3).join(', ').toLowerCase()}, dupatta and jewelry setting, and a touchup kit.\n\nThe ${bridal.name} package covers the full wedding cycle: ${bridal.tagline}. For a Muslim wedding that usually means the ${nikkah} ceremony and the ${walima} reception, and I plan them as one connected look rather than two unrelated appointments.`,
+    sections: [
+      {
+        heading: `${nikkah} makeup`,
+        id:      'nikkah-makeup',
+        body:
+          `The ${nikkah} is the ceremony, and the look leans elegant and timeless rather than heavy. I keep the skin luminous, the eyes defined but soft, and the whole face photograph-ready for the signing, the family portraits, and the close, emotional moments that define the day.\n\nThe HD waterproof base earns its place here: ${nikkah} ceremonies run long and emotional, and the makeup has to survive happy tears without a single touchup showing. Hairstyling, premium mink lashes, and setting are all part of the ${bridal.name} package.`,
+      },
+      {
+        heading: `${walima} makeup`,
+        id:      'walima-makeup',
+        body:
+          `The ${walima} is the reception, and this is where the glam goes fuller. Brighter ballroom lighting and an evening of photos and dancing call for more structure: a stronger eye, a defined lip, and a base built to hold under hot lights from the entrance to the last dance.\n\nBecause the ${walima} often falls on a different day, I treat it as its own look that still feels like a continuation of the ${nikkah}. Same bride, same story, evolved for the evening.`,
+      },
+      {
+        heading: 'Booking both days',
+        body:
+          `The ${bridal.name} package is priced ${bridal.priceNote}, so the ${nikkah} and the ${walima} are booked as two events with one artist across both. That is the whole point: one person who knows your face, your outfits, and your timeline, so the second day never starts from scratch.\n\nA consultation call is included to plan both looks together, ${consultation.timing.replace(' prior to event date', ' before your dates')}. Bring your outfits and inspiration for each day and we map the two looks as a pair.`,
+      },
+      {
+        heading: 'Travel and the studio',
+        body:
+          `I travel across the GTA for Muslim weddings: ${travelFees}. Or get ready at the studio in {baseCity}, which runs ${studioHours} daily. For early ${nikkah} start times, a ${formatPrice(policies.earlyMorningFee)} early-morning fee applies between ${policies.earlyMorningThreshold}.\n\n${depositLine}`,
+      },
+    ],
+    faq: [
+      {
+        q: `How much does ${nikkah} makeup cost in Brampton?`,
+        a: `${nikkah} makeup runs on the ${bridal.name} package at ${bridalPriceText}. That includes ${bridal.includes.slice(0, 5).join(', ').toLowerCase()}, and a touchup kit. The same package covers your ${walima}, priced ${bridal.priceNote}.`,
+      },
+      {
+        q: `What's the difference between ${nikkah} and ${walima} makeup?`,
+        a: `The ${nikkah} look is softer and elegant for the ceremony, with luminous skin and a defined but gentle eye. The ${walima} look is fuller reception glam, built with more structure for bright lighting, photos, and dancing. Same ${bridal.name} package for both; I tune the intensity to each day.`,
+      },
+      {
+        q: 'Do you set the hijab or offer a hijab styling service?',
+        a: `I don't offer a separate hijab-setting service. Most ${nikkah} brides who wear one arrange and pin their own hijab, and I focus the ${bridal.name} package on the makeup and any visible hairstyling so the finished look works beautifully with it.`,
+      },
+      {
+        q: `Can I book the ${nikkah} and ${walima} together?`,
+        a: `Yes, and it's the easiest way to do it. Pricing is ${bridal.priceNote}, so the two days book as two events with one deposit conversation and one artist across both. Booking together also locks both dates before summer weekends fill.`,
+      },
+      {
+        q: `Do you travel for ${nikkah} and ${walima} makeup?`,
+        a: `Yes. Travel is ${travelFees}. For groups of ${bookingPolicies.travelMinGroup} or more getting ready together I come to you; solo bookings are welcome at the studio in ${site.addressStructured.addressLocality}.`,
+      },
+    ],
+    galleryTag: 'full-glam',
+    ctaTitle:   `Ready to book your ${nikkah} and ${walima}?`,
   },
 
   {

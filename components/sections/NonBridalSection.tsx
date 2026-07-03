@@ -3,6 +3,21 @@ import type { City } from '@/config/cities'
 import { content, fillTemplate } from '@/config/content'
 import { servicePages } from '@/config/servicePages'
 
+// Renders a plain blurb string, turning any [text](/path) markdown link into a
+// Next <Link> so a city blurb can point contextually at a service page. Strings
+// without a link render byte-identically (split returns the whole string).
+function renderWithLinks(text: string) {
+  return text.split(/(\[[^\]]+\]\(\/[a-z0-9/-]+\))/g).map((part, i) => {
+    const m = part.match(/^\[([^\]]+)\]\((\/[a-z0-9/-]+)\)$/)
+    if (!m) return part
+    return (
+      <Link key={i} href={m[2]} className="text-gold underline underline-offset-2 hover:text-gold-dim">
+        {m[1]}
+      </Link>
+    )
+  })
+}
+
 // B2 — "Party, Prom & Event Makeup Artist in {city}" block on city pages.
 // Purely additive below the existing city content: unique per-city sentence
 // from cities.ts (nonBridalBlurb), shared body from content.ts, and chip
@@ -20,7 +35,7 @@ export function NonBridalSection({ city }: { city: City }) {
         </h2>
         <div className="space-y-4 max-w-3xl">
           <p className="text-muted text-base leading-relaxed">
-            {fillTemplate(city.nonBridalBlurb)}
+            {renderWithLinks(fillTemplate(city.nonBridalBlurb))}
           </p>
           <p className="text-muted text-base leading-relaxed">
             {fillTemplate(content.cityPage.nonBridalBody).replace(/\{city\}/g, city.name)}
