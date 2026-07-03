@@ -204,7 +204,7 @@ export default async function CityPage({ params }: Props) {
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-ivory-3">
                 <CloudinaryImage
                   publicId={cityHeroImage.public_id}
-                  alt={`Bridal makeup by ${site.artistName} for a ${city.name} bride`}
+                  alt={city.heroImageAlt ? fillTemplate(city.heroImageAlt) : `Bridal makeup by ${site.artistName} for a ${city.name} bride`}
                   width={480}
                   height={640}
                   priority

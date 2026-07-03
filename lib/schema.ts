@@ -92,9 +92,9 @@ export function buildCityServiceSchema(city: City) {
     '@context':    'https://schema.org',
     '@type':       'Service',
     '@id':         `${cityUrl}#service`,
-    name:          `Bridal Makeup & Hair in ${city.name}`,
-    serviceType:   'Bridal Makeup & Hair',
-    description:   `On-location and studio bridal makeup and hair services by ${site.artistName} for brides in ${city.name}, ${city.province}.`,
+    name:          `Bridal & Wedding Makeup & Hair in ${city.name}`,
+    serviceType:   'Bridal & Wedding Makeup & Hair',
+    description:   `On-location and studio bridal and wedding makeup and hair by ${site.artistName} for brides in ${city.name}, ${city.province}.`,
     url:           cityUrl,
     provider:      { '@type': 'BeautyStudio', '@id': `${businessUrl}#business` },
     areaServed: {

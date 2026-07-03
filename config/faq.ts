@@ -21,11 +21,11 @@ const { addOns, trial, consultation } = policies
 export const faqs = [
   {
     q: 'How much does a bridal makeup artist cost in the GTA?',
-    a: `Bridal packages at ${name} start at ${formatPrice(bridal.price)} ${bridal.priceNote}. This includes HD waterproof makeup, hairstyling, premium mink lashes, dupatta and jewelry setting, a touchup kit, and a consultation call. Pre-bridal events (Mehndi, Sangeet, Engagement) are ${formatPrice(preBridal.price)}, Full Glam is ${formatPrice(fullGlam.price)}, and Regular Party is ${formatPrice(party.price)}. All prices are ${bridal.priceNote}.`,
+    a: `Bridal and wedding makeup packages at ${name} start at ${formatPrice(bridal.price)} ${bridal.priceNote}. This includes HD waterproof makeup, hairstyling, premium mink lashes, dupatta and jewelry setting, a touchup kit, and a consultation call. Pre-bridal events (Mehndi, Sangeet, Engagement) are ${formatPrice(preBridal.price)}, Full Glam is ${formatPrice(fullGlam.price)}, and Regular Party is ${formatPrice(party.price)}. All prices are ${bridal.priceNote}.`,
   },
   {
     q: 'How far in advance should I book my wedding makeup?',
-    a: `We recommend booking 6 to 12 months in advance, especially for peak wedding season (May through October) when dates fill up fast. A ${policies.depositPercent}% non-refundable deposit via e-transfer secures your date. No payment is required until we've spoken and you're ready to move forward.`,
+    a: `We recommend booking 6 to 12 months in advance, especially for peak wedding season (May through October) when bridal and wedding makeup dates fill up fast. A ${policies.depositPercent}% non-refundable deposit via e-transfer secures your date. No payment is required until we've spoken and you're ready to move forward.`,
   },
   {
     q: 'Do you travel to my venue?',

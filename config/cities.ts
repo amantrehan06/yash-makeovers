@@ -67,6 +67,10 @@ export interface City {
   // never generic filler, never duplicated across cities. Shared surrounding
   // copy lives in content.ts → cityPage.nonBridalBody.
   nonBridalBlurb:  string
+  // Optional hero-image alt override. Defaults to a "Bridal makeup..." alt in
+  // the page component; set on a few cities to vary the phrasing toward
+  // "wedding makeup" for image-search synonym coverage. Keep it natural.
+  heroImageAlt?:   string
   // Geographic centroid — used by per-city Service schema (areaServed.geo)
   // for local-pack ranking. Approximate city center is fine here (not a
   // specific pin) — represents the service area. Get from maps.google.com
@@ -90,7 +94,7 @@ export const cities: readonly City[] = [
     metaDescription:
       "South Asian bridal, party & event makeup in Brampton. {experience} years and {brides} brides served, all from home base. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Brampton',
-    subtitle: 'Bridal makeup and hair for Brampton brides. {experience} years and {brides} weddings, all from this city.',
+    subtitle: 'Bridal and wedding makeup and hair for Brampton brides. {experience} years and {brides} weddings, all from this city.',
     geo: { latitude: 43.6831, longitude: -79.7663 },
     intro:
       "Brampton is home. I built Yash Makeovers here because this is where South Asian wedding culture in the GTA actually lives. Eight of ten brides I work with have some connection to this city, whether it's a Brampton gurdwara ceremony, a thousand-guest reception at Embassy Grand, or family flying in from India and settling into a Castlemore Airbnb for the week.\n\nWhat I love about Brampton weddings is the scale and the heart. They run long. A typical day starts at 5am with hair and makeup for the Anand karaj wedding, then a reception that goes past midnight. The makeup has to hold for sixteen hours and survive crying, laughing, hugging, dancing under hot ballroom lights. From Springdale to Bramalea, every neighbourhood feels familiar. This city raised the standard for what a South Asian wedding can be, and I've spent ten years getting better at meeting it.",
@@ -197,7 +201,7 @@ export const cities: readonly City[] = [
     metaDescription:
       "Pakistani and Afghan bridal makeup in Mississauga, plus party and guest looks. {experience} years across Mehndi, Nikkah and reception. Book {artistName}.",
     h1: 'Bridal Makeup Artist in Mississauga',
-    subtitle: 'Pakistani and Afghan bridal makeup and hair specialist for Mississauga brides.',
+    subtitle: 'Pakistani and Afghan bridal and wedding makeup for Mississauga brides.',
     geo: { latitude: 43.5890, longitude: -79.6441 },
     intro:
       "Mississauga is where I do most of my Pakistani and Afghan bridal work. The community here is large, the families are tight, and word-of-mouth from one Mehndi or reception goes a long way. Pakistani and Afghan bridal makeup has its own rhythm: softer pastels for the Mehndi or Henna nights, traditional red and gold for the Nikkah, then a fresh evolved look for the reception. The dupatta drape, the jewellery setting, and the makeup intensity all shift across the events.\n\nThe venue mix in Mississauga ranges from grand banquet halls like Pearson Convention Centre to intimate hotel ballrooms or private estates near Mineola and Lorne Park. Each calls for different makeup choices. Larger spaces need more visible structure and pigment. Smaller spaces let the makeup go softer, more skin-forward.\n\nI travel to wherever you're getting ready. Whether that's a hotel near the airport or your parents' home in Streetsville, the kit comes to you.",
@@ -257,9 +261,10 @@ export const cities: readonly City[] = [
     angle: 'editorial, modern South Asian brides',
     metaTitle: 'Makeup Artist in Toronto | Bridal & Party Makeup + Hair',
     metaDescription:
-      "Bridal, party and event makeup artist for Toronto. On-site service across the city. {rating}★ · {reviewCount} Google reviews. Book {artistName}.",
+      "Bridal, wedding, party and event makeup artist for Toronto. On-site service across the city. {rating}★ · {reviewCount} Google reviews. Book {artistName}.",
     h1: 'Bridal Makeup Artist in Toronto',
-    subtitle: 'Bridal makeup and hair for Toronto brides. On-site service across the city.',
+    subtitle: 'Bridal and wedding makeup and hair for Toronto brides. On-site service across the city.',
+    heroImageAlt: 'Wedding makeup and hair by {artistName} for a Toronto bride',
     geo: { latitude: 43.6532, longitude: -79.3832 },
     intro:
       "The first question Toronto brides usually ask is whether I travel into the city. The answer is yes, and most mornings I'm already on the way before sunrise. Almost every Toronto bride prefers at-home service for the morning of the wedding. The hair, the makeup, the dupatta setting all happen where the family is, not in a hotel suite or a rented studio.\n\nWorking across Toronto means adapting to the lighting in every venue. Casa Loma is golden and forgiving. Liberty Grand turns sharp white the moment the DJ starts. A downtown ceremony might move from a Yorkville cocktail patio to a Distillery District reception in the same afternoon, with three different light temperatures to navigate. My job is to build a face that reads beautifully across all of them.\n\nThe Toronto bride is usually balancing two pressures: looking modern enough for the editorial photos she's been dreaming about for years, and looking like herself enough that her family recognizes her. That balance is the work.",
@@ -362,7 +367,7 @@ export const cities: readonly City[] = [
     metaDescription:
       "Bridal, party and prom makeup for Etobicoke. On-location service, {experience} years experience, luxury products. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Etobicoke',
-    subtitle: 'Bridal makeup and hair for Etobicoke brides. On-location service across the area.',
+    subtitle: 'Wedding makeup and hair for Etobicoke brides. On-location bridal service across the area.',
     geo: { latitude: 43.6205, longitude: -79.5132 },
     intro:
       "Etobicoke is one of the easier cities to reach from the Brampton studio. 427 south, no 401, no morning gridlock. That changes how I plan the day. We don't need a 4am start to beat rush hour, which means the morning gets to breathe.\n\nBrides here often choose Etobicoke specifically because family is close. The venue is fifteen minutes from the parents' house, not ninety. Ceremonies skew smaller and more intentional, not because budgets are smaller but because the priorities are different.\n\nMost Etobicoke weddings split between two worlds. The heritage charm of the Old Mill calls for softer makeup that catches the warm natural light. The banquet halls out near Rexdale run cooler and brighter, so the makeup needs more structure to push back without looking heavy on camera.",
@@ -400,7 +405,8 @@ export const cities: readonly City[] = [
     metaDescription:
       "Luxury bridal and event makeup artist in Oakville. {experience} years across Sikh ceremonies, white-wedding receptions and parties. Book {artistName}.",
     h1: 'Bridal Makeup Artist in Oakville',
-    subtitle: 'Luxury bridal makeup artist offering bridal makeup and hair for Oakville brides.',
+    subtitle: 'Luxury bridal makeup artist offering wedding makeup and hair for Oakville brides.',
+    heroImageAlt: 'Luxury wedding makeup by {artistName} for an Oakville bride',
     geo: { latitude: 43.4675, longitude: -79.6877 },
     intro:
       "A wedding in Oakville is a statement before the bride says a word. The venue choice alone signals it. Glen Abbey Golf Club, the Oakville Conference Centre, or one of the estate properties along the lake. These are spaces built for editorial photography, and the makeup has to live up to the setting.\n\nMany of the Oakville brides I work with are planning two ceremonies in one day. The morning is a Sikh ceremony at the gurdwara, traditional and red toned for the Anand Karaj. The evening is a white wedding at one of the lakeside venues, softer and more editorial to work with the white dress and the cooler reception lighting. Two distinct looks, one bride, and a tight window in between. The makeup has to be planned as a complete day, not two unrelated appointments.\n\nTravel to Oakville is built into how I work. Whether the morning starts in Bronte Village or at a parents' place in Old Oakville, the kit travels with me.",
@@ -437,7 +443,7 @@ export const cities: readonly City[] = [
     metaDescription:
       "Bridal, party and Sangeet makeup artist in Vaughan. {experience} years specializing in Sikh and Hindu temple weddings. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Vaughan',
-    subtitle: 'Luxury bridal makeup artist for Vaughan brides. Bridal makeup and hair specialist for Sikh and Hindu temple weddings.',
+    subtitle: 'Luxury bridal makeup artist for Vaughan brides. Wedding makeup and hair specialist for Sikh and Hindu temple weddings.',
     geo: { latitude: 43.8361, longitude: -79.4982 },
     intro:
       "Vaughan weddings are some of the longest and most layered ceremonies in the GTA. The Sikh and Hindu communities here run multi-day events that include Sangeet, Mehndi, Anand Karaj or Vivah ceremony, lunch reception, and evening reception, sometimes across three days. The makeup has to hold across all of it, and the looks have to evolve so each event has its own visual identity.\n\nThe temple weddings I do most often happen at the larger gurdwaras and mandirs north of Highway 7. The lighting is bright and even, which is forgiving for skin but unforgiving for harsh contouring. I keep the makeup luminous and clean. The reception venues like Paramount, Universal, or Château Le Jardin lean more dramatic, so we can build up for evening looks.\n\nIf you're in Woodbridge, Kleinburg, or Concord, I come to you. The early morning ceremonies usually mean a 4am or 5am start, and I plan for it.",
@@ -474,9 +480,9 @@ export const cities: readonly City[] = [
     angle: 'Pakistani + Afghan bridal hub',
     metaTitle: 'Makeup Artist in Scarborough | Pakistani & Afghan Bridal',
     metaDescription:
-      "Pakistani and Afghan bridal makeup in Scarborough, plus party and guest glam. {experience} years of expertise. Book {artistName} for {seasonYears}.",
+      "Pakistani and Afghan bridal and wedding makeup in Scarborough, plus party and guest glam. {experience} years of expertise. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Scarborough',
-    subtitle: 'Pakistani and Afghan bridal makeup and hair specialist for Scarborough brides.',
+    subtitle: 'Pakistani and Afghan bridal and wedding makeup for Scarborough brides.',
     geo: { latitude: 43.7764, longitude: -79.2318 },
     intro:
       "Scarborough is my second hub for Pakistani and Afghan bridal work, alongside Mississauga. The community here is rooted deep, and family networks stretch across multiple generations. Pakistani and Afghan weddings move across several events, each with its own visual identity: softer pastels for the Mehndi or Henna nights, traditional red and gold for the Nikkah, a fresh evolved look for the reception. The makeup evolves event to event, but the constant is durability under bright photography and long ceremonies.\n\nThe venues range from the high-capacity Scarborough Convention Centre to smaller community halls in Wexford and Milliken that work well for Nikkah ceremonies. Each setting shapes the makeup approach: bigger rooms need stronger pigment, smaller spaces let the look stay soft.\n\nScarborough is the longest drive from the Brampton studio, all of it on the 401, so I plan around it. Early call times, extra buffer for traffic, kit packed the night before. I travel into Scarborough weekly through peak wedding season.",
@@ -545,9 +551,10 @@ export const cities: readonly City[] = [
     angle: 'South Asian + East Asian multicultural',
     metaTitle: 'Makeup Artist in Markham | Multicultural Bridal & Party',
     metaDescription:
-      "Bridal, party and event makeup for Markham's multicultural weddings. {experience} years at venues across the city. Book {artistName} for {seasonYears}.",
+      "Bridal, wedding, party and event makeup for Markham's multicultural weddings. {experience} years at venues across the city. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Markham',
-    subtitle: 'Bridal makeup and hair for Markham brides. Trusted across multicultural weddings.',
+    subtitle: 'Bridal and wedding makeup and hair for Markham brides. Trusted across multicultural weddings.',
+    heroImageAlt: 'Wedding makeup by {artistName} for a Markham bride',
     geo: { latitude: 43.8561, longitude: -79.3370 },
     intro:
       "Markham is one of the newer wedding markets in the GTA, and it shows in the venues. Crystal Fountain, the Markham Convention Centre, Angus Glen, Hilton Toronto/Markham. These spaces were built in the last fifteen or twenty years, designed for high-fashion bridal photography under crisp modern lighting. The makeup approach has to match that polish.\n\nThe Markham bride is usually planning for a large, multicultural extended family. The community here is one of the most diverse in Canada, and the wedding guest list reflects that. The bridal look has to read beautifully under intense ballroom spotlights and high-resolution photography, without losing the warmth that makes the family portraits feel real.\n\nMarkham from Brampton means 401 east and then 404 or 407 north. That's a real drive, especially before sunrise. I plan an earlier start and build in buffer for traffic. Whether the morning is in Unionville, Angus Glen, or Downtown Markham, the kit gets there on time.",
@@ -584,9 +591,9 @@ export const cities: readonly City[] = [
     angle: 'urban, multicultural, accessible',
     metaTitle: 'Makeup Artist in North York | Bridal, Party & Hair Service',
     metaDescription:
-      "Bridal, party and event makeup for North York and the Yonge corridor. {artistName} travels into Don Mills and Bayview. Book for {seasonYears}.",
+      "Bridal, wedding, party and event makeup for North York and the Yonge corridor. {artistName} travels into Don Mills and Bayview. Book for {seasonYears}.",
     h1: 'Bridal Makeup Artist in North York',
-    subtitle: 'Bridal makeup and hair for North York brides and the Yonge corridor.',
+    subtitle: 'Bridal and wedding makeup and hair for North York brides and the Yonge corridor.',
     geo: { latitude: 43.7615, longitude: -79.4111 },
     intro: "North York weddings are family centrepieces by accident. The city sits at the geographic centre of the GTA, which means relatives drive in from every direction and the reception often becomes a logistical pivot for the whole region. The venues have evolved to handle that scale.\n\nWhat I notice about North York brides is the mix of urban polish and traditional values. Many are second-generation professionals working downtown but planning ceremonies that honour their parents' expectations. The makeup vision tends to thread that needle: refined enough for the editorial portraits, traditional enough for the elders.\n\nThe drive from the Brampton studio cuts through the 401 corridor, so North York mornings need an earlier start than a hometown wedding does. I build that into the schedule. Whether you're in Willowdale, Don Mills, or the Bridle Path, the kit arrives on time.",
     venues: [
@@ -624,7 +631,7 @@ export const cities: readonly City[] = [
     metaDescription:
       "Luxury bridal, party and eShoot makeup in Richmond Hill. {experience} years with brides planning multi-country weddings. Book {artistName} for {seasonYears}.",
     h1: 'Bridal Makeup Artist in Richmond Hill',
-    subtitle: 'Luxury bridal makeup artist for Richmond Hill brides. Premium bridal makeup and hair service.',
+    subtitle: 'Luxury bridal makeup artist for Richmond Hill brides. Premium wedding makeup and hair service.',
     geo: { latitude: 43.8828, longitude: -79.4403 },
     intro:
       "Richmond Hill brides often plan multi-country weddings. The trousseau is from Delhi. The jewellery is shipped from Mumbai. The destination shoot happened in Udaipur in November. The actual wedding is here. Working with these brides means understanding that the GTA event is one chapter in a longer story, and the makeup needs to integrate with the photography and videography from every other chapter.\n\nThe aesthetic in Richmond Hill skews refined and high-finish. Bayview Hill estates, the Richmond Hill Country Club, Lusso Luxury Banquet Hall. These are spaces where details matter and craftsmanship is visible. The makeup needs to hold the same standard.\n\nI work especially carefully with the photography teams that these brides have flown in or contracted from elsewhere. We talk about light, lens, and finish before the day. Whether you're getting ready in Bayview Hill, Mill Pond, or Oak Ridges, the morning runs on a schedule that protects the photographer's golden-hour window.",

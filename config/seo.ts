@@ -34,6 +34,7 @@ export const seo = {
     defend: cityNames.map((c) => `bridal makeup artist ${c}`),
     head: [
       ...cityNames.map((c) => `makeup artist in ${c}`),
+      ...cityNames.map((c) => `wedding makeup artist ${c}`),
       'hair and makeup artist Brampton',
     ],
     services: [

@@ -233,6 +233,7 @@ but for making every bride feel comfortable, confident, and truly seen.`,
   artist: {
     knowsAbout: [                                            // ← edit to taste — Google reads these as topical expertise signals
       'Bridal makeup',
+      'Wedding makeup',
       'South Asian bridal makeup',
       'Airbrush makeup',
       'Bridal Makeup and Hair',
