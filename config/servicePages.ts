@@ -74,7 +74,7 @@ const { addOns, trial, consultation } = policies
 
 // Pre-wedding event names parsed from the Pre-Bridal tagline (single source:
 // edit the tagline in packages.ts and these rename everywhere). Positional:
-// 'Rokah, Jagoo, Engagement, Mehndi, Sangeet'.
+// 'Rokah, Jaggo, Engagement, Mehndi, Sangeet'.
 const [rokah, jagoo, , mehndi, sangeet] = preBridal.tagline.split(', ')
 
 // Shared composed fragments — one source, four pages.
@@ -275,7 +275,7 @@ export const servicePages: readonly ServicePage[] = [
       },
       {
         q: 'Do you cover Mehndi and Sangeet nights too?',
-        a: `Yes, Mehndi and Sangeet are exactly what the ${preBridal.name} package is for, alongside Rokah, Jagoo, and the engagement itself. Pricing is per person per event, so multi-event bookings simply stack.`,
+        a: `Yes, Mehndi and Sangeet are exactly what the ${preBridal.name} package is for, alongside Rokah, ${jagoo}, and the engagement itself. Pricing is per person per event, so multi-event bookings simply stack.`,
       },
       {
         q: 'Can my mom and sisters get makeup at the same appointment?',
