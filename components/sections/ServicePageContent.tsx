@@ -109,7 +109,9 @@ export async function ServicePageContent({ page }: { page: ServicePage }) {
       <section className="py-16 px-6 bg-ivory">
         <div className="max-w-3xl mx-auto space-y-14">
           {page.sections.map((section) => (
-            <div key={section.heading}>
+            // Optional deep-link anchor from config (e.g. #mehndi-makeup);
+            // scroll-mt clears the fixed navbar when jumping to it.
+            <div key={section.heading} id={section.id} className={section.id ? 'scroll-mt-24' : undefined}>
               <h2 className="font-serif text-3xl md:text-4xl text-dark leading-tight mb-5">
                 {section.heading}
               </h2>
