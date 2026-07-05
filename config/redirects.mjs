@@ -35,6 +35,21 @@ export const redirects = [
   // ── Old WordPress page slugs → new pages ──
   { source: '/packages', destination: '/services', permanent: true },
 
+  // ── Legacy WordPress front-page alias → homepage root (301) ──
+  // WordPress served the front page at /home; that path 404s (and historically
+  // 500d on the dynamic city route before dynamicParams was locked down), so
+  // GSC flagged it. One-way only: /home -> /, never / -> /home, so there is no
+  // loop. Destination stays relative ('/') like the other legacy rules; an
+  // absolute www destination would pick up the apex-only host condition in
+  // next.config.mjs and skip www requests.
+  //
+  // These use `statusCode: 301` (an explicit 301) rather than `permanent: true`
+  // (which Next emits as 308) so the GSC-flagged path returns a literal 301.
+  // The '/home/' rule is a safety net: with trailingSlash: false, Next strips
+  // the trailing slash first ('/home/' -> '/home'), which then hits the 301.
+  { source: '/home',  destination: '/', statusCode: 301 },
+  { source: '/home/', destination: '/', statusCode: 301 },
+
   // ── Old WordPress portfolio sub-paths → portfolio index ──
   // Use :path+ (one OR MORE segments) — :path* matches zero segments
   // too, which would make /portfolio redirect to itself in a loop.
