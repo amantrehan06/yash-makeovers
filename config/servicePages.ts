@@ -102,6 +102,76 @@ const bridalPriceText = bridal.originalPrice > bridal.price
 
 export const servicePages: readonly ServicePage[] = [
   {
+    slug:    'bridal-makeup',
+    name:    'Bridal Makeup',
+    eyebrow: 'Packages & Prices',
+    // Cannibalization guard: this page targets package/price/process intent.
+    // City pages own "bridal makeup artist in {city}"; keep that phrase (and
+    // "wedding makeup artist in {city}") out of the title, h1, and headings.
+    metaTitle: 'Bridal Makeup Packages & Prices | Brampton & the GTA',
+    metaDescription:
+      `Bridal makeup packages and prices by {artistName}: HD waterproof wedding makeup, hair, trial and consultation, all priced up front. {rating}★ ({reviewCount} reviews).`,
+    h1:       'Bridal Makeup & Hair Packages',
+    subtitle: 'Two packages, transparent pricing, a trial option, and one artist from the first consultation to the reception.',
+    serviceType: 'Bridal Makeup & Hair',
+    packageIds: ['bridal', 'pre-bridal'],
+    packagesTitle: 'Bridal packages and pricing',
+    intro:
+      `Booking bridal makeup should feel like the calmest decision in your wedding planning, not the most confusing. This page lays out exactly what each package includes, what it costs, and how the trial and consultation work, so there are no surprises on the wedding day.\n\nThere are two tiers. The ${bridal.name} package (${bridalPriceText}) is the full wedding day service for your ceremony and reception. The ${preBridal.name} package (${preBridalPriceText}) covers the lighter pre-wedding events. Both are priced ${bridal.priceNote}, and both use the same luxury kit: {brands}.`,
+    sections: [
+      {
+        heading: 'What your wedding day package includes',
+        body:
+          `Every ${bridal.name} booking is priced ${bridal.priceNote} and covers the same all-inclusive essentials, so nothing about your look is left to chance: ${bridal.includes.join(', ')}. The goal is a face and hairstyle that hold from the first ceremony photo to the last reception dance.\n\nA few of these matter more than brides expect. The HD waterproof base is chosen for sixteen hour days and happy tears. The dupatta setting keeps your dupatta pinned exactly where it should sit through every hug and head turn. The jewelry setting places your tikka and necklaces so nothing slips during the ceremony. And the touchup kit goes home with you, so the wedding makeup still reads fresh when the reception runs late.`,
+      },
+      {
+        heading: 'Which wedding events the package covers',
+        body:
+          `The ${bridal.name} package is built for the main wedding days: ${bridal.tagline}. In practice that means your ceremony and your reception, the two moments with the most photos and the longest hours in the chair.\n\nSome events sit just outside this package. For a two day Muslim wedding, [bridal makeup packages for the Nikkah and Walima](/nikkah-walima-makeup) cover both days in detail. For the events before the wedding, like the engagement or Sangeet, [engagement and pre-wedding makeup](/engagement-makeup) uses the ${preBridal.name} package instead. When your day is a single ceremony and reception, the ${bridal.name} package is the right home.`,
+      },
+      {
+        heading: 'The trial and the consultation call',
+        body:
+          `A consultation call comes with both the ${consultation.eligibility.join(' and ')} packages. We schedule it ${consultation.timing.toLowerCase()}, and it is where we talk through your outfit, jewelry, and inspiration pictures before the day.\n\nA full wedding makeup trial is separate and optional, at ${trial.feeText}. Trials are booked ${trial.scheduling.toLowerCase()} ${trial.refundCondition} In short, if you trial immediately after booking and decide the look is not for you, your deposit is protected.`,
+      },
+      {
+        heading: 'Optional add-ons',
+        body:
+          `Both packages are all-inclusive, but a few extras come up. If you prefer an airbrushed finish, ${addOns.airbrush.label.toLowerCase()} is ${formatPrice(addOns.airbrush.fee)}. For length and volume, ${addOns.clientHairExtensions.label.toLowerCase()} is ${formatPrice(addOns.clientHairExtensions.fee)}, or ${addOns.studioHairExtensions.label.toLowerCase()} are ${formatPrice(addOns.studioHairExtensions.fee)} ${addOns.studioHairExtensions.unit}. If you arrive with wet hair, a ${addOns.blowDryWetHair.label.toLowerCase()} is ${formatPrice(addOns.blowDryWetHair.fee)}.\n\nEverything already in the ${bridal.name} package, including dupatta setting, jewelry setting, premium mink lashes, and the touchup kit, is part of the price. Add-ons only cover the extras above.`,
+      },
+      {
+        heading: 'Booking and your deposit',
+        body:
+          `A ${policies.depositPercent}% deposit by e-transfer secures your date, and no payment is needed until we have spoken and you are ready to confirm. ${bookingPolicies.leadTimeNote}, so the earlier the better.\n\nOn the day, ${bookingPolicies.groupMax} people can book alongside the bride, and travel is available for groups of ${bookingPolicies.travelMinGroup} or more at ${travelFees}. For a very early ceremony start, a ${formatPrice(policies.earlyMorningFee)} early-morning fee applies between ${policies.earlyMorningThreshold}.`,
+      },
+    ],
+    faq: [
+      {
+        q: 'What does bridal makeup cost?',
+        a: `The ${bridal.name} package is ${bridalPriceText}, and the ${preBridal.name} package is ${preBridalPriceText}, both ${bridal.priceNote}. That covers your makeup, hairstyling, lashes, and setting. When people ask about wedding makeup cost in the GTA, this is the honest answer: one all-inclusive price per person per event, with optional add-ons on top.`,
+      },
+      {
+        q: 'What is included in the bridal package?',
+        a: `The ${bridal.name} package includes ${bridal.includes.join(', ')}. Nothing on that list is an upsell; it is all part of the ${formatPrice(bridal.price)} price.`,
+      },
+      {
+        q: 'What is the difference between the trial and the consultation call?',
+        a: `The consultation call is included with the ${consultation.eligibility.join(' and ')} packages and happens ${consultation.timing.toLowerCase()}; it is a conversation about your outfit, jewelry, and vision. A wedding makeup trial is a separate, optional session at ${trial.feeText} where we actually test the look on your skin. Many brides do both.`,
+      },
+      {
+        q: 'Can I book multiple events together?',
+        a: `Yes. Pricing is ${bridal.priceNote}, so your ceremony, reception, and any pre-wedding events simply stack as separate bookings with one artist across all of them. Booking them together also locks every date before the calendar fills.`,
+      },
+      {
+        q: 'When should I book?',
+        a: `I recommend booking 6 to 12 months in advance, especially for peak wedding season from May through October when dates fill up fast. A ${policies.depositPercent}% deposit secures your date once you are ready.`,
+      },
+    ],
+    galleryTag: 'bridal',
+    ctaTitle:   'Ready to plan your wedding day look?',
+  },
+
+  {
     slug:    'party-makeup',
     name:    'Party Makeup',
     eyebrow: 'Party & Event Makeup',

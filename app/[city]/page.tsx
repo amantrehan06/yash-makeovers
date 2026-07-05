@@ -283,6 +283,15 @@ export default async function CityPage({ params }: Props) {
               />
             ))}
           </div>
+          {/* Link to the flagship packages page (anchor: "bridal makeup
+              packages"). Additive; every city page carries it. */}
+          <p className="text-center text-muted text-sm mt-10">
+            Compare every tier and inclusion on our{' '}
+            <Link href="/bridal-makeup" className="text-gold hover:text-gold-dim underline underline-offset-2">
+              bridal makeup packages
+            </Link>{' '}
+            page.
+          </p>
         </div>
       </section>
 

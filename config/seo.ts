@@ -36,6 +36,11 @@ export const seo = {
       ...cityNames.map((c) => `makeup artist in ${c}`),
       ...cityNames.map((c) => `wedding makeup artist ${c}`),
       'hair and makeup artist Brampton',
+      'bridal makeup packages GTA',
+      'bridal makeup prices brampton',
+      'bridal makeup trial brampton',
+      'wedding makeup packages',
+      'wedding day makeup cost',
     ],
     services: [
       'party makeup artist Brampton',

@@ -19,6 +19,21 @@ import { CloudinaryImage } from '@/components/ui/CloudinaryImage'
 
 const GALLERY_MAX = 6
 
+// Renders a paragraph string, turning any [text](/path) markdown link into a
+// Next <Link> so a section body can cross-link other pages from config.
+// Paragraphs without a link render identically (split returns the whole string).
+function renderSectionLinks(text: string) {
+  return text.split(/(\[[^\]]+\]\(\/[a-z0-9/-]+\))/g).map((part, i) => {
+    const m = part.match(/^\[([^\]]+)\]\((\/[a-z0-9/-]+)\)$/)
+    if (!m) return part
+    return (
+      <Link key={i} href={m[2]} className="text-gold underline underline-offset-2 hover:text-gold-dim">
+        {m[1]}
+      </Link>
+    )
+  })
+}
+
 export async function ServicePageContent({ page }: { page: ServicePage }) {
   const pagePackages = page.packageIds.map(getPackage)
 
@@ -127,7 +142,7 @@ export async function ServicePageContent({ page }: { page: ServicePage }) {
               </h2>
               <div className="space-y-4">
                 {fillTemplate(section.body).split('\n\n').map((para, i) => (
-                  <p key={i} className="text-muted text-base leading-relaxed">{para}</p>
+                  <p key={i} className="text-muted text-base leading-relaxed">{renderSectionLinks(para)}</p>
                 ))}
               </div>
             </div>
